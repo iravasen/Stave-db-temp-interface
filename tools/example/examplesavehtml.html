@@ -1,0 +1,62 @@
+
+<html>
+<head>
+
+<title> HIC powering form </title>
+
+<script language="Javascript" >
+function download(filename, text) {
+  var pom = document.createElement('a');
+  pom.setAttribute('href', 'data:text/plain;charset=utf-8,' +
+
+encodeURIComponent(text));
+  pom.setAttribute('download', filename);
+
+  pom.style.display = 'none';
+  document.body.appendChild(pom);
+
+  pom.click();
+
+  document.body.removeChild(pom);
+}
+
+function addTextHTML()
+{
+    document.addtext.name.value = document.addtext.name.value + ".html"
+}
+
+function addTextTXT()
+{
+    document.addtext.name.value = document.addtext.name.value + ".txt"
+}
+
+</script>
+
+</head>
+<body>
+<a id="noprint" href="../START.html"><img src="../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
+<br><br><br>
+
+<h2>  HIC powering test form </h2>
+<h3> Example of how to write information (copy and paste in text box): </h3>
+  Test name: name of the test (HIC powering on CP, HIC powering after tab cut, HIC poweing after wings cut) &ltbr&gt &ltbr&gt<br><br>
+
+  V_AVDD = value in V &ltbr&gt <br>
+  V_DVDD = value in V &ltbr&gt <br>
+  I_AVDD = value in A (good/bad) &ltbr&gt <br>
+  I_DVDD = value in A (good/bad) &ltbr&gt <br>
+</p>
+
+<form name="addtext" onsubmit="download(this['name'].value, this['text'].value)">
+
+<textarea rows="10" cols="70" name="text" placeholder="Insert AVDD, DVDD, I_AVDD, I_DVDD. Indicate if good or bad"></textarea>
+
+<br>
+<input type="text" name="name" value="" placeholder="Simple and clear file name">
+
+<input type="submit" onClick="addTextHTML();" value="Save As HTML">
+<input type="submit" onClick="addTextTXT();" value="Save As TXT">
+
+</form>
+</body>
+</html>
