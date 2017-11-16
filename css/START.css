@@ -1,0 +1,50 @@
+body{
+  background-color: white;
+  margin:0;
+  padding:0;
+  line-height: 1.5em;
+}
+
+html{
+  width: auto;
+}
+
+/*Header section*/
+.head{
+  color: white;
+  background-color: black;
+  margin: 0;
+  padding-top: 15px;
+  text-shadow: 2px 2px 4px white;
+  font: normal 18pt Arial, "Times New Roman", serif;
+  text-align: left;
+  text-decoration: underline;
+}
+
+/*Navigation menu*/
+.navig-menu li{
+  font-weight: bold;
+  text-align: left;
+  font-style: normal;
+  background-color: silver;
+  border-right: solid red 1.5em;
+  border-bottom: solid red .3em;
+  list-style-type: none;
+  margin: 0 8px 1px -32px;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px; /* firefox */
+  -webkit-border-radius: 10px; /* safari, chrome */
+}
+
+.navig-menu a{
+  color: black;
+  text-decoration: none;
+  height: auto;
+  width: auto;
+}
+
+.navig-menu a:hover{
+  color: red;
+  margin: 0;
+}
