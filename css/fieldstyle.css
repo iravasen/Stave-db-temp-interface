@@ -1,0 +1,11 @@
+.special{
+  font: normal 12pt/1.2 Arial, sans-serif;
+}
+
+fieldset {
+  border: 3px solid #323232;
+}
+
+h2 {
+  color: blue;
+}
