@@ -113,8 +113,8 @@
 		</fieldset>
 
 		<fieldset>
-			<legend>Distance of the cut</legend><br>
-			<p> Insert value: <input type="text" placeholder="value"/> </p>
+			<legend>Distance of the cut (rough, with usb camera)</legend><br>
+			<p> Insert value: <input type="text" placeholder="value" style="width: 100px"/> um </p>
 			<p>Is the cut distance acceptable?</p>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
  			<br />
@@ -132,6 +132,10 @@
  			<input type="checkbox" name="No" value="No"/> No
 		</fieldset>
 	</form>
+
+	<h2> Database parameters </h2>
+	<span> Distance of the cut (rough, from usb camera): <input type="text" style="width: 100px"/> um</span> <br>
+	<span> Number of broken bonds: <input type="text" style="width: 100px"/> </span> <br>
 
 	<h2> Other comments </h2>
   <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
