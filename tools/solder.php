@@ -7,6 +7,10 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<br>
+  <?php include('add/addscript.html');?>
+  <br>
+
 </head>
 
 <body class="special">
@@ -37,53 +41,82 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> HS-Id <input type="text" placeholder="hs id"/> </p>
+	<p> HS-Id <input type="text" placeholder="OL-HS-<number>"/> </p>
 	<p> FPC Extension id <input type="text" placeholder="fpc ext id"/> </p>
 	<p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
 	<p> Diameter of the soldering tip: <input type="text" style="width: 2%"/>mm </p>
 
-  <h2>Desoldering of MOD_ID resistors</h2>
-	<fieldset>
-		<legend>Damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-
-	<fieldset>
-		<legend>Damages to wire-bonds due to heat?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-
-	<fieldset>
-		<legend>If yes, which bonds were damaged?</legend><br>
-		<input type="checkbox" name="chipid" value="chipid"/> Chip-ID
-		<br />
-		<input type="checkbox" name="pg" value="pg"/> Power/ground
-		<br>
-		<p> Indicate the type of damage: <input type="text" placeholder="type of damage"/></p>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-
-  <br><br>
+	<br><br>
   <h2>Bridge soldering</h2>
+
 	<fieldset>
-		<legend>Damages to FPC due to heat?</legend><br>
+		<legend>Alignment problems of the bridge with respect to the FPC?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset>
+			<span> If yes, specify the problems: </span><br>
+			<div id="placeholder">
+				<div id="template">
+					<hr>
+					<span>Connection between HIC in position <input type="text" style="width: 90px"/> and <input type="text" style="width: 90px"/></span> <br>
+					<input type="checkbox" name="1" value="1"/> FPC not aligned in x axis
+					<br>
+					<input type="checkbox" name="2" value="2"/> FPC not aligned in z axis
+					<br>
+					<input type="checkbox" name="3" value="3"/> FPC aligned, but bridge not aligned
+					<br>
+					<input type="checkbox" name="4" value="4"/> Other, specify <textarea rows="3" cols="50" placeholder="describe"></textarea>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+				</div>
+			</div>
+			<p id="noprint"><button type="button" name="Submit" onclick="Add();">Add new item</button></p>
+
+		</fieldset>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Presence of (visible) shorts. Was there the need to rework to remove the shorts?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset>
+			<span> If yes: </span><br>
+			<input type="checkbox" name="1" value="1"/> Short disappered
+			<br>
+			<input type="checkbox" name="2" value="2"/> Cannot remove the short
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
+
+	</fieldset>
+
+	<fieldset>
+		<legend>Damages to wire-bonds?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Specify module # + Chip # + ALPIDE pad type <textarea rows="3" cols="50" placeholder="Module # + Chip # + ALPIDE pad type + eventual comment"></textarea></span>
+		<?php
+		include('imagetool/imagetool.html');
+		?>
+	</fieldset>
+
+	<fieldset>
+		<legend>Visible damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
 		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
 		<br />
 		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious <span> - Short description <input type="text" placeholder="describe"/></span>
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
 
 		<?php
 		include('imagetool/imagetool.html');
@@ -103,38 +136,40 @@
 		?>
 	</fieldset>
 
-	<fieldset>
-		<legend>Presence of (visible) shorts. Was there the need to rework to remove the shorts?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
-
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-
-	<fieldset>
-		<legend>Alignment problems of the bridge with respect to the FPC?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
-
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
+	<br><br>
+  <h2>Desoldering of MOD_ID resistors</h2>
 
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Module + Chip_id + bond type <textarea rows="3" cols="50" placeholder="describe"></textarea></span>
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
 
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset>
+			<legend>If yes, which bonds were damaged?</legend><br>
+			<input type="checkbox" name="chipid" value="chipid"/> Chip-ID
+			<br />
+			<input type="checkbox" name="pg" value="pg"/> Power/ground
+			<br>
+			<p> Indicate the type of damage: <input type="text" placeholder="type of damage"/></p>
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
+	</fieldset>
+
+	<fieldset>
+		<legend>Damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input type="checkbox" name="Yes" value="Yes"/> Yes
 		<?php
 		include('imagetool/imagetool.html');
 		?>
 	</fieldset>
+
 
   <br><br>
   <h2>FPC extension alignment, gluing and soldering</h2>
@@ -153,10 +188,10 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>FPC extension gluing. Good adhesion? (add photo)</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
+		<legend>FPC extension gluing. Problems?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
 		<br />
-		<input type="checkbox" name="No" value="No"/> No <span> - Why? <textarea rows="3" cols="50" placeholder="describe why"></textarea></span>
+		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Describe <textarea rows="3" cols="50" placeholder="describe why"></textarea></span>
 
 		<?php
 		include('imagetool/imagetool.html');
