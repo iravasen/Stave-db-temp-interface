@@ -7,6 +7,31 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<style>
+		fieldset#f1{
+			display: none;
+		}
+
+		fieldset#f2{
+			display: none;
+		}
+
+
+		input#pbpad:checked ~ fieldset#f1 {
+			display: block;
+		}
+
+		input#cappad:checked ~ fieldset#f2 {
+			display: block;
+		}
+
+
+	</style>
+
+	<br>
+  <?php include('add/addscript.html');?>
+  <br>
+
 </head>
 
 <body class="special">
@@ -15,6 +40,12 @@
   <br><br><br>
 
   <h1>Power Bus inspection (reception) - Report</h1>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OL/ML-PB-id reception test)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
 
 	<form>
 	<fieldset>
@@ -45,62 +76,175 @@
 	<br>
 	<form action="">
 		<fieldset>
- 			<legend>Visible damages of the PB ?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but don't affect functioning
+ 			<legend>Visible damages to the PB ?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and affect functioning
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+
+	 			<input type="checkbox" name="bend" value="bend"/> Strong bending
+	 			<br />
+	 			<input type="checkbox" name="engr" value="engr"/> Engravings on kapton layer
+				<br />
+	 			<input id="pbpad" type="checkbox" name="engr" value="engr"/> Soldering pad for cross-cables
+				<br />
+	 			<input type="checkbox" name="fbpad" value="fbpad"/> Soldering pads for Filter Board
+				<br />
+	 			<input type="checkbox" name="fbwing" value="fbwing"/>  Wings for Filter Board (ground) soldering
+				<br />
+	 			<input id="cappad" type="checkbox" name="fbwing" value="fbwing"/>  Soldering pads of capacitors
+				<br />
+				<input type="checkbox" name="other" value="other"/>  Other <input type="text" style="width: 400px"/>
+				<br>
+
+				<!-- Power bus pads fro cross-cables -->
+				<fieldset id="f1">
+					<div id="placeholder-pbdam">
+						<div id="template-pbdam">
+							<hr>
+							<h4 style="color: red"> CROSS-CABLE PADS </h4>
+							<p>
+								<ul>
+									<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
+									<li> Damaged pad type:
+										<input type="checkbox"/> AVDD
+										<input type="checkbox"/> DVDD
+										<input type="checkbox"/> AVSS
+										<input type="checkbox"/> DVSS
+										<input type="checkbox"/> BIAS
+									</li>
+									<li> Description: <br>
+										<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
+									</li>
+								</ul>
+							</p>
+
+							<?php
+							include('imagetool/imagetool.html');
+							?>
+							<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+							<hr>
+						</div>
+					</div>
+					<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-pbdam','template-pbdam');">Add new item</button></p>
+				</fieldset>
+
+				<!-- Capacitor pads -->
+				<fieldset id="f2">
+					<div id="placeholder-cappad">
+						<div id="template-cappad">
+							<hr>
+							<h4 style="color: red"> CAPACITOR PADS </h4>
+							<p>
+								<ul>
+									<li>Close to HIC in position: <input type="text" style="width: 90px"/> </li>
+									<li> Description: <br>
+										<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
+									</li>
+								</ul>
+							</p>
+							<?php
+							include('imagetool/imagetool.html');
+							?>
+							<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+							<hr>
+						</div>
+					</div>
+					<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-cappad','template-cappad');">Add new item</button></p>
+				</fieldset>
+
+				<?php
+				include('imagetool/imagetool.html');
+				?>
+
+			</fieldset>
+		</fieldset>
+
+
+		<fieldset>
+ 			<legend>Check on the continuity of lines. Problems?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+				<div id="placeholder-interline">
+					<div id="template-interline">
+						<ul>
+							<li> Interrupted line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+						</ul>
+
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-interline','template-interline');">Add new item</button></p>
+			</fieldset>
+
 		</fieldset>
 
 		<fieldset>
- 			<legend>If yes, specify the type of damage</legend><br>
- 			<input type="checkbox" name="bend" value="bend"/> Strong bending (add photo)
+ 			<legend>Resistance of the lines. Problems?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
  			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Engravings on kapton layer (add photo)
-			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for cross-cables (add photo)<span> - Type: <input type="text" placeholder="AVDD, DVDD, AVSS, DVSS, BIAS"/> </span>
-			<br />
- 			<input type="checkbox" name="fbpad" value="fbpad"/> Soldering pads for Filter Board (add photo)
-			<br />
- 			<input type="checkbox" name="fbwing" value="fbwing"/>  Wings for Filter Board (ground) soldering (add photo)
-			<br />
- 			<input type="checkbox" name="cap" value="cap"/>  Capacitor pads
-			<br />
-			<input type="checkbox" name="other" value="other"/>  Other <input type="text" style="width: 500px"/>
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+			<fieldset id="ifproblem">
+				<div id="placeholder-res">
+					<div id="template-res">
+						<ul>
+							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+							<li> R [Ohm]: <input type="text" placeholder="R [Ohm]"/></li>
+							<li> <input type="checkbox"/> Too high <input type="checkbox"/> Too low </li>
 
-		<fieldset>
- 			<legend>Check on the continuity of lines passed?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No <span>- Interrupted line: <input type="text" placeholder="line type"/></span>
+						</ul>
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-res','template-res');">Add new item</button></p>
+			</fieldset>
 
-		<fieldset>
- 			<legend>Resistance of the lines is acceptable?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No <span>- Value: <input type="text" placeholder="R [Ohm]"/></span>
 		</fieldset>
 
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
  			<input type="checkbox" name="No" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+			<fieldset id="ifproblem">
+				<div id="placeholder-shorts">
+					<div id="template-shorts">
+						<ul>
+							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+							<li> Describe: <br>
+								<textarea rows="3" cols="100" placeholder="describe"></textarea>
+							</li>
+							<li> R [Ohm] wrt ground: <input type="text" placeholder="R [Ohm]"/></li>
+							<li> R [Ohm] wrt another strip: <input type="text" placeholder="R [Ohm]"/> </li>
+
+						</ul>
+
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
+			</fieldset>
 		</fieldset>
 
 		<fieldset>
@@ -121,6 +265,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<a href="recpowerbus.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>
