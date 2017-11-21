@@ -41,10 +41,10 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> HS-Id <input type="text" placeholder="OL-HS-<number>"/> </p>
-	<p> FPC Extension id <input type="text" placeholder="fpc ext id"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
-	<p> Diameter of the soldering tip: <input type="text" style="width: 2%"/>mm </p>
+	<p> HS-id <input type="text" placeholder="OL-HS-L/R-<number>"/> </p>
+	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
+	<p> Name of the tin and composition <input type="text" placeholder="tin and composition" style="width: 300px"/></p>
+	<p> Diameter of the soldering tip: <input type="text" style="width: 80px"/>mm </p>
 
 	<br><br>
   <h2>Bridge soldering</h2>
@@ -54,14 +54,13 @@
 
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-		<fieldset>
-			<span> If yes, specify the problems: </span><br>
-			<div id="placeholder">
-				<div id="template">
+		<fieldset id="ifproblem">
+			<div id="placeholder-align">
+				<div id="template-align">
 					<hr>
-					<span>Connection between HIC in position <input type="text" style="width: 90px"/> and <input type="text" style="width: 90px"/></span> <br>
+					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
 					<input type="checkbox" name="1" value="1"/> FPC not aligned in x axis
 					<br>
 					<input type="checkbox" name="2" value="2"/> FPC not aligned in z axis
@@ -76,7 +75,7 @@
 					<hr>
 				</div>
 			</div>
-			<p id="noprint"><button type="button" name="Submit" onclick="Add();">Add new item</button></p>
+			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-align','template-align');">Add new item</button></p>
 
 		</fieldset>
 
@@ -86,16 +85,24 @@
 		<legend>Presence of (visible) shorts. Was there the need to rework to remove the shorts?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-		<fieldset>
-			<span> If yes: </span><br>
-			<input type="checkbox" name="1" value="1"/> Short disappered
-			<br>
-			<input type="checkbox" name="2" value="2"/> Cannot remove the short
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+		<fieldset id="ifproblem">
+			<div id="placeholder-shorts">
+				<div id="template-shorts">
+					<hr>
+					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
+					<input type="checkbox" name="1" value="1"/> Short disappered
+					<br>
+					<input type="checkbox" name="2" value="2"/> Cannot remove the short
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
 		</fieldset>
 
 	</fieldset>
@@ -104,70 +111,262 @@
 		<legend>Damages to wire-bonds?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Specify module # + Chip # + ALPIDE pad type <textarea rows="3" cols="50" placeholder="Module # + Chip # + ALPIDE pad type + eventual comment"></textarea></span>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-bonds">
+				<div id="template-bonds">
+					<hr>
+					<span>Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
+					<span>ALPIDE pad type: <input type="text" style="width: 100px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bonds','template-bonds');">Add new item</button></p>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious <span> - Short description <input type="text" placeholder="describe"/></span>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc">
+				<div id="template-fpc">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
 		<legend>Damages to bridges due to heat?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious <span> - Short description <input type="text" placeholder="describe"/></span>
-		<br />
 		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<fieldset id="ifproblem">
+			<div id="placeholder-bridge">
+				<div id="template-bridge">
+					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
+					<span>Bridge position: <input type="text" placeholder="up or down" style="width: 150px"/></span><br>
+					<hr>
+					<span> <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridge','template-bridge');">Add new item</button></p>
+		</fieldset>
+
 	</fieldset>
 
 	<br><br>
-  <h2>Desoldering of MOD_ID resistors</h2>
+  <h2>Desoldering of termination resistors</h2>
+
+	<fieldset>
+		<legend>Have you lost some resistance after desoldering?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-tlost">
+				<div id="template-tlost">
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Number of lost R: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+
+					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-tlost','template-tlost');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
 
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
 		<input type="checkbox" name="No" value="No"/> No
 		<br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 		<br />
 
-		<fieldset>
-			<legend>If yes, which bonds were damaged?</legend><br>
-			<input type="checkbox" name="chipid" value="chipid"/> Chip-ID
-			<br />
-			<input type="checkbox" name="pg" value="pg"/> Power/ground
-			<br>
-			<p> Indicate the type of damage: <input type="text" placeholder="type of damage"/></p>
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+		<fieldset id="ifproblem">
+			<div id="placeholder-modid">
+				<div id="template-modid">
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<hr>
+
+					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damages to power/ground bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Other: <input type="text" placeholder="specify" style="width: 250px"/> (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
 
 	<fieldset>
-		<legend>Damages to FPC due to heat?</legend><br>
+		<legend>Visible damages to FPC due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc">
+				<div id="template-fpc">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<br><br>
+  <h2>Desoldering of MOD_ID resistors</h2>
+
+	<fieldset>
+		<legend>Have you lost some resistance after desoldering?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-idlost">
+				<div id="template-idlost">
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Number of lost R: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+
+					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-idlost','template-idlost');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<fieldset>
+		<legend>Damages to wire-bonds?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-modid">
+				<div id="template-modid">
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<hr>
+
+					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damages to power/ground bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Other: <input type="text" placeholder="specify" style="width: 250px"/> (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<br>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<fieldset>
+		<legend>Visible damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc">
+				<div id="template-fpc">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
+		</fieldset>
 	</fieldset>
 
 
@@ -176,63 +375,106 @@
 
 	<fieldset>
 		<legend>Alignment between FPC extension and Module 1. Problems?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious
-		<br/>
 		<input type="checkbox" name="No" value="No"/> No
-
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br>
+		<fieldset id="ifproblem">
+			<span>Description:</span><br>
+			<textarea rows="10" cols="100" placeholder="describe why"></textarea>
+			<br>
+			<input type="checkbox"/> still working (to be tested)
+			<input type="checkbox"/> not working
+			<br>
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
 		<legend>FPC extension gluing. Problems?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Describe <textarea rows="3" cols="50" placeholder="describe why"></textarea></span>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br>
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<fieldset id="ifproblem">
+			<span>Description:</span><br>
+			<textarea rows="10" cols="100" placeholder="describe why"></textarea>
+			<br>
+			<input type="checkbox"/> acceptable <input type="checkbox"/> not acceptable
+			<br>
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the extension due to heat?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious
-		<br />
-		<input type="checkbox" name="No" value="No"/> No
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<span>Description:</span><br>
+			<textarea rows="10" cols="100" placeholder="describe why"></textarea><br>
+			<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working
+			<br>
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
+
 	</fieldset>
 
 	<fieldset>
-		<legend>FPC extension soldering. Damages to the FPC-TAB-B?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, serious
-		<br />
+		<legend>FPC extension soldering. Damages to the FPC-TAB-B due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br>
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<fieldset id="ifproblem">
+			<span>Description:</span><br>
+			<textarea rows="10" cols="100" placeholder="describe why"></textarea><br>
+			<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working
+			<br>
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
 	</fieldset>
 
 	<fieldset>
 		<legend>FPC extension soldering. Damages to wire-bonds?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Chip_id and bond type <textarea rows="3" cols="50" placeholder="describe"></textarea></span>
-		<br />
 		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpcext">
+				<div id="template-fpcext">
+					<hr>
+					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
+					<span>Bond type: <input type="text" style="width: 150px"/> </span> <br>
+
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpcext','template-fpcext');">Add new item</button></p>
+		</fieldset>
+
 	</fieldset>
 
 
