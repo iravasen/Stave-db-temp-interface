@@ -1,12 +1,14 @@
 <script type='text/javascript'>
 var _counter = 0;
-function Add() {
+function Add(divext, divint) {
   _counter++;
-  var oClone = document.getElementById("template").cloneNode(true);
+  var oClone = document.getElementById(divint.toString()).cloneNode(true);
   oClone.id += (_counter + "");
-  document.getElementById("placeholder").appendChild(oClone);
+  document.getElementById(divext.toString()).appendChild(oClone);
 }
+
 function Remove(removeBtn) {
   $(removeBtn).parent().parent().remove();
 }
+
 </script>
