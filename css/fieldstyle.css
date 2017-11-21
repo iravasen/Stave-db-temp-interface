@@ -9,3 +9,16 @@ fieldset {
 h2 {
   color: blue;
 }
+
+legend{
+  color: red;
+  font-size: 14pt;
+}
+
+fieldset#ifproblem {
+ display: none;
+}
+
+input#check:checked ~ fieldset {
+  display: block;
+}
