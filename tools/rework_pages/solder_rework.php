@@ -46,6 +46,12 @@
 
 	<h1> [REWORK] Bridge soldering, FPC extension gluing/soldering, resistor desoldering - Report </h1>
 
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: [REWORK] Bridge-Resistors and FPC-Ext soldering/desoldering on OL/ML-HS-L/R-#)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
+
 	<br>
 	<form>
 	<fieldset>
@@ -67,7 +73,7 @@
  <?php include('../people/people.html');?>
  <br>
 
-	<p> HS-id <input type="text" placeholder="OL-HS-L/R-<number>"/> </p>
+	<p> HS-id <input type="text" placeholder="OL/ML-HS-L/R-<number>"/> </p>
 	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
 	<p> Name of the tin and composition <input type="text" placeholder="tin and composition" style="width: 300px"/></p>
 	<p> Diameter of the soldering tip: <input type="text" style="width: 80px"/>mm </p>
