@@ -27,7 +27,7 @@
 
 			<h3> HS </h3>
 			<li> <a href="tools/hsassembly.php"> HS assembly (mask deposition and HIC gluing) </a></li>
-      <li> <a href="tools/solder.php"> Soldering/Desoldering (bridges, resistors, fpc extension)</a> </li>
+      <li> <a href="tools/interm_page/bridge.php"> Soldering/Desoldering (bridges, resistors, fpc extension)</a> </li>
 			<li> <a href="#"> Gluing of wire-bond protections (PB folding) --> Not implemented yet</a></li>
 			<li> <a href="tools/hsgluing.php"> HS gluing on SF </a></li>
 
