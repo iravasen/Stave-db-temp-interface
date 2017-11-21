@@ -7,6 +7,16 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<style>
+		p#p1{
+			display: none;
+		}
+
+		input#uleg:checked ~ p#p1 {
+			display: block;
+		}
+	</style>
+
 </head>
 
 <body class="special">
@@ -15,6 +25,12 @@
   <br><br><br>
 
   <h1>Space Frame visual inspection (reception) - Report</h1>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OL/ML-SF-id reception test)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
 
 	<fieldset>
 	<legend> Location </legend>
@@ -43,33 +59,32 @@
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to SF structure?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but acceptable
- 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, not acceptable
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+			<fieldset id="ifproblem">
+				<span> Type of damage: </span> <br>
+				<input id="uleg" type="checkbox"/> Some U-legs missing <br>
+				<input type="checkbox"/> Damages to the carbon lattice <br>
+				<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br><br>
 
-		<fieldset>
- 			<legend>Are there missing legs?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Number: <input type="text" placeholder="How many?"/> </span>
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+				<p id="p1">
+					Number of missing u-legs: <input type="text" style="width: 90px"/> <br>
+				</p>
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+				<?php
+				include('imagetool/imagetool.html');
+				?>
+			</fieldset>
+
 		</fieldset>
 
 		<fieldset>
 			<legend>Is this SF acceptable?</legend><br>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+				<input type="checkbox"/> Yes <br>
+				<input type="checkbox"/> Yes, but we put it aside in case of need <br>
+				<input type="checkbox"/> No <br>
 		</fieldset>
 	</form>
 
@@ -83,6 +98,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<a href="recspaceframe.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>
