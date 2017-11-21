@@ -14,7 +14,7 @@
     <ul class="navig-menu">
 
 			<h3> Reception tests of Stave components</h3>
-			<li> <a href="tools/cpvisual.php"> CP visual inspection </a></li>
+			<li> <a href="tools/cpvisual.php"> CP visual inspection and planarity </a></li>
 			<li> <a href="tools/recspaceframe.php"> Space frame visual inspection </a></li>
 			<li> <a href="tools/recpowerbus.php"> Power Bus inspection </a></li>
 			<li> <a href="tools/recbiasbus.php"> Bias Bus inspection </a></li>
