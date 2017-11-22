@@ -23,7 +23,8 @@
 
 			<h3> HIC inspection and tests </h3>
 			<li> <a href="tools/hicvisual.php"> HIC visual inspection (reception) </a></li>
-			<li> <a href="tools/poweringaftcut.php"> HIC tab and wings cut </a></li>
+			<li> <a href="tools/hiccut.php"> HIC tab and wings cut </a></li>
+			<li> <a href="tools/poweringaftercut.php"> HIC powering test after cut </a></li>
 
 			<h3> HS </h3>
 			<li> <a href="tools/hsassembly.php"> HS assembly (mask deposition and HIC gluing) </a></li>
@@ -32,8 +33,8 @@
 			<li> <a href="tools/hsgluing.php"> HS gluing on SF </a></li>
 
 			<h3> Stave assembly </h3>
-			<li> <a href="tools/filterandcap.php"> Soldering of capacitors on PB and BB + soldering of FB to PB and BB </a></li>
-			<li> <a href="tools/solderPBBB.php">  PB + BB + Filter Board soldering to HS </a></li>
+			<li> <a href="tools/interm_page/fb_to_pb_bb.php"> Soldering of capacitors on PB and BB + soldering of FB to PB and BB </a></li>
+			<li> <a href="tools/interm_page/soldePBBBtoHS.php">  PB + BB + Filter Board soldering to HS </a></li>
       <li> <a href="tools/pbfold.php">  PB + BB folding on the HS </a></li>
 
 			<h3> Storage and shipment </h3>
