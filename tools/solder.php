@@ -67,11 +67,13 @@
 				<div id="template-align">
 					<hr>
 					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
-					<input type="checkbox" name="1" value="1"/> FPC not aligned in x axis
+					<input type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
 					<br>
-					<input type="checkbox" name="2" value="2"/> FPC not aligned in z axis
+					<input type="checkbox" name="2" value="2"/> FPCs not aligned in y axis
 					<br>
-					<input type="checkbox" name="3" value="3"/> FPC aligned, but bridge not aligned
+					<input type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
+					<br>
+					<input type="checkbox" name="3" value="3"/> FPCs aligned, but bridge not aligned
 					<br>
 					<input type="checkbox" name="4" value="4"/> Other, specify <textarea rows="3" cols="50" placeholder="describe"></textarea>
 					<?php
@@ -88,7 +90,7 @@
 	</fieldset>
 
 	<fieldset>
-		<legend>Presence of (visible) shorts. Was there the need to rework to remove the shorts?</legend><br>
+		<legend>Presence of (visible) shorts?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
 		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -98,7 +100,7 @@
 				<div id="template-shorts">
 					<hr>
 					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
-					<input type="checkbox" name="1" value="1"/> Short disappered
+					<input type="checkbox" name="1" value="1"/> Short disappered after rework
 					<br>
 					<input type="checkbox" name="2" value="2"/> Cannot remove the short
 					<?php

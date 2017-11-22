@@ -7,6 +7,20 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<?php include('add/addscript.html');?>
+
+	<style>
+		span#s1{
+			display: none;
+		}
+
+		input#i1:checked ~ span#s1 {
+			display: block;
+		}
+
+	</style>
+
+
 </head>
 
 <body class="special">
@@ -15,6 +29,12 @@
   <br><br><br>
 
   <h1>Stave shipment - Report</h1>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OL/ML-Stave-id shipment) </span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
 
 	<br>
 	<form>
@@ -35,37 +55,67 @@
 <!--People-->
  <br>
  <?php include('people/people.html');?>
- <br>
 
-<h2> Report </h2>
+
 <br>
 <p> Stave ID: <input type="text" placeholder="Stave id"/> </p>
 <p> Shipment date: <input type="text" placeholder="date"/> </p>
 <br>
 
+<h2> Report </h2>
+<br>
 
 <form action="">
 	<fieldset>
-		<legend>Visible damages to stave when inserting in the transport box?</legend><br>
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, but don't affect functioning - <span> - Which damage? <input type="text" placeholder="Ins. type"/> </span>
-		<br />
-		<input type="checkbox" name="Yes" value="Yes"/> Yes, and affect functioning - <span> - Which damage? <input type="text" placeholder="Ins. type"/> </span>
-		<br />
+		<legend>Visible damages to stave when inserting it in the transport box?</legend><br>
+
 		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-ship">
+				<div id="template-ship">
+					<hr>
+					<p>
+						<ul>
+							<li> HS flavor: <input type="checkbox"/> L <input type="checkbox"/> R </li>
+							<li> Damaged component: <br>
+								 <input id="i1" type="checkbox"/> HIC <br>
+								 <span id="s1">Position: <input type="text" style="width: 90px"/></span>
+								 <input type="checkbox"/> Space-Frame <br>
+								 <input type="checkbox"/> Cold-Plate <br>
+								 <input type="checkbox"/> PB and BB extensions <br>
+								 <input type="checkbox"/> FPC extension <br>
+							</li>
+
+							<li> Description: <br>
+								<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
+							</li>
+							<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+						</ul>
+					</p>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+					<hr>
+				</div>
+			</div>
+			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-ship','template-ship');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<fieldset>
+		<legend>Picture of the Stave inside the transport box before closing it.</legend><br>
 		<?php
 		include('imagetool/imagetool.html');
 		?>
 	</fieldset>
 
 	<fieldset>
-		<legend>Picture of the Stave inside the transport box before closing it?</legend><br>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-
-	<fieldset>
-		<legend>Picture of the Stave inside the transport box before shipping it?</legend><br>
+		<legend>Picture of the Stave inside the transport box before shipping it.</legend><br>
 		<?php
 		include('imagetool/imagetool.html');
 		?>
@@ -83,6 +133,6 @@ include('imagetool/imagetool.html');
 ?>
 
 <input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-
+<a href="staveship.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 </body>
 </html>

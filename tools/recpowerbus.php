@@ -68,7 +68,7 @@
  <br>
 
  <br>
- <p> Power-Bus ID: <input type="text" placeholder="HIC id"/> </p>
+ <p> Power-Bus ID: <input type="text" placeholder="PB id"/> </p>
  <br>
 
  <h2>Report</h2>
@@ -153,6 +153,8 @@
 					</div>
 					<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-cappad','template-cappad');">Add new item</button></p>
 				</fieldset>
+
+				<span> Do they affect the Power-Bus functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
 
 				<?php
 				include('imagetool/imagetool.html');

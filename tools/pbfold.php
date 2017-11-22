@@ -7,6 +7,10 @@
   <link rel="stylesheet" type="text/css" href="../css/solder.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<br>
+  <?php include('add/addscript.html');?>
+  <br>
+
 </head>
 
 <body class="special">
@@ -16,8 +20,11 @@
 
   <h1>Power Bus + Bias Bus folding on the Half-Stave - Report</h1>
 
-  <h2>Power Bus + Bias Bus folding</h2>
-  <p id="noprint"> Insert a <b>short report</b> indicating how the procedure went. Damages to HS? Damages to CC? <br> Insert <b>photos</b> at the bottom if needed </p>
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OL/ML-PB folding on OL/ML-HS-id)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
 
 	<form>
 	<fieldset>
@@ -45,24 +52,26 @@
 	<p> BB Id: <input type="text" placeholder="BB id"/> </p>
 	<br>
 
+	<h2>Report</h2>
+
 	<form action="">
 
 		<fieldset>
- 			<legend>Picture with PB and BB with the bar on top.</legend><br>
+ 			<legend>Picture/s of the bar with PB and BB on top.</legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
 
 		<fieldset>
- 			<legend>Picture while folding the PB+BB.</legend><br>
+ 			<legend>Picture/s while folding the PB+BB.</legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
 
 		<fieldset>
- 			<legend>Picture of the final result.</legend><br>
+ 			<legend>Picture/s of the final result.</legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
@@ -70,50 +79,74 @@
 
 		<fieldset>
  			<legend>Visible damages to the cross-cables?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but they don't affect functioning <span> - HIC and cc type: <input type="text" placeholder="HIC and cc type"/> </span>
- 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and they affect functioning <span> - HIC and cc type: <input type="text" placeholder="HIC and cc type"/> </span>
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+				<div id="placeholder-ccdam">
+					<div id="template-ccdam">
+						<hr>
+						<p>
+							<ul>
+								<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> CC type:
+									<input type="checkbox"/> AVDD
+									<input type="checkbox"/> DVDD
+									<input type="checkbox"/> AVSS
+									<input type="checkbox"/> DVSS
+									<input type="checkbox"/> BIAS
+								</li>
+								<li> Description: <br>
+									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
+								</li>
+								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+							</ul>
+						</p>
+
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-ccdam','template-ccdam');">Add new item</button></p>
+			</fieldset>
+
 		</fieldset>
 
 		<fieldset>
- 			<legend>Visible damages to the PB?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but they don't affect functioning <span> - Close to these HICs: <input type="text" placeholder="HICs"/> </span>
- 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and they affect functioning <span> - close to these HICs: <input type="text" placeholder="HICs"/> </span>
-			<br />
+ 			<legend>Do you think to have damaged a HIC?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<br />
 
-		<fieldset>
- 			<legend>Visible damages to the BB?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but they don't affect funtioning <span> - Close to these HICs: <input type="text" placeholder="HICs"/> </span>
-			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and they affect funtioning <span> - Close to these HICs: <input type="text" placeholder="HICs"/> </span>
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+			<fieldset id="ifproblem">
+				<div id="placeholder-hicdam">
+					<div id="template-hicdam">
+						<hr>
+						<p>
+							<ul>
+								<li> HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> Description: <br>
+									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
+								</li>
+								<li> Result: <input type="checkbox"/> Acceptable (to be tested) <input type="checkbox"/> Not acceptable, serious damage
+							</ul>
+						</p>
 
-		<fieldset>
- 			<legend>Visible damages to the HICs?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but they don't affect functioning <span> - HIC number: <input type="text" placeholder="HIC and cc type"/> </span>
- 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and they affect functioning <span> - HIC number: <input type="text" placeholder="HIC and cc type"/> </span>
-			<br />
- 			<input type="checkbox" name="No" value="No"/> No
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-hicdam','template-hicdam');">Add new item</button></p>
+			</fieldset>
+
 		</fieldset>
 
 	</form>
@@ -128,5 +161,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<a href="pbfold.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+
 </body>
 </html>

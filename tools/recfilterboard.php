@@ -14,7 +14,14 @@
 	<a id="noprint" href="../START.php"><img src="../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
   <br><br><br>
 
-  <h2>Filter Board visual inspection (reception) - Report</h2>
+  <h1>Filter Board visual inspection (reception) - Report</h1>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OL/ML-FB-id reception test)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
+
 	<br>
 	<form>
 	<fieldset>
@@ -37,51 +44,77 @@
  <br>
 
   <br>
-	<p> Filter-Board ID: <input type="text" placeholder="HIC id"/> </p>
+	<p> Filter-Board ID: <input type="text" placeholder="FB id"/> </p>
 	<br>
 
 	<h2>Report</h2>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages on the FB ?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but don't affect functioning
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and affect functioning
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+
+	 			<input type="checkbox" name="bend" value="bend"/> Cracks on the board
+	 			<br />
+	 			<input type="checkbox" name="engr" value="engr"/> Engravings
+				<br />
+	 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB on top layer damaged
+				<br />
+				<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB on bottom layer damaged
+				<br />
+				<input type="checkbox" name="engr" value="engr"/> Soldering pad for BB damaged
+				<br />
+	 			<input type="checkbox" name="fbpad" value="fbpad"/> Decoupling capacitors
+				<br />
+	 			<input type="checkbox" name="cap" value="cap"/>  Connector pins are bent
+				<br />
+	 			<input type="checkbox" name="cap" value="cap"/>  Connector pins are missing
+				<br />
+				<input type="checkbox" name="other" value="other"/> Other: <input type="text" style="width: 400px" placeholder="specify"/>
+
+				<br><br>
+				<span> Do they affect the Filter-Board functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
+
+				<?php
+				include('imagetool/imagetool.html');
+				?>
+
+			</fieldset>
+
 		</fieldset>
 
-		<fieldset>
- 			<legend>If yes, specify the type of damage</legend><br>
- 			<input type="checkbox" name="bend" value="bend"/> Cracks on the board
- 			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Engravings
-			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB/BB damaged<span> - Type: <input type="text" placeholder="Power Bus, Bias Bus"/> </span>
-			<br />
- 			<input type="checkbox" name="fbpad" value="fbpad"/> Decoupling capacitors
-			<br />
- 			<input type="checkbox" name="cap" value="cap"/>  Connector pin bended
-			<br />
- 			<input type="checkbox" name="cap" value="cap"/>  Connector pin missing
-			<br />
-			<input type="checkbox" name="other" value="other"/> Other <input type="text" style="width: 500px"/>
-
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-
-		</fieldset>
 
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+			<fieldset id="ifproblem">
+				<div id="placeholder-shorts">
+					<div id="template-shorts">
+						<ul>
+							<li> Describe: <br>
+								<textarea rows="3" cols="100" placeholder="describe"></textarea>
+							</li>
+							<li> R [Ohm] wrt ground: <input type="text" placeholder="R [Ohm]"/></li>
+							<li> R [Ohm] wrt another strip: <input type="text" placeholder="R [Ohm]"/> </li>
+
+						</ul>
+
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
+			</fieldset>
 
 		</fieldset>
 
@@ -103,6 +136,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<a href="recfilterboard.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>

@@ -7,6 +7,10 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<br>
+  <?php include('add/addscript.html');?>
+  <br>
+
 </head>
 
 <body class="special">
@@ -15,6 +19,13 @@
   <br><br><br>
 
   <h1>FPC extension inspection (reception) - Report</h1>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
+			<span id="noprint"> (Example: OB-FPC-Extension-id reception test)</span>
+			<input type="text" placeholder="name" style="width: 500px">
+	</fieldset>
+
 	<br>
 	<fieldset>
 	<legend> Location </legend>
@@ -35,7 +46,7 @@
  <br>
 
   <br>
-	<p> FPC extension ID: <input type="text" placeholder="ext id"/> </p>
+	<p> FPC extension ID: <input type="text" placeholder="fpc-ext id"/> </p>
 	<br>
 
 	<h2>Report</h2>
@@ -43,57 +54,124 @@
 
 	<form action="">
 		<fieldset>
- 			<legend>Visible damages of the Extension ?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes, but don't affect functioning
+ 			<legend>Visible damages of the Extension?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
-			<input type="checkbox" name="Yes" value="Yes"/> Yes, and affect functioning
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+	 			<input type="checkbox" name="bend" value="bend"/> Strong bending
+	 			<br />
+	 			<input type="checkbox" name="engr" value="engr"/> Engravings on coverlay
+				<br />
+	 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for HIC connection (row for ground)
+				<br />
+				<input type="checkbox" name="engr" value="engr"/> Soldering pad for HIC connection (row for data/clk/ctrl)
+				<br />
+	 			<input type="checkbox" name="fbpad" value="fbpad"/> FireFly connector alignment and soldering
+				<br />
+				<input type="checkbox" name="other" value="other"/> Other <input type="text" style="width: 500px"/>
+				<br><br>
+				<span> Do they affect the FPC extension functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
+				<?php
+				include('imagetool/imagetool.html');
+				?>
+			</fieldset>
+
+		</fieldset>
+
+<!--
+		<fieldset>
+ 			<legend>Check on the continuity of lines. Problems?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<fieldset id="ifproblem">
+				<div id="placeholder-interline">
+					<div id="template-interline">
+						<ul>
+							<li> Interrupted line type: <input type="checkbox"/> Data <input type="checkbox"/> Clock <input type="checkbox"/> Control </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/> on the HS</li>
+						</ul>
+
+						<?php
+						//include('imagetool/imagetool.html');
+						?>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-interline','template-interline');">Add new item</button></p>
+			</fieldset>
  			<br />
- 			<input type="checkbox" name="No" value="No"/> No
 		</fieldset>
 
 		<fieldset>
- 			<legend>If yes, specify the type of damage</legend><br>
- 			<input type="checkbox" name="bend" value="bend"/> Strong bending
- 			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Engravings on coverlay
+ 			<legend>Resistance of the lines. Problems?</legend>
+			<span id="noprint"> <strong>Info: a single strip have a resistance around 3 Ohm</strong></span><br>
+			<br>
+			<input type="checkbox" name="No" value="No"/> No
 			<br />
- 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for HIC connection
-			<br />
- 			<input type="checkbox" name="fbpad" value="fbpad"/> SMA connector alignment and soldering
-			<br />
-			<input type="checkbox" name="other" value="other"/> Other <input type="text" style="width: 500px"/>
-
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
-
-		<fieldset>
- 			<legend>Check on the continuity of lines passed?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
  			<br />
- 			<input type="checkbox" name="No" value="No"/> No <span> - Interrupted line: <input type="text" placeholder="line"/></span>
-		</fieldset>
 
-		<fieldset>
- 			<legend>Resistance of the lines is acceptable?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes (around 3 Ohm per strip)
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No <span> - Strip and value: <input type="text" style="width: 400px" placeholder="strip and value"/></span>
+			<fieldset id="ifproblem">
+				<div id="placeholder-res">
+					<div id="template-res">
+						<hr>
+						<ul>
+							<li> Line type: <input type="checkbox"/> Data <input type="checkbox"/> Clock <input type="checkbox"/> Control </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/> on the HS</li>
+							<li> R [Ohm]: <input type="text" placeholder="R [Ohm]"/></li>
+							<li> <input type="checkbox"/> Too high <input type="checkbox"/> Too low </li>
+
+						</ul>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-res','template-res');">Add new item</button></p>
+			</fieldset>
+
 		</fieldset>
 
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
- 			<input type="checkbox" name="Yes" value="Yes"/> Yes <span> - Description <textarea rows="5" cols="50" placeholder="descibe"></textarea>
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
-			<?php
-			include('imagetool/imagetool.html');
-			?>
+			<fieldset id="ifproblem">
+				<div id="placeholder-shorts">
+					<div id="template-shorts">
+						<hr>
+						<ul>
+							<li> Line type: <input type="checkbox"/> Data <input type="checkbox"/> Clock <input type="checkbox"/> Control </li>
+							<li> For HIC in position: <input type="text" style="width: 90px"/> on the HS</li>
+							<li> Describe: <br>
+								<textarea rows="3" cols="100" placeholder="describe"></textarea>
+							</li>
+							<li> R [Ohm] wrt ground: <input type="text" placeholder="R [Ohm]"/></li>
+							<li> R [Ohm] wrt another strip: <input type="text" placeholder="R [Ohm]"/> </li>
 
+						</ul>
+
+						<?php
+						//include('imagetool/imagetool.html');
+						?>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
+			</fieldset>
 		</fieldset>
 
+		</fieldset>
+-->
 		<fieldset>
 			<legend>Is this OB-FPC-Extension acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
@@ -113,7 +191,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-
+	<a href="recfpcext.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 
 </body>
