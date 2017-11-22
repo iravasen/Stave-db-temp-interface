@@ -44,11 +44,11 @@
 	<a id="noprint" href="../../START.php"><img src="../../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
   <br><br><br>
 
-	<h1> [REWORK] Bridge soldering, FPC extension gluing/soldering, resistor desoldering - Report </h1>
+	<h1> [REWORK] Capacitor soldering on PB and BB, Filter Board soldering on PB and BB - Report </h1>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: [REWORK] Bridge-Resistors and FPC-Ext soldering/desoldering on OL/ML-HS-L/R-#)</span>
+			<span id="noprint"> (Example: [REWORK] OL/ML-FB-id & capacitors soldering on OL/ML-PB-id and OL/ML-BB-id)</span>
 			<input type="text" placeholder="name" style="width: 500px">
 	</fieldset>
 
@@ -73,40 +73,30 @@
  <?php include('../people/people.html');?>
  <br>
 
-	<p> HS-id <input type="text" placeholder="OL/ML-HS-L/R-<number>"/> </p>
-	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition" style="width: 300px"/></p>
-	<p> Diameter of the soldering tip: <input type="text" style="width: 80px"/>mm </p>
-
-	<br>
-	<h2> Reworked components </h2>
+ <p> Power Bus ID: <input type="text" placeholder="PB id"/> </p>
+ <p> Bias Bus ID: <input type="text" placeholder="BB id"/> </p>
+ <p> Filter Board ID: <input type="text" placeholder="FB id"/> </p>
+ <p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
+ <p> Diameter of the soldering tip: <input style="width: 5%" type="text"/>mm </p>
+ <br>
+ <h2>Reworked components</h2>
+ <br>
 
 	<fieldset>
 
-		<div id="placeholder-align">
-			<div id="template-align">
+		<div id="placeholder-rew">
+			<div id="template-rew">
 				<hr>
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
-				<input type="checkbox" id="check1"> Bridge <br>
-				<input type="checkbox"> FPC extension <br>
-				<input type="checkbox" id="check2"> MOD_ID resistor <br>
-				<input type="checkbox" id="check3"> Termination resistor <br>
+				<input type="checkbox"> Power Bus termination pads on TOP layer of FB <br>
+				<input type="checkbox"> Power Bus termination pads on BOTTOM layer of FB <br>
+				<input type="checkbox"> Bias Bus termination pads <br>
+				<input type="checkbox" id="check1"> Capacitors <br>
 
-				<!--In case of a bridge-->
+				<!-- In case of capacitors -->
 				<p id="p1">
-					Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/>
-				</p><br>
-
-				<!--In case of a MOD_ID resistor-->
-				<p id="p2">
-					On HIC in position: <input type="text" placeholder="pos" style="width: 100px"/> <br>
-					On Master <input type="text" placeholder="0 or 8" style="width: 100px"/> <br>
-				</p>
-
-				<p id="p3">
-					On HIC in position: <input type="text" placeholder="pos" style="width: 100px"/> <br>
-					On Chip number <input type="text" placeholder="chip #" style="width: 100px"/> <br>
+					Close to HIC in position: <input type="text" placeholder="pos" style="width: 80px"/> <br>
 				</p>
 
 				<span> Description of the problem </span><br>
@@ -128,7 +118,7 @@
 				<hr>
 			</div>
 		</div>
-		<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-align','template-align');">Add new item</button></p>
+		<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-rew','template-rew');">Add new item</button></p>
 
 	</fieldset>
 
@@ -142,7 +132,8 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="solder_rework.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a href="filterandcap_rework.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+
 
 
 </body>
