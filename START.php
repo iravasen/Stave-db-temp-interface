@@ -21,10 +21,8 @@
 			<li> <a href="tools/recfilterboard.php"> Filter Board visual inspection </a></li>
 			<li> <a href="tools/recfpcext.php"> FPC extension reception test </a></li>
 
-			<h3> HIC inspection and tests </h3>
-			<li> <a href="tools/hicvisual.php"> HIC visual inspection (reception) </a></li>
-			<li> <a href="tools/hiccut.php"> HIC tab and wings cut </a></li>
-			<li> <a href="tools/poweringaftercut.php"> HIC powering test after cut </a></li>
+			<h3> HIC inspection and test </h3>
+			<li> <a href="tools/hiccut.php"> HIC tab and wings cut and power test</a></li>
 
 			<h3> HS </h3>
 			<li> <a href="tools/hsassembly.php"> HS assembly (mask deposition and HIC gluing) </a></li>
