@@ -98,7 +98,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="recspaceframe.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="recspaceframe.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>

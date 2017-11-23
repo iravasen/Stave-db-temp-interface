@@ -48,8 +48,6 @@
 
 	<br>
 	<p> HS Id: <input type="text" placeholder="HS id"/> </p>
-	<p> PB Id: <input type="text" placeholder="PB id"/> </p>
-	<p> BB Id: <input type="text" placeholder="BB id"/> </p>
 	<br>
 
 	<h2>Report</h2>
@@ -161,7 +159,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="pbfold.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="pbfold.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>

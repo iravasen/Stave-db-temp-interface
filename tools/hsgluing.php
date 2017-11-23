@@ -72,7 +72,9 @@
   <h2>Report</h2>
 
   <br>
-	<p> Half-Stave ID: <input type="text" placeholder="HIC id"/> </p>
+	<p> Half-Stave-Left ID: <input type="text" placeholder="HS.L id"/> </p>
+	<p> Half-Stave-Right ID: <input type="text" placeholder="HS-R id"/> </p>
+	<p> Space-Frame ID: <input type="text" placeholder="SF id"/> </p>
 	<br>
 
 	<form action="">
@@ -159,7 +161,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="hsgluing.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="hsgluing.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 
 </body>

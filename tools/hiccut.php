@@ -31,7 +31,7 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OB-HIC-id tab&wings cut)</span>
+			<span id="noprint"> (Example: OB-HIC-id tab and wings cut)</span>
 			<input type="text" placeholder="name" style="width: 500px">
 	</fieldset>
 
@@ -176,7 +176,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="hiccut.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="hiccut.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 
 </body>

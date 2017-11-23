@@ -57,7 +57,8 @@
  <?php include('people/people.html');?>
  <br>
 
- <p> Half-Stave ID: <input type="text" placeholder="HIC id"/> </p>
+ <p> Half-Stave ID: <input type="text" placeholder="HS id"/> </p>
+ <p> Cold-Plate ID: <input type="text" placeholder="CP id"/> </p>
 
 	<br>
 	<h2> Half-Stave composition </h2>
@@ -177,7 +178,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="hsassembly.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="hsassembly.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
 </html>
