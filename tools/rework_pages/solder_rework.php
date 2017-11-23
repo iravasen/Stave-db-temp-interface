@@ -142,7 +142,7 @@
 	?>
 
 	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
-	<a href="solder_rework.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+	<a id="noprint" href="solder_rework.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 
 </body>
