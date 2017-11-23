@@ -10,6 +10,17 @@
 	<br>
   <?php include('add/addscript.html');?>
   <br>
+
+	<style>
+		p#pyes{
+			display: none;
+		}
+
+		input#iy:checked ~ p#pyes {
+			display: block;
+		}
+
+	</style>
 </head>
 
 <body>
@@ -17,7 +28,7 @@
 	<a id="noprint" href="../START.php"><img src="../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
   <br><br><br>
 
-  <h1>HIC powering after gluing on HS - Report</h1>
+  <h1>HIC powering after gluing on CP - Report</h1>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
@@ -50,7 +61,7 @@
 	<p> CP ID: <input type="text" placeholder="CP id"/> </p>
 	<br>
 	<br>
-	<p> OB-HIC position on HS: <input type="text" placeholder="pos" style="width: 90px"/> </p>
+	<p> OB-HIC position on CP: <input type="text" placeholder="pos" style="width: 90px"/> </p>
 
 	<h2>Report</h2>
 
@@ -63,6 +74,10 @@
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
+				<li>I<sub>AVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+					<input type="checkbox"/> ok <input type="checkbox"/> nok
+				</li>
+
 				<li>DVDD: <input type="text" style="width: 120px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
@@ -71,23 +86,27 @@
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 120px"/> A <br>
-					<input type="checkbox"/> ok <input type="checkbox"/> nok
-				</li>
 			</ul>
 
 		</fieldset>
 
 		<fieldset>
-			<legend>Is this HIC acceptable gluing on CP?</legend><br>
+			<legend>Is this HIC on CP acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
  			<br />
  			<input id="check" type="checkbox" name="No" value="No"/> No
 
 			<fieldset id="ifproblem">
 				<ul>
-					<li> Did you remove it from the CP? <input type="checkbox"/> Yes <input type="checkbox"/> No</li>
-					
+					<li> Did you remove it from the CP? <input id="iy" type="checkbox"/> Yes <input type="checkbox"/> No <br>
+						<p id="pyes"> Describe eventual damages to CP and/or adjacent HIC <br>
+							<textarea rows="5" cols="50" placeholder="describe"></textarea>
+							<br>
+							<span>Acceptable? <input type="checkbox"/> Yes <input type="checkbox"/> No </span>
+						</p>
+					</li>
+				</ul>
+
 			</fieldset>
 
 		</fieldset>
