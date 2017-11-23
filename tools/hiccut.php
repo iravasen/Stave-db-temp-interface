@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>HIC cut visual inspection</title>
+	<title>HIC cut + power</title>
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
@@ -16,7 +16,31 @@
 			display: none;
 		}
 
+		p#p2{
+			display: none;
+		}
+
+		span#sA{
+			display: none;
+		}
+
+		span#sB{
+			display: none;
+		}
+
 		input#i1:checked ~ p#p1 {
+			display: block;
+		}
+
+		input#i2:checked ~ p#p2 {
+			display: block;
+		}
+
+		input#iA:checked ~ span#sA {
+			display: block;
+		}
+
+		input#iB:checked ~ span#sB {
 			display: block;
 		}
 	</style>
@@ -27,11 +51,11 @@
 	<a id="noprint" href="../START.php"><img src="../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
   <br><br><br>
 
-  <h1>HIC cut inspection (cut of FPC tab and wings) - Report</h1>
+  <h1>HIC cut inspection (cut of FPC tab and wings) and power test - Report</h1>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OB-HIC-id tab and wings cut)</span>
+			<span id="noprint"> (Example: OB-HIC-id cut and power test)</span>
 			<input type="text" placeholder="name" style="width: 500px">
 	</fieldset>
 
@@ -74,8 +98,12 @@
 			<br />
 
 			<fieldset id="ifproblem">
-	 			<input type="checkbox"/> Broken chips in the region of the cut
+	 			<input type="checkbox"/> Broken chips in the region of the cut of the tab
 	 			<br />
+				<input id="i2" type="checkbox"/> Broken chips in the region of the wing cut
+				<p id="p2"> Wing close to chip number <input type="text" style="width: 100px"/></p>
+
+				<br />
 	 			<input type="checkbox"/> Damages to FPC due to the cut
 				<br />
 				<input id="i1" type="checkbox"/> Damages to cross-cables
@@ -145,9 +173,14 @@
 		</fieldset>
 
 		<fieldset>
-			<legend>Distance of the cut (rough, with usb camera)</legend><br>
-			<p> Value: <input type="text" placeholder="value" style="width: 100px"/> um </p>
-			<p>Is the cut distance acceptable?</p>
+			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC and chip edges on the side of the cut (for TAB_B, 2 pictures needed)</strong></legend><br>
+			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
+				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 100px"/> um </span>
+				<span id="sB"> Cut distance not available, only pictures close to chip and close to FPC edge. </span>
+			</p>
+			<br>
+
+			<p>Is the cut distance/result acceptable?</p>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
  			<br />
  			<input type="checkbox" name="No" value="No"/> No
@@ -156,7 +189,39 @@
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
+	</form>
 
+	<h2> HIC Powering test after cut </h2>
+	<form>
+		<fieldset>
+ 			<legend>Voltages and currents</legend><br>
+
+			<ul>
+				<li>AVDD: <input type="text" style="width: 120px"/> V <br>
+					<input type="checkbox"/> ok <input type="checkbox"/> nok
+				</li>
+
+				<li>I<sub>AVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+					<input type="checkbox"/> ok <input type="checkbox"/> nok
+				</li>
+
+				<hr>
+
+				<li>DVDD: <input type="text" style="width: 120px"/> V <br>
+					<input type="checkbox"/> ok <input type="checkbox"/> nok
+				</li>
+
+				<li>I<sub>DVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+					<input type="checkbox"/> ok <input type="checkbox"/> nok
+				</li>
+			</ul>
+
+		</fieldset>
+	</form>
+
+	<h2> Final response </h2>
+
+	<form>
 		<fieldset>
 			<legend>Is this HIC acceptable after tab and wings cut?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
