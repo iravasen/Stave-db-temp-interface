@@ -25,6 +25,7 @@
 			<li> <a href="tools/hiccut.php"> HIC tab and wings cut and power test</a></li>
 
 			<h3> HS </h3>
+			<li> <a href="tools/poweringaftgluing.php"> HIC powering test after gluing on CP </a></li>
 			<li> <a href="tools/hsassembly.php"> HS assembly (mask deposition and HIC gluing) </a></li>
       <li> <a href="tools/interm_page/bridge.php"> Soldering/Desoldering (bridges, resistors, fpc extension)</a> </li>
 			<li> <a href="#"> Gluing of wire-bond protections (PB folding) --> Not implemented yet</a></li>
