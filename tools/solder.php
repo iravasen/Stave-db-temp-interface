@@ -11,6 +11,25 @@
   <?php include('add/addscript.html');?>
   <br>
 
+	<style>
+		span#si3{
+			display: none;
+		}
+
+		span#si4{
+			display: none;
+		}
+
+		input#i3:checked ~ span#si3 {
+			display: block;
+		}
+
+		input#i4:checked ~ span#si4 {
+			display: block;
+		}
+
+	</style>
+
 </head>
 
 <body class="special">
@@ -49,14 +68,26 @@
 
 	<p> HS-id <input type="text" placeholder="OL/ML-HS-L/R-<number>"/> </p>
 	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition" style="width: 300px"/></p>
-	<p> Diameter of the soldering tip: <input type="text" style="width: 80px"/>mm </p>
+	<p> <strong>Name of the tin and composition</strong> <br>
+			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+			<input id="i3" type="checkbox"/> Other <br>
+
+		<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 300px"/> </span>
+	</p>
+	<p> <strong>Diameter of the soldering tip</strong>: <br>
+		<input type="checkbox"/> 0.2 mm <br>
+		<input type="checkbox"/> 0.1 mm	<br>
+		<input type="checkbox"/> 0.4 mm <br>
+		<input id="i4" type="checkbox"/> Other <br>
+		<span id="si4"> Diameter <input type="text" style="width: 90px"/> mm</span>
+
+	</p>
 
 	<br><br>
   <h2>Bridge soldering</h2>
 
 	<fieldset>
-		<legend>Alignment problems of the bridge with respect to the FPC?</legend><br>
+		<legend>Alignment problems of the two neighbour FPCs?</legend><br>
 
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
@@ -69,13 +100,14 @@
 					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
 					<input type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
 					<br>
-					<input type="checkbox" name="2" value="2"/> FPCs not aligned in y axis
-					<br>
 					<input type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
 					<br>
 					<input type="checkbox" name="3" value="3"/> FPCs aligned, but bridge not aligned
 					<br>
 					<input type="checkbox" name="4" value="4"/> Other, specify <textarea rows="3" cols="50" placeholder="describe"></textarea>
+					<br><br><br>
+					<span> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input type="checkbox"/> No</span>
+					<br>
 					<?php
 					include('imagetool/imagetool.html');
 					?>
@@ -128,6 +160,8 @@
 					<span>Module in position <input type="text" style="width: 80px"/> </span> <br>
 					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
 					<span>ALPIDE pad type: <input type="text" style="width: 100px"/> </span> <br>
+
+					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: 4em;"/>
 					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
 					<br>
 					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
@@ -178,7 +212,7 @@
 			<div id="placeholder-bridge">
 				<div id="template-bridge">
 					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
-					<span>Bridge position: <input type="text" placeholder="up or down" style="width: 150px"/></span><br>
+					<span>Bridge position: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
 					<hr>
 					<span> <input type="text" style="width: 80px"/> </span> <br>
 					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
@@ -240,9 +274,12 @@
 		<fieldset id="ifproblem">
 			<div id="placeholder-modid">
 				<div id="template-modid">
+					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
 					<hr>
+
+					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: .5em;"/>
 
 					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
 					<br>
@@ -331,9 +368,11 @@
 		<fieldset id="ifproblem">
 			<div id="placeholder-modid">
 				<div id="template-modid">
+					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<hr>
+
+					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: 1.5em;"/>
 
 					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
 					<br>
@@ -467,6 +506,8 @@
 			<div id="placeholder-fpcext">
 				<div id="template-fpcext">
 					<hr>
+
+					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: .5em;"/>
 					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
 					<span>Bond type: <input type="text" style="width: 150px"/> </span> <br>
 

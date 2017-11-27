@@ -121,7 +121,7 @@
 		</fieldset>
 
 		<fieldset>
- 			<legend>Visible damages to bonds?</legend><br>
+ 			<legend>Visible damages to bonds due to TAB cut procedure?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
 			<br />
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -173,10 +173,64 @@
 		</fieldset>
 
 		<fieldset>
+ 			<legend>Are there risky wire-bonds to report?</legend><br>
+ 			<input type="checkbox" name="No" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<br />
+
+			<fieldset id="ifproblem">
+				<div id="placeholder-bondrisk">
+					<div id="template-bondrisk">
+						<hr>
+						<ul>
+							<li> Chip number: <input type="text" style="width: 90px"/></li>
+							<li> Bond type (only most critical): <br>
+								<input type="checkbox" name="mclk_p" value="mclk_p"/> MCLK_P
+					 			<input type="checkbox" name="mclk_n" value="mclk_n"/> MCLK_N
+								<br />
+					 			<input type="checkbox" name="por_dis" value="por_dis"/> POR_DIS
+								<br />
+					 			<input type="checkbox" name="dctrl_p" value="dctrl_p"/> DCTRL_P
+					 			<input type="checkbox" name="dctrl_n" value="dctrl_n"/> DCTRL_N
+								<br />
+					 			<input type="checkbox" name="dclk_p" value="dclk_p"/> DCLK_P
+					 			<input type="checkbox" name="dclk_n" value="dclk_n"/> DCLK_N
+								<br />
+					 			<input type="checkbox" name="hsdata_p" value="hsdata_p"/> HSDATA_P
+					 			<input type="checkbox" name="hsdata_n" value="hsdata_n"/> HSDATA_N
+								<br />
+					 			<input type="checkbox" name="CTRL" value="CTRL"/> CTRL
+								<br />
+					 			<input type="checkbox" name="BUSY" value="BUSY"/> BUSY
+								<br />
+					 			<input type="checkbox" name="DATA" value="DATA"/> DATA
+								<br />
+					 			<input type="checkbox" name="chipid" value="chipid"/> CHIP_ID
+							</li>
+							<li> Description: <br>
+								 <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+							</li>
+							<li> Does it affect HIC functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
+						</ul>
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+
+						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						<hr>
+					</div>
+				</div>
+				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bondrisk','template-bondrisk');">Add new item</button></p>
+			</fieldset>
+
+		</fieldset>
+
+		<fieldset>
 			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC and chip edges on the side of the cut (for TAB_B, 2 pictures needed)</strong></legend><br>
 			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
 				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 100px"/> um </span>
-				<span id="sB"> Cut distance not available, only pictures close to chip and close to FPC edge. </span>
+				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the track quality. </span>
 			</p>
 			<br>
 
