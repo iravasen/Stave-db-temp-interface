@@ -1,5 +1,5 @@
 /*Hide boxes that are not important*/
-a#noprint, p#noprint, input#noprint, label#noprint, span#noprint{
+a#noprint, p#noprint, input#noprint, label#noprint, span#noprint, strong#noprint, img#noprint{
     display:none!important;
 }
 
