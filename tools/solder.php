@@ -20,11 +20,31 @@
 			display: none;
 		}
 
+		textarea#textx{
+			display: none;
+		}
+
+		textarea#textz{
+			display: none;
+		}
+
+		textarea#textmisal{
+			display: none;
+		}
+
 		input#i3:checked ~ span#si3 {
 			display: block;
 		}
 
 		input#i4:checked ~ span#si4 {
+			display: block;
+		}
+
+		input#z:checked ~ textarea#textz {
+			display: block;
+		}
+
+		input#misal:checked ~ textarea#textmisal {
 			display: block;
 		}
 
@@ -39,10 +59,23 @@
 
   <h1> Bridge soldering, FPC extension gluing/soldering, resistor desoldering - Report </h1>
 
+	<p id="noprint" style="color: red; font-size: 14pt; border: solid 5px red;">
+		!!WARNING!! <br>
+			- FPC extension UP on HS-RIGHT <br>
+			- FPC extension DOWN on HS-LEFT
+		</ul>
+	</p>
+
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: Bridge-Resistors and FPC-Ext soldering/desoldering on OL/ML-HS-L/R-#)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p> Bridge-Resistors and FPC-Ext soldering/desoldering on
+				<?php include('ids/hsid.html');?>
+			</p>
+
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+
 	</fieldset>
 
 	<br>
@@ -66,8 +99,14 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> HS-id <input type="text" placeholder="OL/ML-HS-L/R-<number>"/> </p>
-	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
+	<p> HS-id <?php include('ids/hsid.html');?> </p>
+	<p> FPC-Extension id: GS <input type="text" placeholder="XXX" style="width: 100px"/>
+		<select id="upd">
+			<option> - </option>
+			<option> up </option>
+			<option> down </option>
+		</select>
+	</p>
 	<p> <strong>Name of the tin and composition</strong> <br>
 			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
 			<input id="i3" type="checkbox"/> Other <br>
@@ -97,16 +136,21 @@
 			<div id="placeholder-align">
 				<div id="template-align">
 					<hr>
-					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
-					<input type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
+					<span>Connection between HIC in position <input type="text" style="width: 3em;"/> and <input type="text" style="width: 3em;"/></span> <br>
+					<input id="x" type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
 					<br>
-					<input type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
+					<textarea id="textx" cols="50" rows="3" placeholder="comments"></textarea>
 					<br>
-					<input type="checkbox" name="3" value="3"/> FPCs aligned, but bridge not aligned
+					<input id="z" type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
 					<br>
-					<input type="checkbox" name="4" value="4"/> Other, specify <textarea rows="3" cols="50" placeholder="describe"></textarea>
+					<textarea id="textz" cols="50" rows="3" placeholder="comments"></textarea>
+					<input type="checkbox" name="4" value="4"/> Other: <textarea rows="3" cols="50" placeholder="describe"></textarea>
 					<br><br><br>
-					<span> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input type="checkbox"/> No</span>
+					<ul>
+						<li> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input id="misal" type="checkbox"/> No <br>
+							<textarea id="textmisal" cols="50" rows="3" placeholder="comments"></textarea>
+						</li>
+					</ul>
 					<br>
 					<?php
 					include('imagetool/imagetool.html');
@@ -131,7 +175,7 @@
 			<div id="placeholder-shorts">
 				<div id="template-shorts">
 					<hr>
-					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
+					<span>Connection between HIC in position <input type="text" style="width: 3em"/> and <input type="text" style="width: 3em"/></span> <br>
 					<input type="checkbox" name="1" value="1"/> Short disappered after rework
 					<br>
 					<input type="checkbox" name="2" value="2"/> Cannot remove the short
@@ -211,7 +255,7 @@
 		<fieldset id="ifproblem">
 			<div id="placeholder-bridge">
 				<div id="template-bridge">
-					<span>Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/></span> <br>
+					<span>Connection between HIC in position <input type="text" style="width: 3em;"/> and <input type="text" style="width: 3em;"/></span> <br>
 					<span>Bridge position: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
 					<hr>
 					<span> <input type="text" style="width: 80px"/> </span> <br>
@@ -527,7 +571,7 @@
 	</fieldset>
 
 
-	<h2> Other comments </h2>
+	<h2> Other problems/comments </h2>
   <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
