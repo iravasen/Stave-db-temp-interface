@@ -8,9 +8,52 @@ input#white{
   font-style: italic;
 }
 
+input[type=text]{
+  background-color: white;
+  border-style: hidden;
+}
+
+input[type=number]#printnumb{
+
+  background-color: white;
+  border-style: hidden;
+  display: inline;
+  position: relative;
+  margin-left: -.7em;
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+
 textarea{
   border: 1px solid black;
   background-color: white;
+}
+
+select{
+  background-color: white;
+  border-style: hidden;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+
+select#sites{
+  display: inline;
+  position: relative;
+  margin-right: -.5em;
+}
+
+select#upd{
+  display: inline;
+  position: relative;
+  margin-left: -3em;
 }
 
 @media print {
