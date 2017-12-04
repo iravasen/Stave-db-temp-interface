@@ -16,6 +16,13 @@
 			display: none;
 		}
 
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
 
 		input#pbpad:checked ~ fieldset#f1 {
 			display: block;
@@ -43,8 +50,10 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-PB-id reception test)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/pbid.html')?> reception test
+			</p>
+
 	</fieldset>
 
 	<form>
@@ -68,7 +77,7 @@
  <br>
 
  <br>
- <p> Power-Bus ID: <input type="text" placeholder="PB id"/> </p>
+ <p> Power-Bus ID: <?php include('ids/pbid.html')?> </p>
  <br>
 
  <h2>Report</h2>
@@ -95,7 +104,8 @@
 				<br />
 	 			<input id="cappad" type="checkbox" name="fbwing" value="fbwing"/>  Soldering pads of capacitors
 				<br />
-				<input type="checkbox" name="other" value="other"/>  Other <input type="text" style="width: 400px"/>
+				<input id="oth" type="checkbox" name="other" value="other"/>  Other
+				<textarea id="texta1" cols="50" rows="5" placeholder="specify"></textarea>
 				<br>
 
 				<!-- Power bus pads fro cross-cables -->
@@ -106,7 +116,7 @@
 							<h4 style="color: red"> CROSS-CABLE PADS </h4>
 							<p>
 								<ul>
-									<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
+									<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/> </li>
 									<li> Damaged pad type:
 										<input type="checkbox"/> AVDD
 										<input type="checkbox"/> DVDD
@@ -138,7 +148,7 @@
 							<h4 style="color: red"> CAPACITOR PADS </h4>
 							<p>
 								<ul>
-									<li>Close to HIC in position: <input type="text" style="width: 90px"/> </li>
+									<li>Close to HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/> </li>
 									<li> Description: <br>
 										<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 									</li>
@@ -175,7 +185,7 @@
 					<div id="template-interline">
 						<ul>
 							<li> Interrupted line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
-							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
 						</ul>
 
 						<?php
@@ -202,9 +212,9 @@
 					<div id="template-res">
 						<ul>
 							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
-							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
 							<li> R [Ohm]: <input type="text" placeholder="R [Ohm]"/></li>
-							<li> <input type="checkbox"/> Too high <input type="checkbox"/> Too low </li>
+							<li> <textarea cols="50" rows="5" placeholder="description"></textarea></li>
 
 						</ul>
 
@@ -228,7 +238,7 @@
 					<div id="template-shorts">
 						<ul>
 							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
-							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
+							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
 							<li> Describe: <br>
 								<textarea rows="3" cols="100" placeholder="describe"></textarea>
 							</li>

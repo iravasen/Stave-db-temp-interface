@@ -12,7 +12,11 @@
 			display: none;
 		}
 
-		input#uleg:checked ~ p#p1 {
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
 			display: block;
 		}
 	</style>
@@ -28,8 +32,10 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-SF-id reception test)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/sfid.html')?> reception test
+			</p>
+
 	</fieldset>
 
 	<fieldset>
@@ -51,7 +57,7 @@
  <br>
 
  <br>
- <p> Space-Frame ID: <input type="text" placeholder="SF id"/> </p>
+ <p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
  <br>
 
  <h2>Report</h2>
@@ -70,7 +76,8 @@
 					Number of missing u-legs: <input type="text" style="width: 90px"/> <br>
 				</p>
 				<input type="checkbox"/> Damages to the carbon lattice <br>
-				<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br><br>
+				<input id="oth" type="checkbox"/> Other
+				<textarea id="texta1" cols="50" rows="5" placeholder="specify"></textarea>
 
 
 				<?php
