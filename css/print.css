@@ -13,6 +13,12 @@ input[type=text]{
   border-style: hidden;
 }
 
+input[type=text]#t1{
+  display: inline;
+  position: relative;
+  margin-left: -.3em;
+}
+
 input[type=number]#printnumb{
 
   background-color: white;
@@ -32,6 +38,30 @@ input[type=number]#printnumb2{
   display: inline;
   position: relative;
   margin-left: 0;
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]#printnumb3{
+
+  background-color: transparent;
+  border-style: hidden;
+  display: inline;
+  position: relative;
+  margin-left: -.6em;
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+input[type=number]#printnumb4{
+
+  background-color: transparent;
+  border-style: hidden;
+  display: inline;
+  position: relative;
+  margin-left: -4em;
 
   -moz-appearance: textfield;
   appearance: textfield;
