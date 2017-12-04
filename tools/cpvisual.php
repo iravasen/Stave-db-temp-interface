@@ -7,6 +7,16 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<style>
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
+	</style>
+
 </head>
 
 <body class="special">
@@ -18,8 +28,9 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-CP-id planarity and inspection)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/cpid.html')?> planarity and inspection
+			</p>
 	</fieldset>
 
 	<form>
@@ -43,7 +54,8 @@
  <br>
 
 	<br>
-	<p> Cold-Plate ID: <input type="text" placeholder="CP id"/> </p>
+	<p> Cold-Plate ID: <?php include('ids/cpid.html')?>
+	</p>
 	<br>
 
 	<h2>Visual inspection and planarity</h2>
@@ -62,7 +74,8 @@
 				<input type="checkbox"/> Cracks in the carbon-fiber structure <br>
 				<input type="checkbox"/> Damages to corners <br>
 				<input type="checkbox"/> Damages on the edge <br>
-				<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br>
+				<input id="oth" type="checkbox"/> Other
+			  <textarea id="texta1" placeholder="specify" cols="50" rows="3"></textarea> <br>
 				<?php
 				include('imagetool/imagetool.html');
 				?>
@@ -81,7 +94,8 @@
 				<input type="checkbox"/> Bending of the pipes <br>
 				<input type="checkbox"/> Visible cracks <br>
 				<input type="checkbox"/> Pipes detached from the carbon-fiber plate <br>
-				<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br>
+				<input id="oth" type="checkbox"/> Other
+				<textarea id="texta1" placeholder="specify" cols="50" rows="3"></textarea> <br>
 				<?php
 				include('imagetool/imagetool.html');
 				?>
@@ -100,7 +114,8 @@
 				<input type="checkbox"/> Strong bending of the pipes <br>
 				<input type="checkbox"/> Visible cracks <br>
 				<input type="checkbox"/> Pipes damaged at the CP connection point <br>
-				<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br>
+				<input id="oth" type="checkbox"/> Other
+				<textarea id="texta1" placeholder="specify" cols="50" rows="3"></textarea> <br>
 				<?php
 				include('imagetool/imagetool.html');
 				?>
@@ -114,7 +129,7 @@
 			<input type="checkbox" name="No" value="No"/> No
 
 			<fieldset id="ifproblem">
-				<span> Planarity: <input type="text" style="width: 90px"/> um</span><br>
+				<span> Planarity: <input type="text" style="width: 50px"/> um</span><br>
 				<input type="checkbox"/> Acceptable <br>
 				<input type="checkbox"/> Acceptable, but we put it aside in case of need <br>
 				<input type="checkbox"/> Not acceptable <br>
