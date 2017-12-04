@@ -32,6 +32,34 @@
 			display: none;
 		}
 
+		ul#bonds1{
+			display: none;
+		}
+
+		ul#bonds2{
+			display: none;
+		}
+
+		ul#bonds3{
+			display: none;
+		}
+
+		textarea#textoth{
+			display: none;
+		}
+
+		input#wb1:checked ~ ul#bonds1 {
+			display: block;
+		}
+
+		input#wb2:checked ~ ul#bonds2 {
+			display: block;
+		}
+
+		input#wb3:checked ~ ul#bonds3 {
+			display: block;
+		}
+
 		input#i3:checked ~ span#si3 {
 			display: block;
 		}
@@ -41,6 +69,14 @@
 		}
 
 		input#z:checked ~ textarea#textz {
+			display: block;
+		}
+
+		input#x:checked ~ textarea#textx {
+			display: block;
+		}
+
+		input#oth:checked ~ textarea#textoth {
 			display: block;
 		}
 
@@ -99,8 +135,8 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> HS-id <?php include('ids/hsid.html');?> </p>
-	<p> FPC-Extension id: GS <input type="text" placeholder="XXX" style="width: 100px"/>
+	<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?> </p>
+	<p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
 		<select id="upd">
 			<option> - </option>
 			<option> up </option>
@@ -140,11 +176,12 @@
 					<input id="x" type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
 					<br>
 					<textarea id="textx" cols="50" rows="3" placeholder="comments"></textarea>
-					<br>
 					<input id="z" type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
 					<br>
 					<textarea id="textz" cols="50" rows="3" placeholder="comments"></textarea>
-					<input type="checkbox" name="4" value="4"/> Other: <textarea rows="3" cols="50" placeholder="describe"></textarea>
+					<input id="oth" type="checkbox" name="4" value="4"/> Other
+					<br>
+					 <textarea id="textoth" rows="3" cols="50" placeholder="describe"></textarea>
 					<br><br><br>
 					<ul>
 						<li> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input id="misal" type="checkbox"/> No <br>
@@ -256,12 +293,13 @@
 			<div id="placeholder-bridge">
 				<div id="template-bridge">
 					<span>Connection between HIC in position <input type="text" style="width: 3em;"/> and <input type="text" style="width: 3em;"/></span> <br>
-					<span>Bridge position: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
-					<hr>
-					<span> <input type="text" style="width: 80px"/> </span> <br>
+					<span>Bridge position in the field of view: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
+					<br>
+					<p> Damage type: <br>
 					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
 					<br>
 					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					</p>
 					<?php
 					include('imagetool/imagetool.html');
 					?>
@@ -291,7 +329,7 @@
 
 					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Number of lost R: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Number of lost R: <input id="printnumb2" type="number" style="width: 80px"/></span><br>
 
 					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
 					<br>
@@ -321,15 +359,28 @@
 					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<hr>
 
-					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: .5em;"/>
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 4em;"/>
 
-					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
+					<ul id="bonds1">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+
 					<br>
-					<input type="checkbox" name="2" value="2"/> Damages to power/ground bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
+					<ul id="bonds2">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
 					<br>
-					<input type="checkbox" name="2" value="2"/> Other: <input type="text" placeholder="specify" style="width: 250px"/> (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb3" type="checkbox" name="2" value="2"/> Other
+					<ul id="bonds3">
+						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
 					<br>
 					<?php
 					include('imagetool/imagetool.html');
@@ -385,7 +436,7 @@
 					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<span>Number of lost R: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Number of lost R: <input id="printnumb2" type="number" style="width: 80px"/></span><br>
 
 					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
 					<br>
@@ -416,13 +467,28 @@
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
 
-					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: 1.5em;"/>
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 3em;"/>
 
-					<input type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
+					<ul id="bonds1">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+
 					<br>
-					<input type="checkbox" name="2" value="2"/> Damages to power/ground bonds (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
+					<ul id="bonds2">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
 					<br>
-					<input type="checkbox" name="2" value="2"/> Other: <input type="text" placeholder="specify" style="width: 250px"/> (<input type="checkbox"/> still working (to be tested) <input type="checkbox"/> not working)
+					<input id="wb3" type="checkbox" name="2" value="2"/> Other
+					<ul id="bonds3">
+						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+					<br>
 					<br>
 					<?php
 					include('imagetool/imagetool.html');
@@ -551,7 +617,7 @@
 				<div id="template-fpcext">
 					<hr>
 
-					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: .5em;"/>
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: .5em;"/>
 					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
 					<span>Bond type: <input type="text" style="width: 150px"/> </span> <br>
 
