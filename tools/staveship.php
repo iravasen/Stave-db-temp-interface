@@ -32,8 +32,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-Stave-id shipment) </span>
-			<input type="text" placeholder="name" style="width: 500px">
+		<p>
+			<?php include('ids/stvid.html')?> shipment
+		</p>
+
+		<p style="display: block; float: right;" id="noprint">
+			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+		</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -58,8 +71,8 @@
 
 
 <br>
-<p> Stave ID: <input type="text" placeholder="Stave id"/> </p>
-<p> Shipment date: <input type="text" placeholder="date"/> </p>
+<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+
 <br>
 
 <h2> Report </h2>
@@ -79,7 +92,10 @@
 					<hr>
 					<p>
 						<ul>
-							<li> HS flavor: <input type="checkbox"/> L <input type="checkbox"/> R </li>
+							<li> HS flavor: <br>
+								<input type="checkbox"/> L <br>
+								<input type="checkbox"/> R
+							</li>
 							<li> Damaged component: <br>
 								 <input id="i1" type="checkbox"/> HIC <br>
 								 <span id="s1">Position: <input type="text" style="width: 90px"/></span>
@@ -92,7 +108,10 @@
 							<li> Description: <br>
 								<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 							</li>
-							<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+							<li> Result: <br>
+								<input type="checkbox"/> Acceptable <br>
+								<input type="checkbox"/> Not acceptable
+							</li>
 						</ul>
 					</p>
 

@@ -22,8 +22,20 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-PB folding on OL/ML-HS-id)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/pbid.html')?> folding on <?php include('ids/hsid.html')?>
+			</p>
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<form>
@@ -47,7 +59,7 @@
  <br>
 
 	<br>
-	<p> HS Id: <input type="text" placeholder="HS id"/> </p>
+	<p> HS Id: <?php include('ids/hsid.html')?> </p>
 	<br>
 
 	<h2>Report</h2>
@@ -87,7 +99,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> CC type:
 									<input type="checkbox"/> AVDD
 									<input type="checkbox"/> DVDD
@@ -98,7 +110,10 @@
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+								<li> Result: <br>
+									<input type="checkbox"/> Acceptable <br>
+									<input type="checkbox"/> Not acceptable
+								</li>
 							</ul>
 						</p>
 
@@ -127,11 +142,14 @@
 						<hr>
 						<p>
 							<ul>
-								<li> HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable (to be tested) <input type="checkbox"/> Not acceptable, serious damage
+								<li> Result <br>
+									<input type="checkbox"/> Acceptable (to be tested) <br>
+									<input type="checkbox"/> Not acceptable, serious damage
+								</li>
 							</ul>
 						</p>
 

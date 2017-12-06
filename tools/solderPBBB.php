@@ -16,6 +16,30 @@
 			display: none;
 		}
 
+		span#si3{
+			display: none;
+		}
+
+		span#si4{
+			display: none;
+		}
+
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1{
+			display: block;
+		}
+
+		input#i3:checked ~ span#si3 {
+			display: block;
+		}
+
+		input#i4:checked ~ span#si4 {
+			display: block;
+		}
+
 		input#i1:checked ~ p#p1 {
 			display: block;
 		}
@@ -34,8 +58,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-PB-id and OL/ML-BB-id soldering on OL/ML-HS-id)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/pbid.html')?> and <?php include('ids/bbid.html')?> soldering on <?php include('ids/hsid.html')?>
+			</p>
+
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<form>
@@ -59,12 +96,25 @@
  <?php include('people/people.html');?>
 
   <br>
-	<p> HS ID: <input type="text" placeholder="HS id"/></p>
-	<p> Power Bus ID: <input type="text" placeholder="PB id"/> </p>
-	<p> Bias Bus ID: <input type="text" placeholder="BB id"/> </p>
-	<p> Filter Board ID: <input type="text" placeholder="FB id"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
-	<p> Diameter of the soldering tip: <input style="width: 5%" type="text"/>mm </p>
+	<p> HS ID: <?php include('ids/hsid.html')?></p>
+	<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
+	<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
+	<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
+	<p> <strong>Name of the tin and composition</strong> <br>
+			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+			<input id="i3" type="checkbox"/> Other <br>
+
+		<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+	</p>
+	<p> <strong>Diameter of the soldering tip</strong>: <br>
+		<input type="checkbox"/> 0.2 mm <br>
+		<input type="checkbox"/> 0.1 mm	<br>
+		<input type="checkbox"/> 0.4 mm <br>
+		<input id="i4" type="checkbox"/> Other <br>
+		<span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+	</p>
+
 	<br>
 
 	<h2>Report</h2>
@@ -84,11 +134,14 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+								<li> Result <br>
+									<input type="checkbox"/> Acceptable <br>
+									<input type="checkbox"/> Not acceptable
+								</li>
 							</ul>
 						</p>
 
@@ -117,13 +170,17 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For/Close to HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input type="checkbox"/> Soldering pad for CC detached <br>
 									<input type="checkbox"/> Melting of BB kapton layer <br>
-									<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br>
+									<input id="oth" type="checkbox"/> Other
+									<textarea id="texta1" cols="50" rows="4" placeholder="Specify"> </textarea> <br>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+								<li> Result <br>
+									<input type="checkbox"/> Acceptable <br>
+									<input type="checkbox"/> Not acceptable
+								</li>
 							</ul>
 						</p>
 
@@ -156,17 +213,20 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HIC in position: <input type="text" style="width: 90px"/> </li>
-								<li> Damaged pad type:
-									<input type="checkbox"/> AVDD
-									<input type="checkbox"/> DVDD
-									<input type="checkbox"/> AVSS
+								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
+								<li> Damaged pad type <br>
+									<input type="checkbox"/> AVDD <br>
+									<input type="checkbox"/> DVDD <br>
+									<input type="checkbox"/> AVSS <br>
 									<input type="checkbox"/> DVSS
 								</li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+								<li> Result: <br>
+									<input type="checkbox"/> Acceptable <br>
+									<input type="checkbox"/> Not acceptable
+								</li>
 							</ul>
 						</p>
 
@@ -195,15 +255,19 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For/Close to HIC in position: <input type="text" style="width: 90px"/> </li>
+								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input id="i1" type="checkbox"/> Soldering pad for CC detached <br>
-									<p id="p1"> &nbsp &nbsp &nbsp &nbsp <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD <input type="checkbox"/> AVSS <input type="checkbox"/> DVSS </p></li>
+									<p id="p1"> &nbsp &nbsp &nbsp &nbsp <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD <input type="checkbox"/> AVSS <input type="checkbox"/> DVSS </p>
 
 									<input type="checkbox"/> Melting of PB kapton layer <br>
-									<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/> <br>
+									<input id="oth" type="checkbox"/> Other
+									<textarea id="texta1" rows="5" cols="50" placeholder="Specify"></textarea>
 								</li>
-								<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable
+								<li> Result: <br>
+									<input type="checkbox"/> Acceptable <br>
+									<input type="checkbox"/> Not acceptable
+								</li>
 							</ul>
 						</p>
 

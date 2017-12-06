@@ -180,7 +180,7 @@
 			<div id="placeholder-align">
 				<div id="template-align">
 					<hr>
-					<span>Connection between HIC in position <input type="text" style="width: 3em;"/> and <input type="text" style="width: 3em;"/></span> <br>
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
 					<input id="x" type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
 					<br>
 					<textarea id="textx" cols="50" rows="3" placeholder="comments"></textarea>
@@ -220,7 +220,7 @@
 			<div id="placeholder-shorts">
 				<div id="template-shorts">
 					<hr>
-					<span>Connection between HIC in position <input type="text" style="width: 3em"/> and <input type="text" style="width: 3em"/></span> <br>
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
 					<input type="checkbox" name="1" value="1"/> Short disappered after rework
 					<br>
 					<input type="checkbox" name="2" value="2"/> Cannot remove the short
@@ -300,7 +300,7 @@
 		<fieldset id="ifproblem">
 			<div id="placeholder-bridge">
 				<div id="template-bridge">
-					<span>Connection between HIC in position <input type="text" style="width: 3em;"/> and <input type="text" style="width: 3em;"/></span> <br>
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
 					<span>Bridge position in the field of view: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
 					<br>
 					<p> Damage type: <br>
