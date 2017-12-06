@@ -19,7 +19,7 @@
 			<li> <a href="tools/recpowerbus.php"> Power Bus inspection </a></li>
 			<li> <a href="tools/recbiasbus.php"> Bias Bus inspection </a></li>
 			<li> <a href="tools/recfilterboard.php"> Filter Board visual inspection </a></li>
-			<li> <a href="tools/recfpcext.php"> FPC extension reception test </a></li>
+			<!--<li> <a href="tools/recfpcext.php"> FPC extension reception test </a></li>-->
 
 			<h3> HIC inspection and test </h3>
 			<li> <a href="tools/hiccut.php"> HIC tab and wings cut and power test</a></li>
