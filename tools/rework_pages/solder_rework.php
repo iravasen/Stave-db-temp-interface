@@ -20,6 +20,22 @@
 			display: none;
 		}
 
+		span#si3{
+			display: none;
+		}
+
+		span#si4{
+			display: none;
+		}
+
+		input#i3:checked ~ span#si3 {
+			display: block;
+		}
+
+		input#i4:checked ~ span#si4 {
+			display: block;
+		}
+
 		input#check1:checked ~ p#p1 {
 			display: block;
 		}
@@ -48,8 +64,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: [REWORK] Bridge-Resistors and FPC-Ext soldering/desoldering on OL/ML-HS-L/R-#)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+		<p> [REWORK] Bridge-Resistors and FPC-Ext soldering/desoldering on
+			<?php include('../ids/hsid.html');?>
+		</p>
+
+		<p style="display: block; float: right;" id="noprint">
+			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+		</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -73,10 +102,28 @@
  <?php include('../people/people.html');?>
  <br>
 
-	<p> HS-id <input type="text" placeholder="OL/ML-HS-L/R-<number>"/> </p>
-	<p> FPC Extension id <input type="text" placeholder="GS-XXX" style="width: 100px"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition" style="width: 300px"/></p>
-	<p> Diameter of the soldering tip: <input type="text" style="width: 80px"/>mm </p>
+ <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?> </p>
+ <p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
+	 <select id="upd">
+		 <option> - </option>
+		 <option> up </option>
+		 <option> down </option>
+	 </select>
+ </p>
+ <p> <strong>Name of the tin and composition</strong> <br>
+		 <input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+		 <input id="i3" type="checkbox"/> Other <br>
+
+	 <span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+ </p>
+ <p> <strong>Diameter of the soldering tip</strong>: <br>
+	 <input type="checkbox"/> 0.2 mm <br>
+	 <input type="checkbox"/> 0.1 mm	<br>
+	 <input type="checkbox"/> 0.4 mm <br>
+	 <input id="i4" type="checkbox"/> Other <br>
+	 <span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+ </p>
 
 	<br>
 	<h2> Reworked components </h2>
@@ -95,18 +142,18 @@
 
 				<!--In case of a bridge-->
 				<p id="p1">
-					Connection between HIC in position <input type="text" style="width: 80px"/> and <input type="text" style="width: 80px"/>
+					Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px"/> and <input id="printnumb2" type="number" style="width: 30px"/>
 				</p><br>
 
 				<!--In case of a MOD_ID resistor-->
 				<p id="p2">
-					On HIC in position: <input type="text" placeholder="pos" style="width: 100px"/> <br>
+					On HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 40px"/> <br>
 					On Master <input type="text" placeholder="0 or 8" style="width: 100px"/> <br>
 				</p>
 
 				<p id="p3">
-					On HIC in position: <input type="text" placeholder="pos" style="width: 100px"/> <br>
-					On Chip number <input type="text" placeholder="chip #" style="width: 100px"/> <br>
+					On HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> <br>
+					On Chip number <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> <br>
 				</p>
 
 				<span> Description of the problem </span><br>

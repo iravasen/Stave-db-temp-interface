@@ -20,6 +20,22 @@
 			display: none;
 		}
 
+		span#si3{
+			display: none;
+		}
+
+		span#si4{
+			display: none;
+		}
+
+		input#i3:checked ~ span#si3 {
+			display: block;
+		}
+
+		input#i4:checked ~ span#si4 {
+			display: block;
+		}
+
 		input#check1:checked ~ p#p1 {
 			display: block;
 		}
@@ -48,8 +64,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: [REWORK] OL/ML-PB-id and OL/ML-BB-id soldering on OL/ML-HS-id)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+		<p>
+			[REWORK] <?php include('../ids/pbid.html')?> and <?php include('../ids/bbid.html')?> soldering on <?php include('../ids/hsid.html')?>
+		</p>
+
+		<p style="display: block; float: right;" id="noprint">
+			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+		</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -72,12 +101,24 @@
  <br>
  <?php include('../people/people.html');?>
  <br>
- <p> HS ID: <input type="text" placeholder="HS id"/></p>
- <p> Power Bus ID: <input type="text" placeholder="PB id"/> </p>
- <p> Bias Bus ID: <input type="text" placeholder="BB id"/> </p>
- <p> Filter Board ID: <input type="text" placeholder="FB id"/> </p>
- <p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
- <p> Diameter of the soldering tip: <input style="width: 5%" type="text"/>mm </p>
+ <p> HS ID: <?php include('../ids/hsid.html')?></p>
+ <p> Power Bus ID: <?php include('../ids/pbid.html')?> </p>
+ <p> Bias Bus ID: <?php include('../ids/bbid.html')?> </p>
+ <p> Filter Board ID: <?php include('../ids/fbid.html')?> </p>
+ <p> <strong>Name of the tin and composition</strong> <br>
+		 <input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+		 <input id="i3" type="checkbox"/> Other <br>
+
+	 <span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+ </p>
+ <p> <strong>Diameter of the soldering tip</strong>: <br>
+	 <input type="checkbox"/> 0.2 mm <br>
+	 <input type="checkbox"/> 0.1 mm	<br>
+	 <input type="checkbox"/> 0.4 mm <br>
+	 <input id="i4" type="checkbox"/> Other <br>
+	 <span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+ </p>
  <br>
 
 	<h2> Reworked components </h2>
@@ -89,13 +130,14 @@
 				<hr>
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
+				<p>
+					<strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
+				</p><br>
+
 				<input type="checkbox" id="check1"> Cross-cables of PB <br>
 				<input type="checkbox"> Cross-cable of BB <br>
 
 				<!--In case of a bridge-->
-				<p>
-					HIC in position <input type="text" style="width: 80px"/>
-				</p><br>
 
 				<p id="p1">
 					Type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD <input type="checkbox"/> AVSS <input type="checkbox"/> DVSS
