@@ -114,6 +114,14 @@
 
 	</fieldset>
 
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
+	</fieldset>
+
 	<br>
 	<form>
 	<fieldset>
@@ -147,14 +155,14 @@
 			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
 			<input id="i3" type="checkbox"/> Other <br>
 
-		<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 300px"/> </span>
+		<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
 	</p>
 	<p> <strong>Diameter of the soldering tip</strong>: <br>
 		<input type="checkbox"/> 0.2 mm <br>
 		<input type="checkbox"/> 0.1 mm	<br>
 		<input type="checkbox"/> 0.4 mm <br>
 		<input id="i4" type="checkbox"/> Other <br>
-		<span id="si4"> Diameter <input type="text" style="width: 90px"/> mm</span>
+		<span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
 
 	</p>
 

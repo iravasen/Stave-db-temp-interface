@@ -32,8 +32,17 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OB-HIC-id powering on OL/ML-CP-id</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/hicid.html')?> powering on <?php include('ids/cpid.html')?>
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<form>
@@ -57,11 +66,10 @@
  <br>
 
 	<br>
-	<p> OB-HIC ID: <input type="text" placeholder="HIC id"/> </p>
-	<p> CP ID: <input type="text" placeholder="CP id"/> </p>
+	<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
+	<p> CP ID: <?php include('ids/cpid.html')?></p>
 	<br>
-	<br>
-	<p> OB-HIC position on CP: <input type="text" placeholder="pos" style="width: 90px"/> </p>
+	<p> OB-HIC position on CP: <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> </p>
 
 	<h2>Report</h2>
 
@@ -70,19 +78,19 @@
  			<legend>Voltages and currents</legend><br>
 
 			<ul>
-				<li>AVDD: <input type="text" style="width: 120px"/> V <br>
+				<li>AVDD: <input type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>DVDD: <input type="text" style="width: 120px"/> V <br>
+				<li>DVDD: <input type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
@@ -99,7 +107,7 @@
 			<fieldset id="ifproblem">
 				<ul>
 					<li> Did you remove it from the CP? <input id="iy" type="checkbox"/> Yes <input type="checkbox"/> No <br>
-						<p id="pyes"> Describe eventual damages to CP and/or adjacent HIC <br>
+						<p id="pyes"> Describe eventual damages to CP and/or adjacent HICs <br>
 							<textarea rows="5" cols="50" placeholder="describe"></textarea>
 							<br>
 							<span>Acceptable? <input type="checkbox"/> Yes <input type="checkbox"/> No </span>

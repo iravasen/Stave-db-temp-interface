@@ -7,6 +7,16 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
+	<style>
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
+	</style>
+
 </head>
 
 <body class="special">
@@ -18,8 +28,17 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-FB-id reception test)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/fbid.html')?> reception test
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -44,7 +63,7 @@
  <br>
 
   <br>
-	<p> Filter-Board ID: <input type="text" placeholder="FB id"/> </p>
+	<p> Filter-Board ID: <?php include('ids/fbid.html')?> </p>
 	<br>
 
 	<h2>Report</h2>
@@ -73,7 +92,9 @@
 				<br />
 	 			<input type="checkbox" name="cap" value="cap"/>  Connector pins are missing
 				<br />
-				<input type="checkbox" name="other" value="other"/> Other: <input type="text" style="width: 400px" placeholder="specify"/>
+				<input id="oth" type="checkbox" name="other" value="other"/> Other
+				<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
+
 
 				<br><br>
 				<span> Do they affect the Filter-Board functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>

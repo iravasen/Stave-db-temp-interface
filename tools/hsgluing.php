@@ -20,6 +20,13 @@
 			display: none;
 		}
 
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
 
 		input#i1:checked ~ span#s1 {
 			display: block;
@@ -44,8 +51,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-Stave-id assembly)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/stvid.html')?> assembly
+			</p>
+
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -72,9 +92,9 @@
   <h2>Report</h2>
 
   <br>
-	<p> Half-Stave-Left ID: <input type="text" placeholder="HS.L id"/> </p>
-	<p> Half-Stave-Right ID: <input type="text" placeholder="HS-R id"/> </p>
-	<p> Space-Frame ID: <input type="text" placeholder="SF id"/> </p>
+	<p> Half-Stave-Left ID: <?php include('ids/hsid.html')?> </p>
+	<p> Half-Stave-Right ID: <?php include('ids/hsid.html')?> </p>
+	<p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
 	<br>
 
 	<form action="">
@@ -106,7 +126,8 @@
 						<br />
 						<span id="s2"/> Glue flowed down damaging the FPC? <input type="checkbox"/> No <input type="checkbox"/> Yes</span>
 						<br />
-						<input type="checkbox"/> Other: <input type="text" placeholder="specify" style="width: 400px"/>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" placeholder="specify" cols="50" rows="4"></textarea>
 						<br />
 					</li>
 					<li> Result is acceptable? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
@@ -131,11 +152,11 @@
 					<div id="template-dam">
 						<hr>
 						<ul>
-							<li> For HIC in position: <input type="text" style="width: 90px"/></li>
-							<li> Damages to FPC-Extension? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
+							<li> For HIC in position: <input id="printnumb2" type="number" style="width: 60px"/></li>
 							<li> Describe the eventual problem: <br>
 								 <textarea rows="5" cols="100" placeholder="describe"></textarea>
 							</li>
+							<li> Damages to FPC-Extension? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
 						</ul>
 
 						<?php

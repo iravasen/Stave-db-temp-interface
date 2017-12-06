@@ -56,6 +56,14 @@
 
 	</fieldset>
 
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
+	</fieldset>
+
 	<form>
 	<fieldset>
 	<legend> Location </legend>

@@ -16,6 +16,14 @@
 			display: none;
 		}
 
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
+
 		input#i1:checked ~ span#s1 {
 			display: block;
 		}
@@ -32,8 +40,21 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-HS-L/R-id assembly)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/hsid.html')?> assembly
+			</p>
+
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -57,8 +78,8 @@
  <?php include('people/people.html');?>
  <br>
 
- <p> Half-Stave ID: <input type="text" placeholder="HS id"/> </p>
- <p> Cold-Plate ID: <input type="text" placeholder="CP id"/> </p>
+ <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+ <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
 
 	<br>
 	<h2> Half-Stave composition </h2>
@@ -66,7 +87,7 @@
 		<div id="placeh-pos">
 			<hr>
 
-			<span> Position <input type="text" style="width: 50px"/>: <input style="width: 300px" type="text" placeholder="OB-HIC id"/></p>
+			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></p>
 			<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
 			<hr>
 		</div>
@@ -101,7 +122,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li><strong>For HIC in position</strong>: <input type="text" style="width: 90px"/> </li>
+								<li><strong>For HIC in position</strong>: <input id="printnumb2" type="number" style="width: 60px"/> </li>
 								<li> Type of problem: <br>
 									<input type="checkbox" name="1" value="1"/> Glue too dense
 									<br />
@@ -111,7 +132,8 @@
 									<br />
 									<input type="checkbox" name="No" value="No"/> Glue uniformity on the Cold-Plate
 									<br />
-									<input type="checkbox" name="oth" value="oth"/> Other: <input type="text" style="width: 400px" placeholder="specify"/>
+									<input id="oth" type="checkbox" name="oth" value="oth"/> Other
+									<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
 								</li>
 								<li> Solution adopted: <br>
 									<textarea rows="3" cols="50" placeholder="describe solution"></textarea><br>
@@ -143,14 +165,16 @@
 						<hr>
 						<p>
 							<ul>
-								<li><strong>For HIC in position</strong>: <input type="text" style="width: 90px"/> </li>
+								<li><strong>For HIC in position</strong>: <input id="printnumb2" type="number" style="width: 60px"/> </li>
 								<li> Type of problem: <br>
 									<input id="i1" type="checkbox"/> Shift wrt nominal position
-										<span id="s1"> Shift along x: <input type="text" style="width: 90px"/> um</span> <br>
-										<span id="s1"> Shift along y: <input type="text" style="width: 90px"/> um</span>
+										<span id="s1"> Shift along x: <input type="text" style="width: 70px"/> um</span> <br>
+										<span id="s1"> Shift along y: <input type="text" style="width: 70px"/> um</span>
 									<br />
-									<input type="checkbox" name="oth" value="oth"/> Other: <input type="text" style="width: 400px" placeholder="specify"/>
+									<input id="oth" type="checkbox" name="oth" value="oth"/> Other
+									<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
 								</li>
+								<br>
 								<li> <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable </li>
 							</ul>
 						</p>

@@ -24,6 +24,30 @@
 			display: none;
 		}
 
+		span#stin{
+			display: none;
+		}
+
+		span#sdiam{
+			display: none;
+		}
+
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1{
+			display: block;
+		}
+
+		input#idiam:checked ~ span#sdiam {
+			display: block;
+		}
+
+		input#itin:checked ~ span#stin {
+			display: block;
+		}
+
 
 		input#i1:checked ~ span#s1 {
 			display: block;
@@ -51,8 +75,18 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OL/ML-FB-id & capacitors soldering on OL/ML-PB-id and OL/ML-BB-id)</span>
-			<input type="text" placeholder="name" style="width: 800px">
+			<p>
+				<?php include('ids/fbid.html')?> and capacitor soldering on <?php include('ids/pbid.html')?> and <?php include('ids/bbid.html')?>
+			</p>
+
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -76,11 +110,25 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> Power Bus ID: <input type="text" placeholder="PB id"/> </p>
-	<p> Bias Bus ID: <input type="text" placeholder="BB id"/> </p>
-	<p> Filter Board ID: <input type="text" placeholder="FB id"/> </p>
-	<p> Name of the tin and composition <input type="text" placeholder="tin and composition"/></p>
-	<p> Diameter of the soldering tip: <input style="width: 5%" type="text"/>mm </p>
+	<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
+	<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
+	<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
+	<p> <strong>Name of the tin and composition</strong> <br>
+			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+			<input id="itin" type="checkbox"/> Other <br>
+
+		<span id="stin"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+	</p>
+	<p> <strong>Diameter of the soldering tip</strong>: <br>
+		<input type="checkbox"/> 0.2 mm <br>
+		<input type="checkbox"/> 0.1 mm	<br>
+		<input type="checkbox"/> 0.4 mm <br>
+		<input id="idiam" type="checkbox"/> Other <br>
+		<span id="sdiam"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+	</p>
+
+
 	<br>
 	<h2>Report</h2>
   <br>
@@ -100,10 +148,11 @@
 				<div id="placeholder-shorts">
 					<div id="template-shorts">
 						<hr>
-						<span>Close to HIC in position <input type="text" style="width: 80px"/> </span> <br>
-						<input type="checkbox" name="1" value="1"/> Short disappered after rework
+						<span>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </span> <br>
+						<input type="checkbox" name="1" value="1"/> Short disappeared after rework
 						<br>
-						<input type="checkbox" name="2" value="2"/> Cannot remove the short
+						<input type="checkbox" name="2" value="2"/> Cannot remove the short <br>
+						<textarea cols="50" rows="4" placeholder="Describe"></textarea>
 						<?php
 						include('imagetool/imagetool.html');
 						?>
@@ -127,15 +176,18 @@
 					<div id="template-pbheat">
 						<hr>
 						<ul>
-							<li>Close to HIC in position <input type="text" style="width: 80px"/> </li>
+							<li>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </li>
 							<li> Problem: <br>
 								<input type="checkbox" name="1" value="1"/> Damages to PB kapton layer
 								<br>
 								<input type="checkbox" name="2" value="2"/> Capacitor pad detached
 								<br>
-								<input type="checkbox" name="3" value="3"/> Other: <input type="text" placeholder="specify" style="width: 400px"/>
+								<input id="oth" type="checkbox" name="3" value="3"/> Other
+								<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea>
 							</li>
 							<li> Result: <br>
+								<input type="checkbox" name="1" value="1"/> Damaged, but it works
+								<br>
 								<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
 								<br>
 								<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
@@ -168,10 +220,12 @@
 				<div id="placeholder-bbshorts">
 					<div id="template-bbshorts">
 						<hr>
-						<span>Close to HIC in position <input type="text" style="width: 80px"/> </span> <br>
+						<span>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </span> <br>
 						<input type="checkbox" name="1" value="1"/> Short disappered after rework
 						<br>
-						<input type="checkbox" name="2" value="2"/> Cannot remove the short
+						<input type="checkbox" name="2" value="2"/> Cannot remove the short <br>
+						<textarea cols="50" rows="4" placeholder="Describe"></textarea>
+
 						<?php
 						include('imagetool/imagetool.html');
 						?>
@@ -195,15 +249,18 @@
 					<div id="template-bbheat">
 						<hr>
 						<ul>
-							<li>Close to HIC in position <input type="text" style="width: 80px"/> </li>
+							<li>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </li>
 							<li> Problem: <br>
 								<input type="checkbox" name="1" value="1"/> Damages to BB kapton layer
 								<br>
 								<input type="checkbox" name="2" value="2"/> Capacitor pad detached
 								<br>
-								<input type="checkbox" name="3" value="3"/> Other: <input type="text" placeholder="specify" style="width: 400px"/>
+								<input id="oth" type="checkbox" name="3" value="3"/> Other
+								<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea>
 							</li>
 							<li> Result: <br>
+								<input type="checkbox" name="1" value="1"/> Damaged, but it works
+								<br>
 								<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
 								<br>
 								<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
@@ -276,14 +333,19 @@
 						<span id="s1"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
 						<input id=i2 type="checkbox"/> Cracks in some pads <br>
 						<span id="s2"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
-						<input type="checkbox"/> Other <input type="text" style="width: 400px" placeholder="specify"/> <br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
 					<li> Motivation: <br>
 						<input type="checkbox"/> Heat <br>
 						<input type="checkbox"/> Handling <br>
-						<input type="checkbox"/> Other <input type="text" style="width: 400px" placeholder="specify"/><br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea><br>
 					</li>
-					<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable </li>
+					<li> Result: <br>
+						<input type="checkbox"/> Acceptable <br>
+						<input type="checkbox"/> Not acceptable
+					</li>
 				</ul>
 
 				<!-- Images -->
@@ -305,9 +367,13 @@
 					<li>Damage type: <br>
 						<input type="checkbox"/> Damage to FB coverlay <br>
 						<input type="checkbox"/> Damage to FB soldering pads <br>
-						<input type="checkbox"/> Other: <input type="text" style="width: 400px" placeholder="specify"/> <br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
-					<li>Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable </li>
+					<li>Result: <br>
+						<input type="checkbox"/> Acceptable <br>
+						<input type="checkbox"/> Not acceptable
+					</li>
 				</ul>
 
 				<!-- Images -->
@@ -336,7 +402,7 @@
 					<div id="template-bbfbshorts">
 						<hr>
 						<ul>
-							<li> Line of HIC in position: <input type="text" style="width: 90px"/> <br>
+							<li> Line of HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> <br>
 									In short with: <input type="checkbox"/> Ground <input type="checkbox"/> Another strip
 							</li>
 							<li> Result: <br>
@@ -370,14 +436,19 @@
 						<span id="s1"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
 						<input id=i2 type="checkbox"/> Cracks in some pads <br>
 						<span id="s2"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
-						<input type="checkbox"/> Other <input type="text" style="width: 400px" placeholder="specify"/> <br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
 					<li> Motivation: <br>
 						<input type="checkbox"/> Heat <br>
 						<input type="checkbox"/> Handling <br>
-						<input type="checkbox"/> Other <input type="text" style="width: 400px" placeholder="specify"/><br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea><br>
 					</li>
-					<li> Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable </li>
+					<li> Result: <br>
+						<input type="checkbox"/> Acceptable <br>
+						<input type="checkbox"/> Not acceptable
+					</li>
 				</ul>
 
 				<!-- Images -->
@@ -399,9 +470,13 @@
 					<li>Damage type: <br>
 						<input type="checkbox"/> Damage to FB coverlay <br>
 						<input type="checkbox"/> Damage to FB soldering pads <br>
-						<input type="checkbox"/> Other: <input type="text" style="width: 400px" placeholder="specify"/> <br>
+						<input id="oth" type="checkbox"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
-					<li>Result: <input type="checkbox"/> Acceptable <input type="checkbox"/> Not acceptable </li>
+					<li>Result: <br>
+						<input type="checkbox"/> Acceptable <br>
+						<input type="checkbox"/> Not acceptable
+					</li>
 				</ul>
 
 				<!-- Images -->

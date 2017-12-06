@@ -28,6 +28,14 @@
 			display: none;
 		}
 
+		textarea#texta1{
+			display: none;
+		}
+
+		input#oth:checked ~ textarea#texta1 {
+			display: block;
+		}
+
 		input#i1:checked ~ p#p1 {
 			display: block;
 		}
@@ -55,8 +63,17 @@
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<span id="noprint"> (Example: OB-HIC-id cut and power test)</span>
-			<input type="text" placeholder="name" style="width: 500px">
+			<p>
+				<?php include('ids/hicid.html')?>
+			</p>
+	</fieldset>
+
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Start: <input type="date" required="required"/> <br>
+			End: <input type="date" required="required"/>
+		</p>
 	</fieldset>
 
 	<br>
@@ -81,7 +98,7 @@
  <br>
 
  <br>
- <p> OB-HIC ID: <input type="text" placeholder="HIC id"/> </p>
+ <p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
  <br>
 
  <h2> Report </h2>
@@ -107,9 +124,10 @@
 	 			<input type="checkbox"/> Damages to FPC due to the cut
 				<br />
 				<input id="i1" type="checkbox"/> Damages to cross-cables
-				<p id="p1"> CC type: <input type="checkbox"/> DVDD <input type="checkbox"/> DVSS <input type="checkbox"/> AVDD <input type="checkbox"/> AVSS <input type="checkbox"/> BACK-BIAS</p> <br>
+				<p id="p1"> CC type: <input type="checkbox"/> DVDD <input type="checkbox"/> DVSS <input type="checkbox"/> AVDD <input type="checkbox"/> AVSS <input type="checkbox"/> BACK-BIAS</p>
 				<br />
-				<input type="checkbox" name="other" value="other"/> Other <input type="text" style="width: 400px"/>
+				<input id="oth" type="checkbox" name="other" value="other"/> Other
+				<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
 				<br><br>
 
 				<span> Do they affect the HIC functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
@@ -131,32 +149,56 @@
 					<div id="template-bond">
 						<hr>
 						<ul>
-							<li> Chip number: <input type="text" style="width: 90px"/></li>
+							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
 							<li> Bond type (only most critical): <br>
-								<input type="checkbox" name="mclk_p" value="mclk_p"/> MCLK_P
-					 			<input type="checkbox" name="mclk_n" value="mclk_n"/> MCLK_N
-								<br />
-					 			<input type="checkbox" name="por_dis" value="por_dis"/> POR_DIS
-								<br />
-					 			<input type="checkbox" name="dctrl_p" value="dctrl_p"/> DCTRL_P
-					 			<input type="checkbox" name="dctrl_n" value="dctrl_n"/> DCTRL_N
-								<br />
-					 			<input type="checkbox" name="dclk_p" value="dclk_p"/> DCLK_P
-					 			<input type="checkbox" name="dclk_n" value="dclk_n"/> DCLK_N
-								<br />
-					 			<input type="checkbox" name="hsdata_p" value="hsdata_p"/> HSDATA_P
-					 			<input type="checkbox" name="hsdata_n" value="hsdata_n"/> HSDATA_N
-								<br />
-					 			<input type="checkbox" name="CTRL" value="CTRL"/> CTRL
-								<br />
-					 			<input type="checkbox" name="BUSY" value="BUSY"/> BUSY
-								<br />
-					 			<input type="checkbox" name="DATA" value="DATA"/> DATA
-								<br />
-					 			<input type="checkbox" name="chipid" value="chipid"/> CHIP_ID
+								<ul>
+									<li>
+										<input type="checkbox" name="mclk_p" value="mclk_p"/> MCLK_P
+					 					<input type="checkbox" name="mclk_n" value="mclk_n"/> MCLK_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="por_dis" value="por_dis"/> POR_DIS
+									</li>
+									<li>
+					 					<input type="checkbox" name="dctrl_p" value="dctrl_p"/> DCTRL_P
+					 					<input type="checkbox" name="dctrl_n" value="dctrl_n"/> DCTRL_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="dclk_p" value="dclk_p"/> DCLK_P
+					 					<input type="checkbox" name="dclk_n" value="dclk_n"/> DCLK_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="hsdata_p" value="hsdata_p"/> HSDATA_P
+					 					<input type="checkbox" name="hsdata_n" value="hsdata_n"/> HSDATA_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="CTRL" value="CTRL"/> CTRL
+									</li>
+									<li>
+					 					<input type="checkbox" name="BUSY" value="BUSY"/> BUSY
+									</li>
+									<li>
+					 					<input type="checkbox" name="DATA" value="DATA"/> DATA
+									</li>
+									<li>
+					 					<input type="checkbox" name="chipid" value="chipid"/> CHIP_ID
+									</li>
+								</ul>
 							</li>
-							<li> Damage type: <input type="checkbox"/> One detached <input type="checkbox"/> Two detached <input type="checkbox"/> All detached </li>
-							<li> Does it affect HIC functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
+							<li> Damage type
+								<ul>
+
+									<li><input type="checkbox"/> One detached</li>
+									<li><input type="checkbox"/> Two detached</li>
+									<li><input type="checkbox"/> All detached </li>
+								</ul>
+							</li>
+							<li> Does it affect HIC functioning?
+								<ul>
+									<li><input type="checkbox"/> Yes </li>
+									<li><input type="checkbox"/> No </li>
+								</ul>
+							</li>
 						</ul>
 						<?php
 						include('imagetool/imagetool.html');
@@ -184,34 +226,51 @@
 					<div id="template-bondrisk">
 						<hr>
 						<ul>
-							<li> Chip number: <input type="text" style="width: 90px"/></li>
+							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
 							<li> Bond type (only most critical): <br>
-								<input type="checkbox" name="mclk_p" value="mclk_p"/> MCLK_P
-					 			<input type="checkbox" name="mclk_n" value="mclk_n"/> MCLK_N
-								<br />
-					 			<input type="checkbox" name="por_dis" value="por_dis"/> POR_DIS
-								<br />
-					 			<input type="checkbox" name="dctrl_p" value="dctrl_p"/> DCTRL_P
-					 			<input type="checkbox" name="dctrl_n" value="dctrl_n"/> DCTRL_N
-								<br />
-					 			<input type="checkbox" name="dclk_p" value="dclk_p"/> DCLK_P
-					 			<input type="checkbox" name="dclk_n" value="dclk_n"/> DCLK_N
-								<br />
-					 			<input type="checkbox" name="hsdata_p" value="hsdata_p"/> HSDATA_P
-					 			<input type="checkbox" name="hsdata_n" value="hsdata_n"/> HSDATA_N
-								<br />
-					 			<input type="checkbox" name="CTRL" value="CTRL"/> CTRL
-								<br />
-					 			<input type="checkbox" name="BUSY" value="BUSY"/> BUSY
-								<br />
-					 			<input type="checkbox" name="DATA" value="DATA"/> DATA
-								<br />
-					 			<input type="checkbox" name="chipid" value="chipid"/> CHIP_ID
+								<ul>
+									<li>
+										<input type="checkbox" name="mclk_p" value="mclk_p"/> MCLK_P
+					 					<input type="checkbox" name="mclk_n" value="mclk_n"/> MCLK_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="por_dis" value="por_dis"/> POR_DIS
+									</li>
+									<li>
+					 					<input type="checkbox" name="dctrl_p" value="dctrl_p"/> DCTRL_P
+					 					<input type="checkbox" name="dctrl_n" value="dctrl_n"/> DCTRL_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="dclk_p" value="dclk_p"/> DCLK_P
+					 					<input type="checkbox" name="dclk_n" value="dclk_n"/> DCLK_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="hsdata_p" value="hsdata_p"/> HSDATA_P
+					 					<input type="checkbox" name="hsdata_n" value="hsdata_n"/> HSDATA_N
+									</li>
+									<li>
+					 					<input type="checkbox" name="CTRL" value="CTRL"/> CTRL
+									</li>
+									<li>
+					 					<input type="checkbox" name="BUSY" value="BUSY"/> BUSY
+									</li>
+									<li>
+					 					<input type="checkbox" name="DATA" value="DATA"/> DATA
+									</li>
+									<li>
+					 					<input type="checkbox" name="chipid" value="chipid"/> CHIP_ID
+									</li>
+								</ul>
 							</li>
 							<li> Description: <br>
 								 <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
 							</li>
-							<li> Does it affect HIC functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No </li>
+							<li> Does it affect HIC functioning?
+								<ul>
+									<li><input type="checkbox"/> Yes </li>
+									<li><input type="checkbox"/> No </li>
+								</ul>
+							</li>
 						</ul>
 						<?php
 						include('imagetool/imagetool.html');
@@ -229,7 +288,7 @@
 		<fieldset>
 			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC and chip edges on the side of the cut (for TAB_B, 2 pictures needed)</strong></legend><br>
 			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
-				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 100px"/> um </span>
+				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 50px"/> um </span>
 				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the track quality. </span>
 			</p>
 			<br>
@@ -251,21 +310,21 @@
  			<legend>Voltages and currents</legend><br>
 
 			<ul>
-				<li>AVDD: <input type="text" style="width: 120px"/> V <br>
+				<li>AVDD: <input type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
 				<hr>
 
-				<li>DVDD: <input type="text" style="width: 120px"/> V <br>
+				<li>DVDD: <input type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input type="text" style="width: 120px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 			</ul>
