@@ -13,6 +13,17 @@ input[type=text]{
   border-style: hidden;
 }
 
+input[type=date]{
+  background-color: white;
+  border-style: hidden;
+}
+
+input[type=date] {
+  border: 0;
+  clip-path: inset(0 17px 0 0);
+  width: 200px
+}
+
 input[type=text]#t1{
   display: inline;
   position: relative;
@@ -69,8 +80,8 @@ input[type=number]#printnumb4{
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 textarea{
@@ -90,6 +101,12 @@ select#sites{
   display: inline;
   position: relative;
   margin-right: -.5em;
+}
+
+select#flavor{
+  display: inline;
+  position: relative;
+  margin-left: -1.5em;
 }
 
 select#upd{
