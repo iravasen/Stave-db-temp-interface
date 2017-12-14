@@ -24,6 +24,14 @@
 			display: none;
 		}
 
+		textarea#textyes{
+			display: none;
+		}
+
+		input#yesdam:checked ~ textarea#textyes {
+			display: block;
+		}
+
 		input#oth:checked ~ textarea#texta1 {
 			display: block;
 		}
@@ -107,6 +115,32 @@
 			<?php
 			include('imagetool/imagetool.html');
 			?>
+		</fieldset>
+
+		<fieldset>
+ 			<legend>Problems during HS lifting from the base with the handling bar?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+			<fieldset id="ifproblem">
+				<ul>
+					<li> Problem: <br>
+						<textarea placeholder="Describe the problem" cols="100" rows="4"></textarea>
+						<br />
+					</li>
+					<li> How did you solve it? <br>
+						<textarea placeholder="Solution" cols="100" rows="4"></textarea>
+					</li>
+					<br>
+					<li> Did you damage the HS? <input id="yesdam" type="checkbox"/> Yes <input type="checkbox"/> No <br>
+						<textarea id="textyes" placeholder="describe the damage" cols="100" rows="4"></textarea> <br>
+					</li>
+				</ul>
+				<?php
+				include('imagetool/imagetool.html');
+				?>
+			</fieldset>
 		</fieldset>
 
 		<fieldset>
