@@ -1,14 +1,53 @@
 <script type='text/javascript'>
 var _counter = 0;
+
+/*function Remove(removeBtn) {
+  $(removeBtn).parent().parent().remove();
+}*/
+
+function Remove(parentDiv, childDiv){
+
+     if (childDiv == parentDiv) {
+
+          alert("The parent div cannot be removed.");
+
+     }
+
+     else if (document.getElementById(childDiv)) {
+
+          var child = document.getElementById(childDiv);
+
+          var parent = document.getElementById(parentDiv);
+
+          parent.removeChild(child);
+
+     }
+
+     else {
+
+          alert("Cannot remove.");
+
+          return false;
+
+     }
+
+}
+
+
 function Add(divext, divint) {
   _counter++;
   var oClone = document.getElementById(divint.toString()).cloneNode(true);
   oClone.id += (_counter + "");
   document.getElementById(divext.toString()).appendChild(oClone);
-}
 
-function Remove(removeBtn) {
-  $(removeBtn).parent().parent().remove();
+
+  var htmlrem = '<button type="button" onclick="Remove(' + "'"+ divext + "'" + ',' + "'" + divint + _counter + "'" + '); $(this).parent().remove();">Remove item </button> ';
+
+  var p = document.getElementById(divext.toString());
+  var newElement = document.createElement('p');
+  newElement.setAttribute('id', 'noprint');
+  newElement.innerHTML = htmlrem;
+  p.appendChild(newElement);
 }
 
 </script>
