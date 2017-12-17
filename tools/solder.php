@@ -44,8 +44,32 @@
 			display: none;
 		}
 
+		ul#awb{
+			display: none;
+		}
+
+		ul#apwr{
+			display: none;
+		}
+
+		ul#aoth{
+			display: none;
+		}
+
 		textarea#textoth{
 			display: none;
+		}
+
+		input#ioth:checked ~ ul#aoth {
+			display: block;
+		}
+
+		input#iwb:checked ~ ul#awb {
+			display: block;
+		}
+
+		input#ipwr:checked ~ ul#apwr {
+			display: block;
 		}
 
 		input#wb1:checked ~ ul#bonds1 {
@@ -190,7 +214,7 @@
 					<input id="oth" type="checkbox" name="4" value="4"/> Other
 					<br>
 					 <textarea id="textoth" rows="3" cols="50" placeholder="describe"></textarea>
-					<br><br><br>
+					<br>
 					<ul>
 						<li> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input id="misal" type="checkbox"/> No <br>
 							<textarea id="textmisal" cols="50" rows="3" placeholder="comments"></textarea>
@@ -200,7 +224,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 				</div>
 			</div>
@@ -227,7 +251,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -257,7 +281,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -282,7 +306,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -311,7 +335,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -337,7 +361,7 @@
 
 					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Number of lost R: <input id="printnumb2" type="number" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
 
 					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
 					<br>
@@ -345,7 +369,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -393,7 +417,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -418,7 +442,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -444,7 +468,7 @@
 					<hr>
 					<span>Module position: <input type="text" style="width: 80px"/></span><br>
 					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<span>Number of lost R: <input id="printnumb2" type="number" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
 
 					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
 					<br>
@@ -452,11 +476,68 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-idlost','template-idlost');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<fieldset>
+		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-Rwrong">
+				<div id="template-Rwrong">
+
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: -1.5em;"/>
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
+
+					<ul>
+						<li> <input type="checkbox" name="1" value="1"/> Resistance resoldered without problems </li>
+						<li> <input id="iwb" type="checkbox" name="1" value="1"/> Resistance resoldered damaging CHIP_ID wire-bonds
+							<ul id="awb">
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+						<li> <input id="ipwr" type="checkbox" name="1" value="1"/> Resistance resoldered damaging Power/ground wire-bonds
+							<ul id="apwr">
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+
+						<li> <input id="ioth" type="checkbox" name="1" value="1"/> Other
+							<ul id="aoth">
+								<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+					</ul>
+
+
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-Rwrong','template-Rwrong');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
 
@@ -501,7 +582,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -526,7 +607,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>
@@ -635,7 +716,7 @@
 					<?php
 					include('imagetool/imagetool.html');
 					?>
-					<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 					<hr>
 			 </div>
 		 </div>

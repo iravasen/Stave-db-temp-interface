@@ -60,7 +60,7 @@
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 			<p>
-				<?php include('ids/stvid.html')?> assembly
+				<?php include('ids/hsid.html')?> gluing on SF
 			</p>
 
 			<p style="display: block; float: right;" id="noprint">
@@ -100,17 +100,16 @@
   <h2>Report</h2>
 
   <br>
-	<p> Half-Stave-Left ID: <?php include('ids/hsid.html')?> </p>
-	<p> Half-Stave-Right ID: <?php include('ids/hsid.html')?> </p>
+	<p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
 	<p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
 	<br>
 
 	<form action="">
 		<fieldset>
- 			<legend>Glue serial number + opening date. <strong id="noprint">Add picture</strong></legend><br>
- 			<p> Serial number: <input type="text" placeholder="s/n"/></p>
+ 			<legend>Glue. <strong id="noprint">Add picture of the tube with its label.</strong></legend><br>
+ 			<p> Batch number: <input type="text" placeholder="batch #"/></p>
 			<p> Opening date: <input type="date"/></p>
-			<p> Exipirity date: <input type="date"/></p>
+			<p> Expiry date: <input type="date"/></p>
 
 			<?php
 			include('imagetool/imagetool.html');
@@ -196,7 +195,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>

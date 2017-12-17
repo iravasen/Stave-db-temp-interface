@@ -4,7 +4,7 @@
 	<title>PB+BB folding</title>
 
   <!--Include CSS file-->
-  <link rel="stylesheet" type="text/css" href="../css/solder.css" media="print" /> <!--For the printer-->
+  <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
 	<br>
@@ -60,6 +60,7 @@
 
 	<br>
 	<p> HS Id: <?php include('ids/hsid.html')?> </p>
+	<p> Stave ID: <?php include('ids/stvid.html') ?></p>
 	<br>
 
 	<h2>Report</h2>
@@ -120,7 +121,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -156,7 +157,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>

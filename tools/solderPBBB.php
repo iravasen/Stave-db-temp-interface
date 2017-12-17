@@ -97,6 +97,7 @@
 
   <br>
 	<p> HS ID: <?php include('ids/hsid.html')?></p>
+	<p> Stave ID: <?php include('ids/stvid.html') ?></p>
 	<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
 	<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
 	<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
@@ -148,7 +149,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -187,7 +188,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -233,7 +234,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -274,7 +275,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>

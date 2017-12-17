@@ -87,12 +87,12 @@
 		<div id="placeh-pos">
 			<hr>
 
-			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></p>
-			<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
+
 			<hr>
 		</div>
 	</div>
-	<p id="noprint"><button type="button" name="Submit" onclick="Add('placeh-pos','template-pos');">Add new item</button></p>
+	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
 	<br>
 
 	<h2>Report</h2>
@@ -100,10 +100,10 @@
 
 	<form action="">
 		<fieldset>
- 			<legend>Glue serial number + opening date. <strong id="noprint"> Add picture </strong></legend><br>
- 			<p> Serial number: <input type="text" placeholder="s/n"/></p>
+ 			<legend>Glue. <strong id="noprint"> Add picture of the tube with its label.</strong></legend><br>
+ 			<p> Batch number: <input type="text" placeholder="batch #"/></p>
 			<p> Opening date: <input type="date"/></p>
-			<p> Exipirity date: <input type="date"/></p>
+			<p> Expiry date: <input type="date"/></p>
 
 			<?php
 			include('imagetool/imagetool.html');
@@ -144,7 +144,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -182,7 +182,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>

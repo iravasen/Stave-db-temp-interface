@@ -141,7 +141,7 @@
 							<?php
 							include('imagetool/imagetool.html');
 							?>
-							<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 							<hr>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 							<?php
 							include('imagetool/imagetool.html');
 							?>
-							<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 							<hr>
 						</div>
 					</div>
@@ -199,7 +199,7 @@
 						<?php
 						include('imagetool/imagetool.html');
 						?>
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -226,7 +226,7 @@
 
 						</ul>
 
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+
 						<hr>
 					</div>
 				</div>
@@ -259,7 +259,7 @@
 						include('imagetool/imagetool.html');
 						?>
 
-						<p id="noprint"><button type="button" name="Remove item" onclick="Remove(this);">Remove item</button></p>
+						
 						<hr>
 					</div>
 				</div>
