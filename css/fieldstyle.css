@@ -22,3 +22,8 @@ fieldset#ifproblem {
 input#check:checked ~ fieldset {
   display: block;
 }
+
+hr {
+  color: red;
+  border: medium thin;
+}
