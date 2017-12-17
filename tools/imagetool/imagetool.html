@@ -18,9 +18,10 @@
   	<tbody>
   		<tr class="imageSelectorContainer">
   			<td valign="top">
-          <input type="text" id="white" style="width: 45%"/>
-  				<input id="noprint" type="file" name="image_uploader_multiple[]" value="" class="multipleImageFileInput" style="width:50%" onchange="show_image_preview(this);" accept="image/*" multiple="">
+  				<input id="noprint" type="file" name="image_uploader_multiple[]" value="" class="multipleImageFileInput" style="width:50%" onchange="show_image_preview(this);" accept="image/*" multiple=""/>
   				<table class="imagePreviewTable"></table>
+          <input type="text" id="white" placeholder="short caption" style="width: 95%"/>
+          <hr style="color: black; border: thin dotted;">
   			</td>
   			<td valign="top" align="right">
   				<input id="noprint" type="button" value="X" title="Remove" class="removeButton" style="display:none;" onclick="remove_file_uploader(this)">
@@ -91,8 +92,10 @@
   	var imagePreviewRow = $('<tr class="imagePreviewRow_0"><td valign=top style="width: 510px;"></td>' +
   		'<td valign=top><input id="noprint" type="button" value="X" title="Remove Image" class="removeImageButton" imageIndex="0" onclick="remove_selected_image(this)" /></td>' +
   		'</tr> ');
+
   	//Add image preview row
   	$(imageContainer).html(imagePreviewRow);
+
   	if (number_of_images > 1) {
   		for (var i =1; i<number_of_images; i++) {
   			/**
