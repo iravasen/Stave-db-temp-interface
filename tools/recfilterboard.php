@@ -21,7 +21,7 @@
 
 <body class="special">
 
-	<a id="noprint" href="../START.php"><img src="../img/home.jpg" alt="Home" title="Home" width="100" height="100"/></a>
+	<a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
   <h1>Filter Board visual inspection (reception) - Report</h1>
@@ -130,7 +130,7 @@
 						include('imagetool/imagetool.html');
 						?>
 
-						
+
 						<hr>
 					</div>
 				</div>
