@@ -67,7 +67,7 @@
 				<?php include('ids/hicid.html')?>
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -97,9 +97,10 @@
  <?php include('people/people.html');?>
  <br>
 
- <br>
- <p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
- <br>
+ <fieldset>
+	 <legend> Component IDs </legend>
+	 	<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
+ </fieldset>
 
  <h2> Report </h2>
 	<br>
@@ -108,7 +109,25 @@
 
 	<form action="">
 		<fieldset>
- 			<legend>Visible damages to the HIC?</legend><br>
+			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC edge on the side of the cut</strong></legend><br>
+			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
+				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 50px"/> um </span>
+				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the cut quality. </span>
+			</p>
+			<br>
+
+			<p>Is the cut distance/result acceptable?</p>
+			<input type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<br />
+ 			<input type="checkbox" name="No" value="No"/> No
+
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
+		<br>
+		<fieldset>
+ 			<legend>Visible (macroscopic) damages to the HIC due to the cut procedure?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
 			<br />
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -137,7 +156,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Visible damages to bonds due to TAB cut procedure?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -211,11 +230,11 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bond','template-bond');">Add new item</button></p>
 			</fieldset>
 
-			<br><span> <strong> Total number of broken bonds</strong>: <input type="text" style="width: 100px"/> </span> <br>
+			<br><span> <strong> Total number of broken bonds</strong>: <input type="text" placeholder="#" style="width: 100px"/> </span> <br>
 		</fieldset>
-
+		<br>
 		<fieldset>
- 			<legend>Are there risky wire-bonds to report?</legend><br>
+ 			<legend>Are there suspicious wire-bonds to report?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
 			<br />
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -284,24 +303,7 @@
 			</fieldset>
 
 		</fieldset>
-
-		<fieldset>
-			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC and chip edges on the side of the cut (for TAB_B, 2 pictures needed)</strong></legend><br>
-			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
-				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 50px"/> um </span>
-				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the track quality. </span>
-			</p>
-			<br>
-
-			<p>Is the cut distance/result acceptable?</p>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
- 			<br />
- 			<input type="checkbox" name="No" value="No"/> No
-
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
+		<br>
 	</form>
 
 	<h2> HIC Powering test after cut </h2>

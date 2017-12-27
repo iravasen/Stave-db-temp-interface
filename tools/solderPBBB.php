@@ -66,7 +66,7 @@
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -74,6 +74,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
+	<br>
 
 	<form>
 	<fieldset>
@@ -94,27 +95,39 @@
 	<!--People-->
  <br>
  <?php include('people/people.html');?>
+ <br>
 
-  <br>
-	<p> HS ID: <?php include('ids/hsid.html')?></p>
-	<p> Stave ID: <?php include('ids/stvid.html') ?></p>
-	<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
-	<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
-	<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
-	<p> <strong>Name of the tin and composition</strong> <br>
-			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
-			<input id="i3" type="checkbox"/> Other <br>
+  <fieldset>
+		<legend> Component IDs </legend>
+			<p> HS ID: <?php include('ids/hsid.html')?></p>
+			<p> Stave ID: <?php include('ids/stvid.html') ?></p>
+			<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
+			<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
+			<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
 
-		<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
-	</p>
-	<p> <strong>Diameter of the soldering tip</strong>: <br>
-		<input type="checkbox"/> 0.2 mm <br>
-		<input type="checkbox"/> 0.1 mm	<br>
-		<input type="checkbox"/> 0.4 mm <br>
-		<input id="i4" type="checkbox"/> Other <br>
-		<span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+			<p style="display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend> General info </legend>
 
-	</p>
+			<p> <strong>Name of the tin and composition</strong> <br>
+					<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+					<input id="i3" type="checkbox"/> Other <br>
+
+				<span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+			</p>
+			<p> <strong>Diameter of the soldering tip</strong>: <br>
+				<input type="checkbox"/> 0.2 mm <br>
+				<input type="checkbox"/> 0.1 mm	<br>
+				<input type="checkbox"/> 0.4 mm <br>
+				<input id="i4" type="checkbox"/> Other <br>
+				<span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+			</p>
+	</fieldset>
 
 	<br>
 
@@ -156,7 +169,7 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-ccbbdam','template-ccbbdam');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Visible damages to BB?</legend><br>
 
@@ -242,7 +255,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Visible damages to PB?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No

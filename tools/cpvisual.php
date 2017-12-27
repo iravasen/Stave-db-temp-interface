@@ -32,8 +32,11 @@
 			<p>
 				<?php include('ids/cpid.html')?> planarity and inspection
 			</p>
+			<p style="display: block; float: right;" id="noprint">
+				The CP id can be found on a CP corner on the side of the cooling pipes
+			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -41,7 +44,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
-
+	<br>
 	<form>
 	<fieldset>
 	<legend> Location </legend>
@@ -62,10 +65,13 @@
  <?php include('people/people.html');?>
  <br>
 
-	<br>
-	<p> Cold-Plate ID: <?php include('ids/cpid.html')?>
-	</p>
-	<br>
+	<fieldset>
+		<legend> Component IDs </legend>
+			<p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
+			<p style="display: block; float: right;" id="noprint">
+				The CP id can be found on a CP corner on the side of the cooling pipes
+			</p>
+	</fieldset>
 
 	<h2>Visual inspection and planarity</h2>
   <br>
@@ -91,7 +97,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Visible damages to cooling pipes?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -111,7 +117,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
 			<legend>Visible damages to external CP rubber tubes?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -130,7 +136,7 @@
 				?>
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
 			<legend> Is this Cold-Plate acceptable after the visual inspection? (if yes, measure planarity) </legend>
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes

@@ -55,7 +55,7 @@
 			</p>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -64,6 +64,7 @@
 		</p>
 	</fieldset>
 
+	<br>
 	<form>
 	<fieldset>
 	<legend> Location </legend>
@@ -84,9 +85,10 @@
  <?php include('people/people.html');?>
  <br>
 
- <br>
- <p> Power-Bus ID: <?php include('ids/pbid.html')?> </p>
- <br>
+ <fieldset>
+ 	<legend> Component IDs </legend>
+ 		<p> Power-Bus ID: <?php include('ids/pbid.html')?> </p>
+ </fieldset>
 
  <h2>Report</h2>
 
@@ -181,7 +183,7 @@
 			</fieldset>
 		</fieldset>
 
-
+		<br>
 		<fieldset>
  			<legend>Check on the continuity of lines. Problems?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -207,7 +209,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Resistance of the lines. Problems?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -234,7 +236,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
@@ -266,7 +268,7 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
 			<legend>Is this PB acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes

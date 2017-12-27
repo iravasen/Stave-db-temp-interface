@@ -35,9 +35,11 @@
 			<p>
 				<?php include('ids/sfid.html')?> reception test
 			</p>
-
+			<p style="display: block; float: right;" id="noprint">
+				The SF id can be found on one of its extremities written on the carbon-fiber structure
+			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -45,7 +47,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 	<legend> Location </legend>
 		<select name="Sites" >
@@ -64,9 +66,13 @@
  <?php include('people/people.html');?>
  <br>
 
- <br>
- <p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
- <br>
+ <fieldset>
+	 <legend> Component IDs </legend>
+ 		<p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
+		<p style="display: block; float: right;" id="noprint">
+			The SF id can be found on one of its extremities written on the carbon-fiber structure
+		</p>
+</fieldset>
 
  <h2>Report</h2>
 	<br>
@@ -94,7 +100,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
 			<legend>Is this SF acceptable?</legend><br>
 				<input type="checkbox"/> Yes <br>

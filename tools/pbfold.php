@@ -29,7 +29,7 @@
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -37,7 +37,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
-
+	<br>
 	<form>
 	<fieldset>
 	<legend> Location </legend>
@@ -58,10 +58,14 @@
  <?php include('people/people.html');?>
  <br>
 
-	<br>
-	<p> HS Id: <?php include('ids/hsid.html')?> </p>
-	<p> Stave ID: <?php include('ids/stvid.html') ?></p>
-	<br>
+<fieldset>
+	<legend> Component IDs </legend>
+		<p> HS Id: <?php include('ids/hsid.html')?> </p>
+		<p> Stave ID: <?php include('ids/stvid.html') ?></p>
+		<p style="display: block; float: right;" id="noprint">
+			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+		</p>
+</fieldset>
 
 	<h2>Report</h2>
 
@@ -73,21 +77,21 @@
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Picture/s while folding the PB+BB.</legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Picture/s of the final result.</legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Visible damages to the cross-cables?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -129,7 +133,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Do you think to have damaged a HIC?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No

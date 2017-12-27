@@ -48,7 +48,7 @@
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -78,22 +78,28 @@
  <?php include('people/people.html');?>
  <br>
 
- <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
- <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
+ <fieldset>
+	 <legend> Component IDs </legend>
+		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+		 <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
+		
 
-	<br>
-	<h2> Half-Stave composition </h2>
-	<div id="template-pos">
-		<div id="placeh-pos">
-			<hr>
+		 <fieldset>
+			 <legend> Half-Stave composition </legend>
+				 <div id="template-pos">
+			 		<div id="placeh-pos">
+			 			<hr>
 
-			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
+			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
 
-			<hr>
-		</div>
-	</div>
-	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
-	<br>
+			 			<hr>
+			 		</div>
+			 	</div>
+			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
+			</fieldset>
+
+ </fieldset>
+
 
 	<h2>Report</h2>
   <br>
@@ -109,7 +115,7 @@
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Problems during glue-mask deposition?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -151,7 +157,7 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-cappad','template-cappad');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Problems during HIC gluing?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No

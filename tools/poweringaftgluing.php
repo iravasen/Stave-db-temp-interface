@@ -36,7 +36,7 @@
 				<?php include('ids/hicid.html')?> powering on <?php include('ids/cpid.html')?>
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -44,7 +44,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
-
+	<br>
 	<form>
 	<fieldset>
 	<legend> Location </legend>
@@ -65,11 +65,16 @@
  <?php include('people/people.html');?>
  <br>
 
+	<fieldset>
+		<legend> Component IDs </legend>
+			<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
+			<p> CP ID: <?php include('ids/cpid.html')?></p>
+	</fieldset>
 	<br>
-	<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
-	<p> CP ID: <?php include('ids/cpid.html')?></p>
-	<br>
-	<p> OB-HIC position on CP: <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> </p>
+	<fieldset>
+		<legend> General info </legend>
+			<p> OB-HIC position on CP: <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> </p>
+	</fieldset>
 
 	<h2>Report</h2>
 
@@ -97,7 +102,7 @@
 			</ul>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
 			<legend>Is this HIC on CP acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes

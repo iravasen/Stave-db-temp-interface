@@ -137,7 +137,7 @@
 			</p>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -167,14 +167,23 @@
  <?php include('people/people.html');?>
  <br>
 
-	<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?> </p>
-	<p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
-		<select id="upd">
-			<option> - </option>
-			<option> up </option>
-			<option> down </option>
-		</select>
-	</p>
+<fieldset>
+	<legend> Component IDs </legend>
+		<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?> </p>
+		<p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
+			<select id="upd">
+				<option> - </option>
+				<option> up </option>
+				<option> down </option>
+			</select>
+			<span style="display: block; float: right; color: red;" id="noprint">
+			-> GSXXX can be found near the FireFly connectors
+			</span>
+		</p>
+</fieldset>
+<br>
+<fieldset>
+	<legend> General Info </legend>
 	<p> <strong>Name of the tin and composition</strong> <br>
 			<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
 			<input id="i3" type="checkbox"/> Other <br>
@@ -189,6 +198,10 @@
 		<span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
 
 	</p>
+</fieldset>
+
+<br><br>
+	<h2> Report </h2>
 
 	<br><br>
   <h2>Bridge soldering</h2>
@@ -233,7 +246,7 @@
 		</fieldset>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Presence of (visible) shorts?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -259,7 +272,7 @@
 		</fieldset>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -288,7 +301,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bonds','template-bonds');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -313,7 +326,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Damages to bridges due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -376,7 +389,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-tlost','template-tlost');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
@@ -424,7 +437,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -483,7 +496,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-idlost','template-idlost');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
 
@@ -540,7 +553,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-Rwrong','template-Rwrong');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
@@ -589,7 +602,7 @@
 		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -637,7 +650,7 @@
 			?>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>FPC extension gluing. Problems?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -656,7 +669,7 @@
 			?>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the extension due to heat?</legend><br>
 
@@ -676,7 +689,7 @@
 		</fieldset>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the FPC-TAB-B due to heat?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
@@ -694,7 +707,7 @@
 			?>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to wire-bonds?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No

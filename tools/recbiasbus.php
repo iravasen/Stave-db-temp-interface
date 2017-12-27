@@ -55,7 +55,7 @@
 			</p>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -63,7 +63,7 @@
 			End: <input type="date" required="required"/>
 		</p>
 	</fieldset>
-
+	<br>
 	<form>
 	<fieldset>
 	<legend> Location </legend>
@@ -84,9 +84,10 @@
  <?php include('people/people.html');?>
  <br>
 
- <br>
- <p> Bias-Bus ID: <?php include('ids/bbid.html')?> </p>
- <br>
+ <fieldset>
+	 <legend> Component IDs </legend>
+ 		<p> Bias-Bus ID: <?php include('ids/bbid.html')?> </p>
+ </fieldset>
 
 <h2>Report</h2>
 <br>
@@ -172,7 +173,7 @@
 
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Check on the continuity of lines. Problems?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -197,7 +198,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Resistance of the lines. Problems?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -223,7 +224,7 @@
 			</fieldset>
 
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
@@ -255,7 +256,7 @@
 			</fieldset>
 		</fieldset>
 
-
+		<br>
 		<fieldset>
 			<legend>Is this BB acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes

@@ -39,7 +39,7 @@
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -67,11 +67,15 @@
 <!--People-->
  <br>
  <?php include('people/people.html');?>
+ <br>
 
-
-<br>
-<p> Stave ID: <?php include('ids/stvid.html')?> </p>
-<br>
+ <fieldset>
+	 <legend> Component IDs </legend>
+	 	<p> Stave ID: <?php include('ids/stvid.html')?> </p>
+		<p style="display: block; float: right;" id="noprint">
+			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+		</p>
+ </fieldset>
 
 <h2> Report </h2>
 <br>
@@ -122,14 +126,14 @@
 		</fieldset>
 
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Picture of the Stave in the storage room.</legend><br>
 		<?php
 		include('imagetool/imagetool.html');
 		?>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Plot of the temperature trend during storage period</legend><br>
 		<span> Max temperature: <input type="text" placeholder="max temp" style="width: 90px"/> °C</span> <br>

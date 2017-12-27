@@ -67,7 +67,7 @@
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -97,12 +97,13 @@
  <?php include('people/people.html');?>
  <br>
 
-  <h2>Report</h2>
+ <fieldset>
+	 <legend> Component IDs </legend>
+		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+		 <p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
+ </fieldset>
 
-  <br>
-	<p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
-	<p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
-	<br>
+  <h2>Report</h2>
 
 	<form action="">
 		<fieldset>
@@ -115,7 +116,7 @@
 			include('imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Problems during HS lifting from the base with the handling bar?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -141,7 +142,7 @@
 				?>
 			</fieldset>
 		</fieldset>
-
+		<br>
 		<fieldset>
  			<legend>Problems during HS gluing under the SF?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
@@ -172,7 +173,7 @@
 		</fieldset>
 
 
-
+		<br>
 		<fieldset>
  			<legend>Do you think the procedure (with the handling bar) damaged the HS?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No

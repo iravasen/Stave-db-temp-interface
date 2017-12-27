@@ -40,12 +40,12 @@
 			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 		</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
 			Start: <input type="date" required="required"/> <br>
-			End: <input type="date" required="required"/>
+			End: <input type="date" required="required"/> <span> (approximate arrival date at CERN) </span>
 		</p>
 	</fieldset>
 
@@ -68,10 +68,12 @@
 <!--People-->
  <br>
  <?php include('people/people.html');?>
+ <br>
 
-
-<br>
-<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+<fieldset>
+	<legend> Component IDs </legend>
+		<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+</fieldset>
 
 <br>
 
@@ -125,16 +127,16 @@
 			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-ship','template-ship');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend>Picture of the Stave inside the transport box before closing it.</legend><br>
 		<?php
 		include('imagetool/imagetool.html');
 		?>
 	</fieldset>
-
+	<br>
 	<fieldset>
-		<legend>Picture of the Stave inside the transport box before shipping it.</legend><br>
+		<legend>Picture of the transport box before shipping it.</legend><br>
 		<?php
 		include('imagetool/imagetool.html');
 		?>

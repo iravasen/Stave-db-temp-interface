@@ -44,10 +44,11 @@
  <br>
  <?php include('people/people.html');?>
  <br>
-
-  <br>
-	<p> FPC extension ID: <input type="text" placeholder="fpc-ext id"/> </p>
-	<br>
+	<fieldset>
+		<legend> Component IDs </legend>
+			<p> FPC extension ID: <input type="text" placeholder="fpc-ext id"/> </p>
+			<span id="noprint" style="align: right"> The lot id can be found near the connectors </span>
+	</fieldset>
 
 	<h2>Report</h2>
 	<br>
@@ -172,6 +173,7 @@
 
 		</fieldset>
 -->
+		<br>
 		<fieldset>
 			<legend>Is this OB-FPC-Extension acceptable?</legend><br>
 			<input type="checkbox" name="Yes" value="Yes"/> Yes
