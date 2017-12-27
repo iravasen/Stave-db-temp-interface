@@ -72,7 +72,7 @@
 			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 		</p>
 	</fieldset>
-
+	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
 		<p>
@@ -102,28 +102,39 @@
  <?php include('../people/people.html');?>
  <br>
 
- <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?> </p>
- <p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
-	 <select id="upd">
-		 <option> - </option>
-		 <option> up </option>
-		 <option> down </option>
-	 </select>
- </p>
- <p> <strong>Name of the tin and composition</strong> <br>
-		 <input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
-		 <input id="i3" type="checkbox"/> Other <br>
+ <fieldset>
+	 <legend> Component IDs </legend>
+		 <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?> </p>
+		 <p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
+			 <select id="upd">
+				 <option> - </option>
+				 <option> up </option>
+				 <option> down </option>
+			 </select>
+			 <span style="display: block; float: right; color: red;" id="noprint">
+			 -> GSXXX can be found near the FireFly connectors
+			 </span>
+		 </p>
 
-	 <span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
- </p>
- <p> <strong>Diameter of the soldering tip</strong>: <br>
-	 <input type="checkbox"/> 0.2 mm <br>
-	 <input type="checkbox"/> 0.1 mm	<br>
-	 <input type="checkbox"/> 0.4 mm <br>
-	 <input id="i4" type="checkbox"/> Other <br>
-	 <span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+</fieldset>
+<br>
+<fieldset>
+	<legend> General info </legend>
+		 <p> <strong>Name of the tin and composition</strong> <br>
+				 <input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
+				 <input id="i3" type="checkbox"/> Other <br>
 
- </p>
+			 <span id="si3"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+		 </p>
+		 <p> <strong>Diameter of the soldering tip</strong>: <br>
+			 <input type="checkbox"/> 0.2 mm <br>
+			 <input type="checkbox"/> 0.1 mm	<br>
+			 <input type="checkbox"/> 0.4 mm <br>
+			 <input id="i4" type="checkbox"/> Other <br>
+			 <span id="si4"> Diameter <input type="text" style="width: 80px"/> mm</span>
+
+		 </p>
+</fieldset>
 
 	<br>
 	<h2> Reworked components </h2>
