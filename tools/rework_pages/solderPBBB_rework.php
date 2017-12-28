@@ -60,12 +60,12 @@
 	<a id="noprint" href="../../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-	<h1> [REWORK] Power Bus, Bias Bus soldering to HS- Report </h1>
+	<h1> [REWORK] Power Bus, Bias Bus soldering to Stave - Report </h1>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 		<p>
-			[REWORK] <?php include('../ids/pbid.html')?> and <?php include('../ids/bbid.html')?> soldering on <?php include('../ids/hsid.html')?>
+			[REWORK] <?php include('../ids/pbid_nonum.html')?> and <?php include('../ids/bbid_nonum.html')?> soldering on <?php include('../ids/stvid.html')?>
 		</p>
 
 		<p style="display: block; float: right;" id="noprint">
@@ -104,10 +104,24 @@
 
  <fieldset>
 	 <legend> Component IDs </legend>
-		 <p> HS ID: <?php include('../ids/hsid.html')?></p>
-		 <p> Power Bus ID: <?php include('../ids/pbid.html')?> </p>
-		 <p> Bias Bus ID: <?php include('../ids/bbid.html')?> </p>
-		 <p> Filter Board ID: <?php include('../ids/fbid.html')?> </p>
+	 <p> Stave ID: <?php include('../ids/stvid.html') ?></p>
+	 <p> <strong> HS-Left </strong> <br>
+		 <ul>
+			 <li> ID: <?php include('../ids/hslid.html')?> </li>
+			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
+			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
+			 <li> Filter Board ID: <?php include('../ids/fblid.html')?> </li>
+		 </ul>
+	 </p>
+
+	 <p> <strong> HS-Right </strong> <br>
+		 <ul>
+			 <li> ID: <?php include('../ids/hsrid.html')?> </li>
+			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
+			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
+			 <li> Filter Board ID: <?php include('../ids/fbrid.html')?> </li>
+		 </ul>
+	 </p>
 
 		 <p style="display: block; float: right;" id="noprint">
  			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
@@ -143,6 +157,7 @@
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
 				<p>
+					<strong> Half-Stave </strong>: <input type="checkbox"/> Left <input type="checkbox"/> Right <br>
 					<strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
 				</p>
 
