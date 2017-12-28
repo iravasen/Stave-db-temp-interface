@@ -33,8 +33,8 @@
 
 			<h3> Stave assembly </h3>
 			<li> <a href="tools/interm_page/fb_to_pb_bb.php"> Soldering of capacitors on PB and BB + soldering of FB to PB and BB </a></li>
-			<li> <a href="tools/interm_page/soldePBBBtoHS.php">  PB + BB + Filter Board soldering to HS </a></li>
-      <li> <a href="tools/pbfold.php">  PB + BB folding on the HS </a></li>
+			<li> <a href="tools/interm_page/soldePBBBtoHS.php">  PB + BB + Filter Board soldering to Stave </a></li>
+      <li> <a href="tools/pbfold.php">  PB + BB folding for Stave </a></li>
 
 			<h3> Storage and shipment </h3>
 			<li> <a href="tools/stavestorage.php"> Stave storage </a></li>
