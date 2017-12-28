@@ -11,6 +11,22 @@
   <?php include('add/addscript.html');?>
   <br>
 
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementById('selpb').value +
+												"_and_" + document.getElementById('selbb').value +
+												"_folding_for_" +
+												document.getElementById('sites').value +
+												document.getElementById('selstv').value +
+												document.getElementById('printnumb').value +
+												"_report";
+			window.print();
+			document.title = "PB+BB folding";
+		}
+	</script>
+
+
 </head>
 
 <body class="special">
@@ -18,12 +34,12 @@
   <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-  <h1>Power Bus + Bias Bus folding on the Half-Stave - Report</h1>
+  <h1>Power Bus + Bias Bus folding for Stave - Report</h1>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 			<p>
-				<?php include('ids/pbid.html')?> folding on <?php include('ids/hsid.html')?>
+				<?php include('ids/pbid_nonum.html')?> and <?php include('ids/bbid_nonum.html')?> folding for <?php include('ids/stvid.html')?>
 			</p>
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
@@ -60,8 +76,10 @@
 
 <fieldset>
 	<legend> Component IDs </legend>
-		<p> HS Id: <?php include('ids/hsid.html')?> </p>
-		<p> Stave ID: <?php include('ids/stvid.html') ?></p>
+	  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
+		<p> HS Right Id: <?php include('ids/hsrid.html')?> </p>
+		<p> HS Left Id: <?php include('ids/hslid.html')?> </p>
+
 		<p style="display: block; float: right;" id="noprint">
 			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 		</p>
@@ -72,21 +90,7 @@
 	<form action="">
 
 		<fieldset>
- 			<legend>Picture/s of the bar with PB and BB on top.</legend><br>
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
-		<br>
-		<fieldset>
- 			<legend>Picture/s while folding the PB+BB.</legend><br>
-			<?php
-			include('imagetool/imagetool.html');
-			?>
-		</fieldset>
-		<br>
-		<fieldset>
- 			<legend>Picture/s of the final result.</legend><br>
+ 			<legend>Picture/s of the final result for HS-RIGHT and HS-LEFT. <span id="noprint" style="color: red;"> <strong> Two pictures </strong></span></legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
@@ -104,6 +108,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> CC type:
 									<input type="checkbox"/> AVDD
@@ -135,7 +140,7 @@
 		</fieldset>
 		<br>
 		<fieldset>
- 			<legend>Do you think to have damaged a HIC?</legend><br>
+ 			<legend>Do you think to have damaged the HICs?</legend><br>
  			<input type="checkbox" name="No" value="No"/> No
 			<br />
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -147,6 +152,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
@@ -181,8 +187,9 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="pbfold.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+
 
 </body>
 </html>
