@@ -54,12 +54,15 @@
   <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-  <h1>Power Bus, Bias Bus soldering to HS- Report</h1>
+  <h1>Power Bus, Bias Bus soldering to Stave - Report</h1>
+	<p id="noprint" style="color: red; font-size: 14pt; border: solid 5px red;">
+		!!WARNING!! This form is for both Half-Staves composing the Stave
+	</p>
 
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 			<p>
-				<?php include('ids/pbid.html')?> and <?php include('ids/bbid.html')?> soldering on <?php include('ids/hsid.html')?>
+				<?php include('ids/pbid_nonum.html')?> and <?php include('ids/bbid_nonum.html')?> soldering on <?php include('ids/stvid.html')?>
 			</p>
 
 			<p style="display: block; float: right;" id="noprint">
@@ -99,11 +102,24 @@
 
   <fieldset>
 		<legend> Component IDs </legend>
-			<p> HS ID: <?php include('ids/hsid.html')?></p>
 			<p> Stave ID: <?php include('ids/stvid.html') ?></p>
-			<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
-			<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
-			<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
+			<p> <strong> HS-Left </strong> <br>
+				<ul>
+					<li> ID: <?php include('ids/hslid.html')?> </li>
+					<li> Power Bus ID: <?php include('ids/pbid.html')?> </li>
+					<li> Bias Bus ID: <?php include('ids/bbid.html')?> </li>
+					<li> Filter Board ID: <?php include('ids/fblid.html')?> </li>
+				</ul>
+			</p>
+
+			<p> <strong> HS-Right </strong> <br>
+				<ul>
+					<li> ID: <?php include('ids/hsrid.html')?> </li>
+					<li> Power Bus ID: <?php include('ids/pbid.html')?> </li>
+					<li> Bias Bus ID: <?php include('ids/bbid.html')?> </li>
+					<li> Filter Board ID: <?php include('ids/fbrid.html')?> </li>
+				</ul>
+			</p>
 
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
@@ -133,7 +149,7 @@
 
 	<h2>Report</h2>
 	<br><br>
-  <h2>Bias Bus Soldering to HS</h2>
+  <h2>Bias Bus Soldering to Stave</h2>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to cross-cables?</legend><br>
@@ -148,6 +164,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
@@ -184,6 +201,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input type="checkbox"/> Soldering pad for CC detached <br>
@@ -212,7 +230,7 @@
 
 	</form>
 
-  <h2>Power Bus soldering to HS</h2>
+  <h2>Power Bus soldering to Stave</h2>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to cross-cables?</legend><br>
@@ -227,6 +245,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damaged pad type <br>
 									<input type="checkbox"/> AVDD <br>
@@ -269,6 +288,7 @@
 						<hr>
 						<p>
 							<ul>
+								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
 								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input id="i1" type="checkbox"/> Soldering pad for CC detached <br>
