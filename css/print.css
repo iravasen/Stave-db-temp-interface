@@ -48,7 +48,7 @@ input[type=number]#printnumb2{
   border-style: hidden;
   display: inline;
   position: relative;
-  margin-left: 0;
+  margin-left: -0.1em;
 
   -moz-appearance: textfield;
   appearance: textfield;
@@ -89,14 +89,6 @@ textarea{
   background-color: white;
 }
 
-select{
-  background-color: white;
-  border-style: hidden;
-  appearance: none;
-  -moz-appearance: none;
-  -webkit-appearance: none;
-}
-
 select#sites{
   display: inline;
   position: relative;
@@ -113,6 +105,26 @@ select#upd{
   display: inline;
   position: relative;
   margin-left: -3em;
+}
+
+select#selstv{
+  display: inline;
+  position: relative;
+  margin-left: 0.3em;
+}
+
+select#selhs{
+  display: inline;
+  position: relative;
+  margin-left: 0.3em;
+}
+
+select{
+  background-color: white;
+  border-style: hidden;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
 }
 
 legend{
@@ -133,6 +145,4 @@ legend{
       color: transparent;
   }
 
-  @page { margin: 0; }
-  body { margin: 1.6cm; }
 }
