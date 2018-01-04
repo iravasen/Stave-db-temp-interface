@@ -1,6 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
+
+	<meta http-equiv="Cache-control" content="no-cache">
+
 	<title>HIC cut + power</title>
 
   <!--Include CSS file-->
@@ -52,6 +55,18 @@
 			display: block;
 		}
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = 	"OB-HIC-" +
+												document.getElementsByName("hicnumber")[0].value +
+												document.getElementsByName("hicflavor")[0].value +
+												"_tab_wing_cut_inspection_and_power_test_report";
+			window.print();
+			document.title = "HIC cut + power";
+		}
+	</script>
 </head>
 
 <body class="special">
@@ -64,7 +79,7 @@
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 			<p>
-				<?php include('ids/hicid.html')?>
+				<?php include('ids/hicid.html')?> cut and power test
 			</p>
 	</fieldset>
 	<br>
@@ -146,7 +161,7 @@
 				<p id="p1"> CC type: <input type="checkbox"/> DVDD <input type="checkbox"/> DVSS <input type="checkbox"/> AVDD <input type="checkbox"/> AVSS <input type="checkbox"/> BACK-BIAS</p>
 				<br />
 				<input id="oth" type="checkbox" name="other" value="other"/> Other
-				<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
+				<textarea id="texta1" cols="50" rows="4" placeholder="Specify"></textarea>
 				<br><br>
 
 				<span> Do they affect the HIC functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
@@ -355,7 +370,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="hiccut.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 

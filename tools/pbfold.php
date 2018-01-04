@@ -3,9 +3,13 @@
 <head>
 	<title>PB+BB folding</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+	
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
+
+
 
 	<br>
   <?php include('add/addscript.html');?>
@@ -17,9 +21,9 @@
 			document.title = document.getElementById('selpb').value +
 												"_and_" + document.getElementById('selbb').value +
 												"_folding_for_" +
-												document.getElementById('sites').value +
-												document.getElementById('selstv').value +
-												document.getElementById('printnumb').value +
+												document.getElementsByName("stavecity")[0].value +
+												document.getElementsByName("selectedstave")[0].value +
+												document.getElementsByName("stavenumber")[0].value +
 												"_report";
 			window.print();
 			document.title = "PB+BB folding";
@@ -39,7 +43,7 @@
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
 			<p>
-				<?php include('ids/pbid_nonum.html')?> and <?php include('ids/bbid_nonum.html')?> folding for <?php include('ids/stvid.html')?>
+				<?php include('ids/pbid_nonum.html');?> and <?php include('ids/bbid_nonum.html');?> folding for <?php include('ids/stvid.html');?>
 			</p>
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin

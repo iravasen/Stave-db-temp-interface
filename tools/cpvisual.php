@@ -1,7 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Cold Plate visual inspection</title>
+
+	<meta http-equiv="Cache-control" content="no-cache">
+
+	<title>CP insp and plan</title>
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
@@ -16,6 +19,17 @@
 			display: block;
 		}
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("selectedcp")[0].value +
+												document.getElementsByName("cpidname")[0].value +
+												"_inspection_and_planarity_report";
+			window.print();
+			document.title = "CP insp and plan";
+		}
+	</script>
 
 </head>
 
@@ -163,7 +177,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="cpvisual.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

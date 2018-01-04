@@ -3,6 +3,8 @@
 <head>
 	<title>Space Frame visual inspection (reception)</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -20,6 +22,17 @@
 			display: block;
 		}
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("selectedsf")[0].value +
+												document.getElementsByName("sfnumber")[0].value +
+												"_inspection_report";
+			window.print();
+			document.title = "Space Frame visual inspection (reception)";
+		}
+	</script>
 
 </head>
 
@@ -118,7 +131,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="recspaceframe.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

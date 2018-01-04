@@ -3,6 +3,8 @@
 <head>
 	<title>HIC powering after gluing</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -21,6 +23,22 @@
 		}
 
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = 	"OB-HIC-" +
+												document.getElementsByName("hicnumber")[0].value +
+												document.getElementsByName("hicflavor")[0].value +
+												"_powering_test_on_" +
+												document.getElementsByName("selectedcp")[0].value +
+												document.getElementsByName("cpidname")[0].value +
+												"_report";
+			window.print();
+			document.title = "HIC powering after gluing";
+		}
+	</script>
+
 </head>
 
 <body>
@@ -134,7 +152,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="poweringaftgluing.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 </body>
 </html>

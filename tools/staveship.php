@@ -3,6 +3,8 @@
 <head>
 	<title>Stave shipment</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -19,6 +21,18 @@
 		}
 
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("stavecity")[0].value +
+												document.getElementsByName("selectedstave")[0].value +
+												document.getElementsByName("stavenumber")[0].value +
+												"_shipment_report";
+			window.print();
+			document.title = "Stave shipment";
+		}
+	</script>
 
 
 </head>
@@ -153,7 +167,7 @@
 include('imagetool/imagetool.html');
 ?>
 
-<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 <a id="noprint" href="staveship.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 </body>
 </html>

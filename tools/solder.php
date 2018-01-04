@@ -3,6 +3,8 @@
 <head>
 	<title>Soldering/Desoldering</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -110,6 +112,23 @@
 
 	</style>
 
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = 	"Bridge_resistors_fpc-ext-gs-" +
+			  								document.getElementsByName("extlotnumber")[0].value +
+												"-" +
+												document.getElementsByName("extflavor")[0].value +
+												"_soldering_desoldering_on_" +
+												document.getElementsByName("selectedcity")[0].value +
+												document.getElementsByName("selectedhs")[0].value +
+												document.getElementsByName("hsnumber")[0].value +
+												"_report";
+			window.print();
+			document.title = "Soldering/Desoldering";
+		}
+	</script>
+
 </head>
 
 <body class="special">
@@ -170,8 +189,8 @@
 <fieldset>
 	<legend> Component IDs </legend>
 		<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?> </p>
-		<p> <strong>FPC-Extension id</strong>: GS <input type="text" placeholder="XXX" style="width: 100px"/>
-			<select id="upd">
+		<p> <strong>FPC-Extension id</strong>: GS <input name="extlotnumber" type="text" placeholder="XXX" style="width: 100px"/>
+			<select name="extflavor" id="upd">
 				<option> - </option>
 				<option> up </option>
 				<option> down </option>
@@ -748,7 +767,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="solder.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

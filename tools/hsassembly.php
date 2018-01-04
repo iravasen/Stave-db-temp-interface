@@ -3,6 +3,8 @@
 <head>
 	<title>HS assembly</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -28,6 +30,18 @@
 			display: block;
 		}
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("selectedcity")[0].value +
+												document.getElementsByName("selectedhs")[0].value +
+												document.getElementsByName("hsnumber")[0].value +
+												"_assembly_report";
+			window.print();
+			document.title = "HS assembly";
+		}
+	</script>
 
 </head>
 
@@ -82,7 +96,7 @@
 	 <legend> Component IDs </legend>
 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
 		 <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
-		
+
 
 		 <fieldset>
 			 <legend> Half-Stave composition </legend>
@@ -207,7 +221,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="hsassembly.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

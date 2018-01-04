@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Flter Board visual inspection (reception)</title>
+	<title>Filter Board visual inspection (reception)</title>
+
+	<meta http-equiv="Cache-control" content="no-cache">
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
@@ -16,6 +18,17 @@
 			display: block;
 		}
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("fbselected")[0].value +
+												document.getElementsByName("fbnumber")[0].value +
+												"_reception_test_report";
+			window.print();
+			document.title = "Filter Board visual inspection (reception)";
+		}
+	</script>
 
 </head>
 
@@ -157,7 +170,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="recfilterboard.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

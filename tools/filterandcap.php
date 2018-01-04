@@ -3,6 +3,8 @@
 <head>
 	<title>FB and capacitor soldering</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/> <!--For the printer-->
@@ -60,9 +62,25 @@
 		input#i3:checked ~ p#p3 {
 			display: block;
 		}
-
-
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title =  "Capacitor_and_" +
+												document.getElementsByName("fbselected")[0].value +
+												document.getElementsByName("fbnumber")[0].value +
+												"_soldering_on_" +
+												document.getElementsByName("pbselected")[0].value +
+												document.getElementsByName("pbnumber")[0].value +
+												"_and_" +
+												document.getElementsByName("bbselected")[0].value +
+												document.getElementsByName("bbnumber")[0].value +
+												"_report";
+			window.print();
+			document.title = "FB and capacitor soldering";
+		}
+	</script>
 
 </head>
 
@@ -125,14 +143,14 @@
 					<input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
 					<input id="itin" type="checkbox"/> Other <br>
 
-				<span id="stin"> Tin and its composition <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
+				<span id="stin"> Tin and its composition: <input type="text" placeholder="tin and composition" style="width: 500px"/> </span>
 			</p>
 			<p> <strong>Diameter of the soldering tip</strong>: <br>
 				<input type="checkbox"/> 0.2 mm <br>
 				<input type="checkbox"/> 0.1 mm	<br>
 				<input type="checkbox"/> 0.4 mm <br>
 				<input id="idiam" type="checkbox"/> Other <br>
-				<span id="sdiam"> Diameter <input type="text" style="width: 80px"/> mm</span>
+				<span id="sdiam"> Diameter: <input type="text" style="width: 50px"/> mm</span>
 
 			</p>
 	</fieldset>
@@ -329,7 +347,7 @@
 		</fieldset>
 		<br>
 		<fieldset>
- 			<legend>Damages to the PB termination pads due to heat or wrong handling?</legend><br>
+ 			<legend>Damages to the PB termination pads due wrong handling?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
 			<br />
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -345,12 +363,6 @@
 						<input id="oth" type="checkbox"/> Other
 						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
-					<li> Motivation: <br>
-						<input type="checkbox"/> Heat <br>
-						<input type="checkbox"/> Handling <br>
-						<input id="oth" type="checkbox"/> Other
-						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea><br>
-					</li>
 					<li> Result: <br>
 						<input type="checkbox"/> Acceptable <br>
 						<input type="checkbox"/> Not acceptable
@@ -364,6 +376,49 @@
 			</fieldset>
 
 		</fieldset>
+		<br>
+
+		<fieldset>
+ 			<legend>Damages to the bridge of PB extensions (TOP and BOTTOM) due to heat?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<br />
+
+			<fieldset id="ifproblem">
+				<div id="placeholder-bridgedam">
+					<div id="template-bridgedam">
+						<ul>
+							<li>Extension: <br>
+								<input type="checkbox"/> TOP (only DVDD pads) <br>
+								<input type="checkbox"/> BOTTOM (DVDD and AVDD pads)
+							</li>
+							<li>Damage type: <br>
+								<input id="i1" type="checkbox"/> Some AVDD and/or DVDD pads detached <br>
+								<span id="s1"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
+								<input type="checkbox"/> Ground pads detached <br>
+								<input type="checkbox"/> Damages to bridge coverlay <br>
+								<input id="oth" type="checkbox"/> Other
+								<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
+							</li>
+							<li> Result: <br>
+								<input type="checkbox"/> Acceptable <br>
+								<input type="checkbox"/> Not acceptable
+							</li>
+						</ul>
+
+						<!-- Images -->
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+						<hr>
+				 </div>
+			 </div>
+			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridgedam','template-bridgedam');">Add new item</button></p>
+			</fieldset>
+
+		</fieldset>
+
 		<br>
 		<fieldset>
  			<legend>Damages to the FB due to heat?</legend><br>
@@ -432,7 +487,7 @@
 		</fieldset>
 		<br>
 		<fieldset>
-			<legend>Damages to the BB termination pads due to heat or wrong handling?</legend><br>
+			<legend>Damages to the BB termination pads due to wrong handling?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
 			<br />
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
@@ -448,12 +503,6 @@
 						<input id="oth" type="checkbox"/> Other
 						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
 					</li>
-					<li> Motivation: <br>
-						<input type="checkbox"/> Heat <br>
-						<input type="checkbox"/> Handling <br>
-						<input id="oth" type="checkbox"/> Other
-						<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea><br>
-					</li>
 					<li> Result: <br>
 						<input type="checkbox"/> Acceptable <br>
 						<input type="checkbox"/> Not acceptable
@@ -467,6 +516,45 @@
 			</fieldset>
 
 		</fieldset>
+		<br>
+
+		<fieldset>
+ 			<legend>Damages to the bridge of BB extension due to heat?</legend><br>
+			<input type="checkbox" name="No" value="No"/> No
+			<br />
+			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<br />
+
+			<fieldset id="ifproblem">
+				<div id="placeholder-bridgebbdam">
+					<div id="template-bridgebbdam">
+						<ul>
+							<li>Damage type: <br>
+								<input id="i1" type="checkbox"/> Some pads detached <br>
+								<span id="s1"> Number of pads: <input type="text" style="width: 90px"/> </span><br>
+								<input type="checkbox"/> Ground pads detached <br>
+								<input type="checkbox"/> Damages to bridge coverlay <br>
+								<input id="oth" type="checkbox"/> Other
+								<textarea id="texta1" cols="50" rows="4" placeholder="Describe"></textarea> <br>
+							</li>
+							<li> Result: <br>
+								<input type="checkbox"/> Acceptable <br>
+								<input type="checkbox"/> Not acceptable
+							</li>
+						</ul>
+
+						<!-- Images -->
+						<?php
+						include('imagetool/imagetool.html');
+						?>
+						<hr>
+				 </div>
+			 </div>
+			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridgebbdam','template-bridgebbdam');">Add new item</button></p>
+			</fieldset>
+
+		</fieldset>
+
 		<br>
 		<fieldset>
 			<legend>Damages to the FB due to heat?</legend><br>
@@ -508,7 +596,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="filterandcap.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>

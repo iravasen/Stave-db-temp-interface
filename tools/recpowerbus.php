@@ -3,6 +3,8 @@
 <head>
 	<title>Power Bus inspection (reception)</title>
 
+	<meta http-equiv="Cache-control" content="no-cache">
+
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
@@ -31,9 +33,19 @@
 		input#cappad:checked ~ fieldset#f2 {
 			display: block;
 		}
-
-
 	</style>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title = document.getElementsByName("pbselected")[0].value +
+												document.getElementsByName("pbnumber")[0].value +
+												"_reception_test_report";
+			window.print();
+			document.title = "Power Bus inspection (reception)";
+		}
+	</script>
+
 
 	<br>
   <?php include('add/addscript.html');?>
@@ -198,10 +210,6 @@
 							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
 						</ul>
 
-						<?php
-						include('imagetool/imagetool.html');
-						?>
-
 						<hr>
 					</div>
 				</div>
@@ -286,7 +294,7 @@
 	include('imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="recpowerbus.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 </body>
