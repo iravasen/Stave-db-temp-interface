@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Soldering/Desoldering</title>
+	<title>FB and capacitor soldering</title>
+
+	<meta http-equiv="Cache-control" content="no-cache">
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../../css/print.css" media="print" /> <!--For the printer-->
@@ -52,6 +54,24 @@
 	<br>
   <?php include('../add/addscript.html');?>
   <br>
+
+	<!-- To print the page with a default name -->
+	<script type="text/javascript">
+		function printall(){
+			document.title =  "Rework_Capacitor_and_" +
+												document.getElementsByName("fbselected")[0].value +
+												document.getElementsByName("fbnumber")[0].value +
+												"_soldering_on_" +
+												document.getElementsByName("pbselected")[0].value +
+												document.getElementsByName("pbnumber")[0].value +
+												"_and_" +
+												document.getElementsByName("bbselected")[0].value +
+												document.getElementsByName("bbnumber")[0].value +
+												"_report";
+			window.print();
+			document.title = "FB and capacitor soldering";
+		}
+	</script>
 
 </head>
 
@@ -121,7 +141,7 @@
 			 <input type="checkbox"/> 0.1 mm	<br>
 			 <input type="checkbox"/> 0.4 mm <br>
 			 <input id="idiam" type="checkbox"/> Other <br>
-			 <span id="sdiam"> Diameter <input type="text" style="width: 80px"/> mm</span>
+			 <span id="sdiam"> Diameter <input type="text" style="width: 60px"/> mm</span>
 
 		 </p>
  </fieldset>
@@ -180,7 +200,7 @@
 	include('../imagetool/imagetool.html');
 	?>
 
-	<input id="noprint" type="button" value="Save page" style="position: center" onClick="window.print()"/>
+	<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
 	<a id="noprint" href="filterandcap_rework.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
 
 
