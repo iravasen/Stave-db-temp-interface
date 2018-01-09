@@ -1,5 +1,5 @@
 <script type='text/javascript'>
-var _counter = 0;
+var _counter = 1;
 
 /*function Remove(removeBtn) {
   $(removeBtn).parent().parent().remove();
@@ -38,12 +38,13 @@ function Add(divext, divint) {
   _counter++;
   var oClone = document.getElementById(divint.toString()).cloneNode(true);
   oClone.id += (_counter + "");
-  document.getElementById(divext.toString()).appendChild(oClone);
+  document.getElementById(divext.toString()+'-0').appendChild(oClone);
+  document.getElementById(oClone.id).style.display = "block";
 
 
-  var htmlrem = '<button type="button" onclick="Remove(' + "'"+ divext + "'" + ',' + "'" + divint + _counter + "'" + '); $(this).parent().remove();">Remove item </button> ';
+  var htmlrem = '<button type="button" onclick="Remove(' + "'"+ divext + "-0'" + ',' + "'" + divint + _counter + "'" + '); $(this).parent().remove();">Remove item </button> ';
 
-  var p = document.getElementById(divext.toString());
+  var p = document.getElementById(divext.toString()+'-0');
   var newElement = document.createElement('p');
   newElement.setAttribute('id', 'noprint');
   newElement.innerHTML = htmlrem;
