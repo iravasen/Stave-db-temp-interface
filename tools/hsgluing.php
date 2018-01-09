@@ -64,6 +64,9 @@
 		}
 	</script>
 
+	<!-- For cloning objects -->
+	<?php include('clone_models/hsgluing_models.php')?>
+	
 </head>
 
 <body class="special">
@@ -199,8 +202,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-dam">
-					<div id="template-dam">
+				<div id="placeholder-dam-0">
+					<div id="template-dam-0">
 						<hr>
 						<ul>
 							<li> For HIC in position: <input id="printnumb2" type="number" style="width: 60px"/></li>
@@ -217,6 +220,7 @@
 						<hr>
 					</div>
 				</div>
+
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-dam','template-dam');">Add new item</button></p>
 			</fieldset>
 
@@ -224,7 +228,7 @@
 
 	</form>
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

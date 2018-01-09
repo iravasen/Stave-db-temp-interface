@@ -7,9 +7,7 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
-	<br>
   <?php include('add/addscript.html');?>
-  <br>
 
 </head>
 

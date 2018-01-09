@@ -30,6 +30,11 @@
 		}
 	</script>
 
+	<?php include('add/addscript.html');?>
+
+	<!-- For cloning objects -->
+	<?php include('clone_models/recfilterboard_models.php')?>
+
 </head>
 
 <body class="special">
@@ -129,8 +134,8 @@
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-shorts">
-					<div id="template-shorts">
+				<div id="placeholder-shorts-0">
+					<div id="template-shorts-0">
 						<ul>
 							<li> Describe: <br>
 								<textarea rows="3" cols="100" placeholder="describe"></textarea>
@@ -162,7 +167,7 @@
 	</form>
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

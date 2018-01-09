@@ -46,6 +46,10 @@
 			display: none;
 		}
 
+		ul#awa{
+			display: none;
+		}
+
 		ul#awb{
 			display: none;
 		}
@@ -67,6 +71,10 @@
 		}
 
 		input#iwb:checked ~ ul#awb {
+			display: block;
+		}
+
+		input#iwa:checked ~ ul#awa {
 			display: block;
 		}
 
@@ -129,6 +137,8 @@
 		}
 	</script>
 
+	<!--For cloning objects -->
+	<?php include('clone_models/solder_models.php')?>
 </head>
 
 <body class="special">
@@ -221,435 +231,9 @@
 
 <br><br>
 	<h2> Report </h2>
-
 	<br><br>
-  <h2>Bridge soldering</h2>
 
-	<fieldset>
-		<legend>Alignment problems of the two neighbour FPCs?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-align">
-				<div id="template-align">
-					<hr>
-					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
-					<input id="x" type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
-					<br>
-					<textarea id="textx" cols="50" rows="3" placeholder="comments"></textarea>
-					<input id="z" type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
-					<br>
-					<textarea id="textz" cols="50" rows="3" placeholder="comments"></textarea>
-					<input id="oth" type="checkbox" name="4" value="4"/> Other
-					<br>
-					 <textarea id="textoth" rows="3" cols="50" placeholder="describe"></textarea>
-					<br>
-					<ul>
-						<li> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input id="misal" type="checkbox"/> No <br>
-							<textarea id="textmisal" cols="50" rows="3" placeholder="comments"></textarea>
-						</li>
-					</ul>
-					<br>
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-				</div>
-			</div>
-			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-align','template-align');">Add new item</button></p>
-
-		</fieldset>
-
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Presence of (visible) shorts?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-shorts">
-				<div id="template-shorts">
-					<hr>
-					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
-					<input type="checkbox" name="1" value="1"/> Short disappered after rework
-					<br>
-					<input type="checkbox" name="2" value="2"/> Cannot remove the short
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
-		</fieldset>
-
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Damages to wire-bonds?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-bonds">
-				<div id="template-bonds">
-					<hr>
-					<span>Module in position <input type="text" style="width: 80px"/> </span> <br>
-					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
-					<span>ALPIDE pad type: <input type="text" style="width: 100px"/> </span> <br>
-
-					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: 4em;"/>
-					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
-					<br>
-					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bonds','template-bonds');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-fpc">
-				<div id="template-fpc">
-					<hr>
-					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
-					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
-					<br>
-					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Damages to bridges due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-bridge">
-				<div id="template-bridge">
-					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
-					<span>Bridge position in the field of view: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
-					<br>
-					<p> Damage type: <br>
-					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
-					<br>
-					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
-					</p>
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridge','template-bridge');">Add new item</button></p>
-		</fieldset>
-
-	</fieldset>
-
-	<br><br>
-  <h2>Desoldering of termination resistors</h2>
-
-	<fieldset>
-		<legend>Have you lost some resistance after desoldering?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-tlost">
-				<div id="template-tlost">
-
-					<hr>
-					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
-
-					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
-					<br>
-
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-tlost','template-tlost');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Damages to wire-bonds?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-modid">
-				<div id="template-modid">
-					<hr>
-					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-
-					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 4em;"/>
-
-					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
-					<ul id="bonds1">
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-
-					<br>
-					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
-					<ul id="bonds2">
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-					<br>
-					<input id="wb3" type="checkbox" name="2" value="2"/> Other
-					<ul id="bonds3">
-						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-					<br>
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-fpc">
-				<div id="template-fpc">
-					<hr>
-					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
-					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
-					<br>
-					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-
-	<br><br>
-  <h2>Desoldering of MOD_ID resistors</h2>
-
-	<fieldset>
-		<legend>Have you lost some resistance after desoldering?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-idlost">
-				<div id="template-idlost">
-
-					<hr>
-					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
-
-					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
-					<br>
-
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-idlost','template-idlost');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-Rwrong">
-				<div id="template-Rwrong">
-
-					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: -1.5em;"/>
-
-					<hr>
-					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
-
-					<ul>
-						<li> <input type="checkbox" name="1" value="1"/> Resistance resoldered without problems </li>
-						<li> <input id="iwb" type="checkbox" name="1" value="1"/> Resistance resoldered damaging CHIP_ID wire-bonds
-							<ul id="awb">
-								<li><input type="checkbox"/> still working (to be tested) </li>
-							  <li><input type="checkbox"/> not working</li>
-							</ul>
-						</li>
-						<li> <input id="ipwr" type="checkbox" name="1" value="1"/> Resistance resoldered damaging Power/ground wire-bonds
-							<ul id="apwr">
-								<li><input type="checkbox"/> still working (to be tested) </li>
-							  <li><input type="checkbox"/> not working</li>
-							</ul>
-						</li>
-
-						<li> <input id="ioth" type="checkbox" name="1" value="1"/> Other
-							<ul id="aoth">
-								<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
-								<li><input type="checkbox"/> still working (to be tested) </li>
-							  <li><input type="checkbox"/> not working</li>
-							</ul>
-						</li>
-					</ul>
-
-
-					<br>
-
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-Rwrong','template-Rwrong');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Damages to wire-bonds?</legend><br>
-
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-		<br />
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-modid">
-				<div id="template-modid">
-					<hr>
-					<span>Module position: <input type="text" style="width: 80px"/></span><br>
-					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
-
-					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 3em;"/>
-
-					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
-					<ul id="bonds1">
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-
-					<br>
-					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
-					<ul id="bonds2">
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-					<br>
-					<input id="wb3" type="checkbox" name="2" value="2"/> Other
-					<ul id="bonds3">
-						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
-						<li><input type="checkbox"/> still working (to be tested) </li>
-					  <li><input type="checkbox"/> not working</li>
-					</ul>
-					<br>
-					<br>
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
-		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
-
-		<fieldset id="ifproblem">
-			<div id="placeholder-fpc">
-				<div id="template-fpc">
-					<hr>
-					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
-					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
-					<br>
-					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
-					<?php
-					include('imagetool/imagetool.html');
-					?>
-
-					<hr>
-			 </div>
-		 </div>
-		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
-		</fieldset>
-	</fieldset>
-
-
-  <br><br>
-  <h2>FPC extension alignment, gluing and soldering</h2>
+	<h2>FPC extension alignment, gluing and soldering</h2>
 
 	<fieldset>
 		<legend>Alignment between FPC extension and Module 1. Problems?</legend><br>
@@ -728,14 +312,14 @@
 	</fieldset>
 	<br>
 	<fieldset>
-		<legend>FPC extension soldering. Damages to wire-bonds?</legend><br>
+		<legend>FPC extension soldering. Damages to wire-bonds of Module in position 1?</legend><br>
 		<input type="checkbox" name="No" value="No"/> No
 		<br />
 		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
-			<div id="placeholder-fpcext">
-				<div id="template-fpcext">
+			<div id="placeholder-fpcext-0">
+				<div id="template-fpcext-0">
 					<hr>
 
 					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: .5em;"/>
@@ -757,9 +341,449 @@
 
 	</fieldset>
 
+	<br><br>
+  <h2>Bridge soldering</h2>
+
+	<fieldset>
+		<legend>Alignment problems of the two neighbour FPCs?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-align-0">
+				<div id="template-align-0">
+					<hr>
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
+					<input id="x" type="checkbox" name="1" value="1"/> FPCs not aligned in x axis
+					<br>
+					<textarea id="textx" cols="50" rows="3" placeholder="comments"></textarea>
+					<input id="z" type="checkbox" name="2" value="2"/> FPCs not aligned in z axis
+					<br>
+					<textarea id="textz" cols="50" rows="3" placeholder="comments"></textarea>
+					<input id="oth" type="checkbox" name="4" value="4"/> Other
+					<br>
+					 <textarea id="textoth" rows="3" cols="50" placeholder="describe"></textarea>
+					<br>
+					<ul>
+						<li> Misalignment compensated with the bridge soldering: <input type="checkbox"/> Yes <input id="misal" type="checkbox"/> No <br>
+							<textarea id="textmisal" cols="50" rows="3" placeholder="comments"></textarea>
+						</li>
+					</ul>
+					<br>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+				</div>
+			</div>
+
+			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-align','template-align');">Add new item</button></p>
+
+		</fieldset>
+
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Presence of (visible) shorts?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-shorts-0">
+				<div id="template-shorts-0">
+					<hr>
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
+					<input type="checkbox" name="1" value="1"/> Short disappered after rework
+					<br>
+					<input type="checkbox" name="2" value="2"/> Cannot remove the short
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
+		</fieldset>
+
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Damages to wire-bonds?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-bonds-0">
+				<div id="template-bonds-0">
+					<hr>
+					<span>Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<span>Chip number <input type="text" style="width: 80px"/> </span> <br>
+					<span>ALPIDE pad type: <input type="text" style="width: 100px"/> </span> <br>
+
+					<img id="noprint" src="../img/chip.png" heigh="300px" width="600px" style="float: right; position: relative; bottom: 4em;"/>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bonds','template-bonds');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Visible damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc1-0">
+				<div id="template-fpc1-0">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc1','template-fpc1');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Damages to bridges due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-bridge-0">
+				<div id="template-bridge-0">
+					<span>Connection between HIC in position <input id="printnumb2" type="number" style="width: 30px;"/> and <input id="printnumb2" type="number" style="width: 30px;"/></span> <br>
+					<span>Bridge position in the field of view: <br> <input type="checkbox"/> Up <br> <input type="checkbox"/> Down</span><br>
+					<br>
+					<p> Damage type: <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					</p>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridge','template-bridge');">Add new item</button></p>
+		</fieldset>
+
+	</fieldset>
+
+	<br><br>
+  <h2>Desoldering of termination resistors</h2>
+
+	<fieldset>
+		<legend>Have you lost some resistance after desoldering?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-tlost-0">
+				<div id="template-tlost-0">
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
+
+					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-tlost','template-tlost');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Damages to wire-bonds?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-modid-0">
+				<div id="template-modid-0">
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 4em;"/>
+
+					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
+					<ul id="bonds1">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+
+					<br>
+					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
+					<ul id="bonds2">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+					<br>
+					<input id="wb3" type="checkbox" name="2" value="2"/> Other
+					<ul id="bonds3">
+						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+					<br>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid','template-modid');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Visible damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc2-0">
+				<div id="template-fpc2-0">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc2','template-fpc2');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<br><br>
+  <h2>Desoldering of MOD_ID resistors</h2>
+
+	<fieldset>
+		<legend>Have you lost some resistance after desoldering?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-idlost-0">
+				<div id="template-idlost-0">
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
+
+					<input type="checkbox" name="1" value="1"/> Lost resistance may have caused shorts somewhere (to be tested)
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-idlost','template-idlost');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-Rwrong-0">
+				<div id="template-Rwrong-0">
+
+					<img id="noprint" src="../img/chip.png" heigh="150px" width="450px" style="float: right; position: relative; bottom: -1.5em;"/>
+
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+					<span>Resistance id (number): <input type="text" style="width: 80px"/></span><br>
+
+					<ul>
+						<li> <input id="iwa" type="checkbox" name="1" value="1"/> Resistance resoldered without problems
+							<ul id="awa">
+								<li><input type="checkbox"/> still working (to be tested) </li>
+								<li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+						<li> <input id="iwb" type="checkbox" name="1" value="1"/> Resistance resoldered damaging CHIP_ID wire-bonds
+							<ul id="awb">
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+						<li> <input id="ipwr" type="checkbox" name="1" value="1"/> Resistance resoldered damaging Power/ground wire-bonds
+							<ul id="apwr">
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+
+						<li> <input id="ioth" type="checkbox" name="1" value="1"/> Other
+							<ul id="aoth">
+								<li><textarea cols="50" rows="3" placeholder="specify" style="width: 50%"></textarea></li>
+								<li><input type="checkbox"/> still working (to be tested) </li>
+							  <li><input type="checkbox"/> not working</li>
+							</ul>
+						</li>
+					</ul>
+
+
+					<br>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-Rwrong','template-Rwrong');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Damages to wire-bonds?</legend><br>
+
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<br />
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-modid1-0">
+				<div id="template-modid1-0">
+					<hr>
+					<span>Module position: <input type="text" style="width: 80px"/></span><br>
+					<span>Master: <input type="text" placeholder="0 or 8" style="width: 80px"/></span><br>
+
+					<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: 3em;"/>
+
+					<input id="wb1" type="checkbox" name="1" value="1"/> Damages to Chip_ID bonds
+					<ul id="bonds1">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+
+					<br>
+					<input id="wb2" type="checkbox" name="2" value="2"/> Damages to power/ground bonds
+					<ul id="bonds2">
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+					<br>
+					<input id="wb3" type="checkbox" name="2" value="2"/> Other
+					<ul id="bonds3">
+						<li><textarea cols="50" rows="3" placeholder="specify"></textarea></li>
+						<li><input type="checkbox"/> still working (to be tested) </li>
+					  <li><input type="checkbox"/> not working</li>
+					</ul>
+					<br>
+					<br>
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-modid1','template-modid1');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+	<br>
+	<fieldset>
+		<legend>Visible damages to FPC due to heat?</legend><br>
+		<input type="checkbox" name="No" value="No"/> No
+		<br>
+		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-fpc-0">
+				<div id="template-fpc-0">
+					<hr>
+					<span>FPC of Module in position <input type="text" style="width: 80px"/> </span> <br>
+					<input type="checkbox" name="1" value="1"/> Damaged, but it still seems to work (to be tested)
+					<br>
+					<input type="checkbox" name="2" value="2"/> Damaged, and it doesn't work anymore
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+			 </div>
+		 </div>
+		 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fpc','template-fpc');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+  <br>
 
 	<h2> Other problems/comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="15" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

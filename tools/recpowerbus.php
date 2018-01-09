@@ -47,10 +47,11 @@
 	</script>
 
 
-	<br>
-  <?php include('add/addscript.html');?>
-  <br>
 
+  <?php include('add/addscript.html');?>
+
+	<!--For cloning objects -->
+	<?php include('clone_models/recpowerbus_models.php')?>
 </head>
 
 <body class="special">
@@ -132,8 +133,8 @@
 
 				<!-- Power bus pads fro cross-cables -->
 				<fieldset id="f1">
-					<div id="placeholder-pbdam">
-						<div id="template-pbdam">
+					<div id="placeholder-pbdam-0">
+						<div id="template-pbdam-0">
 							<hr>
 							<h4 style="color: red"> CROSS-CABLE PADS </h4>
 							<p>
@@ -164,8 +165,8 @@
 
 				<!-- Capacitor pads -->
 				<fieldset id="f2">
-					<div id="placeholder-cappad">
-						<div id="template-cappad">
+					<div id="placeholder-cappad-0">
+						<div id="template-cappad-0">
 							<hr>
 							<h4 style="color: red"> CAPACITOR PADS </h4>
 							<p>
@@ -203,8 +204,8 @@
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-interline">
-					<div id="template-interline">
+				<div id="placeholder-interline-0">
+					<div id="template-interline-0">
 						<ul>
 							<li> Interrupted line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
 							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
@@ -226,8 +227,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-res">
-					<div id="template-res">
+				<div id="placeholder-res-0">
+					<div id="template-res-0">
 						<ul>
 							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
 							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
@@ -252,8 +253,8 @@
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-shorts">
-					<div id="template-shorts">
+				<div id="placeholder-shorts-0">
+					<div id="template-shorts-0">
 						<ul>
 							<li> Line type: <input type="checkbox"/> AVDD <input type="checkbox"/> DVDD </li>
 							<li> For HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/></li>
@@ -286,7 +287,7 @@
 	</form>
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

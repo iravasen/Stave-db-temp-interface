@@ -9,7 +9,6 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
-	<?php include('add/addscript.html');?>
 
 	<style>
 		span#s1{
@@ -33,6 +32,11 @@
 			document.title = "Stave shipment";
 		}
 	</script>
+
+	<?php include('add/addscript.html');?>
+
+	<!--For cloning objects -->
+	<?php include('clone_models/staveship_models.php');?>
 
 
 </head>
@@ -103,8 +107,8 @@
 		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
-			<div id="placeholder-ship">
-				<div id="template-ship">
+			<div id="placeholder-ship-0">
+				<div id="template-ship-0">
 					<hr>
 					<p>
 						<ul>
@@ -159,7 +163,7 @@
 </form>
 
 <h2> Other comments </h2>
-<textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+<textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 <!-- Images -->
 <h2> Other pictures not included in the form </h2>

@@ -82,6 +82,9 @@
 		}
 	</script>
 
+	<!--For cloning objects -->
+	<?php include('clone_models/filterandcap_models.php');?>
+
 </head>
 
 <body class="special">
@@ -172,8 +175,8 @@
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-shorts">
-					<div id="template-shorts">
+				<div id="placeholder-shorts-0">
+					<div id="template-shorts-0">
 						<hr>
 						<span>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </span> <br>
 						<input type="checkbox" name="1" value="1"/> Short disappeared after rework
@@ -187,6 +190,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -199,8 +203,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-pbheat">
-					<div id="template-pbheat">
+				<div id="placeholder-pbheat-0">
+					<div id="template-pbheat-0">
 						<hr>
 						<ul>
 							<li>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </li>
@@ -228,6 +232,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-pbheat','template-pbheat');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -244,8 +249,8 @@
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bbshorts">
-					<div id="template-bbshorts">
+				<div id="placeholder-bbshorts-0">
+					<div id="template-bbshorts-0">
 						<hr>
 						<span>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </span> <br>
 						<input type="checkbox" name="1" value="1"/> Short disappered after rework
@@ -260,6 +265,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bbshorts','template-bbshorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -272,8 +278,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bbheat">
-					<div id="template-bbheat">
+				<div id="placeholder-bbheat-0">
+					<div id="template-bbheat-0">
 						<hr>
 						<ul>
 							<li>Close to HIC in position <input id="printnumb2" type="number" style="width: 70px"/> </li>
@@ -301,6 +307,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bbheat','template-bbheat');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -319,8 +326,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-fbshorts">
-					<div id="template-fbshorts">
+				<div id="placeholder-fbshorts-0">
+					<div id="template-fbshorts-0">
 						<hr>
 						<ul>
 							<li> Line type: <input id="i3" type="checkbox"/> AVDD <input id="i3" type="checkbox"/> DVDD
@@ -342,6 +349,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-fbshorts','template-fbshorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -386,8 +394,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bridgedam">
-					<div id="template-bridgedam">
+				<div id="placeholder-bridgedam-0">
+					<div id="template-bridgedam-0">
 						<ul>
 							<li>Extension: <br>
 								<input type="checkbox"/> TOP (only DVDD pads) <br>
@@ -414,6 +422,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridgedam','template-bridgedam');">Add new item</button></p>
 			</fieldset>
 
@@ -462,8 +471,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bbfbshorts">
-					<div id="template-bbfbshorts">
+				<div id="placeholder-bbfbshorts-0">
+					<div id="template-bbfbshorts-0">
 						<hr>
 						<ul>
 							<li> Line of HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> <br>
@@ -482,6 +491,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bbfbshorts','template-bbfbshorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -526,8 +536,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bridgebbdam">
-					<div id="template-bridgebbdam">
+				<div id="placeholder-bridgebbdam-0">
+					<div id="template-bridgebbdam-0">
 						<ul>
 							<li>Damage type: <br>
 								<input id="i1" type="checkbox"/> Some pads detached <br>
@@ -550,6 +560,7 @@
 						<hr>
 				 </div>
 			 </div>
+
 			 <p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bridgebbdam','template-bridgebbdam');">Add new item</button></p>
 			</fieldset>
 
@@ -588,7 +599,7 @@
 	</form>
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="Insert short report"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="Insert short report"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

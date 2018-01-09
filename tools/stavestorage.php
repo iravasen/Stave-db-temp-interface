@@ -32,6 +32,9 @@
 		}
 	</script>
 
+	<!--For cloning objects-->
+	<?php include('clone_models/stavestorage_models.php')?>
+
 </head>
 
 <body class="special">
@@ -99,8 +102,8 @@
 		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
-			<div id="placeholder-storage">
-				<div id="template-storage">
+			<div id="placeholder-storage-0">
+				<div id="template-storage-0">
 					<hr>
 					<p>
 						<ul>

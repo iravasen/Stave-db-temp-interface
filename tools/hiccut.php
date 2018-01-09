@@ -67,6 +67,10 @@
 			document.title = "HIC cut + power";
 		}
 	</script>
+
+	<!-- For cloning objects -->
+	<?php include('clone_models/hiccut_models.php')?>
+
 </head>
 
 <body class="special">
@@ -179,8 +183,8 @@
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bond">
-					<div id="template-bond">
+				<div id="placeholder-bond-0">
+					<div id="template-bond-0">
 						<hr>
 						<ul>
 							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
@@ -242,6 +246,7 @@
 						<hr>
 					</div>
 				</div>
+
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bond','template-bond');">Add new item</button></p>
 			</fieldset>
 
@@ -256,8 +261,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bondrisk">
-					<div id="template-bondrisk">
+				<div id="placeholder-bondrisk-0">
+					<div id="template-bondrisk-0">
 						<hr>
 						<ul>
 							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
@@ -314,6 +319,7 @@
 						<hr>
 					</div>
 				</div>
+
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bondrisk','template-bondrisk');">Add new item</button></p>
 			</fieldset>
 
@@ -362,7 +368,7 @@
 
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

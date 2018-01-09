@@ -101,19 +101,19 @@
  			<legend>Voltages and currents</legend><br>
 
 			<ul>
-				<li>AVDD: <input type="text" style="width: 65px"/> V <br>
+				<li>AVDD: <input type="text" style="width: 50px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 65px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input type="text" style="width: 50px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>DVDD: <input type="text" style="width: 65px"/> V <br>
+				<li>DVDD: <input type="text" style="width: 50px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input type="text" style="width: 65px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input type="text" style="width: 50px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
@@ -144,7 +144,7 @@
 	</form>
 
 	<h2> Other Comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Pictures </h2>

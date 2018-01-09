@@ -64,6 +64,8 @@
 		}
 	</script>
 
+	<!-- For cloning objects -->
+	<?php include('clone_models/solderPBBB_models.php')?>
 
 </head>
 
@@ -177,8 +179,8 @@
 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-ccbbdam">
-					<div id="template-ccbbdam">
+				<div id="placeholder-ccbbdam-0">
+					<div id="template-ccbbdam-0">
 						<hr>
 						<p>
 							<ul>
@@ -214,8 +216,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-bbpaddam">
-					<div id="template-bbpaddam">
+				<div id="placeholder-bbpaddam-0">
+					<div id="template-bbpaddam-0">
 						<hr>
 						<p>
 							<ul>
@@ -258,8 +260,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-ccpbdam">
-					<div id="template-ccpbdam">
+				<div id="placeholder-ccpbdam-0">
+					<div id="template-ccpbdam-0">
 						<hr>
 						<p>
 							<ul>
@@ -301,8 +303,8 @@
 			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-pbpaddam">
-					<div id="template-pbpaddam">
+				<div id="placeholder-pbpaddam-0">
+					<div id="template-pbpaddam-0">
 						<hr>
 						<p>
 							<ul>
@@ -338,7 +340,7 @@
 	</form>
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

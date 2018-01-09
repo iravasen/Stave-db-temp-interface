@@ -9,9 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
-	<br>
   <?php include('add/addscript.html');?>
-  <br>
 
 	<style>
 		span#s1{
@@ -42,6 +40,9 @@
 			document.title = "HS assembly";
 		}
 	</script>
+
+	<!-- For cloning the objects -->
+	<?php include('clone_models/hsassembly_models.php'); ?>
 
 </head>
 
@@ -100,8 +101,8 @@
 
 		 <fieldset>
 			 <legend> Half-Stave composition </legend>
-				 <div id="template-pos">
-			 		<div id="placeh-pos">
+				 <div id="template-pos-0">
+			 		<div id="placeh-pos-0">
 			 			<hr>
 
 			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
@@ -109,6 +110,7 @@
 			 			<hr>
 			 		</div>
 			 	</div>
+
 			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
 			</fieldset>
 
@@ -131,14 +133,14 @@
 		</fieldset>
 		<br>
 		<fieldset>
- 			<legend>Problems during glue-mask deposition?</legend><br>
+ 			<legend>Problems during glue-mask deposition/removal?</legend><br>
 			<input type="checkbox" name="No" value="No"/> No
 			<br />
  			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-cappad">
-					<div id="template-cappad">
+				<div id="placeholder-cappad-0">
+					<div id="template-cappad-0">
 						<hr>
 						<p>
 							<ul>
@@ -152,6 +154,8 @@
 									<br />
 									<input type="checkbox" name="No" value="No"/> Glue uniformity on the Cold-Plate
 									<br />
+									<input type="checkbox"/> Parylene detached from CP
+									<br />
 									<input id="oth" type="checkbox" name="oth" value="oth"/> Other
 									<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
 								</li>
@@ -161,6 +165,7 @@
 								<li> <input type="checkbox"/> Solved <input type="checkbox"/> Not solved </li>
 							</ul>
 						</p>
+
 						<?php
 						include('imagetool/imagetool.html');
 						?>
@@ -168,6 +173,7 @@
 						<hr>
 					</div>
 				</div>
+
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-cappad','template-cappad');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
@@ -180,8 +186,8 @@
  			<br />
 
 			<fieldset id="ifproblem">
-				<div id="placeholder-hicg">
-					<div id="template-hicg">
+				<div id="placeholder-hicg-0">
+					<div id="template-hicg-0">
 						<hr>
 						<p>
 							<ul>
@@ -206,6 +212,7 @@
 						<hr>
 					</div>
 				</div>
+				
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-hicg','template-hicg');">Add new item</button></p>
 			</fieldset>
 
@@ -213,7 +220,7 @@
 
 	</form>
 	<h2> Other Comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="Insert short report"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="Insert short report"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>
