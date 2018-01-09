@@ -73,6 +73,9 @@
 		}
 	</script>
 
+	<!--For cloning objects -->
+	<?php include('../clone_models/filterandcap_rework_models.php')?>
+
 </head>
 
 <body class="special">
@@ -153,8 +156,8 @@
 
 	<fieldset>
 
-		<div id="placeholder-rew">
-			<div id="template-rew">
+		<div id="placeholder-rew-0">
+			<div id="template-rew-0">
 				<hr>
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
@@ -192,7 +195,7 @@
 	</fieldset>
 
 	<h2> Other comments </h2>
-  <textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>
