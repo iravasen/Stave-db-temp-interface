@@ -1,0 +1,14 @@
+<script type="text/javascript">
+  function check_yes_no(nyesno){
+    var yesname = document.getElementsByName("yes");
+    var noname = document.getElementsByName("no");
+
+    for(i=0; i<nyesno; i++){
+      if(!yesname[i].checked && !noname[i].checked){
+        alert("Please, answer to all the questions before printing");
+        return false;
+      }
+    }
+    return true;
+  }
+</script>
