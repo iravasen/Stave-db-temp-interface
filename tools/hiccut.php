@@ -57,14 +57,69 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = 	"OB-HIC-" +
-												document.getElementsByName("hicnumber")[0].value +
-												document.getElementsByName("hicflavor")[0].value +
-												"_tab_wing_cut_inspection_and_power_test_report";
-			window.print();
-			document.title = "HIC cut + power";
+
+			//Check if all component ids were inserted
+			var idcorrect = true;
+			if(document.getElementsByName("hicnumber")[0].value=="" || document.getElementsByName("hicflavor")[0].value=="-"){
+				idcorrect=false;
+				alert("Some component IDs are missing, please check before printing");
+				return idcorrect;
+			}
+
+			//Check if FPC tab type and cut distance were inserted
+			var tabcutcorrect = true;
+			if(document.getElementById("iA").checked){
+				if(document.getElementById("cutdistancevalue").value == ""){
+					tabcutcorrect = false;
+					alert("Insert cut distance for TAB A");
+					return tabcutcorrect;
+				}
+			}
+			else if(!document.getElementById("iB").checked || !document.getElementById("iB").checked){
+				tabcutcorrect = false;
+				alert("Specify the FPC TAB Type in the first box of the Report section");
+				return tabcutcorrect;
+			}
+
+			//Check if AVDD, DVDD, IDVDD and IAVDD were inserted
+			var vicorrect = true;
+			if(document.getElementById("AVDD").value == ""){
+				vicorrect = false;
+				alert("Insert AVDD");
+				return vicorrect;
+			}
+			if(document.getElementById("DVDD").value == ""){
+				vicorrect = false;
+				alert("Insert DVDD");
+				return vicorrect;
+			}
+			if(document.getElementById("IAVDD").value == ""){
+				vicorrect = false;
+				alert("Insert I_AVDD");
+				return vicorrect;
+			}
+			if(document.getElementById("IDVDD").value == ""){
+				vicorrect = false;
+				alert("Insert I_DVDD");
+				return vicorrect;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(5);
+
+			//Print if everything ok
+			if(check && idcorrect && tabcutcorrect && vicorrect){
+				document.title = 	"OB-HIC-" +
+													document.getElementsByName("hicnumber")[0].value +
+													document.getElementsByName("hicflavor")[0].value +
+													"_tab_wing_cut_inspection_and_power_test_report";
+				window.print();
+				document.title = "HIC cut + power";
+			}
+
 		}
 	</script>
 
@@ -79,13 +134,13 @@
   <br><br><br>
 
   <h1>HIC cut inspection (cut of FPC tab and wings) and power test - Report</h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/hicid.html')?> cut and power test
-			</p>
-	</fieldset>
+ 	 <legend> Component IDs </legend>
+ 	 	<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
+  </fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -116,29 +171,24 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-	 	<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
- </fieldset>
-
  <h2> Report </h2>
 	<br>
 
-  <h2>Inspection of most critical bonds and of the cut</h2>
+  <h2>Inspection of the cut and of the most critical bonds</h2>
 
 	<form action="">
 		<fieldset>
 			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC edge on the side of the cut</strong></legend><br>
 			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
-				<span id="sA"> Cut distance: <input type="text" placeholder="value" style="width: 50px"/> um </span>
+				<span id="sA"> Cut distance: <input id="cutdistancevalue" type="text" placeholder="value" style="width: 50px"/> um </span>
 				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the cut quality. </span>
 			</p>
 			<br>
 
 			<p>Is the cut distance/result acceptable?</p>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 
 			<?php
 			include('imagetool/imagetool.html');
@@ -147,9 +197,9 @@
 		<br>
 		<fieldset>
  			<legend>Visible (macroscopic) damages to the HIC due to the cut procedure?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -178,9 +228,9 @@
 		<br>
 		<fieldset>
  			<legend>Visible damages to bonds due to TAB cut procedure?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-bond-0">
@@ -255,9 +305,9 @@
 		<br>
 		<fieldset>
  			<legend>Are there suspicious wire-bonds to report?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -333,21 +383,21 @@
  			<legend>Voltages and currents</legend><br>
 
 			<ul>
-				<li>AVDD: <input type="text" style="width: 65px"/> V <br>
+				<li>AVDD: <input id="AVDD" type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 65px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input id="IAVDD" type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
 				<hr>
 
-				<li>DVDD: <input type="text" style="width: 65px"/> V <br>
+				<li>DVDD: <input id="DVDD" type="text" style="width: 65px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input type="text" style="width: 65px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input id="IDVDD" type="text" style="width: 65px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 			</ul>
@@ -360,9 +410,9 @@
 	<form>
 		<fieldset>
 			<legend>Is this HIC acceptable after tab and wings cut?</legend><br>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 		</fieldset>
 	</form>
 

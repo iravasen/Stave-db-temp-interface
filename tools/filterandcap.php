@@ -65,20 +65,42 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title =  "Capacitor_and_" +
-												document.getElementsByName("fbselected")[0].value +
-												document.getElementsByName("fbnumber")[0].value +
-												"_soldering_on_" +
-												document.getElementsByName("pbselected")[0].value +
-												document.getElementsByName("pbnumber")[0].value +
-												"_and_" +
-												document.getElementsByName("bbselected")[0].value +
-												document.getElementsByName("bbnumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "FB and capacitor soldering";
+
+			//Check if the component ids have been insertedù
+			var idcorrect = true;
+			if(document.getElementsByName("fbselected")[0].value == "-" ||
+				 document.getElementsByName("fbnumber")[0].value == "" ||
+				 document.getElementsByName("pbselected")[0].value == "-" ||
+				 document.getElementsByName("pbnumber")[0].value == "" ||
+				 document.getElementsByName("bbselected")[0].value == "-" ||
+				 document.getElementsByName("bbnumber")[0].value == ""
+			 ){
+				 idcorrect = false;
+				 alert("Some component IDs are missing, please check before printing");
+				 return idcorrect;
+			 }
+
+			//Check if all questions were answered
+			var check = check_yes_no(12);
+
+			if(check && idcorrect){
+				document.title =  "Capacitor_and_" +
+													document.getElementsByName("fbselected")[0].value +
+													document.getElementsByName("fbnumber")[0].value +
+													"_soldering_on_" +
+													document.getElementsByName("pbselected")[0].value +
+													document.getElementsByName("pbnumber")[0].value +
+													"_and_" +
+													document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("bbnumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "FB and capacitor soldering";
+			}
+
 		}
 	</script>
 
@@ -94,13 +116,14 @@
 
   <h1>Capacitor soldering on PB and BB, Filter Board soldering on PB and BB - Report</h1>
 
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/fbid.html')?> and capacitor soldering on <?php include('ids/pbid.html')?> and <?php include('ids/bbid.html')?>
-			</p>
-
+		<legend> Component IDs </legend>
+		<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
+		<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
+		<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
 	</fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -130,14 +153,6 @@
  <br>
  <?php include('people/people.html');?>
  <br>
-
-	<fieldset>
-		<legend> Component IDs </legend>
-		<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
-		<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
-		<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
-	</fieldset>
-	<br>
 
 	<fieldset>
 		<legend> General info </legend>
@@ -170,9 +185,9 @@
 
 		<fieldset>
  			<legend>Presence of shorts after capacitor soldering?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
  			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-shorts-0">
@@ -197,9 +212,9 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the PB due to heat? </legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -244,9 +259,9 @@
 
 		<fieldset>
  			<legend>Presence of shorts after capacitor soldering?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
  			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-bbshorts-0">
@@ -272,9 +287,9 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the BB due to heat? </legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -320,9 +335,9 @@
 
 		<fieldset>
  			<legend>Presence of shorts after PB soldering to FB?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
 
 			<fieldset id="ifproblem">
@@ -356,9 +371,9 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the PB termination pads due wrong handling?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -388,9 +403,9 @@
 
 		<fieldset>
  			<legend>Damages to the bridge of PB extensions (TOP and BOTTOM) due to heat?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -431,9 +446,9 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the FB due to heat?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<ul>
@@ -465,9 +480,9 @@
 
 		<fieldset>
 			<legend>Presence of shorts after BB soldering to FB?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -498,9 +513,9 @@
 		<br>
 		<fieldset>
 			<legend>Damages to the BB termination pads due to wrong handling?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -530,9 +545,9 @@
 
 		<fieldset>
  			<legend>Damages to the bridge of BB extension due to heat?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
@@ -569,9 +584,9 @@
 		<br>
 		<fieldset>
 			<legend>Damages to the FB due to heat?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<ul>
