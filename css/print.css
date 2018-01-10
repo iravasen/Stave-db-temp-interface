@@ -131,6 +131,19 @@ legend{
   background-color: white;
 }
 
+h2{
+  page-break-before: auto;
+}
+
+fieldset{
+  page-break-before: auto;
+}
+
+@page{
+  size: auto;
+  margin-bottom: 7mm;
+  margin-top: 18mm;
+}
 @media print {
   ::-webkit-input-placeholder { /* WebKit browsers */
       color: transparent;
