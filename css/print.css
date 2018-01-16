@@ -54,6 +54,18 @@ input[type=number]#printnumb2{
   appearance: textfield;
 }
 
+input[type=text]#printnumb_text{
+
+  background-color: white;
+  border-style: hidden;
+  display: inline;
+  position: relative;
+  margin-left: -0.1em;
+
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
 input[type=number]#printnumb3{
 
   background-color: transparent;
