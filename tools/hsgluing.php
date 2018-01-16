@@ -50,23 +50,70 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
+
 		function printall(){
-			document.title = document.getElementsByName("selectedcity")[0].value +
-												document.getElementsByName("selectedhs")[0].value +
-												document.getElementsByName("hsnumber")[0].value +
-												"_gluing_on_" +
-												document.getElementsByName("selectedsf")[0].value +
-												document.getElementsByName("sfnumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "HS gluing on SF";
+
+			//Check if the component IDs have been inserted
+			var correctid = true;
+			var hscity = document.getElementsByName("selectedcity")[0].value;
+			var hsflav = document.getElementsByName("selectedhs")[0].value;
+			var hsnumb = document.getElementsByName("hsnumber")[0].value;
+			if(hscity == "-" || hsflav == "-" || hsnumb == ""){
+				correctid = false;
+				alert("Insert correct HS ID");
+				return correctid;
+			}
+			var selsf = document.getElementsByName("selectedsf")[0].value;
+			var sfnumb = document.getElementsByName("sfnumber")[0].value;
+			if(selsf=="-" || sfnumb == ""){
+				correctid = false;
+				alert("Insert correct SF ID");
+				return correctid;
+			}
+
+			//Check if batch number of the glue was inserted
+			var correctbatch = true;
+			var batchno = document.getElementById("batchnumber").value;
+			if(batchno == ""){
+				batchno = false;
+				alert("Insert a valid glue batch number");
+				return batchno;
+			}
+
+			//Check if a picture of the glue tube is present
+			var gluepicture = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[1].value == ""){
+				gluepicture = false;
+				alert("The image of the glue tube or its caption are missing. See first box of the Report section");
+				return gluepicture;
+			}
+
+
+			//Check if all questions were answered
+			var check = check_yes_no(3);
+
+			if(check && correctid && correctbatch && gluepicture){
+				document.title = document.getElementsByName("selectedcity")[0].value +
+													document.getElementsByName("selectedhs")[0].value +
+													document.getElementsByName("hsnumber")[0].value +
+													"_gluing_on_" +
+													document.getElementsByName("selectedsf")[0].value +
+													document.getElementsByName("sfnumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "HS gluing on SF";
+			}
+
 		}
 	</script>
 
 	<!-- For cloning objects -->
 	<?php include('clone_models/hsgluing_models.php')?>
-	
+
 </head>
 
 <body class="special">
@@ -78,15 +125,12 @@
 	<h3 id="noprint"> Part of the Stave assembly </h3>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/hsid.html')?> gluing on SF
-			</p>
-
-			<p style="display: block; float: right;" id="noprint">
-				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-			</p>
+		<legend> Component IDs </legend>
+			<p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+			<p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
+			<p id="noprint" style="color: red; float: right;"> SF ID is on one side of the SF, on the vertex opposite to the side on which HSs are glued </p>
 	</fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -117,18 +161,12 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
-		 <p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
- </fieldset>
-
   <h2>Report</h2>
 
 	<form action="">
 		<fieldset>
  			<legend>Glue. <strong id="noprint">Add picture of the tube with its label.</strong></legend><br>
- 			<p> Batch number: <input type="text" placeholder="batch #"/></p>
+ 			<p> Batch number: <input id="batchnumber" type="text" placeholder="batch #"/></p>
 			<p> Opening date: <input type="date"/></p>
 			<p> Expiry date: <input type="date"/></p>
 
@@ -139,9 +177,9 @@
 		<br>
 		<fieldset>
  			<legend>Problems during HS lifting from the base with the handling bar?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<ul>
@@ -165,9 +203,9 @@
 		<br>
 		<fieldset>
  			<legend>Problems during HS gluing under the SF?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<ul>
@@ -196,9 +234,9 @@
 		<br>
 		<fieldset>
  			<legend>Do you think the procedure (with the handling bar) damaged the HS?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Probably (to be tested)
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Probably (to be tested)
  			<br />
 
 			<fieldset id="ifproblem">

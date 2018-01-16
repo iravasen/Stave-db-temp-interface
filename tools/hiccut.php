@@ -84,34 +84,71 @@
 				return tabcutcorrect;
 			}
 
+			//Check if at least 1 image of the cut was inserted
+			var cutpicture = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[2].value == ""){
+				cutpicture = false;
+				alert("Insert a image (and caption) of the cut. See first box of the Report section");
+				return cutpicture;
+			}
+
 			//Check if AVDD, DVDD, IDVDD and IAVDD were inserted
 			var vicorrect = true;
-			if(document.getElementById("AVDD").value == ""){
+			var avdd  = document.getElementById("AVDD").value;
+			var dvdd  = document.getElementById("DVDD").value;
+			var iavdd = document.getElementById("IAVDD").value;
+			var idvdd = document.getElementById("IDVDD").value;
+			if(avdd == "" || avdd<1.62 || avdd>1.99){
 				vicorrect = false;
-				alert("Insert AVDD");
+				alert("Insert correct AVDD");
 				return vicorrect;
 			}
-			if(document.getElementById("DVDD").value == ""){
+			if(dvdd == "" || dvdd<1.62 || dvdd>1.99){
 				vicorrect = false;
-				alert("Insert DVDD");
+				alert("Insert correct DVDD");
 				return vicorrect;
 			}
-			if(document.getElementById("IAVDD").value == ""){
+			if(iavdd == ""){
 				vicorrect = false;
 				alert("Insert I_AVDD");
 				return vicorrect;
 			}
-			if(document.getElementById("IDVDD").value == ""){
+			if(idvdd == ""){
 				vicorrect = false;
 				alert("Insert I_DVDD");
 				return vicorrect;
+			}
+
+			//Check the IAVDD and IDVDD
+			if(iavdd<0.1){
+
+				if(confirm("I_AVDD = " + iavdd + " A is low, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(iavdd>0.3){
+				if(confirm("I_AVDD = " + iavdd + " A is high, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(idvdd<0.15){
+				if(confirm("I_DVDD = " + idvdd + " A is low, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(idvdd>0.3){
+				if(confirm("I_DVDD = " + idvdd + " A is high, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
 			}
 
 			//Check if all questions were answered
 			var check = check_yes_no(5);
 
 			//Print if everything ok
-			if(check && idcorrect && tabcutcorrect && vicorrect){
+			if(check && idcorrect && tabcutcorrect && vicorrect && cutpicture){
 				document.title = 	"OB-HIC-" +
 													document.getElementsByName("hicnumber")[0].value +
 													document.getElementsByName("hicflavor")[0].value +

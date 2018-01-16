@@ -9,9 +9,7 @@
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
 	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
 
-	<br>
   <?php include('add/addscript.html');?>
-  <br>
 
 	<style>
 		p#pyes{
@@ -25,17 +23,98 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = 	"OB-HIC-" +
-												document.getElementsByName("hicnumber")[0].value +
-												document.getElementsByName("hicflavor")[0].value +
-												"_powering_test_on_" +
-												document.getElementsByName("selectedcp")[0].value +
-												document.getElementsByName("cpidname")[0].value +
-												"_report";
-			window.print();
-			document.title = "HIC powering after gluing";
+
+			//Check that component ids have been inserted
+			var correctid = true;
+			if(document.getElementsByName("hicnumber")[0].value == "" || document.getElementsByName("hicflavor")[0].value == "-"){
+				correctid = false;
+				alert("Insert correct HIC id");
+				return correctid;
+			}
+			if(document.getElementsByName("selectedcp")[0].value == "-" || document.getElementsByName("cpidname")[0].value == ""){
+				correctid = false;
+				alert("Insert correct CP id");
+				return correctid;
+			}
+
+			//Check hic position on cp
+			var hicposition = true;
+			if(document.getElementsByName("hicpositiononcp")[0].value == ""){
+				hicposition = false;
+				alert("Insert HIC position on CP");
+				return hicposition;
+			}
+
+			//Check if AVDD, DVDD, IDVDD and IAVDD were inserted
+			var vicorrect = true;
+			var avdd  = document.getElementById("AVDD").value;
+			var dvdd  = document.getElementById("DVDD").value;
+			var iavdd = document.getElementById("IAVDD").value;
+			var idvdd = document.getElementById("IDVDD").value;
+			if(avdd == "" || avdd<1.62 || avdd > 1.99){
+				vicorrect = false;
+				alert("Insert correct AVDD");
+				return vicorrect;
+			}
+			if(dvdd == "" || dvdd<1.62 || dvdd > 1.99){
+				vicorrect = false;
+				alert("Insert correct DVDD");
+				return vicorrect;
+			}
+			if(iavdd == ""){
+				vicorrect = false;
+				alert("Insert I_AVDD");
+				return vicorrect;
+			}
+			if(idvdd == ""){
+				vicorrect = false;
+				alert("Insert I_DVDD");
+				return vicorrect;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(1);
+
+			//Check the IAVDD and IDVDD
+			if(iavdd<0.1){
+
+				if(confirm("I_AVDD = " + iavdd + " A is low, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(iavdd>0.3){
+				if(confirm("I_AVDD = " + iavdd + " A is high, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(idvdd<0.15){
+				if(confirm("I_DVDD = " + idvdd + " A is low, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+			if(idvdd>0.3){
+				if(confirm("I_DVDD = " + idvdd + " A is high, are you sure of this value? If yes, press ok") == false){
+					return false;
+				}
+			}
+
+
+
+			if(check && correctid && hicposition && vicorrect){
+				document.title = 	"OB-HIC-" +
+													document.getElementsByName("hicnumber")[0].value +
+													document.getElementsByName("hicflavor")[0].value +
+													"_powering_test_on_" +
+													document.getElementsByName("selectedcp")[0].value +
+													document.getElementsByName("cpidname")[0].value +
+													"_report";
+				window.print();
+				document.title = "HIC powering after gluing";
+			}
+
 		}
 	</script>
 
@@ -47,13 +126,14 @@
   <br><br><br>
 
   <h1>HIC powering after gluing on CP - Report</h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/hicid.html')?> powering on <?php include('ids/cpid.html')?>
-			</p>
+		<legend> Component IDs </legend>
+			<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
+			<p> CP ID: <?php include('ids/cpid.html')?></p>
 	</fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -84,14 +164,8 @@
  <br>
 
 	<fieldset>
-		<legend> Component IDs </legend>
-			<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
-			<p> CP ID: <?php include('ids/cpid.html')?></p>
-	</fieldset>
-	<br>
-	<fieldset>
 		<legend> General info </legend>
-			<p> OB-HIC position on CP: <input id="printnumb2" type="number" placeholder="#" style="width: 50px"/> </p>
+			<p> OB-HIC position on CP: <input id="printnumb2" name="hicpositiononcp" type="number" placeholder="#" style="width: 50px"/> </p>
 	</fieldset>
 
 	<h2>Report</h2>
@@ -101,19 +175,21 @@
  			<legend>Voltages and currents</legend><br>
 
 			<ul>
-				<li>AVDD: <input type="text" style="width: 50px"/> V <br>
+				<li>AVDD: <input id="AVDD" type="text" style="width: 50px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input type="text" style="width: 50px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input id="IAVDD" type="text" style="width: 50px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>DVDD: <input type="text" style="width: 50px"/> V <br>
+				<hr>
+
+				<li>DVDD: <input id="DVDD" type="text" style="width: 50px"/> V <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input type="text" style="width: 50px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input id="IDVDD" type="text" style="width: 50px"/> A <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
@@ -123,9 +199,9 @@
 		<br>
 		<fieldset>
 			<legend>Is this HIC on CP acceptable?</legend><br>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
- 			<input id="check" type="checkbox" name="No" value="No"/> No
+ 			<input id="check" type="checkbox" name="no" value="No"/> No
 
 			<fieldset id="ifproblem">
 				<ul>
@@ -144,7 +220,7 @@
 	</form>
 
 	<h2> Other Comments </h2>
-  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea id="finalcomments" rows="10" cols="100" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Pictures </h2>

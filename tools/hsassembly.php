@@ -30,14 +30,185 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = document.getElementsByName("selectedcity")[0].value +
-												document.getElementsByName("selectedhs")[0].value +
-												document.getElementsByName("hsnumber")[0].value +
-												"_assembly_report";
-			window.print();
-			document.title = "HS assembly";
+
+			//Check if HS id has been inserted
+			var correcthsid = true;
+			if(document.getElementsByName("selectedcity")[0].value == "-" ||
+				 document.getElementsByName("selectedhs")[0].value == "-" ||
+				 document.getElementsByName("hsnumber")[0].value == ""
+			 ){
+				 correcthsid = false;
+				 alert("Insert HS ID");
+				 return correcthsid;
+			 }
+
+			//Check if CP id has been inserted
+			var correctcpid = true;
+			var cpid = document.getElementsByName("selectedcp")[0].value;
+			var cpnumber = document.getElementsByName("cpidname")[0].value;
+			if(cpid=="-" || cpnumber=="") {
+				correctcpid=false;
+				alert("Insert Cold Plate ID");
+				return correctcpid;
+			}
+
+			 //Check if the HIC positions and id on HS have been inserted
+			 var correcthic = true;
+			 var fieldpos = document.getElementById("hicpositions");
+			 var positions = fieldpos.getElementsByTagName("input");
+			 var hicflavor = fieldpos.getElementsByTagName("select");
+			 var counthic = 0;
+			 var countML = [0, 0, 0, 0];
+			 var countOL = [0, 0, 0, 0, 0, 0, 0];
+
+			 //--> Check if all position numbers are present and if there are no repetitions
+			 for(ipos=0; ipos<positions.length; ipos++){
+				 if((positions[ipos].type.toLowerCase() == "number")){
+					 //ML
+					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-R-"){
+						 var pos = positions[ipos].value;
+						 if(pos==1) countML[0]++;
+						 if(pos==2) countML[1]++;
+						 if(pos==3) countML[2]++;
+						 if(pos==4) countML[3]++;
+					 }
+					 //OL
+					 if(document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-"){
+						 var pos = positions[ipos].value;
+						 if(pos==1) countOL[0]++;
+						 if(pos==2) countOL[1]++;
+						 if(pos==3) countOL[2]++;
+						 if(pos==4) countOL[3]++;
+						 if(pos==5) countOL[4]++;
+						 if(pos==6) countOL[5]++;
+						 if(pos==7) countOL[6]++;
+
+					 }
+
+					 //Module is position 1 must have flavor BR or BL
+					 if(positions[ipos].value == 1){
+						 if(hicflavor[Math.floor(ipos/2)].value == "AR" || hicflavor[Math.floor(ipos/2)].value == "AL"){
+							 correcthic = false;
+							 alert("Module in position 1 must have flavor BL or BR");
+							 return correcthic;
+						 }
+					 }
+				 }
+				 else{//text (hic number check)
+					 var pos = positions[ipos].value;
+					 if(pos=="") counthic++;
+				 }
+
+				 if(hicflavor[Math.floor(ipos/2)].value == "-"){//Hic flavor check
+					 correcthic = false;
+					 alert("Some HIC flavors are missing");
+					 return correcthic;
+				 }
+			 }//end of for loop
+
+			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-R-")){
+				 for(j=0; j<4; j++){
+					 if(countML[j]==0 || countML[j]>1){
+						 correcthic = false;
+						 alert("HIC positions on HS are wrong, please check");
+						 return correcthic;
+					 }
+				 }
+				 if(counthic>0){
+					 correcthic = false;
+					 alert("Check HIC ID number on HS");
+					 return correcthic;
+				 }
+			 }
+
+			 if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-")){
+				 for(j=0; j<7; j++){
+					 if(countOL[j]==0 || countOL[j]>1){
+						 correcthic = false;
+						 alert("HIC positions on HS are wrong, please check");
+						 return correcthic;
+					 }
+				 }
+				 if(counthic>0){
+					 correcthic = false;
+					 alert("Check HIC IDs on HS");
+					 return correcthic;
+				 }
+			 }
+
+			//Check that there are not repetitions on HIC number (ID)
+			var norepetInHICnumber = true;
+			var counthicnumb = 0;
+			for(ihic=1; ihic<positions.length; ihic+=2){
+				var sample = positions[ihic].value;
+				for(ihic2=1; ihic2<positions.length; ihic2+=2){
+					if(ihic2==ihic) continue;
+					if(sample == positions[ihic2].value) counthicnumb++;
+				}
+			}
+			if(counthicnumb>0){
+				norepetInHICnumber = false;
+				alert("A HIC ID number was inserted twice, please check");
+				return norepetInHICnumber;
+			}
+
+			//Check that if flavor of HS corresponds to flavor of modules
+			var correctflavor = true;
+			//--> Flavor Left
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-L-"){
+				for(iflav=0; iflav<hicflavor.length; iflav++){
+ 				 	if(hicflavor[iflav].value == "AR" || hicflavor[iflav].value == "BR"){
+						correctflavor = false;
+						alert("A Module is Right but HS is Left, please check");
+						return correctflavor;
+					}
+				}
+			}
+			//--> Flavor Right
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-R-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-"){
+				for(iflav=0; iflav<hicflavor.length; iflav++){
+ 				 	if(hicflavor[iflav].value == "AL" || hicflavor[iflav].value == "BL"){
+						correctflavor = false;
+						alert("A Module is Left but HS is Right, please check");
+						return correctflavor;
+					}
+				}
+			}
+
+			//Check if batch number of the glue was inserted
+			var correctbatch = true;
+			var batchno = document.getElementById("batchnumber").value;
+			if(batchno == ""){
+				batchno = false;
+				alert("Insert a valid glue batch number");
+				return batchno;
+			}
+
+			//Check if a picture of the glue tube is present
+			var gluepicture = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[2].value == ""){
+				gluepicture = false;
+				alert("The image of the glue tube or its caption are missing. See first box of the Report section");
+				return gluepicture;
+			}
+
+			//Check if all questions were answered
+ 			var check = check_yes_no(2);
+
+			if(check && correctcpid && correcthsid && correcthic && batchno && gluepicture && correctflavor && norepetInHICnumber){
+				document.title = document.getElementsByName("selectedcity")[0].value +
+													document.getElementsByName("selectedhs")[0].value +
+													document.getElementsByName("hsnumber")[0].value +
+													"_assembly_report";
+				window.print();
+				document.title = "HS assembly";
+			}
+
 		}
 	</script>
 
@@ -52,17 +223,31 @@
   <br><br><br>
 
   <h1>HS assembly - Report</h1><br>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/hsid.html')?> assembly
-			</p>
+ 	 <legend> Component IDs </legend>
+ 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+ 		 <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
 
-			<p style="display: block; float: right;" id="noprint">
-				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-			</p>
-	</fieldset>
+
+ 		 <fieldset id="hicpositions">
+ 			 <legend> Half-Stave composition </legend>
+ 				 <div id="template-pos-0">
+ 			 		<div id="placeh-pos-0">
+ 			 			<hr>
+
+ 			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
+
+ 			 			<hr>
+ 			 		</div>
+ 			 	</div>
+
+ 			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
+ 			</fieldset>
+
+  </fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -93,29 +278,6 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
-		 <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
-
-
-		 <fieldset>
-			 <legend> Half-Stave composition </legend>
-				 <div id="template-pos-0">
-			 		<div id="placeh-pos-0">
-			 			<hr>
-
-			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
-
-			 			<hr>
-			 		</div>
-			 	</div>
-
-			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
-			</fieldset>
-
- </fieldset>
-
 
 	<h2>Report</h2>
   <br>
@@ -123,7 +285,7 @@
 	<form action="">
 		<fieldset>
  			<legend>Glue. <strong id="noprint"> Add picture of the tube with its label.</strong></legend><br>
- 			<p> Batch number: <input type="text" placeholder="batch #"/></p>
+ 			<p> Batch number: <input id="batchnumber" type="text" placeholder="batch #"/></p>
 			<p> Opening date: <input type="date"/></p>
 			<p> Expiry date: <input type="date"/></p>
 
@@ -134,9 +296,9 @@
 		<br>
 		<fieldset>
  			<legend>Problems during glue-mask deposition/removal?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-cappad-0">
@@ -180,9 +342,9 @@
 		<br>
 		<fieldset>
  			<legend>Problems during HIC gluing?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
 
 			<fieldset id="ifproblem">
@@ -212,7 +374,7 @@
 						<hr>
 					</div>
 				</div>
-				
+
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-hicg','template-hicg');">Add new item</button></p>
 			</fieldset>
 

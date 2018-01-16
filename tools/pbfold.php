@@ -12,17 +12,77 @@
   <?php include('add/addscript.html');?>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
+
 		function printall(){
-			document.title = document.getElementById('selpb').value +
-												"_and_" + document.getElementById('selbb').value +
-												"_folding_for_" +
-												document.getElementsByName("stavecity")[0].value +
-												document.getElementsByName("selectedstave")[0].value +
-												document.getElementsByName("stavenumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "PB+BB folding";
+			//Check component ids
+			var correctid = true;
+			//----> Stave
+			if(document.getElementsByName("stavecity")[0].value == "-" ||
+				 document.getElementsByName("selectedstave")[0].value == "-" ||
+			 	 document.getElementsByName("stavenumber")[0].value == ""){
+					 correctid = false;
+					 alert("Insert Stave ID");
+					 return correctid;
+			}
+			//----> HS-right
+			if(document.getElementsByName("hscity-r")[0].value == "-" ||
+				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
+					 correctid = false;
+					 alert("Insert HS-Right ID");
+					 return correctid;
+			}
+			//----> HS-left
+			if(document.getElementsByName("hscity-l")[0].value == "-" ||
+				 document.getElementsByName("hsflavor-l")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber-l")[0].value == ""){
+					 correctid = false;
+					 alert("Insert HS-Left ID");
+					 return correctid;
+			}
+
+			//Check if the Stave and the two HS are "OL" or "ML"
+			var correctlayer = true;
+
+			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
+				 document.getElementsByName("hsflavor-r")[0].value.indexOf("OL") == -1 ||
+			 	 document.getElementsByName("hsflavor-l")[0].value.indexOf("OL") == -1){
+
+					 if(document.getElementsByName("selectedstave")[0].value.indexOf("ML") == -1 ||
+							document.getElementsByName("hsflavor-r")[0].value.indexOf("ML") == -1 ||
+							document.getElementsByName("hsflavor-l")[0].value.indexOf("ML") == -1){
+
+								 correctlayer = false;
+								 alert("The layer (OL or ML) definition in component ID section is wrong, please check");
+								 return correctlayer;
+					 }
+			}
+
+
+			//Check if at least 1 picture has been inserted
+			var imagecheck = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[2].value == ""){
+				imagecheck = false;
+				alert("Insert at least one image (and caption) in the first box with the final result");
+				return imagecheck;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(2);
+
+			if(check && correctid && imagecheck && correctlayer){
+				document.title = "PB_and_BB_folding_on_" +
+													document.getElementsByName("stavecity")[0].value +
+													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavenumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "PB+BB folding";
+			}
 		}
 	</script>
 
@@ -37,16 +97,19 @@
   <br><br><br>
 
   <h1>Power Bus + Bias Bus folding for Stave - Report</h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/pbid_nonum.html');?> and <?php include('ids/bbid_nonum.html');?> folding for <?php include('ids/stvid.html');?>
-			</p>
+		<legend> Component IDs </legend>
+		  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
+			<p> HS Right Id: <?php include('ids/hsrid.html')?> </p>
+			<p> HS Left Id: <?php include('ids/hslid.html')?> </p>
+
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
 	</fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -76,23 +139,12 @@
  <?php include('people/people.html');?>
  <br>
 
-<fieldset>
-	<legend> Component IDs </legend>
-	  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
-		<p> HS Right Id: <?php include('ids/hsrid.html')?> </p>
-		<p> HS Left Id: <?php include('ids/hslid.html')?> </p>
-
-		<p style="display: block; float: right;" id="noprint">
-			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-		</p>
-</fieldset>
-
 	<h2>Report</h2>
 
 	<form action="">
 
-		<fieldset>
- 			<legend>Picture/s of the final result for HS-RIGHT and HS-LEFT. <span id="noprint" style="color: red;"> <strong> Two pictures </strong></span></legend><br>
+		<fieldset id="finalresult-fold">
+ 			<legend>Picture/s of the final result for HS-RIGHT and HS-LEFT. <span id="noprint" style="color: red;"> <strong> At least one picture </strong></span></legend><br>
 			<?php
 			include('imagetool/imagetool.html');
 			?>
@@ -100,9 +152,9 @@
 		<br>
 		<fieldset>
  			<legend>Visible damages to the cross-cables?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-ccdam-0">
@@ -144,9 +196,9 @@
 		<br>
 		<fieldset>
  			<legend>Do you think to have damaged the HICs?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 
 			<fieldset id="ifproblem">
