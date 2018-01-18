@@ -72,16 +72,23 @@
 			//Check if the component ids have been insertedù
 			var idcorrect = true;
 			if(document.getElementsByName("fbselected")[0].value == "-" ||
-				 document.getElementsByName("fbnumber")[0].value == "" ||
-				 document.getElementsByName("pbselected")[0].value == "-" ||
-				 document.getElementsByName("pbnumber")[0].value == "" ||
-				 document.getElementsByName("bbselected")[0].value == "-" ||
-				 document.getElementsByName("bbnumber")[0].value == ""
-			 ){
-				 idcorrect = false;
-				 alert("Some component IDs are missing, please check before printing");
-				 return idcorrect;
-			 }
+				 document.getElementsByName("fbnumber")[0].value == ""){
+					 	idcorrect = false;
+						alert("Insert a valid FB id");
+						return idcorrect;
+			}
+			if(document.getElementsByName("pbselected")[0].value == "-" ||
+				 document.getElementsByName("pbnumber")[0].value == ""){
+					 idcorrect = false;
+					 alert("Insert a valid PB id");
+					 return idcorrect;
+			}
+			if(document.getElementsByName("bbselected")[0].value == "-" ||
+				 document.getElementsByName("bbnumber")[0].value == ""){
+				 	 idcorrect = false;
+				 	 alert("Insert a valid BB id");
+				 	 return idcorrect;
+			}
 
 			//Check if all questions were answered
 			var check = check_yes_no(12);
