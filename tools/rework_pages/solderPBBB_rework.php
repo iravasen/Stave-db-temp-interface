@@ -58,17 +58,120 @@
 	<!-- To print the page with a default name -->
 	<script type="text/javascript">
 		function printall(){
-			document.title = 	"Rework_" +
-												document.getElementsByName("bbtype")[0].value +
-												"_and_" +
-												document.getElementsByName("pbtype")[0].value +
-												"_soldering_on_" +
-												document.getElementsByName("stavecity")[0].value +
-												document.getElementsByName("selectedstave")[0].value +
-												document.getElementsByName("stavenumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "PB,BB soldering to HS";
+
+			//Check component IDs
+			var correctid = true;
+			//--> Stave
+			if(document.getElementsByName("stavecity")[0].value == "-" ||
+				 document.getElementsByName("selectedstave")[0].value == "-" ||
+			 	 document.getElementsByName("stavenumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid Stave id");
+						return correctid;
+			}
+			//-->Check HS left
+			if(document.getElementsByName("hscity-l")[0].value == "-" ||
+				 document.getElementsByName("hsflavor-l")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber-l")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid HS-Left id");
+						return correctid;
+			}
+			//-->PB of HS left
+			if(document.getElementsByName("pbselected")[0].value == "-" ||
+		 		 document.getElementsByName("pbnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid PB id for HS-Left");
+						return correctid;
+			}
+			//-->BB of HS left
+			if(document.getElementsByName("bbselected")[0].value == "-" ||
+		 		 document.getElementsByName("bbnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid BB id for HS-Left");
+						return correctid;
+			}
+			//--> FB left
+			if(document.getElementsByName("fbleftselected")[0].value == "-" ||
+				 document.getElementsByName("fbleftnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid FB-Left id");
+						return correctid;
+			}
+			//-->Check HS right
+			if(document.getElementsByName("hscity-r")[0].value == "-" ||
+				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid HS-Right id");
+						return correctid;
+			}
+			//-->PB of HS right
+			if(document.getElementsByName("pbselected")[1].value == "-" ||
+		 		 document.getElementsByName("pbnumber")[1].value == ""){
+					 	correctid = false;
+						alert("Insert valid PB id for HS-Right");
+						return correctid;
+			}
+			//-->BB of HS right
+			if(document.getElementsByName("bbselected")[1].value == "-" ||
+		 		 document.getElementsByName("bbnumber")[1].value == ""){
+					 	correctid = false;
+						alert("Insert valid BB id for HS-Right");
+						return correctid;
+			}
+			//--> FB right
+			if(document.getElementsByName("fbrightselected")[0].value == "-" ||
+				 document.getElementsByName("fbrightnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid FB-Right id");
+						return correctid;
+			}
+
+			//Check if all the components have the same layer (OL or ML)
+			var correctlyr = true;
+			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
+				 document.getElementsByName("hsflavor-l")[0].value.indexOf("OL") == -1 ||
+			 	 document.getElementsByName("pbselected")[0].value.indexOf("OL") == -1 ||
+			 	 document.getElementsByName("bbselected")[0].value.indexOf("OL") == -1 ||
+				 document.getElementsByName("fbleftselected")[0].value.indexOf("OL") == -1 ||
+				 document.getElementsByName("hsflavor-r")[0].value.indexOf("OL") == -1 ||
+			 	 document.getElementsByName("pbselected")[1].value.indexOf("OL") == -1 ||
+			 	 document.getElementsByName("bbselected")[1].value.indexOf("OL") == -1 ||
+				 document.getElementsByName("fbrightselected")[0].value.indexOf("OL") == -1
+			 ){
+
+				 if(document.getElementsByName("selectedstave")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("hsflavor-l")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("pbselected")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("bbselected")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("fbleftselected")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("hsflavor-r")[0].value.indexOf("ML") == -1 ||
+						document.getElementsByName("pbselected")[1].value.indexOf("ML") == -1 ||
+						document.getElementsByName("bbselected")[1].value.indexOf("ML") == -1 ||
+						document.getElementsByName("fbrightselected")[0].value.indexOf("ML") == -1
+					){
+						correctlyr = false;
+						alert("OL and ML are mixed in the component IDs, please check");
+						return correctlyr;
+				}
+
+			 }
+
+			if(correcid && correctlyr){
+				document.title = 	"Rework_" +
+													document.getElementsByName("bbtype")[0].value +
+													"_and_" +
+													document.getElementsByName("pbtype")[0].value +
+													"_soldering_on_" +
+													document.getElementsByName("stavecity")[0].value +
+													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavenumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "PB,BB soldering to HS";
+			}
+
 		}
 	</script>
 
@@ -84,17 +187,34 @@
   <br><br><br>
 
 	<h1> [REWORK] Power Bus, Bias Bus soldering to Stave - Report </h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-		<p>
-			[REWORK] <?php include('../ids/pbid_nonum.html')?> and <?php include('../ids/bbid_nonum.html')?> soldering on <?php include('../ids/stvid.html')?>
-		</p>
+ 	 <legend> Component IDs </legend>
+ 	 <p> Stave ID: <?php include('../ids/stvid.html') ?></p>
+ 	 <p> <strong> HS-Left </strong> <br>
+ 		 <ul>
+ 			 <li> ID: <?php include('../ids/hslid.html')?> </li>
+ 			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
+ 			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
+ 			 <li> Filter Board ID: <?php include('../ids/fblid.html')?> </li>
+ 		 </ul>
+ 	 </p>
 
-		<p style="display: block; float: right;" id="noprint">
-			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-		</p>
-	</fieldset>
+ 	 <p> <strong> HS-Right </strong> <br>
+ 		 <ul>
+ 			 <li> ID: <?php include('../ids/hsrid.html')?> </li>
+ 			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
+ 			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
+ 			 <li> Filter Board ID: <?php include('../ids/fbrid.html')?> </li>
+ 		 </ul>
+ 	 </p>
+
+ 		 <p style="display: block; float: right;" id="noprint">
+  			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+  		</p>
+  </fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -125,32 +245,6 @@
  <?php include('../people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-	 <p> Stave ID: <?php include('../ids/stvid.html') ?></p>
-	 <p> <strong> HS-Left </strong> <br>
-		 <ul>
-			 <li> ID: <?php include('../ids/hslid.html')?> </li>
-			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
-			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
-			 <li> Filter Board ID: <?php include('../ids/fblid.html')?> </li>
-		 </ul>
-	 </p>
-
-	 <p> <strong> HS-Right </strong> <br>
-		 <ul>
-			 <li> ID: <?php include('../ids/hsrid.html')?> </li>
-			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
-			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
-			 <li> Filter Board ID: <?php include('../ids/fbrid.html')?> </li>
-		 </ul>
-	 </p>
-
-		 <p style="display: block; float: right;" id="noprint">
- 			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
- 		</p>
- </fieldset>
- <br>
  <fieldset>
 	 <legend> General info </legend>
 		 <p> <strong>Name of the tin and composition</strong> <br>
@@ -184,8 +278,10 @@
 					<strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
 				</p>
 
-				<input type="checkbox" id="check1"> Cross-cables of PB <br>
-				<input type="checkbox"> Cross-cable of BB <br>
+				<ul>
+					<li><input type="checkbox" id="check1"> Cross-cables of PB </li>
+					<li><input type="checkbox"> Cross-cable of BB </li>
+				</ul>
 
 				<!--In case of a bridge-->
 
@@ -201,8 +297,10 @@
 				<textarea rows="5" cols="100" placeholder="describe activity"></textarea>
 				<br><br>
 
-				<input type="checkbox"/> It seems to work now (to be retested) <br>
-				<input type="checkbox"/> No possibility to solve the problem
+				<ul>
+					<li><input type="checkbox"/> It seems to work now (to be retested) </li>
+					<li><input type="checkbox"/> No possibility to solve the problem</li>
+				</ul>
 
 				<?php
 				include('../imagetool/imagetool.html');

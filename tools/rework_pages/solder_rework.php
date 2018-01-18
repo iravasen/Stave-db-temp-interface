@@ -58,17 +58,36 @@
 	<!-- To print the page with a default name -->
 	<script type="text/javascript">
 		function printall(){
-			document.title = 	"Rework_Bridge_resistors_fpc-ext-gs-" +
-			  								document.getElementsByName("extlotnumber")[0].value +
-												"-" +
-												document.getElementsByName("extflavor")[0].value +
-												"_soldering_desoldering_on_" +
-												document.getElementsByName("selectedcity")[0].value +
-												document.getElementsByName("selectedhs")[0].value +
-												document.getElementsByName("hsnumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "Soldering/Desoldering";
+
+			//Check if component ids were inserted
+			var correctid = true;
+			if(document.getElementsByName("selectedcity")[0].value == "-" ||
+				 document.getElementsByName("selectedhs")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert a valid HS id");
+						return correctid;
+			}
+			if(document.getElementsByName("extlotnumber")[0].value == "" ||
+				 document.getElementsByName("extflavor")[0].value == "-"){
+					 	correctid = false;
+						alert("Insert a valid FPC extension id");
+						return correctid;
+			}
+
+			if(correctid){
+				document.title = 	"Rework_Bridge_resistors_FPC-ext-GS-" +
+				  								document.getElementsByName("extlotnumber")[0].value +
+													"-" +
+													document.getElementsByName("extflavor")[0].value +
+													"_soldering_desoldering_on_" +
+													document.getElementsByName("selectedcity")[0].value +
+													document.getElementsByName("selectedhs")[0].value +
+													document.getElementsByName("hsnumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "Soldering/Desoldering";
+			}
 		}
 	</script>
 
@@ -83,17 +102,28 @@
   <br><br><br>
 
 	<h1> [REWORK] Bridge soldering, FPC extension gluing/soldering, resistor desoldering - Report </h1>
-
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-		<p> [REWORK] Bridge-Resistors and FPC-Ext soldering/desoldering on
-			<?php include('../ids/hsid.html');?>
-		</p>
+ 	 <legend> Component IDs </legend>
+ 		 <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?>
+			 <span style="color: red; display: block; float: right;" id="noprint">
+	 			-> Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+	 		</span>
+		 </p>
 
-		<p style="display: block; float: right;" id="noprint">
-			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-		</p>
-	</fieldset>
+ 		 <p> <strong>FPC-Extension id</strong>: GS <input type="text"name="extlotnumber" placeholder="XXX" style="width: 60px"/>
+ 			 <select id="upd" name="extflavor">
+ 				 <option> - </option>
+ 				 <option> up </option>
+ 				 <option> down </option>
+ 			 </select>
+ 			 <span style="display: block; float: right; color: red;" id="noprint">
+ 			 	-> GSXXX can be found near the FireFly connectors
+ 			 </span>
+ 		 </p>
+
+ </fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -122,23 +152,7 @@
 	<!--People-->
  <br>
  <?php include('../people/people.html');?>
- <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-		 <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?> </p>
-		 <p> <strong>FPC-Extension id</strong>: GS <input type="text"name="extlotnumber" placeholder="XXX" style="width: 100px"/>
-			 <select id="upd" name="extflavor">
-				 <option> - </option>
-				 <option> up </option>
-				 <option> down </option>
-			 </select>
-			 <span style="display: block; float: right; color: red;" id="noprint">
-			 -> GSXXX can be found near the FireFly connectors
-			 </span>
-		 </p>
-
-</fieldset>
 <br>
 <fieldset>
 	<legend> General info </legend>
@@ -197,8 +211,10 @@
 				<textarea rows="5" cols="100" placeholder="describe activity"></textarea>
 				<br><br>
 
-				<input type="checkbox"/> It seems to work now (to be retested) <br>
-				<input type="checkbox"/> No possibility to solve the problem
+				<ul>
+					<li><input type="checkbox"/> It seems to work now (to be retested) </li>
+					<li><input type="checkbox"/> No possibility to solve the problem </li>
+				</ul>
 
 				<?php
 				include('../imagetool/imagetool.html');

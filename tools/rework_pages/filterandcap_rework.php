@@ -10,15 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="../../css/fieldstyle.css"/>
 
 	<style>
-		p#p1{
-			display: none;
-		}
-
-		p#p2{
-			display: none;
-		}
-
-		p#p3{
+		p#par1{
 			display: none;
 		}
 
@@ -30,23 +22,23 @@
 			display: none;
 		}
 
+		span#aoth{
+			display: none;
+		}
+
+		input#check1:checked ~ p#par1 {
+			display: block;
+		}
+
+		input#check2:checked ~ span#aoth {
+			display: block;
+		}
+
 		input#idiam:checked ~ span#sdiam {
 			display: block;
 		}
 
 		input#itin:checked ~ span#stin {
-			display: block;
-		}
-
-		input#check1:checked ~ p#p1 {
-			display: block;
-		}
-
-		input#check2:checked ~ p#p2 {
-			display: block;
-		}
-
-		input#check3:checked ~ p#p3 {
 			display: block;
 		}
 	</style>
@@ -58,18 +50,42 @@
 	<!-- To print the page with a default name -->
 	<script type="text/javascript">
 		function printall(){
-			document.title =  "Rework_Capacitor_and_" +
-												document.getElementsByName("fbselected")[0].value +
-												document.getElementsByName("fbnumber")[0].value +
-												"_soldering_on_" +
-												document.getElementsByName("pbselected")[0].value +
-												document.getElementsByName("pbnumber")[0].value +
-												"_and_" +
-												document.getElementsByName("bbselected")[0].value +
-												document.getElementsByName("bbnumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "FB and capacitor soldering";
+
+			//Check if the component ids have been insertedù
+			var idcorrect = true;
+			if(document.getElementsByName("fbselected")[0].value == "-" ||
+				 document.getElementsByName("fbnumber")[0].value == ""){
+					 	idcorrect = false;
+						alert("Insert a valid FB id");
+						return idcorrect;
+			}
+			if(document.getElementsByName("pbselected")[0].value == "-" ||
+				 document.getElementsByName("pbnumber")[0].value == ""){
+					 idcorrect = false;
+					 alert("Insert a valid PB id");
+					 return idcorrect;
+			}
+			if(document.getElementsByName("bbselected")[0].value == "-" ||
+				 document.getElementsByName("bbnumber")[0].value == ""){
+				 	 idcorrect = false;
+				 	 alert("Insert a valid BB id");
+				 	 return idcorrect;
+			}
+
+			if(idcorrect){
+				document.title =  "Rework_Capacitor_and_" +
+													document.getElementsByName("fbselected")[0].value +
+													document.getElementsByName("fbnumber")[0].value +
+													"_soldering_on_" +
+													document.getElementsByName("pbselected")[0].value +
+													document.getElementsByName("pbnumber")[0].value +
+													"_and_" +
+													document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("bbnumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "FB and capacitor soldering";
+			}
 		}
 	</script>
 
@@ -84,14 +100,14 @@
   <br><br><br>
 
 	<h1> [REWORK] Capacitor soldering on PB and BB, Filter Board soldering on PB and BB - Report </h1>
-
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				[REWORK] <?php include('../ids/fbid.html')?> and capacitor soldering on <?php include('../ids/pbid.html')?> and <?php include('../ids/bbid.html')?>
-			</p>
+ 	 <legend> Component IDs </legend>
 
-	</fieldset>
+ 		 <p> Power Bus ID: <?php include('../ids/pbid.html')?> </p>
+ 		 <p> Bias Bus ID: <?php include('../ids/bbid.html')?> </p>
+ 		 <p> Filter Board ID: <?php include('../ids/fbid.html')?> </p>
+  </fieldset>
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -123,15 +139,6 @@
  <br>
 
  <fieldset>
-	 <legend> Component IDs </legend>
-
-		 <p> Power Bus ID: <?php include('../ids/pbid.html')?> </p>
-		 <p> Bias Bus ID: <?php include('../ids/bbid.html')?> </p>
-		 <p> Filter Board ID: <?php include('../ids/fbid.html')?> </p>
- </fieldset>
- <br>
-
- <fieldset>
 	 <legend> General info </legend>
 		 <p> <strong>Name of the tin and composition</strong> <br>
 				 <input type="checkbox"/> Edsyn Sn62Pb36Ag2 <br>
@@ -143,7 +150,7 @@
 			 <input type="checkbox"/> 0.2 mm <br>
 			 <input type="checkbox"/> 0.1 mm	<br>
 			 <input type="checkbox"/> 0.4 mm <br>
-			 <input id="idiam" type="checkbox"/> Other <br>
+			 <input id="idiam" type="checkbox"/> Other<br>
 			 <span id="sdiam"> Diameter <input type="text" style="width: 60px"/> mm</span>
 
 		 </p>
@@ -161,31 +168,39 @@
 				<hr>
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
-				<input type="checkbox"> Power Bus termination pads on TOP layer of FB <br>
-				<input type="checkbox"> Power Bus termination pads on BOTTOM layer of FB <br>
-				<input type="checkbox"> Bias Bus termination pads <br>
-				<input type="checkbox" id="check1"> Capacitors <br>
+				<input type="checkbox"/> Power Bus termination pads on TOP layer of FB (capacitor side) <br>
+				<input type="checkbox"/> Power Bus termination pads on BOTTOM layer of FB <br>
+				<input type="checkbox"/> Bias Bus termination pads <br>
+				<input type="checkbox"/> Capacitors on Filter Board <br>
+				<input type="checkbox" id="check1"/> Capacitors on Power Bus <br>
+				<input type="checkbox" id="check1"/> Capacitors on Bias Bus<br>
+				<input type="checkbox" id="check2"/> Other <br>
+				<span id="aoth"> <input style="width: 550px" type="text" placeholder="specify"/></span> <br>
 
 				<!-- In case of capacitors -->
-				<p id="p1">
-					Close to HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/> <br>
+				<p id="par1">
+					 Close to HIC in position: <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
 				</p>
 
-				<span> Description of the problem </span><br>
-				<textarea rows="5" cols="100" placeholder="describe problem"></textarea>
-				<br><br>
+				<p> Description of the problem <br>
+					<textarea rows="5" cols="100" placeholder="describe problem"></textarea>
+				</p>
 
-				<span> Description of the activity performed on the component </span><br>
-				<textarea rows="5" cols="100" placeholder="describe activity"></textarea>
-				<br><br>
+				<br>
 
-				<input type="checkbox"/> It seems to work now (to be retested) <br>
-				<input type="checkbox"/> No possibility to solve the problem
+				<p> Description of the activity performed on the component <br>
+					<textarea rows="5" cols="100" placeholder="describe activity"></textarea>
+				</p>
+
+				<br>
+				<ul>
+					<li><input type="checkbox"/> It seems to work now (to be retested) </li>
+					<li><input type="checkbox"/> No possibility to solve the problem </li>
+				</ul>
 
 				<?php
 				include('../imagetool/imagetool.html');
 				?>
-
 
 				<hr>
 			</div>
@@ -195,7 +210,7 @@
 	</fieldset>
 
 	<h2> Other comments </h2>
-  <textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="15" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>
