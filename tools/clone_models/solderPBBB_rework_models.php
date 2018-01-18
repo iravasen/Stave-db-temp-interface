@@ -8,8 +8,10 @@
       <strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
     </p>
 
-    <input type="checkbox" id="check1"> Cross-cables of PB <br>
-    <input type="checkbox"> Cross-cable of BB <br>
+    <ul>
+      <li><input type="checkbox" id="check1"> Cross-cables of PB </li>
+      <li><input type="checkbox"> Cross-cable of BB </li>
+    </ul>
 
     <!--In case of a bridge-->
 
@@ -25,8 +27,10 @@
     <textarea rows="5" cols="100" placeholder="describe activity"></textarea>
     <br><br>
 
-    <input type="checkbox"/> It seems to work now (to be retested) <br>
-    <input type="checkbox"/> No possibility to solve the problem
+    <ul>
+      <li><input type="checkbox"/> It seems to work now (to be retested) </li>
+      <li><input type="checkbox"/> No possibility to solve the problem</li>
+    </ul>
 
     <?php
     include('../imagetool/imagetool.html');

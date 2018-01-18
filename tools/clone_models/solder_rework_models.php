@@ -32,8 +32,10 @@
     <textarea rows="5" cols="100" placeholder="describe activity"></textarea>
     <br><br>
 
-    <input type="checkbox"/> It seems to work now (to be retested) <br>
-    <input type="checkbox"/> No possibility to solve the problem
+    <ul>
+      <li><input type="checkbox"/> It seems to work now (to be retested) </li>
+      <li><input type="checkbox"/> No possibility to solve the problem </li>
+    </ul>
 
     <?php
     include('../imagetool/imagetool.html');
