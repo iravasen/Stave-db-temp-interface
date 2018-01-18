@@ -21,14 +21,31 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = document.getElementsByName("stavecity")[0].value +
-												document.getElementsByName("selectedstave")[0].value +
-												document.getElementsByName("stavenumber")[0].value +
-												"_storage_report";
-			window.print();
-			document.title = "Stave storage";
+
+			//Check component id
+			var correctid = true;
+			if(document.getElementsByName("stavecity")[0].value == "-" ||
+				 document.getElementsByName("selectedstave")[0].value == "-" ||
+			 	 document.getElementsByName("stavenumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert a valid Stave ID");
+						return correctid;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(3);
+
+			if(check && correctid){
+				document.title = document.getElementsByName("stavecity")[0].value +
+													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavenumber")[0].value +
+													"_storage_report";
+				window.print();
+				document.title = "Stave storage";
+			}
 		}
 	</script>
 
@@ -43,17 +60,16 @@
   <br><br><br>
 
   <h1>Stave storage - Report</h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/stvid.html')?> storage
-			</p>
+ 	 <legend> Component IDs </legend>
+ 	 	<p> Stave ID: <?php include('ids/stvid.html')?> </p>
+ 		<p style="color: red; display: block; float: right;" id="noprint">
+ 			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+ 		</p>
+  </fieldset>
 
-			<p style="display: block; float: right;" id="noprint">
-				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-			</p>
-	</fieldset>
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -84,22 +100,14 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
-	 	<p> Stave ID: <?php include('ids/stvid.html')?> </p>
-		<p style="display: block; float: right;" id="noprint">
-			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-		</p>
- </fieldset>
-
 <h2> Report </h2>
 <br>
 <form action="">
 	<fieldset>
 		<legend>Visible damages to Stave during storage period ?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-storage-0">
@@ -143,26 +151,41 @@
 	</fieldset>
 	<br>
 	<fieldset>
-		<legend>Picture of the Stave in the storage room.</legend><br>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<legend>Did you measure high temperature variations inside the storage room?</legend><br>
+		<input type="checkbox" name="no" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<ul>
+				<li> Max temperature: <input type="text" placeholder="max temp" style="width: 90px"/> °C</li>
+				<li> Min temperature: <input type="text" placeholder="min temp" style="width: 90px"/> °C </li>
+			</ul>
+
+			<?php
+			include('imagetool/imagetool.html');
+			?>
+		</fieldset>
 	</fieldset>
 	<br>
+
 	<fieldset>
-		<legend>Plot of the temperature trend during storage period</legend><br>
-		<span> Max temperature: <input type="text" placeholder="max temp" style="width: 90px"/> °C</span> <br>
-		<span> Min temperature: <input type="text" placeholder="min temp" style="width: 90px"/> °C</span>
+		<legend>Are the conditions during the storage period considered acceptable?</legend><br>
+		<input type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
+		<input id="check" type="checkbox" name="no" value="No"/> No
+
+		<fieldset id="ifproblem">
+			<p> Where will the stave go? </p>
+			<textarea rows="10" cols="100" name="modissection" placeholder="Comment"></textarea>
+
+		</fieldset>
 	</fieldset>
 
 </form>
 
 <h2> Other comments </h2>
-<textarea rows="5" cols="100" name="modissection" placeholder="comments"></textarea>
+<textarea rows="15" cols="100" name="modissection" placeholder="comments"></textarea>
 
 <!-- Images -->
 <h2> Other pictures not included in the form </h2>

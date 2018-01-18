@@ -121,19 +121,42 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = 	"Bridge_resistors_fpc-ext-gs-" +
-			  								document.getElementsByName("extlotnumber")[0].value +
-												"-" +
-												document.getElementsByName("extflavor")[0].value +
-												"_soldering_desoldering_on_" +
-												document.getElementsByName("selectedcity")[0].value +
-												document.getElementsByName("selectedhs")[0].value +
-												document.getElementsByName("hsnumber")[0].value +
-												"_report";
-			window.print();
-			document.title = "Soldering/Desoldering";
+
+			//Check if component ids were inserted
+			var correctid = true;
+			if(document.getElementsByName("selectedcity")[0].value == "-" ||
+				 document.getElementsByName("selectedhs")[0].value == "-" ||
+			 	 document.getElementsByName("hsnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert a valid HS id");
+						return correctid;
+			}
+			if(document.getElementsByName("extlotnumber")[0].value == "" ||
+				 document.getElementsByName("extflavor")[0].value == "-"){
+					 	correctid = false;
+						alert("Insert a valid FPC extension id");
+						return correctid;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(17);
+
+			if(check && correctid){
+				document.title = 	"Bridge_resistors_FPC-ext-GS-" +
+				  								document.getElementsByName("extlotnumber")[0].value +
+													"-" +
+													document.getElementsByName("extflavor")[0].value +
+													"_soldering_desoldering_on_" +
+													document.getElementsByName("selectedcity")[0].value +
+													document.getElementsByName("selectedhs")[0].value +
+													document.getElementsByName("hsnumber")[0].value +
+													"_report";
+				window.print();
+				document.title = "Soldering/Desoldering";
+			}
 		}
 	</script>
 
@@ -155,16 +178,23 @@
 		</ul>
 	</p>
 
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p> Bridge-Resistors and FPC-Ext soldering/desoldering on
-				<?php include('ids/hsid.html');?>
+		<legend> Component IDs </legend>
+			<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?>
+				<span style="color: red; display: block; float: right;" id="noprint"> -> Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin </span>
 			</p>
 
-			<p style="display: block; float: right;" id="noprint">
-				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			<p> <strong>FPC-Extension id</strong>: GS <input name="extlotnumber" type="text" placeholder="XXX" style="width: 100px"/>
+				<select name="extflavor" id="upd">
+					<option> - </option>
+					<option> up </option>
+					<option> down </option>
+				</select>
+				<span style="display: block; float: right; color: red;" id="noprint">
+				-> GSXXX can be found near the FireFly connectors
+				</span>
 			</p>
-
 	</fieldset>
 	<br>
 	<fieldset>
@@ -194,22 +224,8 @@
 	<!--People-->
  <br>
  <?php include('people/people.html');?>
- <br>
 
-<fieldset>
-	<legend> Component IDs </legend>
-		<p> <strong>HS-id</strong>: <?php include('ids/hsid.html');?> </p>
-		<p> <strong>FPC-Extension id</strong>: GS <input name="extlotnumber" type="text" placeholder="XXX" style="width: 100px"/>
-			<select name="extflavor" id="upd">
-				<option> - </option>
-				<option> up </option>
-				<option> down </option>
-			</select>
-			<span style="display: block; float: right; color: red;" id="noprint">
-			-> GSXXX can be found near the FireFly connectors
-			</span>
-		</p>
-</fieldset>
+
 <br>
 <fieldset>
 	<legend> General Info </legend>
@@ -237,9 +253,9 @@
 
 	<fieldset>
 		<legend>Alignment between FPC extension and Module 1. Problems?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
 		<fieldset id="ifproblem">
 			<span>Description:</span><br>
@@ -256,9 +272,9 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension gluing. Problems?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
 
 		<fieldset id="ifproblem">
@@ -276,9 +292,9 @@
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the extension due to heat?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -295,9 +311,9 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the FPC-TAB-B due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
 
 		<fieldset id="ifproblem">
@@ -313,9 +329,9 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to wire-bonds of Module in position 1?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-fpcext-0">
@@ -347,9 +363,9 @@
 	<fieldset>
 		<legend>Alignment problems of the two neighbour FPCs?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-align-0">
@@ -388,9 +404,9 @@
 	<br>
 	<fieldset>
 		<legend>Presence of (visible) shorts?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-shorts-0">
@@ -415,9 +431,9 @@
 	<br>
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-bonds-0">
@@ -445,9 +461,9 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-fpc1-0">
@@ -470,9 +486,9 @@
 	<br>
 	<fieldset>
 		<legend>Damages to bridges due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -505,9 +521,9 @@
 	<fieldset>
 		<legend>Have you lost some resistance after desoldering?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -536,9 +552,9 @@
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -584,9 +600,9 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-fpc2-0">
@@ -614,9 +630,9 @@
 	<fieldset>
 		<legend>Have you lost some resistance after desoldering?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -646,9 +662,9 @@
 	<fieldset>
 		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -709,9 +725,9 @@
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
 
 		<fieldset id="ifproblem">
@@ -757,9 +773,9 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br>
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-fpc-0">
@@ -783,7 +799,7 @@
   <br>
 
 	<h2> Other problems/comments </h2>
-  <textarea rows="15" cols="100" name="modissection" placeholder="comments"></textarea>
+  <textarea rows="25" cols="100" name="modissection" placeholder="comments"></textarea>
 
 	<!-- Images -->
 	<h2> Other pictures not included in the form </h2>

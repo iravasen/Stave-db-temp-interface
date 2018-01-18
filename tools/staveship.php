@@ -22,14 +22,46 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = document.getElementsByName("stavecity")[0].value +
-												document.getElementsByName("selectedstave")[0].value +
-												document.getElementsByName("stavenumber")[0].value +
-												"_shipment_report";
-			window.print();
-			document.title = "Stave shipment";
+
+			//Check component id
+			var correctid = true;
+			if(document.getElementsByName("stavecity")[0].value == "-" ||
+				 document.getElementsByName("selectedstave")[0].value == "-" ||
+			 	 document.getElementsByName("stavenumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert a valid Stave ID");
+						return correctid;
+			}
+
+			//Check if the two images have been inserted
+			var inspicture = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[2].value == ""){
+				inspicture = false;
+				alert("Insert image (and caption) of stave inside the box before shipment");
+				return inspicture;
+			}
+			if(caption[3].value == ""){
+				inspicture = false;
+				alert("Insert image (and caption) of the transport box");
+				return inspicture;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(1);
+
+			if(check && correctid && inspicture){
+				document.title = document.getElementsByName("stavecity")[0].value +
+													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavenumber")[0].value +
+													"_shipment_report";
+				window.print();
+				document.title = "Stave shipment";
+			}
 		}
 	</script>
 
@@ -47,17 +79,15 @@
   <br><br><br>
 
   <h1>Stave shipment - Report</h1>
-
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-		<p>
-			<?php include('ids/stvid.html')?> shipment
-		</p>
-
-		<p style="display: block; float: right;" id="noprint">
-			Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
-		</p>
+		<legend> Component IDs </legend>
+			<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+			<p style="color: red; display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
 	</fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -86,12 +116,6 @@
 <!--People-->
  <br>
  <?php include('people/people.html');?>
- <br>
-
-<fieldset>
-	<legend> Component IDs </legend>
-		<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
-</fieldset>
 
 <br>
 
@@ -102,9 +126,9 @@
 	<fieldset>
 		<legend>Visible damages to stave when inserting it in the transport box?</legend><br>
 
-		<input type="checkbox" name="No" value="No"/> No
+		<input type="checkbox" name="no" value="No"/> No
 		<br />
-		<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 		<fieldset id="ifproblem">
 			<div id="placeholder-ship-0">

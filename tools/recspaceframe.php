@@ -24,13 +24,29 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = document.getElementsByName("selectedsf")[0].value +
-												document.getElementsByName("sfnumber")[0].value +
-												"_inspection_report";
-			window.print();
-			document.title = "Space Frame visual inspection (reception)";
+
+			//Check component id
+			var correctid = true;
+			if(document.getElementsByName("selectedsf")[0].value == "-" ||
+				 document.getElementsByName("sfnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid id for Space-Frame");
+						return correctid;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(2);
+
+			if(check && correctid){
+				document.title = document.getElementsByName("selectedsf")[0].value +
+													document.getElementsByName("sfnumber")[0].value +
+													"_inspection_report";
+				window.print();
+				document.title = "Space Frame visual inspection (reception)";
+			}
 		}
 	</script>
 
@@ -42,16 +58,15 @@
   <br><br><br>
 
   <h1>Space Frame visual inspection (reception) - Report</h1>
-
+	<br>
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/sfid.html')?> reception test
-			</p>
-			<p style="display: block; float: right;" id="noprint">
-				The SF id can be found on one of its extremities written on the carbon-fiber structure
-			</p>
-	</fieldset>
+ 	 <legend> Component IDs </legend>
+  		<p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
+ 		<p style="color: red; display: block; float: right;" id="noprint">
+ 			The SF id is written on one of its extremities on the vertex opposite to the base on which HSs are glued
+ 		</p>
+ </fieldset>
+
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -79,22 +94,14 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
- 		<p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
-		<p style="display: block; float: right;" id="noprint">
-			The SF id can be found on one of its extremities written on the carbon-fiber structure
-		</p>
-</fieldset>
-
  <h2>Report</h2>
 	<br>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to SF structure?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<span> Type of damage: </span> <br>
@@ -116,9 +123,14 @@
 		<br>
 		<fieldset>
 			<legend>Is this SF acceptable?</legend><br>
-				<input type="checkbox"/> Yes <br>
-				<input type="checkbox"/> Yes, but we put it aside in case of need <br>
-				<input type="checkbox"/> No <br>
+				<input id="check" name="yes" type="checkbox"/> Yes <br>
+				<input name="no" type="checkbox"/> No <br>
+
+				<fieldset id="ifproblem">
+					<input type="checkbox"> and it's usable for Stave assembly <br>
+					<input type="checkbox"> but we put it aside in case of need <br>
+				</fieldset>
+
 		</fieldset>
 	</form>
 

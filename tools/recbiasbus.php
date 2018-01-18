@@ -41,13 +41,30 @@
 	</style>
 
 	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
 		function printall(){
-			document.title = document.getElementsByName("bbselected")[0].value +
-												document.getElementsByName("bbnumber")[0].value +
-												"_reception_test_report";
-			window.print();
-			document.title = "Bias Bus inspection (reception)";
+
+			//Check if component ids were inserted
+			var correctid = true;
+			if(document.getElementsByName("bbselected")[0].value == "-" ||
+				 document.getElementsByName("bbnumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert valid Bias Bus component id");
+						return correctid;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(5);
+
+			if(check && correctid){
+				document.title = document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("bbnumber")[0].value +
+													"_reception_test_report";
+				window.print();
+				document.title = "Bias Bus inspection (reception)";
+			}
+			
 		}
 	</script>
 
@@ -62,14 +79,13 @@
   <br><br><br>
 
   <h1>Bias Bus inspection (reception) - Report</h1>
+	<br>
 
 	<fieldset>
-		<legend style="color: red; font-size: 14pt;"> Activity name</legend>
-			<p>
-				<?php include('ids/bbid.html')?> reception test
-			</p>
+ 	 <legend> Component IDs </legend>
+  		<p> Bias-Bus ID: <?php include('ids/bbid.html')?> </p>
+  </fieldset>
 
-	</fieldset>
 	<br>
 	<fieldset>
 		<legend style="color: red; font-size: 14pt;">Date</legend>
@@ -99,20 +115,15 @@
  <?php include('people/people.html');?>
  <br>
 
- <fieldset>
-	 <legend> Component IDs </legend>
- 		<p> Bias-Bus ID: <?php include('ids/bbid.html')?> </p>
- </fieldset>
-
 <h2>Report</h2>
 <br>
 
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to the BB ?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 
@@ -191,9 +202,9 @@
 		<br>
 		<fieldset>
  			<legend>Check on the continuity of lines. Problems?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-interline-0">
@@ -212,9 +223,9 @@
 		<br>
 		<fieldset>
  			<legend>Resistance of the lines. Problems?</legend><br>
-			<input type="checkbox" name="No" value="No"/> No
+			<input type="checkbox" name="no" value="No"/> No
 			<br />
-			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
 
 			<fieldset id="ifproblem">
@@ -238,9 +249,9 @@
 		<br>
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 			<br />
- 			<input id="check" type="checkbox" name="Yes" value="Yes"/> Yes
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
 			<fieldset id="ifproblem">
 				<div id="placeholder-shorts-0">
@@ -270,9 +281,9 @@
 		<br>
 		<fieldset>
 			<legend>Is this BB acceptable?</legend><br>
-			<input type="checkbox" name="Yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
- 			<input type="checkbox" name="No" value="No"/> No
+ 			<input type="checkbox" name="no" value="No"/> No
 		</fieldset>
 	</form>
 
