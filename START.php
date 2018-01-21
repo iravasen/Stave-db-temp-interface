@@ -38,7 +38,7 @@
 
 			<h3> Storage and shipment </h3>
 			<li> <a href="tools/stavestorage.php"> Stave storage </a></li>
-      <li> <a href="tools/staveship.php">  Stave shipment </a></li>
+      <li> <a href="tools/interm_page/staveship_interm.php">  Stave shipment </a></li>
 
     </ul>
 
