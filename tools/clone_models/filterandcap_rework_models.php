@@ -6,11 +6,9 @@
     <input type="checkbox"/> Power Bus termination pads on TOP layer of FB (capacitor side) <br>
     <input type="checkbox"/> Power Bus termination pads on BOTTOM layer of FB <br>
     <input type="checkbox"/> Bias Bus termination pads <br>
-    <input type="checkbox"/> Capacitors on Filter Board <br>
     <input type="checkbox" id="check1"/> Capacitors on Power Bus <br>
-    <input type="checkbox" id="check1"/> Capacitors on Bias Bus<br>
     <input type="checkbox" id="check2"/> Other <br>
-    <span id="aoth"> <input style="width: 550px" type="text" placeholder="specify"/></span> <br>
+    <textarea id="aoth" cols="50" rows="5" placeholder="specify"></textarea><br>
 
     <!-- In case of capacitors -->
     <p id="par1">
