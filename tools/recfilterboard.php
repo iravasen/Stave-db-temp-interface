@@ -34,7 +34,7 @@
 			}
 
 			//Check if all questions were answered
-			var check = check_yes_no(3);
+			var check = check_yes_no(2);
 
 			if(check && correctid){
 				document.title = document.getElementsByName("fbselected")[0].value +
@@ -107,38 +107,41 @@
 
 			<fieldset id="ifproblem">
 
-	 			<input type="checkbox" name="bend" value="bend"/> Cracks on the board
-	 			<br />
-	 			<input type="checkbox" name="engr" value="engr"/> Engravings
-				<br />
-	 			<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB on top layer damaged
-				<br />
-				<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB on bottom layer damaged
-				<br />
-				<input type="checkbox" name="engr" value="engr"/> Soldering pad for BB damaged
-				<br />
-	 			<input type="checkbox" name="fbpad" value="fbpad"/> Decoupling capacitors
-				<br />
-	 			<input type="checkbox" name="cap" value="cap"/>  Connector pins are bent
-				<br />
-	 			<input type="checkbox" name="cap" value="cap"/>  Connector pins are missing
-				<br />
-				<input id="oth" type="checkbox" name="other" value="other"/> Other
-				<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
+				<ul>
+					<li> Options (<span id="noprint">you can chose more than one option if needed </span>)<br>
 
+			 			<input type="checkbox" name="bend" value="bend"/> Cracks on the board
+			 			<br />
+			 			<input type="checkbox" name="engr" value="engr"/> Engravings
+						<br />
+			 			<input type="checkbox" name="engr" value="engr"/> Soldering pads for PB on top layer damaged (side of the capacitors)
+						<br />
+						<input type="checkbox" name="engr" value="engr"/> Soldering pad for PB on bottom layer damaged
+						<br />
+						<input type="checkbox" name="engr" value="engr"/> Soldering pad for BB damaged
+						<br />
+			 			<input type="checkbox" name="fbpad" value="fbpad"/> Decoupling capacitors
+						<br />
+			 			<input type="checkbox" name="cap" value="cap"/>  Some connector pins are bent
+						<br />
+			 			<input type="checkbox" name="cap" value="cap"/>  Some connector pins are missing
+						<br />
+						<input id="oth" type="checkbox" name="other" value="other"/> Other
+						<textarea id="texta1" cols="50" rows="4" placeholder="specify"></textarea>
+					</li>
+					<li>
+						Do they affect the Filter-Board functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No
+					</li>
+				</ul>
 
-				<br><br>
-				<span> Do they affect the Filter-Board functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
-
-				<?php
-				include('imagetool/imagetool.html');
-				?>
+				<?php include('imagetool/imagetool.html');?>
 
 			</fieldset>
 
 		</fieldset>
 
 		<br>
+		<!--
 		<fieldset>
  			<legend>Presence of shorts?</legend><br>
 			<input type="checkbox" name="no" value="No"/> No
@@ -158,7 +161,7 @@
 						</ul>
 
 						<?php
-						include('imagetool/imagetool.html');
+						//include('imagetool/imagetool.html');
 						?>
 
 
@@ -168,7 +171,7 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
 			</fieldset>
 
-		</fieldset>
+		</fieldset>-->
 		<br>
 		<fieldset>
 			<legend>Is this FB acceptable?</legend><br>

@@ -91,7 +91,7 @@
 			}
 
 			//Check if all questions were answered
-			var check = check_yes_no(12);
+			var check = check_yes_no(10);
 
 			if(check && idcorrect){
 				document.title =  "Capacitor_and_" +
@@ -121,7 +121,7 @@
 	<a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-  <h1>Capacitor soldering on PB and BB, Filter Board soldering on PB and BB - Report</h1>
+  <h1>Capacitor soldering on PB, Filter Board soldering on PB and BB - Report</h1>
 
 	<br>
 	<fieldset>
@@ -261,6 +261,7 @@
 
 	</form>
 
+<!--
 	<h2> Soldering of decoupling capacitors on BB</h2>
 	<form action="">
 
@@ -281,7 +282,7 @@
 						<textarea cols="50" rows="4" placeholder="Describe"></textarea>
 
 						<?php
-						include('imagetool/imagetool.html');
+						//include('imagetool/imagetool.html');
 						?>
 
 						<hr>
@@ -323,7 +324,7 @@
 						</ul>
 
 						<?php
-						include('imagetool/imagetool.html');
+						//include('imagetool/imagetool.html');
 						?>
 
 						<hr>
@@ -335,7 +336,7 @@
 		</fieldset>
 
 	</form>
-
+-->
 	<h2>Soldering of the PB to the Filter Board</h2>
 
 	<form action="">
@@ -409,7 +410,7 @@
 		<br>
 
 		<fieldset>
- 			<legend>Damages to the bridge of PB extensions (TOP and BOTTOM) due to heat?</legend><br>
+ 			<legend>Damages to the bridge of PB extensions (TOP and/or BOTTOM) due to heat?</legend><br>
 			<input type="checkbox" name="no" value="No"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes

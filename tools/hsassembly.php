@@ -20,6 +20,14 @@
 			display: none;
 		}
 
+		ul#notemp-answ{
+			display: none;
+		}
+
+		input#notemp:checked ~ ul#notemp-answ {
+			display: block;
+		}
+
 		input#oth:checked ~ textarea#texta1 {
 			display: block;
 		}
@@ -198,7 +206,7 @@
 			}
 
 			//Check if all questions were answered
- 			var check = check_yes_no(2);
+ 			var check = check_yes_no(3);
 
 			if(check && correctcpid && correcthsid && correcthic && batchno && gluepicture && correctflavor && norepetInHICnumber){
 				document.title = document.getElementsByName("selectedcity")[0].value +
@@ -379,6 +387,29 @@
 			</fieldset>
 
 		</fieldset>
+
+		<br>
+
+		<fieldset>
+ 			<legend>Did you observe strong temperature gradients during HS assembly?</legend><br>
+			<input id="notemp" type="checkbox" name="no" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+ 			<br />
+
+			<ul id="notemp-answ">
+				<li> Room temperature during assembly: <input type="text" placeholder="T" style="width: 70px"/> °C </li>
+			</ul>
+
+			<fieldset id="ifproblem">
+				<p> Indicate the maximum and minimum temperature observed </p>
+				<ul>
+					<li> Max temperature: <input type="text" placeholder="max T" style="width: 70px"/> °C </li>
+					<li> Min temperature: <input type="text" placeholder="min T" style="width: 70px"/> °C </li>
+				</ul>
+			</fieldset>
+		</fieldset>
+
 
 	</form>
 	<h2> Other Comments </h2>

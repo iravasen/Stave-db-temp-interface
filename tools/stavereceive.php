@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Stave reception</title>
+
+	<meta http-equiv="Cache-control" content="no-cache">
+
+  <!--Include CSS file-->
+  <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
+	<link rel="stylesheet" type="text/css" href="../css/fieldstyle.css"/>
+
+
+	<style>
+		span#s1{
+			display: none;
+		}
+
+		input#i1:checked ~ span#s1 {
+			display: block;
+		}
+
+		p#tah-param{
+			display: none;
+		}
+
+		input#meastime:checked ~ p#tah-param {
+			display: block;
+		}
+
+		textarea#shock-param{
+			display: none;
+		}
+
+		input#measshock:checked ~ textarea#shock-param {
+			display: block;
+		}
+
+	</style>
+
+	<!-- To print the page with a default name -->
+	<?php include('jvscript_funct/check_yes_no.html') ?>
+	<script type="text/javascript">
+		function printall(){
+
+			//Check component id
+			var correctid = true;
+			if(document.getElementsByName("stavecity")[0].value == "-" ||
+				 document.getElementsByName("selectedstave")[0].value == "-" ||
+			 	 document.getElementsByName("stavenumber")[0].value == ""){
+					 	correctid = false;
+						alert("Insert a valid Stave ID");
+						return correctid;
+			}
+
+			//Check if the two images have been inserted
+			var inspicture = true;
+			var caption = document.getElementsByName("imagecaption");
+
+			if(caption[1].value == ""){
+				inspicture = false;
+				alert("Insert image (and caption) of stave out of the transport box");
+				return inspicture;
+			}
+
+			//Check if all questions were answered
+			var check = check_yes_no(3);
+
+			if(check && correctid && inspicture){
+				document.title = document.getElementsByName("stavecity")[0].value +
+													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavenumber")[0].value +
+													"_reception_after_shipment_report";
+				window.print();
+				document.title = "Stave shipment";
+			}
+		}
+	</script>
+
+	<?php include('add/addscript.html');?>
+
+	<!--For cloning objects -->
+	<?php include('clone_models/stavereceive_models.php');?>
+
+	<script type="text/javascript">
+		function show_content(){
+			document.getElementById("hidden-content").style.display = "block";
+		}
+	</script>
+
+</head>
+
+<body class="special">
+
+  <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+  <br><br><br>
+
+  <h1>Stave reception - Report</h1>
+	<p> <strong>Part of the Stave shipment activity</strong> </p>
+	<br>
+	<fieldset>
+		<legend> Component IDs </legend>
+			<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+			<p style="color: red; display: block; float: right;" id="noprint">
+				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			</p>
+	</fieldset>
+
+	<br>
+	<fieldset>
+		<legend style="color: red; font-size: 14pt;">Date</legend>
+		<p>
+			Reception date: <input type="date" required="required"/>
+		</p>
+	</fieldset>
+
+	<br>
+	<form>
+	<fieldset>
+	<legend> Location </legend>
+		<select name="Sites" >
+			<option value="-"> - </option>
+ 			<option value="Sezione INFN, Turin"> Sezione INFN, Turin  </option>
+ 			<option value="INFN e Laboratori Nazionali di Frascati, Frascati">INFN e Laboratori Nazionali di Frascati, Frascati </option>
+ 			<option value="Nikhef, Nationaal Instituut voor subatomaire fysica, Amsterdam"> Nikhef, Nationaal Instituut voor subatomaire fysica, Amsterdam </option>
+			<option value="STFC Daresbury Laboratory, Daresbury"> STFC Daresbury Laboratory, Daresbury </option>
+			<option value="Lawrence Berkeley National Laboratory, Berkeley, California"> Lawrence Berkeley National Laboratory, Berkeley, California </option>
+
+		</select>
+	</fieldset>
+ </form>
+
+<!--People-->
+ <br>
+ <?php include('people/people.html');?>
+ <br>
+
+<h2> Report </h2>
+<br>
+
+<form action="">
+	<fieldset>
+		<legend>Picture of the Stave out of the transport box.</legend><br>
+		<?php
+		include('imagetool/imagetool.html');
+		?>
+	</fieldset>
+
+	<br>
+
+	<fieldset>
+		<legend>Visible damages to Stave?</legend><br>
+
+		<input type="checkbox" name="no" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+			<div id="placeholder-dam-0">
+				<div id="template-dam-0">
+					<hr>
+					<p>
+						<ul>
+							<li> HS flavor: <br>
+								<input type="checkbox"/> L <br>
+								<input type="checkbox"/> R
+							</li>
+							<li> Damaged component: <br>
+								 <input id="i1" type="checkbox"/> HIC <br>
+								 <span id="s1">Position: <input type="text" style="width: 90px"/></span>
+								 <input type="checkbox"/> Space-Frame <br>
+								 <input type="checkbox"/> Cold-Plate <br>
+								 <input type="checkbox"/> PB and BB extensions <br>
+								 <input type="checkbox"/> FPC extension <br>
+							</li>
+
+							<li> Description: <br>
+								<textarea rows="10" cols="50" placeholder="describe"></textarea><br>
+							</li>
+							<li> Result: <br>
+								<input type="checkbox"/> Acceptable <br>
+								<input type="checkbox"/> Not acceptable
+							</li>
+						</ul>
+					</p>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+
+					<hr>
+				</div>
+			</div>
+			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-dam','template-dam');">Add new item</button></p>
+		</fieldset>
+	</fieldset>
+
+	<br>
+
+
+	<fieldset>
+		<legend>Is there a measurement of temperature, acceleration and humidity to report (even with disposable indicators)?</legend><br>
+
+		<input type="checkbox" name="no" value="No"/> No
+		<br />
+		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+
+		<fieldset id="ifproblem">
+					<ul>
+						<li> <input id="meastime" type="checkbox"/> Measurements as a function of time <br>
+
+							<p id="tah-param">
+								<input id="noprint" type="button" value="Show it!" onClick="show_content()"/>
+
+								<?php
+										$line = readline("Command: ");
+										readline_add_history($line);
+
+								    $f = fopen("../../Downloads/MSR322748_170503_120814.csv", "r");
+
+								    // Read line from the text file and write the contents to the client
+								    for($x = 0; $x < 27; $x++){
+								      fgets($f);
+								    }
+
+								    //Read up to the end of the file
+								    $c=0;
+								    $maxT = -200;
+								    $minT = 200;
+								    $maxax = -1e8;
+								    $maxay = -1e8;
+								    $maxaz = -1e8;
+								    $maxhum = -1e8;
+								    //while ($line = fscanf($f, "%s%%*c %s%*c %f%*c %f%*c %f%*c %f%*c %f%*c %f\n")) {
+								    while ($line = fscanf($f, "%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%[^,],%f\n")) {
+								      list($date, $hour, $time, $accx, $accy, $accz, $hum, $temp) = $line;
+
+								      //Max temperature
+								      if($temp > $maxT)
+								        $maxT = $temp;
+								      //Min temperature
+								      if($temp < $minT)
+								        $minT = $temp;
+								      //Max acc along x
+								      if(abs($accx) > $maxax)
+								        $maxax = $accx;
+								      //Max acc along y
+								      if(abs($accy) > $maxay)
+								        $maxay = $accy;
+								      //Max acc along z
+								      if(abs($accz) > $maxaz)
+								        $maxaz = $accz;
+								      //Max Humidity
+								      if($hum > $maxhum)
+								        $maxhum = $hum;
+								    }
+
+								    echo '<p id="hidden-content" style="display: none">';
+								    echo "Max temperature: " . round($maxT, 3) . " °C <br>";
+								    echo "Min temperature: " . round($minT,3) . "°C <br>";
+								    echo "Max acceleration: " . round(sqrt($maxax*$maxax + $maxay*$maxay + $maxaz*$maxaz), 3) . " g <br>";
+								    echo "Max humidity: " . round($maxhum, 3) . " % <br>";
+								    echo '</p>';
+
+								    fclose($f);
+								?>
+
+							</p>
+						</li>
+						<li><input id="measshock" type="checkbox"/> Measurement with disposable indicators <br>
+								<textarea id="shock-param" rows="15" cols="100" placeholder="Insert short report"></textarea>
+						</li>
+						<li> Result: <br>
+							<input type="checkbox"/> Acceptable <br>
+							<input type="checkbox"/> Not acceptable
+						</li>
+				</ul>
+
+					<?php
+					include('imagetool/imagetool.html');
+					?>
+		</fieldset>
+	</fieldset>
+
+	<br>
+
+	<fieldset>
+		<legend>Is this Stave acceptable?</legend><br>
+
+		<input type="checkbox" name="yes" value="Yes"/> Yes
+		<br>
+		<input type="checkbox" name="no" value="No"/> No
+
+	</fieldset>
+
+</form>
+
+<h2> Other comments </h2>
+<textarea rows="10" cols="100" name="modissection" placeholder="comments"></textarea>
+
+<!-- Images -->
+<h2> Other pictures not included in the form </h2>
+<?php
+include('imagetool/imagetool.html');
+?>
+
+<input id="noprint" type="button" value="Save page" style="position: center" onClick="printall()"/>
+<a id="noprint" href="stavereceive.php" style="text-decoration: none"> <input type="button" value="Reset form"/></a>
+</body>
+</html>

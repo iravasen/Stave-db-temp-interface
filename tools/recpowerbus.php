@@ -50,7 +50,7 @@
 			}
 
 			//Check if all questions were answered
-			var check = check_yes_no(5);
+			var check = check_yes_no(2);
 
 			if(check && correctid){
 				document.title = document.getElementsByName("pbselected")[0].value +
@@ -198,7 +198,9 @@
 					<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-cappad','template-cappad');">Add new item</button></p>
 				</fieldset>
 
-				<span> Do they affect the Power-Bus functioning? <input type="checkbox"/> Yes <input type="checkbox"/> No <br>
+				<ul>
+					<li> Do they affect the Power-Bus functioning? <br> <input type="checkbox"/> Yes <br> <input type="checkbox"/> No </li>
+				</ul>
 
 				<?php
 				include('imagetool/imagetool.html');
@@ -208,6 +210,7 @@
 		</fieldset>
 
 		<br>
+		<!--
 		<fieldset>
  			<legend>Check on the continuity of lines. Problems?</legend><br>
 			<input type="checkbox" name="no" value="No"/> No
@@ -278,7 +281,7 @@
 						</ul>
 
 						<?php
-						include('imagetool/imagetool.html');
+						//include('imagetool/imagetool.html');
 						?>
 
 
@@ -288,7 +291,7 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-shorts','template-shorts');">Add new item</button></p>
 			</fieldset>
 		</fieldset>
-		<br>
+		<br>-->
 		<fieldset>
 			<legend>Is this PB acceptable?</legend><br>
 			<input type="checkbox" name="yes" value="Yes"/> Yes

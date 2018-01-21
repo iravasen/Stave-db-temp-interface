@@ -30,6 +30,14 @@
 			display: none;
 		}
 
+		ul#notemp-answ{
+			display: none;
+		}
+
+		input#notemp:checked ~ ul#notemp-answ {
+			display: block;
+		}
+
 		input#yesdam:checked ~ textarea#textyes {
 			display: block;
 		}
@@ -92,9 +100,8 @@
 				return gluepicture;
 			}
 
-
 			//Check if all questions were answered
-			var check = check_yes_no(3);
+			var check = check_yes_no(4);
 
 			if(check && correctid && correctbatch && gluepicture){
 				document.title = document.getElementsByName("selectedcity")[0].value +
@@ -229,9 +236,30 @@
 				?>
 			</fieldset>
 		</fieldset>
+		<br>
 
+		<fieldset>
+ 			<legend>Did you observe strong temperature gradients during HS gluing?</legend><br>
+			<input id="notemp" type="checkbox" name="no" value="No"/> No
+			<br />
+ 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+ 			<br />
+
+			<ul id="notemp-answ">
+				<li> Room temperature during gluing: <input type="text" placeholder="T" style="width: 70px"/> °C </li>
+			</ul>
+
+			<fieldset id="ifproblem">
+				<p> Indicate the maximum and minimum temperature observed </p>
+				<ul>
+					<li> Max temperature: <input type="text" placeholder="max T" style="width: 70px"/> °C </li>
+					<li> Min temperature: <input type="text" placeholder="min T" style="width: 70px"/> °C </li>
+				</ul>
+			</fieldset>
+		</fieldset>
 
 		<br>
+
 		<fieldset>
  			<legend>Do you think the procedure (with the handling bar) damaged the HS?</legend><br>
 			<input type="checkbox" name="no" value="No"/> No
