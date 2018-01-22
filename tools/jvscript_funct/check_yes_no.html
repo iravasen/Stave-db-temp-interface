@@ -8,6 +8,11 @@
         alert("Please, answer to all the questions before printing");
         return false;
       }
+
+      if(yesname[i].checked && noname[i].checked){
+        alert("Question to answer must be yes or no, not both. Please check.");
+        return false;
+      }
     }
     return true;
   }
