@@ -28,7 +28,7 @@
 			<li> <a href="tools/poweringaftgluing.php"> HIC powering test after gluing on CP </a></li>
 			<li> <a href="tools/hsassembly.php"> HS assembly (mask deposition and HIC gluing) </a></li>
       <li> <a href="tools/interm_page/bridge.php"> Soldering/Desoldering (bridges, resistors, fpc extension)</a> </li>
-			<li> <a href="#"> Gluing of wire-bond protections (PB folding) --> Not implemented yet</a></li>
+			<li> <a href="tools/uarmgluing.php"> U-arm gluing on HS</a></li>
 			<li> <a href="tools/hsgluing.php"> HS gluing on SF </a></li>
 
 			<h3> Stave assembly </h3>
