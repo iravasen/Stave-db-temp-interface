@@ -1,8 +1,7 @@
 <?php
 
-    //$f = fopen("../../Downloads/MSR322748_170503_120814.csv", "r");
-    $f = fopen($_POST['filepath'], "r");
-
+    $f = fopen("../../Downloads/MSR322748_170503_120814.csv", "r");
+    
     // Read line from the text file and write the contents to the client
     for($x = 0; $x < 27; $x++){
       fgets($f);
@@ -41,7 +40,6 @@
     }
 
     echo '<p id="hidden-content" style="display: none">';
-    echo "File path: " . $_POST['filepath'] . "<br>";
     echo "Max temperature: " . round($maxT, 3) . " °C <br>";
     echo "Min temperature: " . round($minT,3) . "°C <br>";
     echo "Max acceleration: " . round(sqrt($maxax*$maxax + $maxay*$maxay + $maxaz*$maxaz), 3) . " g <br>";
