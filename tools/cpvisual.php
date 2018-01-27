@@ -40,6 +40,7 @@
 			var check = check_yes_no(4);
 
 			//Check if the planarity was inserted
+			/*
 			var yes_planfield = document.getElementsByName("yes")[3].checked;
 			var plancorrect = true;
 			if(yes_planfield){
@@ -49,9 +50,9 @@
 					alert("Please insert the planarity of the Cold Plate");
 					return plancorrect;
 				}
-			}
+			}*/
 
-			if(check && idcorrect && plancorrect){//if all it's correct, print
+			if(check && idcorrect){//if all it's correct, print
 				document.title = document.getElementsByName("selectedcp")[0].value +
 													document.getElementsByName("cpidname")[0].value +
 													"_inspection_and_planarity_report";
@@ -174,17 +175,18 @@
 		</fieldset>
 		<br>
 		<fieldset>
-			<legend> Is this Cold-Plate acceptable after the visual inspection? (if yes, measure planarity) </legend>
-			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
+			<legend> Is this Cold-Plate acceptable after the visual inspection? </legend>
+			<input type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
 			<input type="checkbox" name="no" value="No"/> No
-
+			<!--
 			<fieldset id="ifproblem">
 				<span> Planarity: <input id="planarity" type="text" style="width: 50px"/> um</span><br>
 				<input type="checkbox"/> Acceptable <br>
 				<input type="checkbox"/> Acceptable, but we put it aside in case of need <br>
 				<input type="checkbox"/> Not acceptable <br>
 			</fieldset>
+		-->
 
 		</fieldset>
 
