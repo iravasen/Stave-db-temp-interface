@@ -94,6 +94,7 @@
 <body class="special">
 
   <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+	<img id="noprint" src="../img/hslegend.png" alt="HS legend" style="float: right; width: 350px; height: 180px"/>
   <br><br><br>
 
   <h1>Power Bus + Bias Bus folding for Stave - Report</h1>
@@ -102,8 +103,8 @@
 	<fieldset>
 		<legend> Component IDs </legend>
 		  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
-			<p> HS Right Id: <?php include('ids/hsrid.html')?> </p>
-			<p> HS Left Id: <?php include('ids/hslid.html')?> </p>
+			<p> HS Upper Id: <?php include('ids/hsrid.html')?> </p>
+			<p> HS Lower Id: <?php include('ids/hslid.html')?> </p>
 
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
@@ -162,7 +163,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> CC type:
 									<input type="checkbox"/> AVDD
@@ -207,7 +208,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>

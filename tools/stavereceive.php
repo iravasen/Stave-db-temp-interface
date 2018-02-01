@@ -92,6 +92,7 @@
 <body class="special">
 
   <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+	<img id="noprint" src="../img/hslegend.png" alt="HS legend" style="float: right; width: 350px; height: 180px"/>
   <br><br><br>
 
   <h1>Stave reception - Report</h1>
@@ -161,8 +162,8 @@
 					<p>
 						<ul>
 							<li> HS flavor: <br>
-								<input type="checkbox"/> L <br>
-								<input type="checkbox"/> R
+								<input type="checkbox"/> Lower <br>
+								<input type="checkbox"/> Upper
 							</li>
 							<li> Damaged component: <br>
 								 <input id="i1" type="checkbox"/> HIC <br>

@@ -76,7 +76,7 @@
 			 for(ipos=0; ipos<positions.length; ipos++){
 				 if((positions[ipos].type.toLowerCase() == "number")){
 					 //ML
-					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-R-"){
+					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-"){
 						 var pos = positions[ipos].value;
 						 if(pos==1) countML[0]++;
 						 if(pos==2) countML[1]++;
@@ -84,7 +84,7 @@
 						 if(pos==4) countML[3]++;
 					 }
 					 //OL
-					 if(document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-"){
+					 if(document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"){
 						 var pos = positions[ipos].value;
 						 if(pos==1) countOL[0]++;
 						 if(pos==2) countOL[1]++;
@@ -117,7 +117,7 @@
 				 }
 			 }//end of for loop
 
-			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-R-")){
+			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-")){
 				 for(j=0; j<4; j++){
 					 if(countML[j]==0 || countML[j]>1){
 						 correcthic = false;
@@ -132,7 +132,7 @@
 				 }
 			 }
 
-			 if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-")){
+			 if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-")){
 				 for(j=0; j<7; j++){
 					 if(countOL[j]==0 || countOL[j]>1){
 						 correcthic = false;
@@ -170,17 +170,17 @@
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AR" || hicflavor[iflav].value == "BR"){
 						correctflavor = false;
-						alert("A Module is Right but HS is Left, please check");
+						alert("A Module is Right but HS is Lower, please check");
 						return correctflavor;
 					}
 				}
 			}
 			//--> Flavor Right
-			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-R-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-R-"){
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-U-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"){
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AL" || hicflavor[iflav].value == "BL"){
 						correctflavor = false;
-						alert("A Module is Left but HS is Right, please check");
+						alert("A Module is Left but HS is Upper, please check");
 						return correctflavor;
 					}
 				}
@@ -228,6 +228,8 @@
 <body class="special">
 
 	<a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+	<img id="noprint" src="../img/hslegend.png" alt="HS legend" style="float: right; width: 350px; height: 180px"/>
+
   <br><br><br>
 
   <h1>HS assembly - Report</h1><br>

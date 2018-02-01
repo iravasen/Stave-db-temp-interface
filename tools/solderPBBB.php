@@ -68,28 +68,28 @@
 				 document.getElementsByName("hsflavor-l")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-l")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid HS-Left id");
+						alert("Insert valid HS-Lower id");
 						return correctid;
 			}
 			//-->PB of HS left
 			if(document.getElementsByName("pbselected")[0].value == "-" ||
 		 		 document.getElementsByName("pbnumber")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid PB id for HS-Left");
+						alert("Insert valid PB id for HS-Lower");
 						return correctid;
 			}
 			//-->BB of HS left
 			if(document.getElementsByName("bbselected")[0].value == "-" ||
 		 		 document.getElementsByName("bbnumber")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid BB id for HS-Left");
+						alert("Insert valid BB id for HS-Lower");
 						return correctid;
 			}
 			//--> FB left
 			if(document.getElementsByName("fbleftselected")[0].value == "-" ||
 				 document.getElementsByName("fbleftnumber")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid FB-Left id");
+						alert("Insert valid FB-Lower id");
 						return correctid;
 			}
 			//-->Check HS right
@@ -97,28 +97,28 @@
 				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid HS-Right id");
+						alert("Insert valid HS-Upper id");
 						return correctid;
 			}
 			//-->PB of HS right
 			if(document.getElementsByName("pbselected")[1].value == "-" ||
 		 		 document.getElementsByName("pbnumber")[1].value == ""){
 					 	correctid = false;
-						alert("Insert valid PB id for HS-Right");
+						alert("Insert valid PB id for HS-Upper");
 						return correctid;
 			}
 			//-->BB of HS right
 			if(document.getElementsByName("bbselected")[1].value == "-" ||
 		 		 document.getElementsByName("bbnumber")[1].value == ""){
 					 	correctid = false;
-						alert("Insert valid BB id for HS-Right");
+						alert("Insert valid BB id for HS-Upper");
 						return correctid;
 			}
 			//--> FB right
 			if(document.getElementsByName("fbrightselected")[0].value == "-" ||
 				 document.getElementsByName("fbrightnumber")[0].value == ""){
 					 	correctid = false;
-						alert("Insert valid FB-Right id");
+						alert("Insert valid FB-Upper id");
 						return correctid;
 			}
 
@@ -179,6 +179,7 @@
 <body class="special">
 
   <a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+	<img id="noprint" src="../img/hslegend.png" alt="HS legend" style="float: right; width: 350px; height: 180px"/>
   <br><br><br>
 
   <h1>Power Bus, Bias Bus soldering to Stave - Report</h1>
@@ -190,7 +191,7 @@
 	<fieldset>
 		<legend> Component IDs </legend>
 			<p> Stave ID: <?php include('ids/stvid.html') ?></p>
-			<p> <strong> HS-Left </strong> <br>
+			<p> <strong> HS-Lower </strong> <br>
 				<ul>
 					<li> ID: <?php include('ids/hslid.html')?> </li>
 					<li> Power Bus ID: <?php include('ids/pbid.html')?> </li>
@@ -199,7 +200,7 @@
 				</ul>
 			</p>
 
-			<p> <strong> HS-Right </strong> <br>
+			<p> <strong> HS-Upper </strong> <br>
 				<ul>
 					<li> ID: <?php include('ids/hsrid.html')?> </li>
 					<li> Power Bus ID: <?php include('ids/pbid.html')?> </li>
@@ -282,7 +283,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Description: <br>
 									<textarea rows="3" cols="50" placeholder="describe"></textarea><br>
@@ -319,7 +320,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input type="checkbox"/> Soldering pad for CC detached <br>
@@ -363,7 +364,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damaged pad type <br>
 									<input type="checkbox"/> AVDD <br>
@@ -406,7 +407,7 @@
 						<hr>
 						<p>
 							<ul>
-								<li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+								<li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
 								<li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
 								<li> Damage type: <br>
 									<input id="i1" type="checkbox"/> Soldering pad for CC detached <br>
