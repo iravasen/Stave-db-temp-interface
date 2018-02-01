@@ -4,8 +4,8 @@
     <p>
       <ul>
         <li> HS flavor: <br>
-          <input type="checkbox"/> L <br>
-          <input type="checkbox"/> R
+          <input type="checkbox"/> Lower <br>
+          <input type="checkbox"/> Upper
         </li>
         <li> Damaged component: <br>
            <input id="i1" type="checkbox"/> HIC <br>

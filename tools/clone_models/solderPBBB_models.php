@@ -3,7 +3,7 @@
     <hr>
     <p>
       <ul>
-        <li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+        <li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
         <li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
         <li> Description: <br>
           <textarea rows="3" cols="50" placeholder="describe"></textarea><br>
@@ -29,7 +29,7 @@
     <hr>
     <p>
       <ul>
-        <li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+        <li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
         <li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
         <li> Damage type: <br>
           <input type="checkbox"/> Soldering pad for CC detached <br>
@@ -58,7 +58,7 @@
     <hr>
     <p>
       <ul>
-        <li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+        <li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
         <li> For HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
         <li> Damaged pad type <br>
           <input type="checkbox"/> AVDD <br>
@@ -91,7 +91,7 @@
     <hr>
     <p>
       <ul>
-        <li> For HS: <input type="checkbox"/> Left <input type="checkbox"/> Right </li>
+        <li> For HS: <input type="checkbox"/> Lower <input type="checkbox"/> Upper </li>
         <li> For/Close to HIC in position: <input id="printnumb2" type="number" style="width: 70px"/> </li>
         <li> Damage type: <br>
           <input id="i1" type="checkbox"/> Soldering pad for CC detached <br>
