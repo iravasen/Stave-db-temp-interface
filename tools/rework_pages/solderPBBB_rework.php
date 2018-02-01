@@ -184,6 +184,7 @@
 <body class="special">
 
 	<a id="noprint" href="../../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
+	<img id="noprint" src="../../img/hslegend.png" alt="HS legend" style="float: right; width: 350px; height: 180px"/>
   <br><br><br>
 
 	<h1> [REWORK] Power Bus, Bias Bus soldering to Stave - Report </h1>
