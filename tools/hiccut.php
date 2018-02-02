@@ -273,6 +273,7 @@
 				<div id="placeholder-bond-0">
 					<div id="template-bond-0">
 						<hr>
+						<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: .5em;"/>
 						<ul>
 							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
 							<li> Bond type (only most critical): <br>
@@ -351,6 +352,7 @@
 				<div id="placeholder-bondrisk-0">
 					<div id="template-bondrisk-0">
 						<hr>
+						<img id="noprint" src="../img/chip.png" heigh="200px" width="500px" style="float: right; position: relative; bottom: .5em;"/>
 						<ul>
 							<li> Chip number: <input id="printnumb2" type="number" style="width: 60px"/></li>
 							<li> Bond type (only most critical): <br>
