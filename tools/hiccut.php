@@ -426,7 +426,7 @@
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>AVDD</sub>: <input id="IAVDD" type="text" style="width: 65px"/> A <br>
+				<li>I<sub>AVDD</sub>: <input id="IAVDD" type="text" style="width: 65px"/> mA <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
@@ -436,7 +436,7 @@
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 
-				<li>I<sub>DVDD</sub>: <input id="IDVDD" type="text" style="width: 65px"/> A <br>
+				<li>I<sub>DVDD</sub>: <input id="IDVDD" type="text" style="width: 65px"/> mA <br>
 					<input type="checkbox"/> ok <input type="checkbox"/> nok
 				</li>
 			</ul>
