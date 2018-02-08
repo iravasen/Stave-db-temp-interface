@@ -134,9 +134,15 @@
 
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
-			<p> Space-Frame ID: <?php include('ids/sfid.html')?> </p>
-			<p id="noprint" style="color: red; float: right;"> SF ID is on one side of the SF, on the vertex opposite to the side on which HSs are glued </p>
+			<p> Half-Stave ID: <?php include('ids/hsid.html')?>
+				<span style="color: red; display: block; float: right;" id="noprint">
+					Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+				</span>
+			</p>
+			<p> Space-Frame ID: <?php include('ids/sfid.html')?>
+				<span id="noprint" style="color: red; float: right;"> SF ID is on one side of the SF, on the vertex opposite to the side on which HSs are glued </span>
+			</p>
+
 	</fieldset>
 
 	<br>

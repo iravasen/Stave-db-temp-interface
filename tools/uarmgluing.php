@@ -59,7 +59,11 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
- 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?> </p>
+ 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?>
+			 <span style="color: red; display: block; float: right;" id="noprint">
+				 Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
+			 </span>
+		 </p>
   </fieldset>
 
 	<br>
