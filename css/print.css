@@ -110,7 +110,7 @@ select#sites{
 select#flavor{
   display: inline;
   position: relative;
-  margin-left: -1.5em;
+  margin-left: 1.0em;
 }
 
 select#upd{
