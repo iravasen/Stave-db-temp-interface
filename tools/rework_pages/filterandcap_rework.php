@@ -72,6 +72,12 @@
 				 	 return idcorrect;
 			}
 
+			//Check digits in FB number
+			if(document.getElementsByName("fbnumber")[0].value.toString().length < 4 || document.getElementsByName("fbnumber")[0].value.toString().length > 4){
+				alert("FB id number must have four digits (e.g 0001). Please check.");
+				return false;
+			}
+
 			if(idcorrect){
 				document.title =  "Rework_Capacitor_and_" +
 													document.getElementsByName("fbselected")[0].value +

@@ -75,6 +75,18 @@
 						return correctid;
 			}
 
+			//Check is HS number has 3 digits
+			if(document.getElementsByName("hsnumber")[0].value.toString().length < 3 || document.getElementsByName("hsnumber")[0].value.toString().length > 3 ){
+				alert("HS-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
+				return false;
+			}
+
+			//Check if ext lot number has 3 digits
+			if(document.getElementsByName("extlotnumber")[0].value.toString().length <3 || document.getElementsByName("extlotnumber")[0].value.toString().length >3){
+				alert("FPC extension lot number must have 3 digits. Please check.");
+				return false;
+			}
+
 			if(correctid){
 				document.title = 	"Rework_Bridge_resistors_FPC-ext-GS-" +
 				  								document.getElementsByName("extlotnumber")[0].value +
@@ -112,7 +124,7 @@
 	 		</span>
 		 </p>
 
- 		 <p> <strong>FPC-Extension id</strong>: GS <input type="text"name="extlotnumber" placeholder="XXX" style="width: 60px"/>
+ 		 <p> <strong>FPC-Extension id</strong>: GS <input type="text"name="extlotnumber" placeholder="XXX" style="width: 40px"/>
  			 <select id="upd" name="extflavor">
  				 <option> - </option>
  				 <option> up </option>
