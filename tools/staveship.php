@@ -36,6 +36,12 @@
 						return correctid;
 			}
 
+			//Check stave number - 3 digits
+			if(document.getElementsByName("stavenumber")[0].value.toString().length<3 || document.getElementsByName("stavenumber")[0].value.toString().length>3){
+				alert("Stave-id number must have 3 digits (e.g. Stave-003 for Stave-3). Please check.");
+				return false;
+			}
+
 			//Check if the two images have been inserted
 			var inspicture = true;
 			var caption = document.getElementsByName("imagecaption");

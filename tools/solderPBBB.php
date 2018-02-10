@@ -122,6 +122,36 @@
 						return correctid;
 			}
 
+			//Check stave number - 3 digits
+			if(document.getElementsByName("stavenumber")[0].value.toString().length<3 || document.getElementsByName("stavenumber")[0].value.toString().length>3){
+				alert("Stave-id number must have 3 digits (e.g. Stave-003 for Stave-3). Please check.");
+				return false;
+			}
+
+			//Check hs lower id - 3 digits
+			if(document.getElementsByName("hsnumber-l")[0].value.toString().length<3 || document.getElementsByName("hsnumber-l")[0].value.toString().length>3){
+				alert("HS-Lower-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
+				return false;
+			}
+
+			//Check hs upper id - 3 digits
+			if(document.getElementsByName("hsnumber-r")[0].value.toString().length<3 || document.getElementsByName("hsnumber-r")[0].value.toString().length>3){
+				alert("HS-Upper-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
+				return false;
+			}
+
+			//Check fb lower id - 4 digits
+			if(document.getElementsByName("fbleftnumber")[0].value.toString().length<4 || document.getElementsByName("fbleftnumber")[0].value.toString().length>4){
+				alert("FB-Lower-id number must have 4 digits (e.g. FB-0003 for FB-3). Please check.");
+				return false;
+			}
+
+			//Check fb upper id - 4 digits
+			if(document.getElementsByName("fbrightnumber")[0].value.toString().length<4 || document.getElementsByName("fbrightnumber")[0].value.toString().length>4){
+				alert("FB-Upper-id number must have 4 digits (e.g. FB-0003 for FB-3). Please check.");
+				return false;
+			}
+
 			//Check if all the components have the same layer (OL or ML)
 			var correctlyr = true;
 			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||

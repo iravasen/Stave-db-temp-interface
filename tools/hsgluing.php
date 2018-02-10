@@ -81,6 +81,12 @@
 				return correctid;
 			}
 
+			//Check is HS number has 3 digits
+			if(document.getElementsByName("hsnumber")[0].value.toString().length < 3 || document.getElementsByName("hsnumber")[0].value.toString().length > 3 ){
+				alert("HS-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
+				return false;
+			}
+
 			//Check if batch number of the glue was inserted
 			var correctbatch = true;
 			var batchno = document.getElementById("batchnumber").value;

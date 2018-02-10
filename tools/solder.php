@@ -141,6 +141,18 @@
 						return correctid;
 			}
 
+			//Check is HS number has 3 digits
+			if(document.getElementsByName("hsnumber")[0].value.toString().length < 3 || document.getElementsByName("hsnumber")[0].value.toString().length > 3 ){
+				alert("HS-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
+				return false;
+			}
+
+			//Check if ext lot number has 3 digits
+			if(document.getElementsByName("extlotnumber")[0].value.toString().length <3 || document.getElementsByName("extlotnumber")[0].value.toString().length >3){
+				alert("FPC extension lot number must have 3 digits. Please check.");
+				return false;
+			}
+
 			//Check if all questions were answered
 			var check = check_yes_no(17);
 
@@ -174,8 +186,8 @@
 
 	<p id="noprint" style="color: red; font-size: 14pt; border: solid 5px red;">
 		!!WARNING!! <br>
-			- FPC extension UP on HS-RIGHT <br>
-			- FPC extension DOWN on HS-LEFT
+			- FPC extension UP on HS-UPPER <br>
+			- FPC extension DOWN on HS-LOWER
 		</ul>
 	</p>
 
@@ -186,7 +198,7 @@
 				<span style="color: red; display: block; float: right;" id="noprint"> -> Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin </span>
 			</p>
 
-			<p> <strong>FPC-Extension id</strong>: GS <input name="extlotnumber" type="text" placeholder="XXX" style="width: 100px"/>
+			<p> <strong>FPC-Extension id</strong>: GS <input name="extlotnumber" type="text" placeholder="XXX" style="width: 50px"/>
 				<select name="extflavor" id="upd">
 					<option> - </option>
 					<option> up </option>

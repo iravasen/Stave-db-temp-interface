@@ -69,6 +69,14 @@
 				return idcorrect;
 			}
 
+			//Check if hic number has six digits
+			var checkhicnumber = true;
+			if(document.getElementsByName("hicnumber")[0].value.toString().length<6 ||document.getElementsByName("hicnumber")[0].value.toString().length>6){
+				checkhicnumber = false;
+				alert("HIC number must has 6 digits (e.g. 000012 for HIC-12)");
+				return checkhicnumber;
+			}
+
 			//Check if FPC tab type and cut distance were inserted
 			var tabcutcorrect = true;
 			if(document.getElementById("iA").checked){
@@ -122,24 +130,24 @@
 			}
 
 			//Check the IAVDD and IDVDD
-			if(iavdd<0.1){
+			if(iavdd<100){
 
-				if(confirm("I_AVDD = " + iavdd + " A is low, are you sure of this value? If yes, press ok") == false){
+				if(confirm("I_AVDD = " + iavdd + " mA is low, are you sure of this value? If yes, press ok") == false){
 					return false;
 				}
 			}
-			if(iavdd>0.3){
-				if(confirm("I_AVDD = " + iavdd + " A is high, are you sure of this value? If yes, press ok") == false){
+			if(iavdd>300){
+				if(confirm("I_AVDD = " + iavdd + " mA is high, are you sure of this value? If yes, press ok") == false){
 					return false;
 				}
 			}
-			if(idvdd<0.15){
-				if(confirm("I_DVDD = " + idvdd + " A is low, are you sure of this value? If yes, press ok") == false){
+			if(idvdd<150){
+				if(confirm("I_DVDD = " + idvdd + " mA is low, are you sure of this value? If yes, press ok") == false){
 					return false;
 				}
 			}
-			if(idvdd>0.3){
-				if(confirm("I_DVDD = " + idvdd + " A is high, are you sure of this value? If yes, press ok") == false){
+			if(idvdd>300){
+				if(confirm("I_DVDD = " + idvdd + " mA is high, are you sure of this value? If yes, press ok") == false){
 					return false;
 				}
 			}
@@ -148,10 +156,10 @@
 			var check = check_yes_no(5);
 
 			//Print if everything ok
-			if(check && idcorrect && tabcutcorrect && vicorrect && cutpicture){
-				document.title = 	"OB-HIC-" +
-													document.getElementsByName("hicnumber")[0].value +
+			if(check && idcorrect && tabcutcorrect && vicorrect && cutpicture && checkhicnumber){
+				document.title = 	"OBHIC-" +
 													document.getElementsByName("hicflavor")[0].value +
+													document.getElementsByName("hicnumber")[0].value +
 													"_tab_wing_cut_inspection_and_power_test_report";
 				window.print();
 				document.title = "HIC cut + power";

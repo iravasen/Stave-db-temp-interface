@@ -33,10 +33,18 @@
 						return correctid;
 			}
 
+			//Check digits in FB number
+			var checkdigit = true;
+			if(document.getElementsByName("fbnumber")[0].value.toString().length < 4 || document.getElementsByName("fbnumber")[0].value.toString().length > 4){
+				checkdigit = false;
+				alert("FB id number must have four digits (e.g 0001). Please check.");
+				return checkdigit;
+			}
+
 			//Check if all questions were answered
 			var check = check_yes_no(2);
 
-			if(check && correctid){
+			if(check && correctid && checkdigit){
 				document.title = document.getElementsByName("fbselected")[0].value +
 													document.getElementsByName("fbnumber")[0].value +
 													"_reception_test_report";

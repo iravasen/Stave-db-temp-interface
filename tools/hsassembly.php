@@ -51,7 +51,15 @@
 				 correcthsid = false;
 				 alert("Insert HS ID");
 				 return correcthsid;
-			 }
+			}
+
+			//Check if HS number has 3 digits
+			var checkhsnumber = true;
+			if(document.getElementsByName("hsnumber")[0].value.toString().length < 3 || document.getElementsByName("hsnumber")[0].value.toString().length > 3){
+				checkhsnumber = false;
+				alert("HS number must have 3 digits (e.g 003 for HS-3). Please check.");
+				return checkhsnumber;
+			}
 
 			//Check if CP id has been inserted
 			var correctcpid = true;
@@ -108,6 +116,10 @@
 				 else{//text (hic number check)
 					 var pos = positions[ipos].value;
 					 if(pos=="") counthic++;
+					 if(pos.toString().length<6 || pos.toString().length>6){
+						 alert("HIC-id numbers must have 6 digits (e.g. 000012 for HIC-12). Please check.");
+						 return false;
+					 }
 				 }
 
 				 if(hicflavor[Math.floor(ipos/2)].value == "-"){//Hic flavor check
