@@ -4,7 +4,7 @@
 
 	<meta http-equiv="Cache-control" content="no-cache">
 
-	<title>HIC cut + power</title>
+	<title>HIC cut</title>
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
@@ -103,7 +103,7 @@
 			}
 
 			//Check if AVDD, DVDD, IDVDD and IAVDD were inserted
-			var vicorrect = true;
+			/*var vicorrect = true;
 			var avdd  = document.getElementById("AVDD").value;
 			var dvdd  = document.getElementById("DVDD").value;
 			var iavdd = document.getElementById("IAVDD").value;
@@ -150,19 +150,19 @@
 				if(confirm("I_DVDD = " + idvdd + " mA is high, are you sure of this value? If yes, press ok") == false){
 					return false;
 				}
-			}
+			}*/
 
 			//Check if all questions were answered
 			var check = check_yes_no(5);
 
 			//Print if everything ok
-			if(check && idcorrect && tabcutcorrect && vicorrect && cutpicture && checkhicnumber){
+			if(check && idcorrect && tabcutcorrect && cutpicture && checkhicnumber){
 				document.title = 	"OBHIC-" +
 													document.getElementsByName("hicflavor")[0].value +
 													document.getElementsByName("hicnumber")[0].value +
-													"_tab_wing_cut_inspection_and_power_test_report";
+													"_tab_wing_cut_inspection_report";
 				window.print();
-				document.title = "HIC cut + power";
+				document.title = "HIC cut";
 			}
 
 		}
@@ -178,7 +178,7 @@
 	<a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-  <h1>HIC cut inspection (cut of FPC tab and wings) and power test - Report</h1>
+  <h1>HIC cut inspection (cut of FPC tab and wings) - Report</h1>
 	<br>
 
 	<fieldset>
@@ -424,6 +424,7 @@
 		<br>
 	</form>
 
+<!--
 	<h2> HIC Powering test after cut </h2>
 	<form>
 		<fieldset>
@@ -450,7 +451,7 @@
 			</ul>
 
 		</fieldset>
-	</form>
+	</form>-->
 
 	<h2> Final response </h2>
 
