@@ -54,6 +54,12 @@
 						return correctid;
 			}
 
+			//Check number of digits
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
 			//Check if all questions were answered
 			var check = check_yes_no(2);
 

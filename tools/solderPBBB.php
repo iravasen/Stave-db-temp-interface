@@ -152,6 +152,43 @@
 				return false;
 			}
 
+			//Check number of digits PB low
+			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
+				alert("PB-id number for HS-L must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits PB up
+			if(document.getElementsByName("pbnumber")[1].value.toString().length < 3 || document.getElementsByName("pbnumber")[1].value.toString().length > 3){
+				alert("PB-id number for HS-U must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB low
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number for HS-L must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB up
+			if(document.getElementsByName("bbnumber")[1].value.toString().length < 3 || document.getElementsByName("bbnumber")[1].value.toString().length > 3){
+				alert("BB-id number for HS-U must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check if PB low id number is different from PB-Up id number
+			if(document.getElementsByName("pbnumber")[0].value == document.getElementsByName("pbnumber")[1].value.toString()){
+				alert("the PB-Low and PB-Up have the same number. Please check.");
+				return false;
+			}
+
+			//Check if BB low id number is different from BB-Up id number
+			if(document.getElementsByName("bbnumber")[0].value == document.getElementsByName("bbnumber")[1].value.toString()){
+				alert("the BB-Low and BB-Up have the same number. Please check.");
+				return false;
+			}
+
+
 			//Check if all the components have the same layer (OL or ML)
 			var correctlyr = true;
 			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||

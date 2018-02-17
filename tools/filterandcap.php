@@ -96,6 +96,18 @@
 				return false;
 			}
 
+			//Check number of digits PB
+			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
+				alert("PB-id number must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
 
 			//Check if all questions were answered
 			var check = check_yes_no(10);

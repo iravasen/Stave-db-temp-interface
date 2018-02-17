@@ -85,12 +85,50 @@
 				alert("HS-Upper-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
 			}
-			
+
 			//Check hs lower id - 3 digits
 			if(document.getElementsByName("hsnumber-l")[0].value.toString().length<3 || document.getElementsByName("hsnumber-l")[0].value.toString().length>3){
 				alert("HS-Lower-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
 			}
+
+			//Check number of digits PB low
+			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
+				alert("PB-id number for HS-L must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits PB up
+			if(document.getElementsByName("pbnumber")[1].value.toString().length < 3 || document.getElementsByName("pbnumber")[1].value.toString().length > 3){
+				alert("PB-id number for HS-U must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB low
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number for HS-L must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB up
+			if(document.getElementsByName("bbnumber")[1].value.toString().length < 3 || document.getElementsByName("bbnumber")[1].value.toString().length > 3){
+				alert("BB-id number for HS-U must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check if PB low id number is different from PB-Up id number
+			if(document.getElementsByName("pbnumber")[0].value == document.getElementsByName("pbnumber")[1].value.toString()){
+				alert("the PB-Low and PB-Up have the same number. Please check.");
+				return false;
+			}
+
+			//Check if BB low id number is different from BB-Up id number
+			if(document.getElementsByName("bbnumber")[0].value == document.getElementsByName("bbnumber")[1].value.toString()){
+				alert("the BB-Low and BB-Up have the same number. Please check.");
+				return false;
+			}
+
+
 
 			//Check if the Stave and the two HS are "OL" or "ML"
 			var correctlayer = true;
@@ -153,16 +191,16 @@
 		<legend> Component IDs </legend>
 		  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
 
-			<p> <strong>Upper side</strong> </p>
+			<p><strong> Lower side </strong></p>
 			<ul>
-				<li> HS Id: <?php include('ids/hsrid.html')?> </li>
+				<li> HS Id: <?php include('ids/hslid.html')?> </li>
 				<li> PB Id: <?php include('ids/pbid.html')?></li>
 				<li> BB Id: <?php include('ids/bbid.html')?></li>
 			</ul>
 
-			<p><strong> Lower side </strong></p>
+			<p> <strong>Upper side</strong> </p>
 			<ul>
-				<li> HS Id: <?php include('ids/hslid.html')?> </li>
+				<li> HS Id: <?php include('ids/hsrid.html')?> </li>
 				<li> PB Id: <?php include('ids/pbid.html')?></li>
 				<li> BB Id: <?php include('ids/bbid.html')?></li>
 			</ul>
