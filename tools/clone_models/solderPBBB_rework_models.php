@@ -4,7 +4,7 @@
 
     <span style="color: red; font-size: 14pt"> Component </span><br>
     <p>
-      <strong> Half-Stave </strong>: <input type="checkbox"/> Left <input type="checkbox"/> Right <br>
+      <strong> Half-Stave </strong>: <input type="checkbox"/> Lower <input type="checkbox"/> Upper <br>
       <strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
     </p>
 
