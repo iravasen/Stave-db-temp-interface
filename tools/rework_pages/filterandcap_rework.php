@@ -72,6 +72,18 @@
 				 	 return idcorrect;
 			}
 
+			//Check number of digits PB
+			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
+				alert("PB-id number must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+			//Check number of digits BB
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+
 			//Check digits in FB number
 			if(document.getElementsByName("fbnumber")[0].value.toString().length < 4 || document.getElementsByName("fbnumber")[0].value.toString().length > 4){
 				alert("FB id number must have four digits (e.g 0001). Please check.");
@@ -105,7 +117,7 @@
 	<a id="noprint" href="../../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-	<h1> [REWORK] Capacitor soldering on PB and BB, Filter Board soldering on PB and BB - Report </h1>
+	<h1> [REWORK] Capacitor soldering on PB, Filter Board soldering on PB and BB - Report </h1>
 	<br>
 	<fieldset>
  	 <legend> Component IDs </legend>

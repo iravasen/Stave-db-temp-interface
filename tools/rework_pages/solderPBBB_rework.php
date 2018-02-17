@@ -158,6 +158,43 @@
 				return false;
 			}
 
+			//Check number of digits PB low
+			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
+				alert("PB-id number for HS-L must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits PB up
+			if(document.getElementsByName("pbnumber")[1].value.toString().length < 3 || document.getElementsByName("pbnumber")[1].value.toString().length > 3){
+				alert("PB-id number for HS-U must have 3 digits (i.e. PB-003 for PB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB low
+			if(document.getElementsByName("bbnumber")[0].value.toString().length < 3 || document.getElementsByName("bbnumber")[0].value.toString().length > 3){
+				alert("BB-id number for HS-L must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check number of digits BB up
+			if(document.getElementsByName("bbnumber")[1].value.toString().length < 3 || document.getElementsByName("bbnumber")[1].value.toString().length > 3){
+				alert("BB-id number for HS-U must have 3 digits (i.e. BB-003 for BB-3). Please check.");
+				return false;
+			}
+
+			//Check if PB low id number is different from PB-Up id number
+			if(document.getElementsByName("pbnumber")[0].value == document.getElementsByName("pbnumber")[1].value.toString()){
+				alert("the PB-Low and PB-Up have the same number. Please check.");
+				return false;
+			}
+
+			//Check if BB low id number is different from BB-Up id number
+			if(document.getElementsByName("bbnumber")[0].value == document.getElementsByName("bbnumber")[1].value.toString()){
+				alert("the BB-Low and BB-Up have the same number. Please check.");
+				return false;
+			}
+
+
 			//Check if all the components have the same layer (OL or ML)
 			var correctlyr = true;
 			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
@@ -188,12 +225,11 @@
 
 			 }
 
-			if(correcid && correctlyr){
+			if(correctid && correctlyr){
 				document.title = 	"Rework_" +
-													document.getElementsByName("bbtype")[0].value +
-													"_and_" +
-													document.getElementsByName("pbtype")[0].value +
-													"_soldering_on_" +
+													document.getElementsByName("pbselected")[0].value +
+													document.getElementsByName("bbselected")[0].value +
+													"soldering_on_" +
 													document.getElementsByName("stavecity")[0].value +
 													document.getElementsByName("selectedstave")[0].value +
 													document.getElementsByName("stavenumber")[0].value +
@@ -223,7 +259,7 @@
 	<fieldset>
  	 <legend> Component IDs </legend>
  	 <p> Stave ID: <?php include('../ids/stvid.html') ?></p>
- 	 <p> <strong> HS-Left </strong> <br>
+ 	 <p> <strong> HS-Lower </strong> <br>
  		 <ul>
  			 <li> ID: <?php include('../ids/hslid.html')?> </li>
  			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
@@ -232,7 +268,7 @@
  		 </ul>
  	 </p>
 
- 	 <p> <strong> HS-Right </strong> <br>
+ 	 <p> <strong> HS-Upper </strong> <br>
  		 <ul>
  			 <li> ID: <?php include('../ids/hsrid.html')?> </li>
  			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
@@ -305,7 +341,7 @@
 
 				<span style="color: red; font-size: 14pt"> Component </span><br>
 				<p>
-					<strong> Half-Stave </strong>: <input type="checkbox"/> Left <input type="checkbox"/> Right <br>
+					<strong> Half-Stave </strong>: <input type="checkbox"/> Lower <input type="checkbox"/> Upper <br>
 					<strong>HIC in position</strong> <input id="printnumb2" type="number" placeholder="#" style="width: 60px"/>
 				</p>
 
