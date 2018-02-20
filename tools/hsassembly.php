@@ -416,11 +416,11 @@
  			<br />
 
 			<ul id="notemp-answ">
-				<li> Room temperature during assembly: <input type="text" placeholder="T" style="width: 70px"/> °C </li>
+				<li> Room temperature during assembly: <input type="text" placeholder="T" style="width: 40px"/> °C </li>
 			</ul>
 
 			<fieldset id="ifproblem">
-				<p> Indicate the maximum and minimum temperature observed </p>
+				<p> Indicate the maximum and minimum temperature measured </p>
 				<ul>
 					<li> Max temperature: <input type="text" placeholder="max T" style="width: 70px"/> °C </li>
 					<li> Min temperature: <input type="text" placeholder="min T" style="width: 70px"/> °C </li>
