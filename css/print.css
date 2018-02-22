@@ -116,7 +116,7 @@ select#flavor{
 select#upd{
   display: inline;
   position: relative;
-  margin-left: -3em;
+  margin-left: 1em;
 }
 
 select#selstv{
