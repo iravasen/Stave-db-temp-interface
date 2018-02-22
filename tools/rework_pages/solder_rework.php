@@ -69,7 +69,9 @@
 						return correctid;
 			}
 			if(document.getElementsByName("extlotnumber")[0].value == "" ||
-				 document.getElementsByName("extflavor")[0].value == "-"){
+				 document.getElementsByName("extflavor")[0].value == "-" ||
+			   document.getElementsByName("extcity")[0].value == "-" ||
+			   document.getElementsByName("extnumber")[0].value == ""){
 					 	correctid = false;
 						alert("Insert a valid FPC extension id");
 						return correctid;
@@ -84,6 +86,34 @@
 			//Check if ext lot number has 3 digits
 			if(document.getElementsByName("extlotnumber")[0].value.toString().length <3 || document.getElementsByName("extlotnumber")[0].value.toString().length >3){
 				alert("FPC extension lot number must have 3 digits. Please check.");
+				return false;
+			}
+			//Check if ext number has three digits
+			if(document.getElementsByName("extnumber")[0].value.toString().length <3 || document.getElementsByName("extnumber")[0].value.toString().length >3){
+				alert("FPC extension number must have 3 digits (XXX). Please check.");
+				return false;
+			}
+			//Check if ext number is equal to hs number
+			if(document.getElementsByName("hsnumber")[0].value != document.getElementsByName("extnumber")[0].value){
+				alert("HS number must be equal to FPC-extension number");
+				return false;
+			}
+
+			//Check that is HS is lower, ext is down
+			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-L-") &&
+					document.getElementsByName("extflavor")[0].value != "DOWN-"){
+							alert("HS il lower but the FPC-extension is UP. Please check");
+							return false;
+			}
+			//Check that is HS is upper, ext is up
+			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-U-") &&
+					document.getElementsByName("extflavor")[0].value != "UP -"){
+							alert("HS il upper but the FPC-extension is DOWN. Please check");
+							return false;
+			}
+			//Check if the city of HS and extension is the same
+			if(document.getElementsByName("extcity")[0].value != document.getElementsByName("selectedcity")[0].value){
+				alert("HS and FPC extension have different city id. Please check.");
 				return false;
 			}
 
@@ -124,15 +154,8 @@
 	 		</span>
 		 </p>
 
- 		 <p> <strong>FPC-Extension id</strong>: GS <input type="text"name="extlotnumber" placeholder="XXX" style="width: 40px"/>
- 			 <select id="upd" name="extflavor">
- 				 <option> - </option>
- 				 <option> up </option>
- 				 <option> down </option>
- 			 </select>
- 			 <span style="display: block; float: right; color: red;" id="noprint">
- 			 	-> GSXXX can be found near the FireFly connectors
- 			 </span>
+ 		 <p> <strong>FPC-Extension id</strong>:
+			 <?php include('../ids/extid.html');?>
  		 </p>
 
  </fieldset>
