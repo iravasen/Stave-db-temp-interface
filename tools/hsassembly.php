@@ -422,8 +422,8 @@
 			<fieldset id="ifproblem">
 				<p> Indicate the maximum and minimum temperature measured </p>
 				<ul>
-					<li> Max temperature: <input type="text" placeholder="max T" style="width: 70px"/> °C </li>
-					<li> Min temperature: <input type="text" placeholder="min T" style="width: 70px"/> °C </li>
+					<li> Max temperature: <input type="text" placeholder="max T" style="width: 35px"/> °C </li>
+					<li> Min temperature: <input type="text" placeholder="min T" style="width: 35px"/> °C </li>
 				</ul>
 			</fieldset>
 		</fieldset>
