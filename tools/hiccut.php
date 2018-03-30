@@ -96,7 +96,7 @@
 			var cutpicture = true;
 			var caption = document.getElementsByName("imagecaption");
 
-			if(caption[2].value == ""){
+			if(document.getElementById("iA").checked && caption[2].value == ""){
 				cutpicture = false;
 				alert("Insert a image (and caption) of the cut. See first box of the Report section");
 				return cutpicture;
@@ -223,10 +223,10 @@
 
 	<form action="">
 		<fieldset>
-			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC edge on the side of the cut</strong></legend><br>
+			<legend>Distance of the cut (rough, with usb camera). <strong id="noprint"> Upload a picture of the FPC edge on the side of the cut (only for TAB A).</strong></legend><br>
 			<p> FPC TAB type <input id="iA" type="checkbox"/> A <input id="iB" type="checkbox"/>B <br><br>
 				<span id="sA"> Cut distance: <input id="cutdistancevalue" type="text" placeholder="value" style="width: 50px"/> um </span>
-				<span id="sB"> Cut distance not available, only picture close to FPC edge to see the cut quality. </span>
+				<span id="sB"> Cut distance not available. </span>
 			</p>
 			<br>
 
