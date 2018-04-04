@@ -32,7 +32,7 @@
 				alert("HS-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
 			}
-			 
+
 			//Check if all questions were answered
  			var check = check_yes_no(1);
 
@@ -124,7 +124,7 @@
               <li> Describe the damage type <br>
                 <textarea cols="100" rows="10" placeholder="Describe"></textarea>
               </li>
-              <li> Does it affect HIC functioning? <br>
+              <li> Does it affect HIC/chip functioning? <br>
                 <input type="checkbox"/> No <br>
                 <input type="checkbox"/> Yes <br>
               </li>
