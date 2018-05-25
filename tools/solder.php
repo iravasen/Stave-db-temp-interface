@@ -173,7 +173,7 @@
 			}
 			//Check that is HS is upper, ext is up
 			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-U-") &&
-					document.getElementsByName("extflavor")[0].value != "UP -"){
+					document.getElementsByName("extflavor")[0].value != "UP-"){
 							alert("HS il upper but the FPC-extension is DOWN. Please check");
 							return false;
 			}
