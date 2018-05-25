@@ -118,11 +118,11 @@
 			}
 
 			if(correctid){
-				document.title = 	"Rework_Bridge_res_FPC-ext-GS-" +
-				  								document.getElementsByName("extlotnumber")[0].value +
-													"-" +
-													document.getElementsByName("extflavor")[0].value +
-													"_sol-des_on_" +
+				document.title = 	"Rework_Bridge_res_FPC-ext-" +
+													 document.getElementsByName("extflavor")[0].value +
+													 "GS-" +
+													 document.getElementsByName("extlotnumber")[0].value +
+													 "_sold-des_on_" +
 													document.getElementsByName("selectedcity")[0].value +
 													document.getElementsByName("selectedhs")[0].value +
 													document.getElementsByName("hsnumber")[0].value +
