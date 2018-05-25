@@ -187,11 +187,11 @@
 			var check = check_yes_no(17);
 
 			if(check && correctid){
-				document.title = 	"Bridge_resistors_FPC-ext-GS-" +
+				document.title = 	"Bridge_res_FPC-ext-GS-" +
 				  								document.getElementsByName("extlotnumber")[0].value +
 													"-" +
 													document.getElementsByName("extflavor")[0].value +
-													"_soldering_desoldering_on_" +
+													"_sold-des_on_" +
 													document.getElementsByName("selectedcity")[0].value +
 													document.getElementsByName("selectedhs")[0].value +
 													document.getElementsByName("hsnumber")[0].value +
