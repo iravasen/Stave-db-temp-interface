@@ -4,7 +4,7 @@
 
 	<meta http-equiv="Cache-control" content="no-cache">
 
-	<title>CP insp and plan</title>
+	<title>CP inspection</title>
 
   <!--Include CSS file-->
   <link rel="stylesheet" type="text/css" href="../css/print.css" media="print" /> <!--For the printer-->
@@ -55,9 +55,9 @@
 			if(check && idcorrect){//if all it's correct, print
 				document.title = document.getElementsByName("selectedcp")[0].value +
 													document.getElementsByName("cpidname")[0].value +
-													"_inspection_and_planarity_report";
+													"_inspection_report";
 				window.print();
-				document.title = "CP insp and plan";
+				document.title = "CP insp";
 			}
 		}
 	</script>
@@ -70,7 +70,7 @@
 	<a id="noprint" href="../START.php" style="text-decoration: none"> <input style=" font-size: 17pt" type="button" value="HOME page"/></a>
   <br><br><br>
 
-  <h1>Cold Plate visual inspection and planarity - Report</h1>
+  <h1>Cold Plate visual inspection - Report</h1>
 
 	<br>
 	<fieldset>
@@ -110,7 +110,7 @@
  <?php include('people/people.html');?>
  <br>
 
-	<h2>Visual inspection and planarity</h2>
+	<h2>Visual inspection</h2>
   <br>
 
 	<form action="">
