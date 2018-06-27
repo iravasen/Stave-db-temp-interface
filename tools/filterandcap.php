@@ -130,6 +130,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!--For cloning objects -->
 	<?php include('clone_models/filterandcap_models.php');?>
 
@@ -202,6 +205,7 @@
 
 	<br>
 	<h2>Report</h2>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
   <br>
 	<br>
 
@@ -211,7 +215,7 @@
 
 		<fieldset>
  			<legend>Presence of shorts after capacitor soldering?</legend><br>
- 			<input type="checkbox" name="no" value="No"/> No
+ 			<input type="checkbox" name="no" value="No" class="ok"/> No
  			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -238,7 +242,7 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the PB due to heat? </legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -362,7 +366,7 @@
 
 		<fieldset>
  			<legend>Presence of shorts after PB soldering to FB?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -398,7 +402,7 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the PB termination pads due wrong handling?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -430,7 +434,7 @@
 
 		<fieldset>
  			<legend>Damages to the bridge of PB extensions (TOP and/or BOTTOM) due to heat?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -473,7 +477,7 @@
 		<br>
 		<fieldset>
  			<legend>Damages to the FB due to heat?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -507,7 +511,7 @@
 
 		<fieldset>
 			<legend>Presence of shorts after BB soldering to FB?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -540,7 +544,7 @@
 		<br>
 		<fieldset>
 			<legend>Damages to the BB termination pads due to wrong handling?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -572,7 +576,7 @@
 
 		<fieldset>
  			<legend>Damages to the bridge of BB extension due to heat?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -611,7 +615,7 @@
 		<br>
 		<fieldset>
 			<legend>Damages to the FB due to heat?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 

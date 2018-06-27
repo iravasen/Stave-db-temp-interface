@@ -97,6 +97,15 @@
 		}
 	</script>
 
+	<!-- For storage ok -->
+	<script type="text/javascript">
+	  function ok(){
+	    var okelem = document.getElementsByClassName("ok");
+	    for(i=0; i<okelem.length; i++)
+	      okelem[i].checked = true;
+	  }
+	</script>
+
 	<!--For cloning objects-->
 	<?php include('clone_models/stavestorageship_models.php')?>
 
@@ -181,10 +190,12 @@
 <br><br>
 <h2>- Storage section </h2>
 <br>
+<input id="noprint" type="button" value="Storage ok" style="position: center" onClick="ok()"/>
+<br>
 <form action="">
 	<fieldset>
 		<legend>Visible damages to Stave during storage period ?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -231,7 +242,7 @@
 	<br>
 	<fieldset>
 		<legend>Did you measure high temperature variations inside the storage room?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -250,7 +261,7 @@
 
 	<fieldset>
 		<legend>Were the conditions during the storage period considered acceptable?</legend><br>
-		<input type="checkbox" name="yes" value="Yes"/> Yes
+		<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
 		<br>
 		<input id="check" type="checkbox" name="no" value="No"/> No
 

@@ -202,6 +202,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!--For cloning objects -->
 	<?php include('clone_models/solder_models.php')?>
 </head>
@@ -283,13 +286,14 @@
 
 <br><br>
 	<h2> Report </h2>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
 	<br><br>
 
 	<h2>FPC extension alignment, gluing and soldering</h2>
 
 	<fieldset>
 		<legend>Alignment between FPC extension and Module 1. Problems?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
@@ -308,7 +312,7 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension gluing. Problems?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
@@ -328,7 +332,7 @@
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the extension due to heat?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -347,7 +351,7 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to the FPC-TAB-B due to heat?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br>
@@ -365,7 +369,7 @@
 	<br>
 	<fieldset>
 		<legend>FPC extension soldering. Damages to wire-bonds of Module in position 1?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -399,7 +403,7 @@
 	<fieldset>
 		<legend>Alignment problems of the two neighbour FPCs?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -440,7 +444,7 @@
 	<br>
 	<fieldset>
 		<legend>Presence of (visible) shorts?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -467,7 +471,7 @@
 	<br>
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -497,7 +501,7 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -522,7 +526,7 @@
 	<br>
 	<fieldset>
 		<legend>Damages to bridges due to heat?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br />
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -557,7 +561,7 @@
 	<fieldset>
 		<legend>Have you lost some resistance after desoldering?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -588,7 +592,7 @@
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -636,7 +640,7 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -666,7 +670,7 @@
 	<fieldset>
 		<legend>Have you lost some resistance after desoldering?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -698,7 +702,7 @@
 	<fieldset>
 		<legend>Did you wrongly remove a MOD_ID resistance (then resoldered)?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -761,7 +765,7 @@
 	<fieldset>
 		<legend>Damages to wire-bonds?</legend><br>
 
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 		<br />
@@ -809,7 +813,7 @@
 	<br>
 	<fieldset>
 		<legend>Visible damages to FPC due to heat?</legend><br>
-		<input type="checkbox" name="no" value="No"/> No
+		<input type="checkbox" name="no" value="No" class="ok"/> No
 		<br>
 		<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 

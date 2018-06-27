@@ -127,6 +127,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 </head>
 
 <body>
@@ -206,9 +209,12 @@
 
 		</fieldset>
 		<br>
+		<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
+		<br>
+		<br>
 		<fieldset>
 			<legend>Is this HIC on CP acceptable?</legend><br>
-			<input type="checkbox" name="yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
  			<br />
  			<input id="check" type="checkbox" name="no" value="No"/> No
 

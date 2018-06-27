@@ -50,6 +50,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 </head>
 
 <body class="special">
@@ -95,11 +98,13 @@
  <br>
 
  <h2>Report</h2>
+ 	<br>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
 	<br>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to SF structure?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -123,11 +128,11 @@
 		<br>
 		<fieldset>
 			<legend>Is this SF acceptable?</legend><br>
-				<input id="check" name="yes" type="checkbox"/> Yes <br>
+				<input id="check" name="yes" type="checkbox" class="ok"/> Yes <br>
 				<input name="no" type="checkbox"/> No <br>
 
 				<fieldset id="ifproblem">
-					<input type="checkbox"> and it's usable for Stave assembly <br>
+					<input type="checkbox" class="ok"> and it's usable for Stave assembly <br>
 					<input type="checkbox"> but we put it aside in case of need <br>
 				</fieldset>
 

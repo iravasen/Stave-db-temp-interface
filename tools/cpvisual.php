@@ -62,6 +62,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 </head>
 
 <body class="special">
@@ -111,12 +114,13 @@
  <br>
 
 	<h2>Visual inspection</h2>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
   <br>
 
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to CP carbon-fiber structure?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -137,7 +141,7 @@
 		<br>
 		<fieldset>
  			<legend>Visible damages to cooling pipes?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -157,7 +161,7 @@
 		<br>
 		<fieldset>
 			<legend>Visible damages to external CP rubber tubes?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -176,7 +180,7 @@
 		<br>
 		<fieldset>
 			<legend> Is this Cold-Plate acceptable after the visual inspection? </legend>
-			<input type="checkbox" name="yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
 			<br />
 			<input type="checkbox" name="no" value="No"/> No
 			<!--

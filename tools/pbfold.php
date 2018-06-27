@@ -182,6 +182,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!--For cloning objects -->
 	<?php include('clone_models/pbfold_models.php')?>
 
@@ -289,7 +292,7 @@
 
 
 	<h2>Report</h2>
-
+	<br>
 	<form action="">
 
 		<fieldset id="finalresult-fold">
@@ -299,9 +302,11 @@
 			?>
 		</fieldset>
 		<br>
+		<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
+		<br>
 		<fieldset>
  			<legend>Visible damages to the cross-cables?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -345,7 +350,7 @@
 		<br>
 		<fieldset>
  			<legend>Do you think to have damaged the HICs?</legend><br>
- 			<input type="checkbox" name="no" value="No"/> No
+ 			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />

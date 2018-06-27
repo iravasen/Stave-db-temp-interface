@@ -168,6 +168,19 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<script type="text/javascript">
+	  function okandprintall(){
+	    var okelem = document.getElementsByClassName("ok");
+	    for(i=0; i<okelem.length; i++)
+	      okelem[i].checked = true;
+
+			var bb = document.getElementById("brokenbonds");
+			bb.value = "0";
+	    printall();
+	  }
+	</script>
+
 	<!-- For cloning objects -->
 	<?php include('clone_models/hiccut_models.php')?>
 
@@ -231,7 +244,7 @@
 			<br>
 
 			<p>Is the cut distance/result acceptable?</p>
-			<input type="checkbox" name="yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
  			<br />
  			<input type="checkbox" name="no" value="No"/> No
 
@@ -240,9 +253,12 @@
 			?>
 		</fieldset>
 		<br>
+
+		<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
+		<br><br>
 		<fieldset>
  			<legend>Visible (macroscopic) damages to the HIC due to the cut procedure?</legend><br>
- 			<input type="checkbox" name="no" value="No"/> No
+ 			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -273,7 +289,7 @@
 		<br>
 		<fieldset>
  			<legend>Visible damages to bonds due to TAB cut procedure?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -346,12 +362,12 @@
 				<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-bond','template-bond');">Add new item</button></p>
 			</fieldset>
 
-			<br><span> <strong> Total number of broken bonds</strong>: <input type="text" placeholder="#" style="width: 100px"/> </span> <br>
+			<br><span> <strong> Total number of broken bonds</strong>: <input id="brokenbonds" type="text" placeholder="#" style="width: 100px"/> </span> <br>
 		</fieldset>
 		<br>
 		<fieldset>
  			<legend>Are there suspicious wire-bonds to report?</legend><br>
- 			<input type="checkbox" name="no" value="No"/> No
+ 			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />
@@ -458,7 +474,7 @@
 	<form>
 		<fieldset>
 			<legend>Is this HIC acceptable after tab and wings cut?</legend><br>
-			<input type="checkbox" name="yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
  			<br />
  			<input type="checkbox" name="no" value="No"/> No
 		</fieldset>

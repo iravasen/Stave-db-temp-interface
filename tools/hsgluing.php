@@ -124,6 +124,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!-- For cloning objects -->
 	<?php include('clone_models/hsgluing_models.php')?>
 
@@ -195,9 +198,14 @@
 			?>
 		</fieldset>
 		<br>
+
+		<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
+
+		<br>
+		<br>
 		<fieldset>
  			<legend>Problems during HS lifting from the base with the handling bar?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -223,7 +231,7 @@
 		<br>
 		<fieldset>
  			<legend>Problems during HS gluing under the SF?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -253,7 +261,7 @@
 
 		<fieldset>
  			<legend>Did you observe strong temperature gradients during HS gluing?</legend><br>
-			<input id="notemp" type="checkbox" name="no" value="No"/> No
+			<input id="notemp" type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -275,7 +283,7 @@
 
 		<fieldset>
  			<legend>Do you think the procedure (with the handling bar) damaged the HS?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Probably (to be tested)
  			<br />

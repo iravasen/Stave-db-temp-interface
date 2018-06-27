@@ -232,6 +232,18 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<script type="text/javascript">
+	  function okandprintall(){
+	    var okelem = document.getElementsByClassName("ok");
+	    for(i=0; i<okelem.length; i++)
+	      okelem[i].checked = true;
+			var roomt = document.getElementById("roomtemp");
+			roomt.value = "19-20";
+	    printall();
+	  }
+	</script>
+
 	<!-- For cloning the objects -->
 	<?php include('clone_models/hsassembly_models.php'); ?>
 
@@ -320,9 +332,13 @@
 			?>
 		</fieldset>
 		<br>
+
+		<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
+
+		<br><br>
 		<fieldset>
  			<legend>Problems during glue-mask deposition/removal?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -368,7 +384,7 @@
 		<br>
 		<fieldset>
  			<legend>Problems during HIC gluing?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -410,13 +426,13 @@
 
 		<fieldset>
  			<legend>Did you observe strong temperature gradients during HS assembly?</legend><br>
-			<input id="notemp" type="checkbox" name="no" value="No"/> No
+			<input id="notemp" type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
 
 			<ul id="notemp-answ">
-				<li> Room temperature during assembly: <input type="text" placeholder="T" style="width: 40px"/> °C </li>
+				<li> Room temperature during assembly: <input id="roomtemp" type="text" placeholder="T" style="width: 40px"/> °C </li>
 			</ul>
 
 			<fieldset id="ifproblem">

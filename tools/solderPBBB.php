@@ -238,6 +238,9 @@
 		}
 	</script>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!-- For cloning objects -->
 	<?php include('clone_models/solderPBBB_models.php')?>
 
@@ -334,13 +337,15 @@
 	<br>
 
 	<h2>Report</h2>
+	<br>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
 	<br><br>
   <h2>Bias Bus Soldering to Stave</h2>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to cross-cables?</legend><br>
 
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -376,7 +381,7 @@
 		<fieldset>
  			<legend>Visible damages to BB?</legend><br>
 
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -420,7 +425,7 @@
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to cross-cables?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
  			<br />
@@ -463,7 +468,7 @@
 		<br>
 		<fieldset>
  			<legend>Visible damages to PB?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
 			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 			<br />

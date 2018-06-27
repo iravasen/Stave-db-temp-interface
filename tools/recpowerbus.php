@@ -73,6 +73,9 @@
 
   <?php include('add/addscript.html');?>
 
+	<!-- For printing immediately -->
+	<?php include('allokandprint/allok.html')?>
+
 	<!--For cloning objects -->
 	<?php include('clone_models/recpowerbus_models.php')?>
 </head>
@@ -121,12 +124,13 @@
  <br>
 
  <h2>Report</h2>
-
+	<br>
+	<input id="noprint" type="button" value="All ok & save" style="position: center" onClick="okandprintall()"/>
 	<br>
 	<form action="">
 		<fieldset>
  			<legend>Visible damages to the PB ?</legend><br>
-			<input type="checkbox" name="no" value="No"/> No
+			<input type="checkbox" name="no" value="No" class="ok"/> No
 			<br />
  			<input id="check" type="checkbox" name="yes" value="Yes"/> Yes
 
@@ -300,7 +304,7 @@
 		<br>-->
 		<fieldset>
 			<legend>Is this PB acceptable?</legend><br>
-			<input type="checkbox" name="yes" value="Yes"/> Yes
+			<input type="checkbox" name="yes" value="Yes" class="ok"/> Yes
  			<br />
  			<input type="checkbox" name="no" value="No"/> No
 		</fieldset>

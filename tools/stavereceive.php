@@ -84,6 +84,8 @@
 
 	<?php include('add/addscript.html');?>
 
+
+
 	<!--For cloning objects -->
 	<?php include('clone_models/stavereceive_models.php');?>
 
@@ -102,7 +104,6 @@
   <br><br><br>
 
   <h1>Stave reception - Report</h1>
-	<p> <strong>Part of the Stave shipment activity</strong> </p>
 	<br>
 	<fieldset>
 		<legend> Component IDs </legend>
