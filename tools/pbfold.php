@@ -11,6 +11,15 @@
 
   <?php include('add/addscript.html');?>
 
+	<style>
+		span#siuarm{
+			display: none;
+		}
+		input#iuarm:checked ~ span#siuarm{
+			display: block;
+		}
+	</style>
+
 	<!-- To print the page with a default name -->
 	<?php include('jvscript_funct/check_yes_no.html') ?>
 	<script type="text/javascript">
@@ -238,6 +247,46 @@
  <br>
  <?php include('people/people.html');?>
  <br>
+
+ <!-- General info -->
+ <fieldset>
+ 	<legend> General Info </legend>
+ 	<p> <strong>Type of (narrow) u-arm used</strong> <br>
+ 			<input type="checkbox"/> 2.5 mm wide <br>
+ 			<input id="iuarm" type="checkbox"/> Other <br>
+
+ 		<span id="siuarm"> <input type="text" placeholder="specify" style="width: 500px"/> </span>
+ 	</p>
+
+
+
+			<fieldset id="uarmpositions">
+				<legend> <strong> Positions of the u-arm wrt the CC for each Module</strong> <br>
+		 			*default* means that u-arms are on both DVDD CCs and on Back-Bias CC <br>
+				</legend>
+  				 <div id="template-uarm-0">
+  			 		<div id="placeh-uarm-0">
+  			 			<hr>
+
+  			 			<p> Module position: <input id="printnumb2" type="number" style="width: 40px"/> - U-arm configuration:
+								<input type="checkbox"/> default
+								<input type="checkbox"/> DVDD (M0)
+								<input type="checkbox"/> DVDD (M8)
+								<input type="checkbox"/> AVDD
+								<input type="checkbox"/> Back-Bias
+								<input type="checkbox"/> AVSS
+								<input type="checkbox"/> DVSS
+							</p>
+
+  			 			<hr>
+  			 		</div>
+  			 	</div>
+
+  			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-uarm','placeh-uarm');">Add new item</button></p>
+  			</fieldset>
+
+ </fieldset>
+
 
 	<h2>Report</h2>
 

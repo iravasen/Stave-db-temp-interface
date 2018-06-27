@@ -11,8 +11,18 @@
 
   <?php include('add/addscript.html');?>
 
+	<style>
+		span#siuarm{
+			display: none;
+		}
+		input#iuarm:checked ~ span#siuarm{
+			display: block;
+		}
+	</style>
+
 	<!-- To print the page with a default name -->
 	<?php include('jvscript_funct/check_yes_no.html') ?>
+
 	<script type="text/javascript">
 		function printall(){
 
@@ -51,6 +61,7 @@
 
 	<!-- For cloning the objects -->
 	<?php include('clone_models/uarmgluing_models.php'); ?>
+
 
 </head>
 
@@ -101,6 +112,81 @@
  <br>
  <?php include('people/people.html');?>
  <br>
+
+ <!-- General info -->
+ <fieldset>
+ 	<legend> General Info </legend>
+
+		<fieldset>
+
+	 	<legend> Type of u-arm used </legend>
+	 			<input type="checkbox"/> 5.5 mm long (4 mm wide, U-shaped) <br>
+				<input type="checkbox"/> 7.0 mm long (4 mm wide, L-shaped) <br>
+	 			<input id="iuarm" type="checkbox"/> Other <br>
+
+	 		<span id="siuarm"> <input type="text" placeholder="specify" style="width: 500px"/> </span>
+	 	</p>
+	</fieldset><br>
+
+
+
+			<fieldset id="uarmpositions">
+				<legend> <strong> Positions of the u-arm wrt the CC for each Module</strong> <br>
+		 			*default* means that u-arms are on both DVDD CCs and on Back-Bias CC <br>
+				</legend>
+  				 <div id="template-uarm-0">
+  			 		<div id="placeh-uarm-0">
+  			 			<hr>
+
+							<p> Module position: <input id="printnumb2" type="number" style="width: 40px"/> - U-arm conf.:
+
+					      <input type="checkbox" class="def" onClick="checks()"/> default |
+					      <input type="checkbox" class="def"/> DVDD (M8)
+					      <input type="checkbox" class="nodef"/> AVSS-DVSS (M8)
+					      <input type="checkbox" class="def"/> Back-Bias
+					      <input type="checkbox" class="nodef"/> AVDD
+					      <input type="checkbox" class="nodef"/> AVSS-DVSS (M0)
+					      <input type="checkbox" class="def"/> DVDD (M0)
+
+					    </p>
+
+					    <script type="text/javascript">
+
+					      	function checks(){
+					         var divext = document.getElementById("template-uarm-0");
+					      		var divint = divext.getElementsByTagName("div");
+
+					         for(j=0; j<divint.length; j++){
+					        		var checkboxes = divint[j].getElementsByClassName("def");
+					           var checkboxes_nodef = divint[j].getElementsByClassName("nodef")
+					           if(checkboxes[0].checked){//if "default" is checked
+					        			for(i=1; i<checkboxes.length; i++){
+					        				checkboxes[i].checked = true;
+					        			}
+					             for(k=0; k<checkboxes_nodef.length; k++){
+					               checkboxes_nodef[k].disabled = true;
+					             }
+					           }//end if
+					           else{
+					             for(i=1; i<checkboxes.length; i++){
+					        				checkboxes[i].checked = false;
+					        			}
+					             for(k=0; k<checkboxes_nodef.length; k++){
+					               checkboxes_nodef[k].disabled = false;
+					             }
+					           }
+					         }//end loop on divint elements
+					      	}//end function checks
+					  	</script>
+
+  			 			<hr>
+  			 		</div>
+  			 	</div>
+
+  			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-uarm','placeh-uarm');">Add new item</button></p>
+  			</fieldset>
+
+ </fieldset>
 
 
 	<h2>Report</h2>
