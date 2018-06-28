@@ -182,6 +182,24 @@
 		}
 	</script>
 
+	<style>
+		textarea#uarmlwr_text{
+			display: none;
+		}
+
+		input#uarmlwr:checked ~ textarea#uarmlwr_text{
+			display: block;
+		}
+
+		textarea#uarmupr_text{
+			display: none;
+		}
+
+		input#uarmupr:checked ~ textarea#uarmupr_text{
+			display: block;
+		}
+	</style>
+
 	<!-- For printing immediately -->
 	<?php include('allokandprint/allok.html')?>
 
@@ -254,39 +272,44 @@
  <!-- General info -->
  <fieldset>
  	<legend> General Info </legend>
- 	<p> <strong>Type of (narrow) u-arm used</strong> <br>
- 			<input type="checkbox"/> 2.5 mm wide <br>
- 			<input id="iuarm" type="checkbox"/> Other <br>
 
- 		<span id="siuarm"> <input type="text" placeholder="specify" style="width: 500px"/> </span>
- 	</p>
+			<fieldset>
+		 	 	<legend>Type of (narrow) u-arm used</legend>
+		 			<input type="checkbox"/> 2.5 mm wide (5.5 mm long) <br>
+		 			<input id="iuarm" type="checkbox"/> Other
+
+		 		<span id="siuarm"> <input type="text" placeholder="specify" style="width: 500px"/> </span>
+		 	</fieldset>
 
 
-
+			<br>
 			<fieldset id="uarmpositions">
-				<legend> <strong> Positions of the u-arm wrt the CC for each Module</strong> <br>
-		 			*default* means that u-arms are on both DVDD CCs and on Back-Bias CC <br>
-				</legend>
-  				 <div id="template-uarm-0">
-  			 		<div id="placeh-uarm-0">
-  			 			<hr>
+				<legend> <strong> Positions of the U-arms on each Module</strong> </legend>
+				<span> <strong> Lower side </strong> </span>
+  			<ul>
+					<li>
+						<input type="checkbox"/> default: middle of slave 6 for Modules 1-6, middle of slave 1 & 6 for Module 7
+					</li>
+					<li>
+						<input id="uarmlwr" type="checkbox"/> Other  <br>
+						<textarea id="uarmlwr_text" rows="15" cols="100" placeholder="specify configuration"></textarea>
+					</li>
+				</ul>
+				<br>
 
-  			 			<p> Module position: <input id="printnumb2" type="number" style="width: 40px"/> - U-arm configuration:
-								<input type="checkbox"/> default
-								<input type="checkbox"/> DVDD (M0)
-								<input type="checkbox"/> DVDD (M8)
-								<input type="checkbox"/> AVDD
-								<input type="checkbox"/> Back-Bias
-								<input type="checkbox"/> AVSS
-								<input type="checkbox"/> DVSS
-							</p>
+				<span> <strong> Upper side </strong> </span>
+  			<ul>
+					<li>
+						<input type="checkbox"/> default: before master 0 and middle of slave 6 for Module 1, middle of slave 6 for Modules 2-7
+					</li>
+					<li>
+						<input id="uarmupr" type="checkbox"/> Other  <br>
+						<textarea id="uarmupr_text" rows="15" cols="100" placeholder="specify configuration"></textarea>
+					</li>
+				</ul>
+				<br>
 
-  			 			<hr>
-  			 		</div>
-  			 	</div>
-
-  			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-uarm','placeh-uarm');">Add new item</button></p>
-  			</fieldset>
+  		</fieldset>
 
  </fieldset>
 
