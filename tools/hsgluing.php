@@ -125,7 +125,16 @@
 	</script>
 
 	<!-- For printing immediately -->
-	<?php include('allokandprint/allok.html')?>
+	<script type="text/javascript">
+	  function okandprintall(){
+	    var okelem = document.getElementsByClassName("ok");
+	    for(i=0; i<okelem.length; i++)
+	      okelem[i].checked = true;
+			var roomtemp = document.getElementById("roomtemp");
+			roomtemp.value = "19-20";
+	    printall();
+	  }
+	</script>
 
 	<!-- For cloning objects -->
 	<?php include('clone_models/hsgluing_models.php')?>
@@ -267,7 +276,7 @@
  			<br />
 
 			<ul id="notemp-answ">
-				<li> Room temperature during gluing: <input type="text" placeholder="T" style="width: 70px"/> °C </li>
+				<li> Room temperature during gluing: <input id="roomtemp" type="text" placeholder="T" style="width: 50px"/> °C </li>
 			</ul>
 
 			<fieldset id="ifproblem">
