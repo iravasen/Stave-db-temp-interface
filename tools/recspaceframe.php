@@ -79,19 +79,9 @@
 		</p>
 	</fieldset>
 	<br>
-	<fieldset>
-	<legend> Location </legend>
-		<select name="Sites" >
-			<option value="-"> - </option>
- 			<option value="Sezione INFN, Turin"> Sezione INFN, Turin  </option>
- 			<option value="INFN e Laboratori Nazionali di Frascati, Frascati">INFN e Laboratori Nazionali di Frascati, Frascati </option>
- 			<option value="Nikhef, Nationaal Instituut voor subatomaire fysica, Amsterdam"> Nikhef, Nationaal Instituut voor subatomaire fysica, Amsterdam </option>
-			<option value="STFC Daresbury Laboratory, Daresbury"> STFC Daresbury Laboratory, Daresbury </option>
-			<option value="Lawrence Berkeley National Laboratory, Berkeley, California"> Lawrence Berkeley National Laboratory, Berkeley, California </option>
-
-		</select>
-	</fieldset>
-
+	<!-- Location -->
+	<?php include('location/location.html');?>
+	
 	<!--People-->
  <br>
  <?php include('people/people.html');?>
