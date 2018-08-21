@@ -154,7 +154,7 @@
  <form>
 	 <fieldset>
  		<legend> General info </legend>
- 		Vehicle used for transportation of the Stave to CERN (<span id="noprint" style="color: red"> trasport document to be attched in the GUI</span>)<br>
+ 		Vehicle used for transportation of the Stave to CERN <span id="noprint" style="color: red"> (trasport document to be attched in the GUI)</span><br>
  		<input id="van" type="checkbox"/> Van of the university / lab <br>
  		<input id="expcour" type="checkbox"/> Express courier <br>
  			<ul id="expcourchoice">
