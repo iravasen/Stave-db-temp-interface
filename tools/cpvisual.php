@@ -76,9 +76,10 @@
   <h1>Cold Plate visual inspection - Report</h1>
 
 	<br>
+
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
+			<p> Cold-Plate ID: <?php include('ids/cpid.php')?> </p>
 			<p style="display: block; float: right;" id="noprint">
 				The CP id can be found on a CP corner on the side of the cooling pipes
 			</p>
