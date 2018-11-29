@@ -92,7 +92,7 @@
 			 for(ipos=0; ipos<positions.length; ipos++){
 				 if((positions[ipos].type.toLowerCase() == "number")){
 					 //ML
-					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-"){
+					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U"){
 						 var pos = positions[ipos].value;
 						 if(pos==1) countML[0]++;
 						 if(pos==2) countML[1]++;
@@ -100,7 +100,7 @@
 						 if(pos==4) countML[3]++;
 					 }
 					 //OL
-					 if(document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"){
+					 if(document.getElementsByName("selectedhs")[0].value == "OL-HS-L" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U"){
 						 var pos = positions[ipos].value;
 						 if(pos==1) countOL[0]++;
 						 if(pos==2) countOL[1]++;
@@ -139,7 +139,7 @@
 				 }
 			 }
 
-			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-")){
+			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U")){
 				 for(j=0; j<4; j++){
 					 if(countML[j]==0 || countML[j]>1){
 						 correcthic = false;
@@ -154,7 +154,7 @@
 				 }
 			 }
 
-			 if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-")){
+			 if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U")){
 				 for(j=0; j<7; j++){
 					 if(countOL[j]==0 || countOL[j]>1){
 						 correcthic = false;
@@ -188,7 +188,7 @@
 			//Check that if flavor of HS corresponds to flavor of modules
 			var correctflavor = true;
 			//--> Flavor Left
-			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-L-"){
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "OL-HS-L"){
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AR" || hicflavor[iflav].value == "BR"){
 						correctflavor = false;
@@ -198,7 +198,7 @@
 				}
 			}
 			//--> Flavor Right
-			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-U-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"){
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-U" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U"){
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AL" || hicflavor[iflav].value == "BL"){
 						correctflavor = false;
@@ -250,12 +250,13 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
- 		 <p> Half-Stave ID: <?php include('../ids/hsid.html')?>
+ 		 <p> (New) Half-Stave ID: <?php include('../ids/hsid.php')?>
+		 <p> (Old) Half-Stave ID <?php include('../ids/hsid_old.php')?>
 			 <span style="color: red; display: block; float: right;" id="noprint">
  				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
  			</span>
 		 </p>
- 		 <p> Cold-Plate ID: <?php include('../ids/cpid.html')?> </p>
+ 		 <p> Cold-Plate ID: <?php include('../ids/cpid.php')?> </p>
 
 
  		 <fieldset id="hicpositions">

@@ -88,7 +88,7 @@
 	<br>
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> Stave ID: <?php include('ids/stvid.html')?>  </p>
+			<p> Stave ID: <?php include('ids/stvid.php')?>  </p>
 			<p style="color: red; display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			</p>
@@ -105,7 +105,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 <!--People-->
  <br>

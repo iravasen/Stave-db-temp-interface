@@ -64,7 +64,7 @@
 	<br>
 	<fieldset>
  	 <legend> Component IDs </legend>
-  		<p> Space-Frame ID:<?php include('ids/sfid.html')?></p>
+  		<p> Space-Frame ID:<?php include('ids/sfid.php')?></p>
  		<p style="color: red; display: block; float: right;" id="noprint">
  			The SF id is written on one of its extremities on the vertex opposite to the base on which HSs are glued
  		</p>
@@ -80,8 +80,8 @@
 	</fieldset>
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
-	
+	<?php include('location/location.php');?>
+
 	<!--People-->
  <br>
  <?php include('people/people.html');?>

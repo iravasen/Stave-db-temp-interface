@@ -36,7 +36,7 @@
 					 return correctid;
 			}
 			//----> HS-right
-			if(document.getElementsByName("hscity-r")[0].value == "-" ||
+			/*if(document.getElementsByName("hscity-r")[0].value == "-" ||
 				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
 					 correctid = false;
@@ -82,7 +82,7 @@
 					 alert("Insert HS-Left ID");
 					 return correctid;
 			}
-
+			*/
 			//Check stave number - 3 digits
 			if(document.getElementsByName("stavenumber")[0].value.toString().length<3 || document.getElementsByName("stavenumber")[0].value.toString().length>3){
 				alert("Stave-id number must have 3 digits (e.g. Stave-003 for Stave-3). Please check.");
@@ -90,7 +90,7 @@
 			}
 
 			//Check hs upper id - 3 digits
-			if(document.getElementsByName("hsnumber-r")[0].value.toString().length<3 || document.getElementsByName("hsnumber-r")[0].value.toString().length>3){
+			/*if(document.getElementsByName("hsnumber-r")[0].value.toString().length<3 || document.getElementsByName("hsnumber-r")[0].value.toString().length>3){
 				alert("HS-Upper-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
 			}
@@ -135,14 +135,14 @@
 			if(document.getElementsByName("bbnumber")[0].value == document.getElementsByName("bbnumber")[1].value.toString()){
 				alert("the BB-Low and BB-Up have the same number. Please check.");
 				return false;
-			}
+			}*/
 
 
 
 			//Check if the Stave and the two HS are "OL" or "ML"
 			var correctlayer = true;
 
-			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
+			/*if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
 				 document.getElementsByName("hsflavor-r")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("hsflavor-l")[0].value.indexOf("OL") == -1){
 
@@ -154,7 +154,7 @@
 								 alert("The layer (OL or ML) definition in component ID section is wrong, please check");
 								 return correctlayer;
 					 }
-			}
+			}*/
 
 
 			//Check if at least 1 picture has been inserted
@@ -219,21 +219,22 @@
 
 	<fieldset>
 		<legend> Component IDs </legend>
-		  <p> Stave ID: <?php include('ids/stvid.html') ?></p>
+		  <p> Stave ID: <?php include('ids/stvid.php') ?></p>
 
+			<!--
 			<p><strong> Lower side </strong></p>
 			<ul>
-				<li> HS Id: <?php include('ids/hslid.html')?> </li>
-				<li> PB Id: <?php include('ids/pbid.html')?></li>
-				<li> BB Id: <?php include('ids/bbid.html')?></li>
+				<li> HS Id: <//?php include('ids/hslid.html')?> </li>
+				<li> PB Id: <//?php include('ids/pbid.html')?></li>
+				<li> BB Id: <//?php include('ids/bbid.html')?></li>
 			</ul>
 
 			<p> <strong>Upper side</strong> </p>
 			<ul>
-				<li> HS Id: <?php include('ids/hsrid.html')?> </li>
-				<li> PB Id: <?php include('ids/pbid.html')?></li>
-				<li> BB Id: <?php include('ids/bbid.html')?></li>
-			</ul>
+				<li> HS Id: <//?php include('ids/hsrid.html')?> </li>
+				<li> PB Id: <//?php include('ids/pbid.html')?></li>
+				<li> BB Id: <//?php include('ids/bbid.html')?></li>
+			</ul>-->
 
 			<p style="display: block; float: right;" id="noprint">
 				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
@@ -250,7 +251,7 @@
 	</fieldset>
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

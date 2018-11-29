@@ -75,7 +75,7 @@
 
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> Filter-Board ID: <?php include('ids/fbid.html')?> </p>
+			<p> Filter-Board ID: <?php include('ids/fbid.php')?> </p>
 	</fieldset>
 
 	<br>
@@ -89,7 +89,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

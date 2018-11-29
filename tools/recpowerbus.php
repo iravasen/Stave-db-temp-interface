@@ -90,7 +90,7 @@
 
 	<fieldset>
   	<legend> Component IDs </legend>
-  		<p> Power-Bus ID: <?php include('ids/pbid.html')?> </p>
+  		<p> Power-Bus ID: <?php include('ids/pbid.php')?> </p>
   </fieldset>
 
 	<br>
@@ -104,7 +104,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

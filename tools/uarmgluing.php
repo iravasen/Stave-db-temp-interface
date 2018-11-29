@@ -79,7 +79,7 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
- 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?>
+ 		 <p> Half-Stave ID: <?php include('ids/hsid.php')?>
 			 <span style="color: red; display: block; float: right;" id="noprint">
 				 Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 			 </span>
@@ -97,7 +97,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

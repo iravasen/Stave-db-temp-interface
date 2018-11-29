@@ -1,9 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
 <select name="selectedcp" id="selectedcp">
-	<option value="1" > - </option>
-	<option value="2" > OL-CP-ALC- </option>
-	<option value="3" > ML-CP-ALC- </option>
+	<option value="-" > - </option>
+	<option value="OL-CP-ALC" > OL-CP-ALC- </option>
+	<option value="ML-CP-ALC" > ML-CP-ALC- </option>
 </select>
 
 <script>
@@ -19,6 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#selectedcp").val(opt);
+	if(!opt) $("#selectedcp").val("-");
 	});
 </script>
 

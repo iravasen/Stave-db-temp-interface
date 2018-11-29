@@ -70,13 +70,13 @@
 						return correctid;
 			}
 			//-->Check HS left
-			if(document.getElementsByName("hscity-l")[0].value == "-" ||
+			/*if(document.getElementsByName("hscity-l")[0].value == "-" ||
 				 document.getElementsByName("hsflavor-l")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-l")[0].value == ""){
 					 	correctid = false;
 						alert("Insert valid HS-Left id");
 						return correctid;
-			}
+			}*/
 			//-->PB of HS left
 			if(document.getElementsByName("pbselected")[0].value == "-" ||
 		 		 document.getElementsByName("pbnumber")[0].value == ""){
@@ -99,13 +99,13 @@
 						return correctid;
 			}
 			//-->Check HS right
-			if(document.getElementsByName("hscity-r")[0].value == "-" ||
+			/*if(document.getElementsByName("hscity-r")[0].value == "-" ||
 				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
 					 	correctid = false;
 						alert("Insert valid HS-Right id");
 						return correctid;
-			}
+			}*/
 			//-->PB of HS right
 			if(document.getElementsByName("pbselected")[1].value == "-" ||
 		 		 document.getElementsByName("pbnumber")[1].value == ""){
@@ -135,7 +135,7 @@
 			}
 
 			//Check hs lower id - 3 digits
-			if(document.getElementsByName("hsnumber-l")[0].value.toString().length<3 || document.getElementsByName("hsnumber-l")[0].value.toString().length>3){
+			/*if(document.getElementsByName("hsnumber-l")[0].value.toString().length<3 || document.getElementsByName("hsnumber-l")[0].value.toString().length>3){
 				alert("HS-Lower-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
 			}
@@ -144,7 +144,7 @@
 			if(document.getElementsByName("hsnumber-r")[0].value.toString().length<3 || document.getElementsByName("hsnumber-r")[0].value.toString().length>3){
 				alert("HS-Upper-id number must have 3 digits (e.g. HS-003 for HS-3). Please check.");
 				return false;
-			}
+			}*/
 
 			//Check fb lower id - 4 digits
 			if(document.getElementsByName("fbleftnumber")[0].value.toString().length<4 || document.getElementsByName("fbleftnumber")[0].value.toString().length>4){
@@ -198,22 +198,18 @@
 			//Check if all the components have the same layer (OL or ML)
 			var correctlyr = true;
 			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
-				 document.getElementsByName("hsflavor-l")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("pbselected")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("bbselected")[0].value.indexOf("OL") == -1 ||
 				 document.getElementsByName("fbleftselected")[0].value.indexOf("OL") == -1 ||
-				 document.getElementsByName("hsflavor-r")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("pbselected")[1].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("bbselected")[1].value.indexOf("OL") == -1 ||
 				 document.getElementsByName("fbrightselected")[0].value.indexOf("OL") == -1
 			 ){
 
 				 if(document.getElementsByName("selectedstave")[0].value.indexOf("ML") == -1 ||
-						document.getElementsByName("hsflavor-l")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("pbselected")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("bbselected")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("fbleftselected")[0].value.indexOf("ML") == -1 ||
-						document.getElementsByName("hsflavor-r")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("pbselected")[1].value.indexOf("ML") == -1 ||
 						document.getElementsByName("bbselected")[1].value.indexOf("ML") == -1 ||
 						document.getElementsByName("fbrightselected")[0].value.indexOf("ML") == -1
@@ -258,22 +254,20 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
- 	 <p> Stave ID: <?php include('../ids/stvid.html') ?></p>
+ 	 <p> Stave ID: <?php include('../ids/stvid.php') ?></p>
  	 <p> <strong> HS-Lower </strong> <br>
  		 <ul>
- 			 <li> ID: <?php include('../ids/hslid.html')?> </li>
- 			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
- 			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
- 			 <li> Filter Board ID: <?php include('../ids/fblid.html')?> </li>
+ 			 <li> Power Bus ID: <?php include('../ids/pblid.php')?> </li>
+ 			 <li> Bias Bus ID: <?php include('../ids/bblid.php')?> </li>
+ 			 <li> Filter Board ID: <?php include('../ids/fblid.php')?> </li>
  		 </ul>
  	 </p>
 
  	 <p> <strong> HS-Upper </strong> <br>
  		 <ul>
- 			 <li> ID: <?php include('../ids/hsrid.html')?> </li>
- 			 <li> Power Bus ID: <?php include('../ids/pbid.html')?> </li>
- 			 <li> Bias Bus ID: <?php include('../ids/bbid.html')?> </li>
- 			 <li> Filter Board ID: <?php include('../ids/fbrid.html')?> </li>
+ 			 <li> Power Bus ID: <?php include('../ids/pbuid.php')?> </li>
+ 			 <li> Bias Bus ID: <?php include('../ids/bbuid.php')?> </li>
+ 			 <li> Filter Board ID: <?php include('../ids/fbrid.php')?> </li>
  		 </ul>
  	 </p>
 
@@ -293,7 +287,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('../location/location.html');?>
+	<?php include('../location/location.php');?>
 
 	<!--People-->
  <br>

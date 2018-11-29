@@ -92,7 +92,7 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
-  		<p> Bias-Bus ID: <?php include('ids/bbid.html')?> </p>
+  		<p> Bias-Bus ID: <?php include('ids/bbid.php')?> </p>
   </fieldset>
 
 	<br>
@@ -105,7 +105,7 @@
 	</fieldset>
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

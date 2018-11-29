@@ -100,14 +100,14 @@
 			}
 
 			//Check that is HS is lower, ext is down
-			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L-"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-L-") &&
-					document.getElementsByName("extflavor")[0].value != "DOWN-"){
+			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-L"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-L") &&
+					document.getElementsByName("extflavor")[0].value != "DOWN"){
 							alert("HS il lower but the FPC-extension is UP. Please check");
 							return false;
 			}
 			//Check that is HS is upper, ext is up
-			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-U-") &&
-					document.getElementsByName("extflavor")[0].value != "UP-"){
+			if((document.getElementsByName("selectedhs")[0].value == "OL-HS-U"|| document.getElementsByName("selectedhs")[0].value == "ML-HS-U") &&
+					document.getElementsByName("extflavor")[0].value != "UP"){
 							alert("HS il upper but the FPC-extension is DOWN. Please check");
 							return false;
 			}
@@ -148,14 +148,14 @@
 	<br>
 	<fieldset>
  	 <legend> Component IDs </legend>
- 		 <p> <strong>HS-id</strong>: <?php include('../ids/hsid.html');?>
+ 		 <p> <strong>HS-id</strong>: <?php include('../ids/hsid.php');?>
 			 <span style="color: red; display: block; float: right;" id="noprint">
 	 			-> Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 	 		</span>
 		 </p>
 
  		 <p> <strong>FPC-Extension id</strong>:
-			 <?php include('../ids/extid.html');?>
+			 <?php include('../ids/extid.php');?>
  		 </p>
 
  </fieldset>
@@ -171,7 +171,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('../location/location.html');?>
+	<?php include('../location/location.php');?>
 
 	<!--People-->
  <br>

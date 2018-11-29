@@ -142,8 +142,8 @@
 
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> OB-HIC ID: <?php include('ids/hicid.html')?> </p>
-			<p> CP ID: <?php include('ids/cpid.html')?></p>
+			<p> OB-HIC ID: <?php include('ids/hicid.php')?> </p>
+			<p> CP ID: <?php include('ids/cpid.php')?></p>
 	</fieldset>
 
 	<br>
@@ -156,7 +156,7 @@
 	</fieldset>
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

@@ -152,12 +152,12 @@
 
 	<fieldset>
 		<legend> Component IDs </legend>
-			<p> Half-Stave ID: <?php include('ids/hsid.html')?>
+			<p> Half-Stave ID: <?php include('ids/hsid.php')?>
 				<span style="color: red; display: block; float: right;" id="noprint">
 					Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
 				</span>
 			</p>
-			<p> Space-Frame ID: <?php include('ids/sfid.html')?>
+			<p> Space-Frame ID: <?php include('ids/sfid.php')?>
 				<span id="noprint" style="color: red; float: right;"> SF ID is on one side of the SF, on the vertex opposite to the side on which HSs are glued </span>
 			</p>
 
@@ -174,7 +174,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

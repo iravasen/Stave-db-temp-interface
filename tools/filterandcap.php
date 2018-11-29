@@ -148,9 +148,9 @@
 	<br>
 	<fieldset>
 		<legend> Component IDs </legend>
-		<p> Power Bus ID: <?php include('ids/pbid.html')?> </p>
-		<p> Bias Bus ID: <?php include('ids/bbid.html')?> </p>
-		<p> Filter Board ID: <?php include('ids/fbid.html')?> </p>
+		<p> Power Bus ID: <?php include('ids/pbid.php')?> </p>
+		<p> Bias Bus ID: <?php include('ids/bbid.php')?> </p>
+		<p> Filter Board ID: <?php include('ids/fbid.php')?> </p>
 	</fieldset>
 
 	<br>
@@ -164,7 +164,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>

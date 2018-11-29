@@ -81,7 +81,7 @@
 			 var countOL = [0, 0, 0, 0, 0, 0, 0];
 
 			 //--> Check if all position numbers are present and if there are no repetitions
-			 for(ipos=0; ipos<positions.length; ipos++){
+			 /*for(ipos=0; ipos<positions.length; ipos++){
 				 if((positions[ipos].type.toLowerCase() == "number")){
 					 //ML
 					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-"){
@@ -104,32 +104,33 @@
 
 					 }
 
-					 //Module is position 1 must have flavor BR or BL
-					 if(positions[ipos].value == 1){
-						 if(hicflavor[Math.floor(ipos/2)].value == "AR" || hicflavor[Math.floor(ipos/2)].value == "AL"){
-							 correcthic = false;
-							 alert("Module in position 1 must have flavor BL or BR");
-							 return correcthic;
-						 }
-					 }
-				 }
-				 else{//text (hic number check)
-					 var pos = positions[ipos].value;
-					 if(pos=="") counthic++;
-					 if(pos.toString().length<6 || pos.toString().length>6){
-						 alert("HIC-id numbers must have 6 digits (e.g. 000012 for HIC-12). Please check.");
-						 return false;
-					 }
-				 }
 
-				 if(hicflavor[Math.floor(ipos/2)].value == "-"){//Hic flavor check
+				 }*/
+
+				 //Module is position 1 must have flavor BR or BL
+				 if(hicflavor[0].value == "AR" || hicflavor[0].value == "AL"){
 					 correcthic = false;
-					 alert("Some HIC flavors are missing");
+					 alert("Module in position 1 must have flavor BL or BR");
 					 return correcthic;
 				 }
-			 }//end of for loop
 
-			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-")){
+				 //Check number of digits for the hic number
+				 for(ipos=0; ipos<positions.length; ipos++){
+					 var pos = positions[ipos].value;
+					 if(ipos>3 && document.getElementsByName("selectedhs")[0].value.includes('ML')) continue;
+					 if(pos.toString().length<6 || pos.toString().length>6){
+						 alert("HIC-id numbers must have 6 digits (e.g. 000012 for HIC-12). Please check them.");
+						 return false;
+					 }
+					 if(hicflavor[ipos].value == "-"){//Hic flavor check
+						 correcthic = false;
+						 alert("Some HIC flavors are missing");
+						 return correcthic;
+					 }
+				 }
+
+
+			 /*if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U-")){
 				 for(j=0; j<4; j++){
 					 if(countML[j]==0 || countML[j]>1){
 						 correcthic = false;
@@ -157,14 +158,15 @@
 					 alert("Check HIC IDs on HS");
 					 return correcthic;
 				 }
-			 }
+			 }*/
 
 			//Check that there are not repetitions on HIC number (ID)
 			var norepetInHICnumber = true;
 			var counthicnumb = 0;
-			for(ihic=1; ihic<positions.length; ihic+=2){
+			var last = document.getElementsByName("selectedhs")[0].value.includes('ML') ? 4:positions.length;
+			for(ihic=0; ihic<last; ihic++){
 				var sample = positions[ihic].value;
-				for(ihic2=1; ihic2<positions.length; ihic2+=2){
+				for(ihic2=0; ihic2<last; ihic2++){
 					if(ihic2==ihic) continue;
 					if(sample == positions[ihic2].value) counthicnumb++;
 				}
@@ -178,7 +180,7 @@
 			//Check that if flavor of HS corresponds to flavor of modules
 			var correctflavor = true;
 			//--> Flavor Left
-			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-L-"){
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "OL-HS-L"){
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AR" || hicflavor[iflav].value == "BR"){
 						correctflavor = false;
@@ -188,7 +190,7 @@
 				}
 			}
 			//--> Flavor Right
-			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-U-" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U-"){
+			if(document.getElementsByName("selectedhs")[0].value == "ML-HS-U" || document.getElementsByName("selectedhs")[0].value == "OL-HS-U"){
 				for(iflav=0; iflav<hicflavor.length; iflav++){
  				 	if(hicflavor[iflav].value == "AL" || hicflavor[iflav].value == "BL"){
 						correctflavor = false;
@@ -261,27 +263,84 @@
 
 	<fieldset>
  	 <legend> Component IDs </legend>
- 		 <p> Half-Stave ID: <?php include('ids/hsid.html')?>
+ 		 <p> Half-Stave ID: <?php include('ids/hsid.php')?>
 			 <span style="color: red; display: block; float: right;" id="noprint">
  				Legend: A = Amsterdam, B = Berkeley, D = Daresbury, F = Frascati, T = Turin
  			</span>
 		 </p>
- 		 <p> Cold-Plate ID: <?php include('ids/cpid.html')?> </p>
+ 		 <p> Cold-Plate ID: <?php include('ids/cpid.php')?> </p>
 
+		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 
  		 <fieldset id="hicpositions">
  			 <legend> Half-Stave composition </legend>
- 				 <div id="template-pos-0">
+			 	<span> Position 1: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 2: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 3: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 4: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 5: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 6: <?php include('ids/hicid2.php')?></span> <br>
+				<span> Position 7: <?php include('ids/hicid2.php')?></span> <br>
+
+				<script type="text/javascript">
+					document.addEventListener('DOMContentLoaded', function(){
+						var hicflav = document.getElementsByName("hicflavor");
+						var hsflav = document.getElementById("selhs");
+						var i;
+						for (i = 0; i < hicflav.length; i++) {
+							if(hsflav.value=="OL-HS-L"){
+								if(!i) hicflav[i].value = "BL";
+								else hicflav[i].value = "AL";
+							}
+							else if(hsflav.value=="ML-HS-L"){
+								if(!i) hicflav[i].value = "BL";
+								else if(i>0 && i<4) hicflav[i].value = "AL";
+								else hicflav[i].value = "-";
+							}
+							else if(hsflav.value=="OL-HS-U"){
+								if(!i) hicflav[i].value = "BR";
+								else hicflav[i].value = "AR";
+							}
+							else if(hsflav.value=="ML-HS-U"){
+								if(!i) hicflav[i].value = "BR";
+								else if(i>0 && i<4) hicflav[i].value = "AR";
+								else hicflav[i].value = "-";
+							}
+						}
+					});
+				</script>
+				<script>
+					var url = new URL(document.location);
+
+					// Get query parameters object
+					var params = url.searchParams;
+
+					var hicnum = document.getElementsByName("hicnumber");
+					// Get value of paper
+					var i;
+					for(i=0; i<hicnum.length; i++){
+						var opt = params.get("hicidnum"+(i+1));
+						if(opt) $('input[name="hicnumber"]').eq(i).val(opt);
+						else $('input[name="hicnumber"]').eq(i).val("------");
+					}
+
+				</script>
+
+
+			 	<!-- Old: for adding by hand the different HICs
+				 <div id="template-pos-0">
  			 		<div id="placeh-pos-0">
  			 			<hr>
 
- 			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
+ 			 			<span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <//?php include('ids/hicid.php')?></span>
 
  			 			<hr>
  			 		</div>
  			 	</div>
 
  			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
+			-->
+
  			</fieldset>
 
   </fieldset>
@@ -297,7 +356,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('location/location.html');?>
+	<?php include('location/location.php');?>
 
 	<!--People-->
  <br>
