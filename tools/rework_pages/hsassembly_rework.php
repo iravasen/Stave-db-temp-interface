@@ -23,14 +23,14 @@
 		ul#notemp-answ{
 			display: none;
 		}
-		span#newhicid{
+		/*span#newhicid{
 			display: none;
 		}
 
 		input#replacedid:checked ~ span#newhicid{
 			display: block;
 			display: inline;
-		}
+		}*/
 
 		input#notemp:checked ~ ul#notemp-answ {
 			display: block;
@@ -50,23 +50,58 @@
 	<script type="text/javascript">
 		function printall(){
 
-			//Check if HS id has been inserted
+			//Check if (new) HS id has been inserted
 			var correcthsid = true;
 			if(document.getElementsByName("selectedcity")[0].value == "-" ||
 				 document.getElementsByName("selectedhs")[0].value == "-" ||
 				 document.getElementsByName("hsnumber")[0].value == ""
 			 ){
 				 correcthsid = false;
-				 alert("Insert HS ID");
+				 alert("Insert a correct (new) HS id");
 				 return correcthsid;
 			}
 
-			//Check if HS number has 3 digits
+			//Check if (new) HS number has 3 digits
 			var checkhsnumber = true;
 			if(document.getElementsByName("hsnumber")[0].value.toString().length < 3 || document.getElementsByName("hsnumber")[0].value.toString().length > 3){
 				checkhsnumber = false;
-				alert("HS number must have 3 digits (e.g 003 for HS-3). Please check.");
+				alert("(new) HS number must have 3 digits (e.g 003 for HS-3). Please check.");
 				return checkhsnumber;
+			}
+
+			//Check if (old) HS id has been inserted
+			var correcthsid = true;
+			if(document.getElementById("sites-old").value == "-" ||
+				 document.getElementById("selhs-old").value == "-" ||
+				 document.getElementsByName("hsnumber")[1].value == ""
+			 ){
+				 correcthsid = false;
+				 alert("Insert a correct (old) HS id");
+				 return correcthsid;
+			}
+
+			//Check if (old) HS number has 3 digits
+			var checkhsnumber = true;
+			if(document.getElementsByName("hsnumber")[1].value.toString().length < 3 || document.getElementsByName("hsnumber")[1].value.toString().length > 3){
+				checkhsnumber = false;
+				alert("(old) HS number must have 3 digits (e.g 003 for HS-3). Please check.");
+				return checkhsnumber;
+			}
+
+			//Check that the city id of the two HSs (new and old) are the same
+			if(document.getElementById("sites").value != document.getElementById("sites-old").value){
+				alert("The two HSs (new and old) have different city id. Please check.");
+				return false;
+			}
+			//Check that the two HSs (new and old) have the same flavor
+			if(document.getElementById("selhs").value != document.getElementById("selhs-old").value){
+				alert("The two HSs (new and old) have different flavors. Please check.");
+				return false;
+			}
+
+			//Check the number of the two HSs (no convention - warning)
+			if(document.getElementsByName("hsnumber")[0].value == document.getElementsByName("hsnumber")[1].value){
+				alert("The two HSs (new and old) have the same id. Are you sure? If not, press cancel and check.");
 			}
 
 			//Check if CP id has been inserted
@@ -89,7 +124,7 @@
 			 var countOL = [0, 0, 0, 0, 0, 0, 0];
 
 			 //--> Check if all position numbers are present and if there are no repetitions
-			 for(ipos=0; ipos<positions.length; ipos++){
+			 /*for(ipos=0; ipos<positions.length; ipos++){
 				 if((positions[ipos].type.toLowerCase() == "number")){
 					 //ML
 					 if(document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U"){
@@ -110,36 +145,44 @@
 						 if(pos==6) countOL[5]++;
 						 if(pos==7) countOL[6]++;
 
-					 }
+					 }*/
 
 					 //Module is position 1 must have flavor BR or BL
-					 if(positions[ipos].value == 1){
-						 if(hicflavor[Math.floor(ipos/2)].value == "AR" || hicflavor[Math.floor(ipos/2)].value == "AL"){
-							 correcthic = false;
-							 alert("Module in position 1 must have flavor BL or BR");
-							 return correcthic;
-						 }
-					 }
-				 }
-				 else if(ipos%4!=2 && ipos%4!=3){//text (hic number check)
-					 var pos = positions[ipos].value;
-					 if(pos=="") counthic++;
-					 if(pos.toString().length<6 || pos.toString().length>6){
-						 alert("HIC-id numbers must have 6 digits (e.g. 000012 for HIC-12). Please check.");
-						 return false;
-					 }
-				 }
-			 }//end of for loop on ipos
-
-			 for(ihic=0; ihic<hicflavor.length; ihic++){
-				 if(hicflavor[ihic].value == "-"){//Hic flavor check
+				 if(hicflavor[0].value == "AR" || hicflavor[0].value == "AL"){
 					 correcthic = false;
-					 alert("Some HIC flavors are missing");
+					 alert("Module in position 1 must have flavor BL or BR");
 					 return correcthic;
 				 }
-			 }
 
-			 if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U")){
+				 //
+				 for(ipos=0; ipos<positions.length; ipos+=2){
+					 var pos = positions[ipos].value;
+					 if(ipos>6 && document.getElementsByName("selectedhs")[0].value.includes('ML')) continue;
+					 if(pos.toString().length<6 || pos.toString().length>6){
+						 alert(" HIC-id numbers must have 6 digits (e.g. 000012 for HIC-12). Please check them.");
+						 return false;
+					 }
+					 if(hicflavor[ipos/2].value == "-"){//Hic flavor check
+						 correcthic = false;
+						 alert("Some HIC flavors are missing");
+						 return correcthic;
+					 }
+				 }
+
+				 //Check that at least 1 "New" checkbox is checked
+				 var countcheck = 0;
+				 for(ipos=1; ipos<positions.length; ipos+=2){
+					 var pos = positions[ipos];
+					 if(pos.checked) countcheck++;
+				 }
+				 if(countcheck==0){
+					 alert("Please indicate which HIC is new wrt the old HS.");
+					 return false;
+				 }
+
+			// }//end of for loop on ipos
+
+			/* if((document.getElementsByName("selectedhs")[0].value == "ML-HS-L" || document.getElementsByName("selectedhs")[0].value == "ML-HS-U")){
 				 for(j=0; j<4; j++){
 					 if(countML[j]==0 || countML[j]>1){
 						 correcthic = false;
@@ -167,14 +210,15 @@
 					 alert("Check HIC IDs on HS");
 					 return correcthic;
 				 }
-			 }
+			 }*/
 
 			//Check that there are not repetitions on HIC number (ID)
 			var norepetInHICnumber = true;
 			var counthicnumb = 0;
-			for(ihic=1; ihic<positions.length; ihic+=3){
+			var last = document.getElementsByName("selectedhs")[0].value.includes('ML') ? 7:positions.length;
+			for(ihic=0; ihic<last; ihic+=2){
 				var sample = positions[ihic].value;
-				for(ihic2=1; ihic2<positions.length; ihic2+=3){
+				for(ihic2=0; ihic2<last; ihic2+=2){
 					if(ihic2==ihic) continue;
 					if(sample == positions[ihic2].value) counthicnumb++;
 				}
@@ -212,7 +256,8 @@
  			var check = check_yes_no(3);
 
 			if(check && correctcpid && correcthsid && correcthic && correctflavor && norepetInHICnumber){
-				document.title = document.getElementsByName("selectedcity")[0].value +
+				document.title = 	"Rework_" +
+													document.getElementsByName("selectedcity")[0].value +
 													document.getElementsByName("selectedhs")[0].value +
 													document.getElementsByName("hsnumber")[0].value +
 													"_assembly_report";
@@ -261,13 +306,70 @@
 
  		 <fieldset id="hicpositions">
  			 <legend> (New) Half-Stave composition </legend>
+				 <span> Position 1: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new1"/> New </span> <br>
+				 <span> Position 2: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new2"/> New </span> <br>
+				 <span> Position 3: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new3"/> New </span> <br>
+				 <span> Position 4: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new4"/> New </span> <br>
+				 <span> Position 5: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new5"/> New </span> <br>
+				 <span> Position 6: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new6"/> New </span> <br>
+				 <span> Position 7: <?php include('../ids/hicid2.php')?> <input type="checkbox" id="new7"/> New </span> <br>
+
+				 <script type="text/javascript">
+ 					document.addEventListener('DOMContentLoaded', function(){
+ 						var hicflav = document.getElementsByName("hicflavor");
+ 						var hsflav = document.getElementById("selhs");
+ 						var i;
+ 						for (i = 0; i < hicflav.length; i++) {
+ 							if(hsflav.value=="OL-HS-L"){
+ 								if(!i) hicflav[i].value = "BL";
+ 								else hicflav[i].value = "AL";
+ 							}
+ 							else if(hsflav.value=="ML-HS-L"){
+ 								if(!i) hicflav[i].value = "BL";
+ 								else if(i>0 && i<4) hicflav[i].value = "AL";
+ 								else hicflav[i].value = "-";
+ 							}
+ 							else if(hsflav.value=="OL-HS-U"){
+ 								if(!i) hicflav[i].value = "BR";
+ 								else hicflav[i].value = "AR";
+ 							}
+ 							else if(hsflav.value=="ML-HS-U"){
+ 								if(!i) hicflav[i].value = "BR";
+ 								else if(i>0 && i<4) hicflav[i].value = "AR";
+ 								else hicflav[i].value = "-";
+ 							}
+ 						}
+ 					});
+ 				</script>
+ 				<script>
+ 					var url = new URL(document.location);
+
+ 					// Get query parameters object
+ 					var params = url.searchParams;
+
+ 					var hicnum = document.getElementsByName("hicnumber");
+ 					// Get value of paper
+ 					var i;
+ 					for(i=0; i<hicnum.length; i++){
+ 						var opt = params.get("hicidnum"+(i+1));
+ 						if(opt) $('input[name="hicnumber"]').eq(i).val(opt);
+ 						else $('input[name="hicnumber"]').eq(i).val("------");
+ 					}
+
+					for(i=0; i<hicnum.length; i++){
+ 						var opt = params.get("new"+(i+1));
+ 						if(opt) $('#new'+(i+1)).attr('checked', true);
+ 					}
+
+ 				</script>
+			 	 <!--
  				 <div id="template-pos-0">
  			 		<div id="placeh-pos-0">
  			 			<hr>
 
- 			 			<p> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('../ids/hicid.html')?>
+ 			 			<p> Position <input id="printnumb2" type="number" style="width: 40px"/>: <//?php include('../ids/hicid.html')?>
 								<input type="checkbox" id="replacedid"/> New
-								<span id="newhicid">--> Old HIC id: <input type="text" placeholder="OLD HIC ID" style="width: 150px"/></span>
+								<span id="newhicid"> Old HIC id: <input type="text" placeholder="OLD HIC ID" style="width: 150px"/></span>
 						</p>
 
  			 			<hr>
@@ -275,6 +377,7 @@
  			 	</div>
 
  			 	<p id="noprint"><button type="button" name="Submit" onclick="Add('template-pos','placeh-pos');">Add new item</button></p>
+			-->
  			</fieldset>
 
   </fieldset>
@@ -290,7 +393,7 @@
 
 	<br>
 	<!-- Location -->
-	<?php include('../location/location.html');?>
+	<?php include('../location/location.php');?>
 
 	<!--People-->
  <br>
@@ -302,6 +405,11 @@
   <br>
 
 	<form action="">
+
+		<fieldset>
+			<legend> ID(s) of the removed HIC(s) </legend>
+			<textarea rows="7" cols="100" name="oldhics" placeholder="Insert IDs"></textarea>
+		</fieldset>
 
 		<br>
 		<fieldset>
@@ -362,7 +470,7 @@
 			include('../imagetool/imagetool.html');
 			?>
 		</fieldset>
-
+		<br><br>
 		<input id="noprint" type="button" value="New HIC(s) alignment ok & save" style="position: center" onClick="okandprintall()"/>
 
 		<br><br>
