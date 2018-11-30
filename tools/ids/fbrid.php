@@ -19,7 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#fbupsel").val(opt);
-	if(!opt) $("#fbupsel").val("-");
+	if(!opt ||(opt!="OL-FB-UPPER" && opt!="ML-FB-UPPER")) $("#fbupsel").val("-");
 	});
 </script>
 

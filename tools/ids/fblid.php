@@ -19,7 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#fblowsel").val(opt);
-	if(!opt) $("#fblowsel").val("-");
+	if(!opt ||(opt!="OL-FB-LOWER" && opt!="ML-FB-LOWER")) $("#fblowsel").val("-");
 	});
 </script>
 

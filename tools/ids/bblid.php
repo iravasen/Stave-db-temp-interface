@@ -19,7 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#bblselected").val(opt);
-	if(!opt) $("#bblselected").val("-");
+	if(!opt ||(opt!="OLBB-V07" && opt!="MLBB-V07")) $("#bblselected").val("-");
 	});
 </script>
 

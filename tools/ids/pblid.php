@@ -16,7 +16,7 @@
 	var opt = params.get("pblselected");
 	// Set it as the dropdown value
 	$("#pblselected").val(opt);
-	if(!opt) $("#pblselected").val("-");
+	if(!opt || (opt!="OLPB-V07" && opt!="MLPB-V07")) $("#pblselected").val("-");
 	});
 </script>
 

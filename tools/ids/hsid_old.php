@@ -32,8 +32,8 @@
 	// Set it as the dropdown value
 	$("#sites-old").val(opt1);
 	$("#selhs-old").val(opt2);
-	if(!opt1) $("#sites-old").val("-");
-	if(!opt2) $("#selhs-old").val("-");
+	if(!opt1 || (opt1!="-" && opt1!="A"&& opt1!="B" && opt1!="D" && opt1!="T" && opt1!="F")) $("#sites-old").val("-");
+	if(!opt2 || (opt2!="OL-HS-L" && opt2!="OL-HS-U" && opt2!="ML-HS-L" && opt2!="ML-HS-U")) $("#selhs-old").val("-");
 	//});
 </script>
 

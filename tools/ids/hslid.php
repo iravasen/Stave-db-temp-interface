@@ -31,8 +31,8 @@
 	$("#siteshsl").val(opt1);
 	$("#selhsl").val(opt2);
 
-	if(!opt1) $("#siteshsl").val("-");
-	if(!opt2) $("#selhsl").val("-");
+	if(!opt1|| (opt1!="-" && opt1!="A"&& opt1!="B" && opt1!="D" && opt1!="T" && opt1!="F")) $("#siteshsl").val("-");
+	if(!opt2|| (opt2!="OL-HS-L" && opt2!="ML-HS-L")) $("#selhsl").val("-");
 	});
 </script>
 

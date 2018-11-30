@@ -21,7 +21,7 @@
 
 	// Set it as the dropdown value
 	$("#fbselected").val(opt);
-	if(!opt) $("#fbselected").val("-");
+	if(!opt || (opt!="OL-FB-UPPER" && opt!="OL-FB-LOWER" && opt!="ML-FB-UPPER" && opt!="ML-FB-LOWER")) $("#fbselected").val("-");
 	});
 </script>
 

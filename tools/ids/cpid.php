@@ -19,7 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#selectedcp").val(opt);
-	if(!opt) $("#selectedcp").val("-");
+	if(!opt || (opt!="OL-CP-ALC" && opt!="ML-CP-ALC")) $("#selectedcp").val("-");
 	});
 </script>
 

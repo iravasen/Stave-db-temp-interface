@@ -32,8 +32,8 @@ GS<input name="extlotnumber" type="text" placeholder="###" style="width: 26px" v
 	$("#upd").val(opt1);
   $("#extcity").val(opt2);
 
-  if(!opt1) $("#upd").val("-");
-  if(!opt2) $("#extcity").val("-");
+  if(!opt1 || (opt1!="UP" && opt1!="DOWN")) $("#upd").val("-");
+  if(!opt2 || (opt2!="A" && opt2!="B" && opt2!="D" && opt2!="F" && opt2!="T")) $("#extcity").val("-");
 	});
 </script>
 

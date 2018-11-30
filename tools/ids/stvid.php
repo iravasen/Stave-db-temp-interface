@@ -30,8 +30,8 @@
 	// Set it as the dropdown value
 	$("#sites").val(opt1);
 	$("#selstv").val(opt2);
-	if(!opt1) $("#sites").val("-");
-	if(!opt2) $("#selstv").val("-");
+	if(!opt1 || (opt1!="A" && opt1!="B" && opt1!="D" && opt1!="F" && opt1!="T")) $("#sites").val("-");
+	if(!opt2 || (opt2!="OL-Stave" && opt2!="ML-Stave")) $("#selstv").val("-");
 	});
 </script>
 

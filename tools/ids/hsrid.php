@@ -31,8 +31,8 @@
 	$("#siteshsr").val(opt1);
 	$("#selhsr").val(opt2);
 
-	if(!opt1) $("#siteshsr").val("-");
-	if(!opt2) $("#selhsr").val("-");
+	if(!opt1 || (opt1!="-" && opt1!="A"&& opt1!="B" && opt1!="D" && opt1!="T" && opt1!="F")) $("#siteshsr").val("-");
+	if(!opt2 || (opt2!="OL-HS-U" && opt2!="ML-HS-U")) $("#selhsr").val("-");
 	});
 </script>
 

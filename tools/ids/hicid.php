@@ -22,7 +22,7 @@ OBHIC-
 
 	// Set it as the dropdown value
 	$("#hicflavor").val(opt);
-	if(!opt) $("#hicflavor").val("-");
+	if(!opt || (opt!="AL" && opt!="AR" && opt!="BL" && opt!="BR")) $("#hicflavor").val("-");
 });
 </script>
 

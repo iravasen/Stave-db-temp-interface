@@ -19,7 +19,7 @@
 
 	// Set it as the dropdown value
 	$("#selectedsf").val(opt);
-	if(!opt) $("#selectedsf").val("-");
+	if(!opt ||(opt!="OL-SF-ALC" && opt!="ML-SF-ALC")) $("#selectedsf").val("-");
 	});
 </script>
 
