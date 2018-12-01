@@ -219,11 +219,11 @@
 
 			if(correctid && correctlyr){
 				document.title = 	"Rework_" +
-													document.getElementsByName("pbselected")[0].value +
-													document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("pbselected")[0].value + "-" +
+													document.getElementsByName("bbselected")[0].value + "-" +
 													"soldering_on_" +
-													document.getElementsByName("stavecity")[0].value +
-													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavecity")[0].value + "-" +
+													document.getElementsByName("selectedstave")[0].value + "-" +
 													document.getElementsByName("stavenumber")[0].value +
 													"_report";
 				window.print();

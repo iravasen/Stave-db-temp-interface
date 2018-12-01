@@ -218,7 +218,7 @@
 
 			if(check && correctid && correctlyr){
 				document.title =  document.getElementsByName("pbselected")[0].value + "-" +
-													document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("bbselected")[0].value + "-" +
 													"soldering_on_" +
 													document.getElementsByName("stavecity")[0].value + "-" +
 													document.getElementsByName("selectedstave")[0].value + "-" +

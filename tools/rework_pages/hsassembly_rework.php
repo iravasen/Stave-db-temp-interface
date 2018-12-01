@@ -257,8 +257,8 @@
 
 			if(check && correctcpid && correcthsid && correcthic && correctflavor && norepetInHICnumber){
 				document.title = 	"Rework_" +
-													document.getElementsByName("selectedcity")[0].value +
-													document.getElementsByName("selectedhs")[0].value +
+													document.getElementsByName("selectedcity")[0].value + "-" +
+													document.getElementsByName("selectedhs")[0].value + "-" +
 													document.getElementsByName("hsnumber")[0].value +
 													"_assembly_report";
 				window.print();

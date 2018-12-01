@@ -92,13 +92,13 @@
 
 			if(idcorrect){
 				document.title =  "Rework_Capacitor_and_" +
-													document.getElementsByName("fbselected")[0].value +
+													document.getElementsByName("fbselected")[0].value + "-" +
 													document.getElementsByName("fbnumber")[0].value +
 													"_soldering_on_" +
-													document.getElementsByName("pbselected")[0].value +
+													document.getElementsByName("pbselected")[0].value + "-" +
 													document.getElementsByName("pbnumber")[0].value +
 													"_and_" +
-													document.getElementsByName("bbselected")[0].value +
+													document.getElementsByName("bbselected")[0].value + "-" +
 													document.getElementsByName("bbnumber")[0].value +
 													"_report";
 				window.print();
