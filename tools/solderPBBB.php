@@ -86,14 +86,14 @@
 						return correctid;
 			}
 			//--> FB left
-			if(document.getElementsByName("fbleftselected")[0].value == "-" ||
+			/*if(document.getElementsByName("fbleftselected")[0].value == "-" ||
 				 document.getElementsByName("fbleftnumber")[0].value == ""){
 					 	correctid = false;
 						alert("Insert valid FB-Lower id");
 						return correctid;
 			}
 			//-->Check HS right
-			/*if(document.getElementsByName("hscity-r")[0].value == "-" ||
+			if(document.getElementsByName("hscity-r")[0].value == "-" ||
 				 document.getElementsByName("hsflavor-r")[0].value == "-" ||
 			 	 document.getElementsByName("hsnumber-r")[0].value == ""){
 					 	correctid = false;
@@ -115,12 +115,12 @@
 						return correctid;
 			}
 			//--> FB right
-			if(document.getElementsByName("fbrightselected")[0].value == "-" ||
+			/*if(document.getElementsByName("fbrightselected")[0].value == "-" ||
 				 document.getElementsByName("fbrightnumber")[0].value == ""){
 					 	correctid = false;
 						alert("Insert valid FB-Upper id");
 						return correctid;
-			}
+			}*/
 
 			//Check stave number - 3 digits
 			if(document.getElementsByName("stavenumber")[0].value.toString().length<3 || document.getElementsByName("stavenumber")[0].value.toString().length>3){
@@ -141,7 +141,7 @@
 			}*/
 
 			//Check fb lower id - 4 digits
-			if(document.getElementsByName("fbleftnumber")[0].value.toString().length<4 || document.getElementsByName("fbleftnumber")[0].value.toString().length>4){
+			/*if(document.getElementsByName("fbleftnumber")[0].value.toString().length<4 || document.getElementsByName("fbleftnumber")[0].value.toString().length>4){
 				alert("FB-Lower-id number must have 4 digits (e.g. FB-0003 for FB-3). Please check.");
 				return false;
 			}
@@ -150,7 +150,7 @@
 			if(document.getElementsByName("fbrightnumber")[0].value.toString().length<4 || document.getElementsByName("fbrightnumber")[0].value.toString().length>4){
 				alert("FB-Upper-id number must have 4 digits (e.g. FB-0003 for FB-3). Please check.");
 				return false;
-			}
+			}*/
 
 			//Check number of digits PB low
 			if(document.getElementsByName("pbnumber")[0].value.toString().length < 3 || document.getElementsByName("pbnumber")[0].value.toString().length > 3){
@@ -194,19 +194,15 @@
 			if(document.getElementsByName("selectedstave")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("pbselected")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("bbselected")[0].value.indexOf("OL") == -1 ||
-				 document.getElementsByName("fbleftselected")[0].value.indexOf("OL") == -1 ||
 			 	 document.getElementsByName("pbselected")[1].value.indexOf("OL") == -1 ||
-			 	 document.getElementsByName("bbselected")[1].value.indexOf("OL") == -1 ||
-				 document.getElementsByName("fbrightselected")[0].value.indexOf("OL") == -1
+			 	 document.getElementsByName("bbselected")[1].value.indexOf("OL") == -1
 			 ){
 
 				 if(document.getElementsByName("selectedstave")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("pbselected")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("bbselected")[0].value.indexOf("ML") == -1 ||
-						document.getElementsByName("fbleftselected")[0].value.indexOf("ML") == -1 ||
 						document.getElementsByName("pbselected")[1].value.indexOf("ML") == -1 ||
-						document.getElementsByName("bbselected")[1].value.indexOf("ML") == -1 ||
-						document.getElementsByName("fbrightselected")[0].value.indexOf("ML") == -1
+						document.getElementsByName("bbselected")[1].value.indexOf("ML") == -1
 					){
 						correctlyr = false;
 						alert("OL and ML are mixed in the component IDs, please check");
@@ -221,11 +217,11 @@
 			var check = check_yes_no(4);
 
 			if(check && correctid && correctlyr){
-				document.title =  document.getElementsByName("pbselected")[0].value +
+				document.title =  document.getElementsByName("pbselected")[0].value + "-" +
 													document.getElementsByName("bbselected")[0].value +
 													"soldering_on_" +
-													document.getElementsByName("stavecity")[0].value +
-													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavecity")[0].value + "-" +
+													document.getElementsByName("selectedstave")[0].value + "-" +
 													document.getElementsByName("stavenumber")[0].value +
 													"_report";
 				window.print();
@@ -261,7 +257,7 @@
 				<ul>
 					<li> Power Bus ID: <?php include('ids/pblid.php')?> </li>
 					<li> Bias Bus ID: <?php include('ids/bblid.php')?> </li>
-					<li> Filter Board ID: <?php include('ids/fblid.php')?> </li>
+					<!--<li> Filter Board ID: <//?php include('ids/fblid.php')?> </li>-->
 				</ul>
 			</p>
 
@@ -269,7 +265,7 @@
 				<ul>
 					<li> Power Bus ID: <?php include('ids/pbuid.php')?> </li>
 					<li> Bias Bus ID: <?php include('ids/bbuid.php')?> </li>
-					<li> Filter Board ID: <?php include('ids/fbrid.php')?> </li>
+					<!--<li> Filter Board ID: <//?php include('ids/fbrid.php')?> </li>-->
 				</ul>
 			</p>
 

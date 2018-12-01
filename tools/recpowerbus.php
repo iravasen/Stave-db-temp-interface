@@ -59,7 +59,7 @@
 			var check = check_yes_no(2);
 
 			if(check && correctid){
-				document.title = document.getElementsByName("pbselected")[0].value +
+				document.title = document.getElementsByName("pbselected")[0].value + "-" +
 													document.getElementsByName("pbnumber")[0].value +
 													"_reception_test_report";
 				window.print();

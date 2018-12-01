@@ -41,7 +41,7 @@
 			var check = check_yes_no(2);
 
 			if(check && correctid){
-				document.title = document.getElementsByName("selectedsf")[0].value +
+				document.title = document.getElementsByName("selectedsf")[0].value + "-" +
 													document.getElementsByName("sfnumber")[0].value +
 													"_inspection_report";
 				window.print();

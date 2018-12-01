@@ -223,8 +223,8 @@
  			var check = check_yes_no(3);
 
 			if(check && correctcpid && correcthsid && correcthic && batchno && gluepicture && correctflavor && norepetInHICnumber){
-				document.title = document.getElementsByName("selectedcity")[0].value +
-													document.getElementsByName("selectedhs")[0].value +
+				document.title = document.getElementsByName("selectedcity")[0].value + "-" +
+													document.getElementsByName("selectedhs")[0].value + "-" +
 													document.getElementsByName("hsnumber")[0].value +
 													"_assembly_report";
 				window.print();

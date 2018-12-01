@@ -53,7 +53,7 @@
 			}*/
 
 			if(check && idcorrect){//if all it's correct, print
-				document.title = document.getElementsByName("selectedcp")[0].value +
+				document.title = document.getElementsByName("selectedcp")[0].value + "-" +
 													document.getElementsByName("cpidname")[0].value +
 													"_inspection_report";
 				window.print();

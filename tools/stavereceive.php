@@ -72,8 +72,8 @@
 			var check = check_yes_no(3);
 
 			if(check && correctid && inspicture){
-				document.title = document.getElementsByName("stavecity")[0].value +
-													document.getElementsByName("selectedstave")[0].value +
+				document.title = document.getElementsByName("stavecity")[0].value + "-" +
+													document.getElementsByName("selectedstave")[0].value + "-" +
 													document.getElementsByName("stavenumber")[0].value +
 													"_reception_after_shipment_report";
 				window.print();

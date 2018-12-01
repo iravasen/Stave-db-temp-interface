@@ -87,8 +87,8 @@
 			var check = check_yes_no(4);
 
 			if(check && correctid && instransport){
-				document.title = document.getElementsByName("stavecity")[0].value +
-													document.getElementsByName("selectedstave")[0].value +
+				document.title = document.getElementsByName("stavecity")[0].value + "-" +
+													document.getElementsByName("selectedstave")[0].value + "-" +
 													document.getElementsByName("stavenumber")[0].value +
 													"_storage_shipment_report";
 				window.print();

@@ -110,11 +110,11 @@
 			var check = check_yes_no(4);
 
 			if(check && correctid && correctbatch && gluepicture){
-				document.title = document.getElementsByName("selectedcity")[0].value +
-													document.getElementsByName("selectedhs")[0].value +
+				document.title = document.getElementsByName("selectedcity")[0].value + "-" +
+													document.getElementsByName("selectedhs")[0].value + "-" +
 													document.getElementsByName("hsnumber")[0].value +
 													"_gluing_on_" +
-													document.getElementsByName("selectedsf")[0].value +
+													document.getElementsByName("selectedsf")[0].value + "-" +
 													document.getElementsByName("sfnumber")[0].value +
 													"_report";
 				window.print();

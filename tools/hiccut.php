@@ -158,7 +158,7 @@
 			//Print if everything ok
 			if(check && idcorrect && tabcutcorrect && cutpicture && checkhicnumber){
 				document.title = 	"OBHIC-" +
-													document.getElementsByName("hicflavor")[0].value +
+													document.getElementsByName("hicflavor")[0].value + "-" +
 													document.getElementsByName("hicnumber")[0].value +
 													"_tab_wing_cut_inspection_report";
 				window.print();

@@ -172,8 +172,8 @@
 
 			if(check && correctid && imagecheck && correctlayer){
 				document.title = "PB_and_BB_folding_on_" +
-													document.getElementsByName("stavecity")[0].value +
-													document.getElementsByName("selectedstave")[0].value +
+													document.getElementsByName("stavecity")[0].value + "-" +
+													document.getElementsByName("selectedstave")[0].value + "-" +
 													document.getElementsByName("stavenumber")[0].value +
 													"_report";
 				window.print();

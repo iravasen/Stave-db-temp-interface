@@ -45,7 +45,7 @@
 			var check = check_yes_no(2);
 
 			if(check && correctid && checkdigit){
-				document.title = document.getElementsByName("fbselected")[0].value +
+				document.title = document.getElementsByName("fbselected")[0].value + "-" +
 													document.getElementsByName("fbnumber")[0].value +
 													"_reception_test_report";
 				window.print();

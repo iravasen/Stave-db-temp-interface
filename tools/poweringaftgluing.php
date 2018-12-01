@@ -114,10 +114,10 @@
 
 			if(check && correctid && hicposition && vicorrect && checkhicnumber){
 				document.title = 	"OBHIC-" +
-													document.getElementsByName("hicflavor")[0].value +
+													document.getElementsByName("hicflavor")[0].value + "-" +
 													document.getElementsByName("hicnumber")[0].value +
 													"_powering_test_on_" +
-													document.getElementsByName("selectedcp")[0].value +
+													document.getElementsByName("selectedcp")[0].value + "-" +
 													document.getElementsByName("cpidname")[0].value +
 													"_report";
 				window.print();

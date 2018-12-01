@@ -48,8 +48,8 @@
 
 			if(check && correcthsid){
 				document.title = "Uarm_gluing_on_" +
-                         document.getElementsByName("selectedcity")[0].value +
-												 document.getElementsByName("selectedhs")[0].value +
+                         document.getElementsByName("selectedcity")[0].value + "-" +
+												 document.getElementsByName("selectedhs")[0].value + "-" +
 												 document.getElementsByName("hsnumber")[0].value +
 												 "_report";
 				window.print();

@@ -64,7 +64,7 @@
 			var check = check_yes_no(2);
 
 			if(check && correctid){
-				document.title = document.getElementsByName("bbselected")[0].value +
+				document.title = document.getElementsByName("bbselected")[0].value + "-" +
 													document.getElementsByName("bbnumber")[0].value +
 													"_reception_test_report";
 				window.print();
