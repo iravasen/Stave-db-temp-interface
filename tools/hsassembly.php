@@ -270,8 +270,6 @@
 		 </p>
  		 <p> Cold-Plate ID: <?php include('ids/cpid.php')?> </p>
 
-		 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
  		 <fieldset id="hicpositions">
  			 <legend> Half-Stave composition </legend>
 			 	<span> Position 1: <?php include('ids/hicid2.php')?></span> <br>
@@ -282,11 +280,16 @@
 				<span> Position 6: <?php include('ids/hicid2.php')?></span> <br>
 				<span> Position 7: <?php include('ids/hicid2.php')?></span> <br>
 
+				<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 				<script type="text/javascript">
-					document.addEventListener('DOMContentLoaded', function(){
+					//document.addEventListener('DOMContentLoaded', function(){
+
+						//Setting HIC flavors from HS flavor
+
 						var hicflav = document.getElementsByName("hicflavor");
 						var hsflav = document.getElementById("selhs");
-						var i;
+						//var i;
+						//alert(hicflav.length);
 						for (i = 0; i < hicflav.length; i++) {
 							if(hsflav.value=="OL-HS-L"){
 								if(!i) hicflav[i].value = "BL";
@@ -306,24 +309,23 @@
 								else if(i>0 && i<4) hicflav[i].value = "AR";
 								else hicflav[i].value = "-";
 							}
+							//alert(hicflav[i].value);
 						}
-					});
-				</script>
-				<script>
+					//});
+
+
+					//Setting hic number from query string
 					var url = new URL(document.location);
 
 					// Get query parameters object
 					var params = url.searchParams;
-
 					var hicnum = document.getElementsByName("hicnumber");
 					// Get value of paper
-					var i;
 					for(i=0; i<hicnum.length; i++){
 						var opt = params.get("hicidnum"+(i+1));
 						if(opt) $('input[name="hicnumber"]').eq(i).val(opt);
 						else $('input[name="hicnumber"]').eq(i).val("------");
 					}
-
 				</script>
 
 

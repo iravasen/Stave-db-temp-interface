@@ -1,15 +1,15 @@
-<div id="template-pos">
+<!--<div id="template-pos">
  <div id="placeh-pos" style="display: none">
    <hr>
 
-   <p> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('../ids/hicid.html')?>
+   <p> Position <input id="printnumb2" type="number" style="width: 40px"/>: </?php include('../ids/hicid.html')?>
        <input type="checkbox" id="replacedid"/> New
-       <span id="newhicid">--> Old HIC id: <input type="text" placeholder="OLD HIC ID" style="width: 150px"/></span>
+       <span id="newhicid"> Old HIC id: <input type="text" placeholder="OLD HIC ID" style="width: 150px"/></span>
    </p>
 
    <hr>
  </div>
-</div>
+</div>-->
 
 <!-- *************************************************** -->
 <div id="placeholder-damagehs">

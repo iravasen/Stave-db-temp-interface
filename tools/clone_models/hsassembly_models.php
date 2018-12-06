@@ -1,12 +1,12 @@
-<div id="template-pos">
+<!--<div id="template-pos">
  <div id="placeh-pos" style="display: none">
    <hr>
 
-   <span> Position <input id="printnumb2" type="number" style="width: 40px"/>: <?php include('ids/hicid.html')?></span>
+   <span> Position <input id="printnumb2" type="number" style="width: 40px"/>: </?php include('ids/hicid.html')?></span>
 
    <hr>
  </div>
-</div>
+</div>-->
 
 <!-- *************************************************** -->
 <div id="placeholder-hicg">

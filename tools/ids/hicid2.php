@@ -8,4 +8,4 @@ OBHIC-
 					<option value="BR"> BR </option>
 </select>
 
-<input name="hicnumber" id="printnumb_text" type="text" placeholder="XXXXXX" style="width: 80px" value="<?php echo (isset($_GET['hicidnum']) ? $_GET['hicidnum'] : '');?>"/> <span id="noprint"> (XXXXXX) </span>
+<input name="hicnumber" id="printnumb_text" type="text" placeholder="XXXXXX" style="width: 80px"/> <span id="noprint"> (XXXXXX) </span>
