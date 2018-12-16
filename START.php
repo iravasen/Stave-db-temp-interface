@@ -38,6 +38,7 @@
 
 			<h3> Storage, shipment, reception </h3>
 			<li> <a href="tools/stavestorageship.php"> Stave storage and shipment </a></li>
+			<li> <a href="tools/stavestorageship_prova.php">  Stave storage and shipment (beta version) </a></li>
       <li> <a href="tools/stavereceive.php">  Stave reception </a></li>
 
     </ul>
