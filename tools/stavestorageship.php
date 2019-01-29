@@ -241,7 +241,7 @@
  <form>
 	 <fieldset>
  		<legend> General info </legend>
- 		Vehicle used for transportation of the Stave to CERN <span id="noprint" style="color: red"> (trasport document to be attched in the GUI)</span><br>
+ 		Vehicle used for transportation of the Stave to CERN <span id="noprint" style="color: red"> (trasport document to be attached in the GUI)</span><br>
  		<input id="van" type="checkbox"/> Van of the university / lab <br>
  		<input id="expcour" type="checkbox"/> Express courier <br>
  			<ul id="expcourchoice">
@@ -393,20 +393,6 @@
 			<p id="noprint"><button type="button" name="Submit" onclick="Add('placeholder-ship','template-ship');">Add new item</button></p>
 		</fieldset>
 	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Picture of the Stave inside the transport box before closing it.</legend><br>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
-	<br>
-	<fieldset>
-		<legend>Picture of the transport box before shipping it.</legend><br>
-		<?php
-		include('imagetool/imagetool.html');
-		?>
-	</fieldset>
 	<br><br>
 
 	<h2>- Database activities </h2>
@@ -424,8 +410,7 @@
 
 	<br><br>
 	<h2>- Final checks before shipment </h2>
-	<h3 id="noprint"> INFO: check ONLY items that have been noted and consequently improved according to standard characteristics of a Stave
-		<span id="noprint" style="font-weight: bold;"> (add pictures of problematic items in each section) </span>
+	<h3 id="noprint"> INFO: Please go through the items and check the boxes concerning things which you had to be rework. <span id="noprint" style="font-weight: bold;">Please attach pictures of the reworks </span>
 	</h3>
 
 		<fieldset style="background-color: #ADFF2F;">
@@ -534,17 +519,6 @@
 			<?php include('imagetool/imagetool.html');?>
 		</fieldset>
 		<br><br>
-		<fieldset style="background-color: #D3D3D3">
-			<legend style="color: black; font-weight: bold; border-color: black; background-color: #D3D3D3;"> Cooling pipes </legend>
-			<textarea rows="10" cols="80" placeholder="Comments" style="float: right; width: 60%; margin-bottom: -30em;"></textarea>
-
-			<p style="padding-right: 900px">
-				<input type="checkbox" name="checkbefship"/> Uncorrect disposal of cooling tubes through the SEH<br>
-				<input type="checkbox" name="checkbefship" id="checkOthCool"/> Other <input id="othCool" type="text" style="width: 600px" placeholder="specify"/>
-			</p>
-			<br><br><br>
-			<?php include('imagetool/imagetool.html');?>
-		</fieldset>
 
 </form>
 

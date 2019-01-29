@@ -36,10 +36,10 @@
 			<li> <a href="tools/interm_page/soldePBBBtoHS.php">  PB + BB + Filter Board soldering to Stave </a></li>
       <li> <a href="tools/pbfold.php">  PB + BB folding for Stave </a></li>
 
-			<h3> Storage, shipment, reception </h3>
+			<h3> Storage, shipment, reception, rework after shipment </h3>
 			<li> <a href="tools/stavestorageship.php"> Stave storage and shipment </a></li>
-			<li> <a href="tools/stavestorageship_prova.php">  Stave storage and shipment (beta version) </a></li>
       <li> <a href="tools/stavereceive.php">  Stave reception </a></li>
+			<li> <a href="tools/staverework.php">  Stave rework after shipment </a></li>
 
     </ul>
 
