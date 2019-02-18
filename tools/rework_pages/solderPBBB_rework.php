@@ -326,6 +326,8 @@
 				<ul>
 					<li><input type="checkbox" id="check1"> Cross-cables of PB </li>
 					<li><input type="checkbox"> Cross-cable of BB </li>
+					<li><input type="checkbox"> PB replacement </li>
+					<li><input type="checkbox"> BB replacement </li>
 				</ul>
 
 				<!--In case of a bridge-->
