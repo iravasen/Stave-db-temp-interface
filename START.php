@@ -31,7 +31,7 @@
 			<li> <a href="tools/uarmgluing.php"> U-arm gluing on HS</a></li>
 
 			<h3> Stave assembly </h3>
-			<li> <a href="tools/hsgluing.php"> HS gluing on SF </a></li>
+			<li> <a href="tools/interm_page/stvass_interm.php"> HS gluing on SF </a></li>
 			<li> <a href="tools/interm_page/fb_to_pb_bb.php"> Soldering of capacitors on PB + soldering of FB to PB and BB </a></li>
 			<li> <a href="tools/interm_page/soldePBBBtoHS.php">  PB + BB + Filter Board soldering to Stave </a></li>
       <li> <a href="tools/pbfold.php">  PB + BB folding for Stave </a></li>

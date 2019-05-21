@@ -7,6 +7,7 @@
 					<option value="D"> D- </option>
 					<option value="F"> F- </option>
 					<option value="T"> T- </option>
+					<option value="R"> R- </option>
 </select>
 
 <select id="selstv" name="selectedstave" >
@@ -30,7 +31,7 @@
 	// Set it as the dropdown value
 	$("#sites").val(opt1);
 	$("#selstv").val(opt2);
-	if(!opt1 || (opt1!="A" && opt1!="B" && opt1!="D" && opt1!="F" && opt1!="T")) $("#sites").val("-");
+	if(!opt1 || (opt1!="A" && opt1!="B" && opt1!="D" && opt1!="F" && opt1!="T" && opt1!="R")) $("#sites").val("-");
 	if(!opt2 || (opt2!="OL-Stave" && opt2!="ML-Stave")) $("#selstv").val("-");
 	});
 </script>
